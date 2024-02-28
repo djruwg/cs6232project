@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
 
-
 namespace RentMe.DAL
 {
     internal class LoginDAL
@@ -18,8 +17,7 @@ namespace RentMe.DAL
                 where
                     Username = @username
                 and
-                    Password = @password"
-            ;
+                    Password = @password";
 
             using (SqlConnection connection = DBConnection.GetConnection())
             {
@@ -27,9 +25,9 @@ namespace RentMe.DAL
 
                 using (SqlCommand command = new SqlCommand(selectStatement, connection))
                 {
-                    command.Parameters.Add("@username", SqlDbType.VarChar, 50);
+                    command.Parameters.Add("@username", SqlDbType.VarChar, 20);
                     command.Parameters["@username"].Value = username;
-                    command.Parameters.Add("@password", SqlDbType.VarChar, 50);
+                    command.Parameters.Add("@password", SqlDbType.VarChar, 256);
                     command.Parameters["@password"].Value = password;
 
                     count = Convert.ToInt32(command.ExecuteScalar());

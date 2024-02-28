@@ -1,4 +1,5 @@
 ﻿using RentMe.DAL;
+using RentMe.Helper;
 
 namespace RentMe.Controller
 {
@@ -12,7 +13,9 @@ namespace RentMe.Controller
         /// <returns>True on successfull authentication.</returns>
         public static bool Authenticate(string username, string password)
         {
-            return LoginDAL.Authenticate(username, password);
+            var hash = PasswordHelper.Hash(password);
+
+            return LoginDAL.Authenticate(username, hash);
         }
     }
 }
