@@ -10,7 +10,7 @@ namespace RentMe.DAL
         /// <returns>A connection object.</returns>
         public static SqlConnection GetConnection()
         {
-            var connectionString = "Data Source=localhost;Initial Catalog=RentMe;Integrated Security=True;";
+            var connectionString = "Data Source=localhost;Initial Catalog=Rental;Integrated Security=True;";
 
             return new SqlConnection(connectionString);
         }

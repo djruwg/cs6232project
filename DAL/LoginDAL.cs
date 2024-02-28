@@ -13,7 +13,7 @@ namespace RentMe.DAL
                 select
                     count(*)
                 from
-                    Logins
+                    Employees
                 where
                     Username = @username
                 and
