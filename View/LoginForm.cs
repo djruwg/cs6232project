@@ -8,6 +8,7 @@ namespace RentMe.View
     public partial class LoginForm : Form
     {
         private LoginController _loginController;
+        private String _username;
 
         /// <summary>
         /// Constructor for the login form
@@ -17,6 +18,18 @@ namespace RentMe.View
             InitializeComponent();
 
             this._loginController = new LoginController();
+            this._username = string.Empty;
+        }
+
+        /// <summary>
+        /// Gets the username.
+        /// </summary>
+        /// <value>
+        /// The username string.
+        /// </value>
+        public String Username
+        {
+            get { return this._username; }
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
@@ -25,15 +38,9 @@ namespace RentMe.View
             {
                 if (this._loginController.Authenticate(UsernameTextBox.Text, PasswordTextBox.Text) == true)
                 {
-                    MainDashboard? mainDashboard = this.Owner as MainDashboard;
-
-                    if (mainDashboard != null)
-                    {
-                        // mainDashboard.SetUsername(this.UsernameTextBox.Text);
-                    }
-
                     this.Hide();
 
+                    this._username = UsernameTextBox.Text;
                     this.DialogResult = DialogResult.OK;
 
                 }
