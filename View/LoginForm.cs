@@ -7,19 +7,23 @@ namespace RentMe.View
     /// </summary>
     public partial class LoginForm : Form
     {
+        private LoginController _loginController;
+
         /// <summary>
         /// Constructor for the login form
         /// </summary>
         public LoginForm()
         {
             InitializeComponent();
+
+            this._loginController = new LoginController();
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
             try
             {
-                if (LoginController.Authenticate(UsernameTextBox.Text, PasswordTextBox.Text))
+                if (this._loginController.Authenticate(UsernameTextBox.Text, PasswordTextBox.Text) == true)
                 {
                     MainDashboard? mainDashboard = this.Owner as MainDashboard;
 

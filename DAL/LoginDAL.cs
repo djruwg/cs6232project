@@ -5,7 +5,7 @@ namespace RentMe.DAL
 {
     internal class LoginDAL
     {
-        public static bool Authenticate(string username, string password)
+        public bool Authenticate(string username, string password)
         {
             int count = 0;
 
