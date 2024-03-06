@@ -54,11 +54,11 @@
             MemberEditorBirthdateTextField = new TextBox();
             MemberEditorCityTextField = new TextBox();
             MemberEditorZipTextField = new TextBox();
-            this.MemberEditorSexComboBox = new ComboBox();
+            MemberEditorSexComboBox = new ComboBox();
             MemberEditorStateComboBox = new ComboBox();
+            MemberEditorFlowLayoutPanel = new FlowLayoutPanel();
             MemberEditorSaveButton = new Button();
             MemberEditorClearButton = new Button();
-            MemberEditorFlowLayoutPanel = new FlowLayoutPanel();
             MemberEditorMessageLabel = new Label();
             MemberEditorTableLayoutPanel.SuspendLayout();
             MemberEditorFlowLayoutPanel.SuspendLayout();
@@ -96,7 +96,7 @@
             MemberEditorTableLayoutPanel.Controls.Add(MemberEditorBirthdateTextField, 3, 4);
             MemberEditorTableLayoutPanel.Controls.Add(MemberEditorCityTextField, 1, 6);
             MemberEditorTableLayoutPanel.Controls.Add(MemberEditorZipTextField, 1, 8);
-            MemberEditorTableLayoutPanel.Controls.Add(this.MemberEditorSexComboBox, 3, 2);
+            MemberEditorTableLayoutPanel.Controls.Add(MemberEditorSexComboBox, 3, 2);
             MemberEditorTableLayoutPanel.Controls.Add(MemberEditorStateComboBox, 3, 6);
             MemberEditorTableLayoutPanel.Controls.Add(MemberEditorFlowLayoutPanel, 1, 10);
             MemberEditorTableLayoutPanel.Controls.Add(MemberEditorMessageLabel, 3, 10);
@@ -356,13 +356,13 @@
             // 
             // MemberEditorSexComboBox
             // 
-            this.MemberEditorSexComboBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            this.MemberEditorSexComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.MemberEditorSexComboBox.FormattingEnabled = true;
-            this.MemberEditorSexComboBox.Location = new Point(425, 47);
-            this.MemberEditorSexComboBox.Name = "MemberEditorSexComboBox";
-            this.MemberEditorSexComboBox.Size = new Size(277, 23);
-            this.MemberEditorSexComboBox.TabIndex = 29;
+            MemberEditorSexComboBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            MemberEditorSexComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            MemberEditorSexComboBox.FormattingEnabled = true;
+            MemberEditorSexComboBox.Location = new Point(425, 47);
+            MemberEditorSexComboBox.Name = "MemberEditorSexComboBox";
+            MemberEditorSexComboBox.Size = new Size(277, 23);
+            MemberEditorSexComboBox.TabIndex = 29;
             // 
             // MemberEditorStateComboBox
             // 
@@ -373,6 +373,16 @@
             MemberEditorStateComboBox.Name = "MemberEditorStateComboBox";
             MemberEditorStateComboBox.Size = new Size(277, 23);
             MemberEditorStateComboBox.TabIndex = 30;
+            // 
+            // MemberEditorFlowLayoutPanel
+            // 
+            MemberEditorFlowLayoutPanel.Controls.Add(MemberEditorSaveButton);
+            MemberEditorFlowLayoutPanel.Controls.Add(MemberEditorClearButton);
+            MemberEditorFlowLayoutPanel.Dock = DockStyle.Fill;
+            MemberEditorFlowLayoutPanel.Location = new Point(73, 223);
+            MemberEditorFlowLayoutPanel.Name = "MemberEditorFlowLayoutPanel";
+            MemberEditorFlowLayoutPanel.Size = new Size(277, 273);
+            MemberEditorFlowLayoutPanel.TabIndex = 31;
             // 
             // MemberEditorSaveButton
             // 
@@ -391,16 +401,6 @@
             MemberEditorClearButton.TabIndex = 1;
             MemberEditorClearButton.Text = "Clear";
             MemberEditorClearButton.UseVisualStyleBackColor = true;
-            // 
-            // MemberEditorFlowLayoutPanel
-            // 
-            MemberEditorFlowLayoutPanel.Controls.Add(MemberEditorSaveButton);
-            MemberEditorFlowLayoutPanel.Controls.Add(MemberEditorClearButton);
-            MemberEditorFlowLayoutPanel.Dock = DockStyle.Fill;
-            MemberEditorFlowLayoutPanel.Location = new Point(73, 223);
-            MemberEditorFlowLayoutPanel.Name = "MemberEditorFlowLayoutPanel";
-            MemberEditorFlowLayoutPanel.Size = new Size(277, 273);
-            MemberEditorFlowLayoutPanel.TabIndex = 31;
             // 
             // MemberEditorMessageLabel
             // 
@@ -428,7 +428,6 @@
         #endregion
 
         private TableLayoutPanel MemberEditorTableLayoutPanel;
-        private Label label20;
         private Label MemberEditorLastNameLabel;
         private Label MemberEditorFirstNameLabel;
         private TextBox MemberEditorFirstNameTextField;
@@ -448,14 +447,13 @@
         private Label MemberEditorZipMessageLabel;
         private Label MemberEditorBirthdateLabel;
         private Label MemberEditorStateLabel;
-        private Label label17;
         private Label MemberEditorBirthdateMessageLabel;
         private Label MemberEditorStateMessageLabel;
         private TextBox MemberEditorAddressTextField;
         private TextBox MemberEditorBirthdateTextField;
         private TextBox MemberEditorCityTextField;
         private TextBox MemberEditorZipTextField;
-        private ComboBox comboBox1;
+        private ComboBox MemberEditorSexComboBox;
         private ComboBox MemberEditorStateComboBox;
         private FlowLayoutPanel MemberEditorFlowLayoutPanel;
         private Button MemberEditorSaveButton;
