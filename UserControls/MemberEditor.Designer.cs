@@ -392,6 +392,7 @@
             MemberEditorSaveButton.TabIndex = 0;
             MemberEditorSaveButton.Text = "Save";
             MemberEditorSaveButton.UseVisualStyleBackColor = true;
+            MemberEditorSaveButton.Click += MemberEditorSaveButton_Click;
             // 
             // MemberEditorClearButton
             // 
@@ -401,6 +402,7 @@
             MemberEditorClearButton.TabIndex = 1;
             MemberEditorClearButton.Text = "Clear";
             MemberEditorClearButton.UseVisualStyleBackColor = true;
+            MemberEditorClearButton.Click += MemberEditorClearButton_Click;
             // 
             // MemberEditorMessageLabel
             // 

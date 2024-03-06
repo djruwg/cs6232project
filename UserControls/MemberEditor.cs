@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Text.RegularExpressions;
 
 namespace RentMe.UserControls
 {
@@ -15,6 +7,56 @@ namespace RentMe.UserControls
         public MemberEditor()
         {
             InitializeComponent();
+
+            this.ClearMessages();
+        }
+
+        private bool ValidatePhone(string phone)
+        {
+            return Regex.IsMatch(phone, "\\A(\\+\\d{1,2}\\s?)?\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}\\z");
+        }
+
+        private void MemberEditorSaveButton_Click(object sender, EventArgs e)
+        {
+            this.ClearMessages();
+
+            if (this.ValidatePhone(MemberEditorPhoneTextField.Text) == false)
+            {
+                MemberEditorPhoneMessageLabel.Text = "Not a valid phone number";
+            }
+        }
+
+        private void ClearMessages()
+        {
+            MemberEditorFirstNameMessageLabel.Text = "";
+            MemberEditorLastNameMessageLabel.Text = "";
+            MemberEditorPhoneMessageLabel.Text = "";
+            MemberEditorAddressMessageLabel.Text = "";
+            MemberEditorCityMessageLabel.Text = "";
+            MemberEditorStateMessageLabel.Text = "";
+            MemberEditorZipMessageLabel.Text = "";
+            MemberEditorBirthdateMessageLabel.Text = "";
+            MemberEditorSexMessageLabel.Text = "";
+            MemberEditorMessageLabel.Text = "";
+        }
+
+        private void ClearInput()
+        {
+            MemberEditorFirstNameTextField.Text = "";
+            MemberEditorLastNameTextField.Text = "";
+            MemberEditorPhoneTextField.Text = "";
+            MemberEditorAddressTextField.Text = "";
+            MemberEditorCityTextField.Text = "";
+            MemberEditorStateComboBox.SelectedItem = null;
+            MemberEditorZipTextField.Text = "";
+            MemberEditorBirthdateTextField.Text = "";
+            MemberEditorSexComboBox.SelectedItem = null;
+        }
+
+        private void MemberEditorClearButton_Click(object sender, EventArgs e)
+        {
+            this.ClearMessages();
+            this.ClearInput();
         }
     }
 }
