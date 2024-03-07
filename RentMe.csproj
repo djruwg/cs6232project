@@ -9,7 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="UserControl\" />
+    <Compile Remove="UserControl\**" />
+    <EmbeddedResource Remove="UserControl\**" />
+    <None Remove="UserControl\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Model\" />
   </ItemGroup>
 
   <ItemGroup>

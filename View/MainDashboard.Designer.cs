@@ -33,11 +33,13 @@
             WelcomeTabPage = new TabPage();
             SearchMembers = new TabPage();
             RegisterMemberTabPage = new TabPage();
+            memberEditor1 = new UserControls.MemberEditor();
             SearchFurnitureTabPage = new TabPage();
             CartTabPage = new TabPage();
             LogoutLinkLabel = new LinkLabel();
             MainDashboardTableLayoutPanel.SuspendLayout();
             MainTabControl.SuspendLayout();
+            RegisterMemberTabPage.SuspendLayout();
             SuspendLayout();
             // 
             // MainDashboardTableLayoutPanel
@@ -85,27 +87,36 @@
             SearchMembers.Location = new Point(4, 24);
             SearchMembers.Name = "SearchMembers";
             SearchMembers.Padding = new Padding(3);
-            SearchMembers.Size = new Size(786, 363);
+            SearchMembers.Size = new Size(192, 72);
             SearchMembers.TabIndex = 1;
             SearchMembers.Text = "Search Members";
             SearchMembers.UseVisualStyleBackColor = true;
             // 
             // RegisterMemberTabPage
             // 
+            RegisterMemberTabPage.Controls.Add(memberEditor1);
             RegisterMemberTabPage.Location = new Point(4, 24);
             RegisterMemberTabPage.Name = "RegisterMemberTabPage";
             RegisterMemberTabPage.Padding = new Padding(3);
-            RegisterMemberTabPage.Size = new Size(786, 363);
+            RegisterMemberTabPage.Size = new Size(786, 415);
             RegisterMemberTabPage.TabIndex = 2;
             RegisterMemberTabPage.Text = "Register Member";
             RegisterMemberTabPage.UseVisualStyleBackColor = true;
+            // 
+            // memberEditor1
+            // 
+            memberEditor1.Dock = DockStyle.Fill;
+            memberEditor1.Location = new Point(3, 3);
+            memberEditor1.Name = "memberEditor1";
+            memberEditor1.Size = new Size(780, 409);
+            memberEditor1.TabIndex = 0;
             // 
             // SearchFurnitureTabPage
             // 
             SearchFurnitureTabPage.Location = new Point(4, 24);
             SearchFurnitureTabPage.Name = "SearchFurnitureTabPage";
             SearchFurnitureTabPage.Padding = new Padding(3);
-            SearchFurnitureTabPage.Size = new Size(786, 363);
+            SearchFurnitureTabPage.Size = new Size(192, 72);
             SearchFurnitureTabPage.TabIndex = 3;
             SearchFurnitureTabPage.Text = "Search Furniture";
             SearchFurnitureTabPage.UseVisualStyleBackColor = true;
@@ -115,7 +126,7 @@
             CartTabPage.Location = new Point(4, 24);
             CartTabPage.Name = "CartTabPage";
             CartTabPage.Padding = new Padding(3);
-            CartTabPage.Size = new Size(786, 363);
+            CartTabPage.Size = new Size(192, 72);
             CartTabPage.TabIndex = 4;
             CartTabPage.Text = "Cart";
             CartTabPage.UseVisualStyleBackColor = true;
@@ -145,6 +156,7 @@
             MainDashboardTableLayoutPanel.ResumeLayout(false);
             MainDashboardTableLayoutPanel.PerformLayout();
             MainTabControl.ResumeLayout(false);
+            RegisterMemberTabPage.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -158,5 +170,6 @@
         private TabPage SearchFurnitureTabPage;
         private TabPage CartTabPage;
         private LinkLabel LogoutLinkLabel;
+        private UserControls.MemberEditor memberEditor1;
     }
 }
