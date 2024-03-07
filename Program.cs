@@ -14,6 +14,9 @@ namespace RentMe
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new MainDashboard());
+
+            // FOR TESTING EDIT MEMBER FORM
+            // Application.Run(new EditMemberForm(2));
         }
     }
 }

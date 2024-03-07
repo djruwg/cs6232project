@@ -1,7 +1,5 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
-using System.Diagnostics;
-using System.Dynamic;
 using System.Text.RegularExpressions;
 
 namespace RentMe.UserControls
@@ -11,23 +9,37 @@ namespace RentMe.UserControls
         private MemberController _memberController;
         private Member _member;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MemberEditor"/> class.
+        /// </summary>
         public MemberEditor()
         {
             InitializeComponent();
 
             this._memberController = new MemberController();
 
+            this.PopulateComboBox();
+
             this.ClearMessages();
 
-            // REMOVE ME
-            this.EditMember(0);
+            this._member = new Member();
         }
 
-        private void EditMember(int id)
+        /// <summary>
+        /// Given a member ID of zero, creates a new member else
+        /// looked up an existing member to update.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        public void EditMember(int id)
         {
             if (id > 0)
             {
                 this._member = this._memberController.GetMemberByID(id);
+
+                if (this._member == null)
+                {
+                    throw new InvalidOperationException("No member was found with the given member ID.");
+                }
 
                 MemberEditorFirstNameTextField.Text = this._member.FirstName;
                 MemberEditorLastNameTextField.Text = this._member.LastName;
@@ -38,6 +50,8 @@ namespace RentMe.UserControls
                 MemberEditorZipTextField.Text = this._member.Zip;
                 MemberEditorBirthdatePicker.Value = this._member.DateOfBirth;
                 MemberEditorSexComboBox.SelectedIndex = MemberEditorSexComboBox.FindString(this._member.Sex);
+
+                MemberEditorClearButton.Text = "Cancel";
             }
             else
             {
@@ -45,12 +59,25 @@ namespace RentMe.UserControls
             }
         }
 
+        public void PopulateComboBox()
+        {
+            Dictionary<string, char> dict = new Dictionary<string, char>()
+            {
+                {"Male ",'M'},
+                {"Female", 'F'}
+            };
+
+            MemberEditorSexComboBox.DataSource = new BindingSource(dict, null);
+            MemberEditorSexComboBox.DisplayMember = "Key";
+            MemberEditorSexComboBox.ValueMember = "Value";
+        }
+
         private bool ValidatePhone(string phone)
         {
             return Regex.IsMatch(phone, "\\A(\\+\\d{1,2}\\s?)?\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}\\z");
         }
 
-        private void CopyInputToMember()
+        private void CopyInputToMemberObject()
         {
             ArgumentNullException.ThrowIfNull(this._member);
 
@@ -62,9 +89,7 @@ namespace RentMe.UserControls
             this._member.State = MemberEditorStateComboBox.Text;
             this._member.Zip = MemberEditorZipTextField.Text;
             this._member.DateOfBirth = MemberEditorBirthdatePicker.Value.Date;
-            this._member.Sex = "M";
-
-
+            this._member.Sex = MemberEditorSexComboBox.SelectedValue != null ? MemberEditorSexComboBox.SelectedValue.ToString() : "";
         }
 
         private void MemberEditorSaveButton_Click(object sender, EventArgs e)
@@ -90,7 +115,7 @@ namespace RentMe.UserControls
                 return;
             }
 
-            this.CopyInputToMember();
+            this.CopyInputToMemberObject();
             this.ClearMessages();
             this.ClearInput();
 
@@ -137,11 +162,22 @@ namespace RentMe.UserControls
 
         private void MemberEditorClearButton_Click(object sender, EventArgs e)
         {
+            if (this._member == null)
+            {
+                throw new InvalidOperationException("No member object was referenced.");
+            }
+
+            if (this._member.MemberID != 0)
+            {
+                this.ParentForm.Close();
+
+                return;
+            }
+
             this.ClearMessages();
             this.ClearInput();
 
-            // REMOVE ME
-            this.EditMember(2);
+            this._member = new Member();
         }
     }
 }
