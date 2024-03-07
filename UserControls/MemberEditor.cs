@@ -26,6 +26,11 @@ namespace RentMe.UserControls
                 MemberEditorPhoneMessageLabel.Text = "Not a valid phone number";
             }
 
+            if (this.MemberEditorBirthdatePicker.Value.Date == DateTime.Now.Date)
+            {
+                MemberEditorBirthdateMessageLabel.Text = "Please set a birthdate";
+            }
+
             Debug.WriteLine(MemberEditorBirthdatePicker.Text);
         }
 
