@@ -125,7 +125,7 @@
             MemberEditorLastNameLabel.Location = new Point(356, 7);
             MemberEditorLastNameLabel.Name = "MemberEditorLastNameLabel";
             MemberEditorLastNameLabel.Size = new Size(63, 15);
-            MemberEditorLastNameLabel.TabIndex = 4;
+            MemberEditorLastNameLabel.TabIndex = 0;
             MemberEditorLastNameLabel.Text = "Last Name";
             // 
             // MemberEditorFirstNameLabel
@@ -144,7 +144,7 @@
             MemberEditorFirstNameTextField.Location = new Point(73, 3);
             MemberEditorFirstNameTextField.Name = "MemberEditorFirstNameTextField";
             MemberEditorFirstNameTextField.Size = new Size(277, 23);
-            MemberEditorFirstNameTextField.TabIndex = 1;
+            MemberEditorFirstNameTextField.TabIndex = 0;
             // 
             // MemberEditorFirstNameMessageLabel
             // 
@@ -153,7 +153,7 @@
             MemberEditorFirstNameMessageLabel.Location = new Point(73, 29);
             MemberEditorFirstNameMessageLabel.Name = "MemberEditorFirstNameMessageLabel";
             MemberEditorFirstNameMessageLabel.Size = new Size(84, 15);
-            MemberEditorFirstNameMessageLabel.TabIndex = 2;
+            MemberEditorFirstNameMessageLabel.TabIndex = 0;
             MemberEditorFirstNameMessageLabel.Text = "Message Label";
             // 
             // MemberEditorLastNameTextField
@@ -162,7 +162,7 @@
             MemberEditorLastNameTextField.Location = new Point(425, 3);
             MemberEditorLastNameTextField.Name = "MemberEditorLastNameTextField";
             MemberEditorLastNameTextField.Size = new Size(277, 23);
-            MemberEditorLastNameTextField.TabIndex = 3;
+            MemberEditorLastNameTextField.TabIndex = 1;
             // 
             // MemberEditorPhoneTextField
             // 
@@ -170,7 +170,7 @@
             MemberEditorPhoneTextField.Location = new Point(73, 47);
             MemberEditorPhoneTextField.Name = "MemberEditorPhoneTextField";
             MemberEditorPhoneTextField.Size = new Size(277, 23);
-            MemberEditorPhoneTextField.TabIndex = 7;
+            MemberEditorPhoneTextField.TabIndex = 2;
             // 
             // MemberEditorPhoneLabel
             // 
@@ -179,7 +179,7 @@
             MemberEditorPhoneLabel.Location = new Point(3, 51);
             MemberEditorPhoneLabel.Name = "MemberEditorPhoneLabel";
             MemberEditorPhoneLabel.Size = new Size(41, 15);
-            MemberEditorPhoneLabel.TabIndex = 8;
+            MemberEditorPhoneLabel.TabIndex = 0;
             MemberEditorPhoneLabel.Text = "Phone";
             // 
             // MemberEditorLastNameMessageLabel
@@ -189,7 +189,7 @@
             MemberEditorLastNameMessageLabel.Location = new Point(425, 29);
             MemberEditorLastNameMessageLabel.Name = "MemberEditorLastNameMessageLabel";
             MemberEditorLastNameMessageLabel.Size = new Size(84, 15);
-            MemberEditorLastNameMessageLabel.TabIndex = 5;
+            MemberEditorLastNameMessageLabel.TabIndex = 0;
             MemberEditorLastNameMessageLabel.Text = "Message Label";
             // 
             // MemberEditorSexLabel
@@ -199,7 +199,7 @@
             MemberEditorSexLabel.Location = new Point(356, 51);
             MemberEditorSexLabel.Name = "MemberEditorSexLabel";
             MemberEditorSexLabel.Size = new Size(25, 15);
-            MemberEditorSexLabel.TabIndex = 9;
+            MemberEditorSexLabel.TabIndex = 0;
             MemberEditorSexLabel.Text = "Sex";
             // 
             // MemberEditorAddressLabel
@@ -209,7 +209,7 @@
             MemberEditorAddressLabel.Location = new Point(3, 95);
             MemberEditorAddressLabel.Name = "MemberEditorAddressLabel";
             MemberEditorAddressLabel.Size = new Size(49, 15);
-            MemberEditorAddressLabel.TabIndex = 10;
+            MemberEditorAddressLabel.TabIndex = 0;
             MemberEditorAddressLabel.Text = "Address";
             // 
             // MemberEditorCityLabel
@@ -219,7 +219,7 @@
             MemberEditorCityLabel.Location = new Point(3, 139);
             MemberEditorCityLabel.Name = "MemberEditorCityLabel";
             MemberEditorCityLabel.Size = new Size(28, 15);
-            MemberEditorCityLabel.TabIndex = 11;
+            MemberEditorCityLabel.TabIndex = 0;
             MemberEditorCityLabel.Text = "City";
             // 
             // MemberEditorZipLabel
@@ -229,7 +229,7 @@
             MemberEditorZipLabel.Location = new Point(3, 183);
             MemberEditorZipLabel.Name = "MemberEditorZipLabel";
             MemberEditorZipLabel.Size = new Size(24, 15);
-            MemberEditorZipLabel.TabIndex = 12;
+            MemberEditorZipLabel.TabIndex = 0;
             MemberEditorZipLabel.Text = "Zip";
             // 
             // MemberEditorPhoneMessageLabel
@@ -239,7 +239,7 @@
             MemberEditorPhoneMessageLabel.Location = new Point(73, 73);
             MemberEditorPhoneMessageLabel.Name = "MemberEditorPhoneMessageLabel";
             MemberEditorPhoneMessageLabel.Size = new Size(84, 15);
-            MemberEditorPhoneMessageLabel.TabIndex = 13;
+            MemberEditorPhoneMessageLabel.TabIndex = 0;
             MemberEditorPhoneMessageLabel.Text = "Message Label";
             // 
             // MemberEditorSexMessageLabel
@@ -249,7 +249,7 @@
             MemberEditorSexMessageLabel.Location = new Point(425, 73);
             MemberEditorSexMessageLabel.Name = "MemberEditorSexMessageLabel";
             MemberEditorSexMessageLabel.Size = new Size(84, 15);
-            MemberEditorSexMessageLabel.TabIndex = 14;
+            MemberEditorSexMessageLabel.TabIndex = 0;
             MemberEditorSexMessageLabel.Text = "Message Label";
             // 
             // MemberEditorAddressMessageLabel
@@ -259,7 +259,7 @@
             MemberEditorAddressMessageLabel.Location = new Point(73, 117);
             MemberEditorAddressMessageLabel.Name = "MemberEditorAddressMessageLabel";
             MemberEditorAddressMessageLabel.Size = new Size(84, 15);
-            MemberEditorAddressMessageLabel.TabIndex = 15;
+            MemberEditorAddressMessageLabel.TabIndex = 0;
             MemberEditorAddressMessageLabel.Text = "Message Label";
             // 
             // MemberEditorCityMessageLabel
@@ -269,7 +269,7 @@
             MemberEditorCityMessageLabel.Location = new Point(73, 161);
             MemberEditorCityMessageLabel.Name = "MemberEditorCityMessageLabel";
             MemberEditorCityMessageLabel.Size = new Size(84, 15);
-            MemberEditorCityMessageLabel.TabIndex = 16;
+            MemberEditorCityMessageLabel.TabIndex = 0;
             MemberEditorCityMessageLabel.Text = "Message Label";
             // 
             // MemberEditorZipMessageLabel
@@ -279,7 +279,7 @@
             MemberEditorZipMessageLabel.Location = new Point(73, 205);
             MemberEditorZipMessageLabel.Name = "MemberEditorZipMessageLabel";
             MemberEditorZipMessageLabel.Size = new Size(84, 15);
-            MemberEditorZipMessageLabel.TabIndex = 17;
+            MemberEditorZipMessageLabel.TabIndex = 0;
             MemberEditorZipMessageLabel.Text = "Message Label";
             // 
             // MemberEditorBirthdateLabel
@@ -289,7 +289,7 @@
             MemberEditorBirthdateLabel.Location = new Point(356, 95);
             MemberEditorBirthdateLabel.Name = "MemberEditorBirthdateLabel";
             MemberEditorBirthdateLabel.Size = new Size(55, 15);
-            MemberEditorBirthdateLabel.TabIndex = 18;
+            MemberEditorBirthdateLabel.TabIndex = 0;
             MemberEditorBirthdateLabel.Text = "Birthdate";
             // 
             // MemberEditorStateLabel
@@ -299,7 +299,7 @@
             MemberEditorStateLabel.Location = new Point(356, 139);
             MemberEditorStateLabel.Name = "MemberEditorStateLabel";
             MemberEditorStateLabel.Size = new Size(33, 15);
-            MemberEditorStateLabel.TabIndex = 19;
+            MemberEditorStateLabel.TabIndex = 0;
             MemberEditorStateLabel.Text = "State";
             // 
             // MemberEditorBirthdateMessageLabel
@@ -309,7 +309,7 @@
             MemberEditorBirthdateMessageLabel.Location = new Point(425, 117);
             MemberEditorBirthdateMessageLabel.Name = "MemberEditorBirthdateMessageLabel";
             MemberEditorBirthdateMessageLabel.Size = new Size(84, 15);
-            MemberEditorBirthdateMessageLabel.TabIndex = 21;
+            MemberEditorBirthdateMessageLabel.TabIndex = 0;
             MemberEditorBirthdateMessageLabel.Text = "Message Label";
             // 
             // MemberEditorStateMessageLabel
@@ -319,7 +319,7 @@
             MemberEditorStateMessageLabel.Location = new Point(425, 161);
             MemberEditorStateMessageLabel.Name = "MemberEditorStateMessageLabel";
             MemberEditorStateMessageLabel.Size = new Size(84, 15);
-            MemberEditorStateMessageLabel.TabIndex = 22;
+            MemberEditorStateMessageLabel.TabIndex = 0;
             MemberEditorStateMessageLabel.Text = "Message Label";
             // 
             // MemberEditorAddressTextField
@@ -328,7 +328,7 @@
             MemberEditorAddressTextField.Location = new Point(73, 91);
             MemberEditorAddressTextField.Name = "MemberEditorAddressTextField";
             MemberEditorAddressTextField.Size = new Size(277, 23);
-            MemberEditorAddressTextField.TabIndex = 24;
+            MemberEditorAddressTextField.TabIndex = 4;
             // 
             // MemberEditorCityTextField
             // 
@@ -336,7 +336,7 @@
             MemberEditorCityTextField.Location = new Point(73, 135);
             MemberEditorCityTextField.Name = "MemberEditorCityTextField";
             MemberEditorCityTextField.Size = new Size(277, 23);
-            MemberEditorCityTextField.TabIndex = 26;
+            MemberEditorCityTextField.TabIndex = 6;
             // 
             // MemberEditorZipTextField
             // 
@@ -344,27 +344,29 @@
             MemberEditorZipTextField.Location = new Point(73, 179);
             MemberEditorZipTextField.Name = "MemberEditorZipTextField";
             MemberEditorZipTextField.Size = new Size(277, 23);
-            MemberEditorZipTextField.TabIndex = 28;
+            MemberEditorZipTextField.TabIndex = 8;
             // 
             // MemberEditorSexComboBox
             // 
             MemberEditorSexComboBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             MemberEditorSexComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             MemberEditorSexComboBox.FormattingEnabled = true;
+            MemberEditorSexComboBox.Items.AddRange(new object[] { "Male", "Female" });
             MemberEditorSexComboBox.Location = new Point(425, 47);
             MemberEditorSexComboBox.Name = "MemberEditorSexComboBox";
             MemberEditorSexComboBox.Size = new Size(277, 23);
-            MemberEditorSexComboBox.TabIndex = 29;
+            MemberEditorSexComboBox.TabIndex = 3;
             // 
             // MemberEditorStateComboBox
             // 
             MemberEditorStateComboBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             MemberEditorStateComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             MemberEditorStateComboBox.FormattingEnabled = true;
+            MemberEditorStateComboBox.Items.AddRange(new object[] { "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming" });
             MemberEditorStateComboBox.Location = new Point(425, 135);
             MemberEditorStateComboBox.Name = "MemberEditorStateComboBox";
             MemberEditorStateComboBox.Size = new Size(277, 23);
-            MemberEditorStateComboBox.TabIndex = 30;
+            MemberEditorStateComboBox.TabIndex = 7;
             // 
             // MemberEditorFlowLayoutPanel
             // 
@@ -381,7 +383,7 @@
             MemberEditorSaveButton.Location = new Point(3, 3);
             MemberEditorSaveButton.Name = "MemberEditorSaveButton";
             MemberEditorSaveButton.Size = new Size(75, 23);
-            MemberEditorSaveButton.TabIndex = 0;
+            MemberEditorSaveButton.TabIndex = 9;
             MemberEditorSaveButton.Text = "Save";
             MemberEditorSaveButton.UseVisualStyleBackColor = true;
             MemberEditorSaveButton.Click += MemberEditorSaveButton_Click;
@@ -391,7 +393,7 @@
             MemberEditorClearButton.Location = new Point(84, 3);
             MemberEditorClearButton.Name = "MemberEditorClearButton";
             MemberEditorClearButton.Size = new Size(75, 23);
-            MemberEditorClearButton.TabIndex = 1;
+            MemberEditorClearButton.TabIndex = 10;
             MemberEditorClearButton.Text = "Clear";
             MemberEditorClearButton.UseVisualStyleBackColor = true;
             MemberEditorClearButton.Click += MemberEditorClearButton_Click;
@@ -403,7 +405,7 @@
             MemberEditorMessageLabel.Location = new Point(425, 220);
             MemberEditorMessageLabel.Name = "MemberEditorMessageLabel";
             MemberEditorMessageLabel.Size = new Size(84, 15);
-            MemberEditorMessageLabel.TabIndex = 32;
+            MemberEditorMessageLabel.TabIndex = 0;
             MemberEditorMessageLabel.Text = "Message Label";
             // 
             // MemberEditorBirthdatePicker
@@ -413,7 +415,7 @@
             MemberEditorBirthdatePicker.Location = new Point(425, 91);
             MemberEditorBirthdatePicker.Name = "MemberEditorBirthdatePicker";
             MemberEditorBirthdatePicker.Size = new Size(277, 23);
-            MemberEditorBirthdatePicker.TabIndex = 33;
+            MemberEditorBirthdatePicker.TabIndex = 5;
             // 
             // MemberEditor
             // 
