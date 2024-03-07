@@ -91,19 +91,20 @@ namespace RentMe.UserControls
             }
 
             this.CopyInputToMember();
+            this.ClearMessages();
+            this.ClearInput();
 
             if (this._member.MemberID == 0)
             {
                 this._memberController.AddMember(this._member);
 
-                this.ClearMessages();
-                this.ClearInput();
-
-                MemberEditorMessageLabel.Text = "New member added";
+                MemberEditorMessageLabel.Text = "New member added.";
             }
             else
             {
-                // Update existing member
+                this._memberController.UpdateMember(this._member);
+
+                MemberEditorMessageLabel.Text = "Member updated.";
             }
         }
 
@@ -139,7 +140,8 @@ namespace RentMe.UserControls
             this.ClearMessages();
             this.ClearInput();
 
-            this.EditMember(1);
+            // REMOVE ME
+            this.EditMember(2);
         }
     }
 }

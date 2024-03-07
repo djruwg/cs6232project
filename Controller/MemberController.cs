@@ -30,5 +30,14 @@ namespace RentMe.Controller
         {
             this._memberDAL.AddMember(member);
         }
+
+        /// <summary>
+        /// Updates the member.
+        /// </summary>
+        /// <param name="member">The member object to update.</param>
+        public void UpdateMember(Member member)
+        {
+            this._memberDAL.UpdateMember(member);
+        }
     }
 }

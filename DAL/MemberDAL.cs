@@ -9,8 +9,8 @@ namespace RentMe.DAL
         /// <summary>
         /// Gets the member by identifier.
         /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns>a Member object</returns>
+        /// <param name="id">The member ID.</param>
+        /// <returns>A Member object</returns>
         public Member GetMemberByID(int id)
         {
             Member returnValue = null;
@@ -43,7 +43,7 @@ namespace RentMe.DAL
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         int firstNameOrdinal = reader.GetOrdinal("FirstName");
-                        int lastNameOrdinal = reader.GetOrdinal("FirstName");
+                        int lastNameOrdinal = reader.GetOrdinal("LastName");
                         int phoneOrdinal = reader.GetOrdinal("Phone");
                         int addressOrdinal = reader.GetOrdinal("Address");
                         int cityOrdinal = reader.GetOrdinal("City");
@@ -74,6 +74,11 @@ namespace RentMe.DAL
             return returnValue;
         }
 
+        /// <summary>
+        /// Adds the member.
+        /// </summary>
+        /// <param name="member">The Member object.</param>
+        /// <exception cref="System.ArgumentNullException"></exception>
         public void AddMember(Member member)
         {
             ArgumentNullException.ThrowIfNull(member);
@@ -124,6 +129,63 @@ namespace RentMe.DAL
                     command.Parameters["@DateOfBirth"].Value = member.DateOfBirth;
                     command.Parameters.Add("@Sex", SqlDbType.Char, 1);
                     command.Parameters["@Sex"].Value = member.Sex;
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Updates the member.
+        /// </summary>
+        /// <param name="member">The Member object.</param>
+        /// <exception cref="System.ArgumentNullException"></exception>
+        public void UpdateMember(Member member)
+        {
+            ArgumentNullException.ThrowIfNull(member);
+
+            string statement = @"
+                update
+                    Members
+                set
+                    FirstName = @FirstName,
+                    LastName = @LastName,
+                    Phone = @Phone,
+                    Address = @Address,
+                    City = @City,
+                    State = @State,
+                    Zip = @Zip,
+                    DateOfBirth = @DateOfBirth,
+                    Sex = @Sex
+                where
+                    MemberID = @MemberID";
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(statement, connection))
+                {
+                    command.Parameters.Add("@FirstName", SqlDbType.VarChar, 50);
+                    command.Parameters["@FirstName"].Value = member.FirstName;
+                    command.Parameters.Add("@LastName", SqlDbType.VarChar, 50);
+                    command.Parameters["@LastName"].Value = member.LastName;
+                    command.Parameters.Add("@Phone", SqlDbType.VarChar, 13);
+                    command.Parameters["@Phone"].Value = member.Phone;
+                    command.Parameters.Add("@Address", SqlDbType.VarChar, 100);
+                    command.Parameters["@Address"].Value = member.Address;
+                    command.Parameters.Add("@City", SqlDbType.VarChar, 50);
+                    command.Parameters["@City"].Value = member.City;
+                    command.Parameters.Add("@State", SqlDbType.VarChar, 13);
+                    command.Parameters["@State"].Value = member.State;
+                    command.Parameters.Add("@Zip", SqlDbType.VarChar, 13);
+                    command.Parameters["@Zip"].Value = member.Zip;
+                    command.Parameters.Add("@DateOfBirth", SqlDbType.DateTime);
+                    command.Parameters["@DateOfBirth"].Value = member.DateOfBirth;
+                    command.Parameters.Add("@Sex", SqlDbType.Char, 1);
+                    command.Parameters["@Sex"].Value = member.Sex;
+                    command.Parameters.Add("@MemberID", SqlDbType.Int);
+                    command.Parameters["@MemberID"].Value = member.MemberID;
 
                     command.ExecuteNonQuery();
                 }
