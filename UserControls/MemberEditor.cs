@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace RentMe.UserControls
 {
@@ -24,6 +25,8 @@ namespace RentMe.UserControls
             {
                 MemberEditorPhoneMessageLabel.Text = "Not a valid phone number";
             }
+
+            Debug.WriteLine(MemberEditorBirthdatePicker.Text);
         }
 
         private void ClearMessages()
@@ -49,7 +52,7 @@ namespace RentMe.UserControls
             MemberEditorCityTextField.Text = "";
             MemberEditorStateComboBox.SelectedItem = null;
             MemberEditorZipTextField.Text = "";
-            MemberEditorBirthdateTextField.Text = "";
+            MemberEditorBirthdatePicker.Value = DateTime.Now;
             MemberEditorSexComboBox.SelectedItem = null;
         }
 

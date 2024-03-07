@@ -51,7 +51,6 @@
             MemberEditorBirthdateMessageLabel = new Label();
             MemberEditorStateMessageLabel = new Label();
             MemberEditorAddressTextField = new TextBox();
-            MemberEditorBirthdateTextField = new TextBox();
             MemberEditorCityTextField = new TextBox();
             MemberEditorZipTextField = new TextBox();
             MemberEditorSexComboBox = new ComboBox();
@@ -60,6 +59,7 @@
             MemberEditorSaveButton = new Button();
             MemberEditorClearButton = new Button();
             MemberEditorMessageLabel = new Label();
+            MemberEditorBirthdatePicker = new DateTimePicker();
             MemberEditorTableLayoutPanel.SuspendLayout();
             MemberEditorFlowLayoutPanel.SuspendLayout();
             SuspendLayout();
@@ -93,13 +93,13 @@
             MemberEditorTableLayoutPanel.Controls.Add(MemberEditorBirthdateMessageLabel, 3, 5);
             MemberEditorTableLayoutPanel.Controls.Add(MemberEditorStateMessageLabel, 3, 7);
             MemberEditorTableLayoutPanel.Controls.Add(MemberEditorAddressTextField, 1, 4);
-            MemberEditorTableLayoutPanel.Controls.Add(MemberEditorBirthdateTextField, 3, 4);
             MemberEditorTableLayoutPanel.Controls.Add(MemberEditorCityTextField, 1, 6);
             MemberEditorTableLayoutPanel.Controls.Add(MemberEditorZipTextField, 1, 8);
             MemberEditorTableLayoutPanel.Controls.Add(MemberEditorSexComboBox, 3, 2);
             MemberEditorTableLayoutPanel.Controls.Add(MemberEditorStateComboBox, 3, 6);
             MemberEditorTableLayoutPanel.Controls.Add(MemberEditorFlowLayoutPanel, 1, 10);
             MemberEditorTableLayoutPanel.Controls.Add(MemberEditorMessageLabel, 3, 10);
+            MemberEditorTableLayoutPanel.Controls.Add(MemberEditorBirthdatePicker, 3, 4);
             MemberEditorTableLayoutPanel.Dock = DockStyle.Fill;
             MemberEditorTableLayoutPanel.Location = new Point(0, 0);
             MemberEditorTableLayoutPanel.Name = "MemberEditorTableLayoutPanel";
@@ -330,14 +330,6 @@
             MemberEditorAddressTextField.Size = new Size(277, 23);
             MemberEditorAddressTextField.TabIndex = 24;
             // 
-            // MemberEditorBirthdateTextField
-            // 
-            MemberEditorBirthdateTextField.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            MemberEditorBirthdateTextField.Location = new Point(425, 91);
-            MemberEditorBirthdateTextField.Name = "MemberEditorBirthdateTextField";
-            MemberEditorBirthdateTextField.Size = new Size(277, 23);
-            MemberEditorBirthdateTextField.TabIndex = 25;
-            // 
             // MemberEditorCityTextField
             // 
             MemberEditorCityTextField.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -414,6 +406,15 @@
             MemberEditorMessageLabel.TabIndex = 32;
             MemberEditorMessageLabel.Text = "Message Label";
             // 
+            // MemberEditorBirthdatePicker
+            // 
+            MemberEditorBirthdatePicker.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            MemberEditorBirthdatePicker.Format = DateTimePickerFormat.Short;
+            MemberEditorBirthdatePicker.Location = new Point(425, 91);
+            MemberEditorBirthdatePicker.Name = "MemberEditorBirthdatePicker";
+            MemberEditorBirthdatePicker.Size = new Size(277, 23);
+            MemberEditorBirthdatePicker.TabIndex = 33;
+            // 
             // MemberEditor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -452,7 +453,6 @@
         private Label MemberEditorBirthdateMessageLabel;
         private Label MemberEditorStateMessageLabel;
         private TextBox MemberEditorAddressTextField;
-        private TextBox MemberEditorBirthdateTextField;
         private TextBox MemberEditorCityTextField;
         private TextBox MemberEditorZipTextField;
         private ComboBox MemberEditorSexComboBox;
@@ -461,5 +461,6 @@
         private Button MemberEditorSaveButton;
         private Button MemberEditorClearButton;
         private Label MemberEditorMessageLabel;
+        private DateTimePicker MemberEditorBirthdatePicker;
     }
 }
