@@ -92,7 +92,7 @@
             Name = "EditMemberForm";
             Padding = new Padding(5);
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "EditMemberForm";
+            Text = "Edit Member";
             EditMemberTableLayoutPanel.ResumeLayout(false);
             EditMemberTableLayoutPanel.PerformLayout();
             ResumeLayout(false);
