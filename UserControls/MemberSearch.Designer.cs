@@ -58,6 +58,7 @@
             MemberSearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 85F));
             MemberSearchTableLayoutPanel.Size = new Size(705, 254);
             MemberSearchTableLayoutPanel.TabIndex = 0;
+            MemberSearchTableLayoutPanel.Resize += UserControl_Resize;
             // 
             // MemberSearchSearchLabel
             // 
@@ -79,6 +80,7 @@
             MemberSearchSeachMessageLabel.Size = new Size(84, 15);
             MemberSearchSeachMessageLabel.TabIndex = 1;
             MemberSearchSeachMessageLabel.Text = "Message Label";
+            MemberSearchSeachMessageLabel.Visible = false;
             // 
             // MemberSearchSearchTextBox
             // 
