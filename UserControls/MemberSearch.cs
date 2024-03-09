@@ -1,4 +1,5 @@
 ﻿using RentMe.Controller;
+using RentMe.Model;
 
 namespace RentMe.UserControls
 {
@@ -13,6 +14,7 @@ namespace RentMe.UserControls
         {
             InitializeComponent();
             this._memberController = new MemberController();
+            this.PopulateSearchListView(this._memberController.GetAllMembers());
         }
 
         private void UserControl_Resize(object sender, EventArgs e)
@@ -36,6 +38,19 @@ namespace RentMe.UserControls
             for (int i = 0; i < columnWidthPercentages.Length; i++)
             {
                 this.MemberSearchListView.Columns[i].Width = (int)(totalWidth * columnWidthPercentages[i]);
+            }
+        }
+
+        private void PopulateSearchListView(List<Member> memberList)
+        {
+            Member member;
+            for (int i = 0; i < memberList.Count; i++)
+            {
+                member = memberList[i];
+                this.MemberSearchListView.Items.Add(member.MemberID.ToString());
+                this.MemberSearchListView.Items[i].SubItems.Add(member.LastName.ToString());
+                this.MemberSearchListView.Items[i].SubItems.Add(member.FirstName.ToString());
+                this.MemberSearchListView.Items[i].SubItems.Add(member.Phone.ToString());
             }
         }
     }

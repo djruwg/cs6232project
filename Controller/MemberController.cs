@@ -39,5 +39,14 @@ namespace RentMe.Controller
         {
             this._memberDAL.UpdateMember(member);
         }
+
+        /// <summary>
+        /// Gets all members from Members table.
+        /// </summary>
+        /// <returns>List of Member objects</returns>
+        public List<Member> GetAllMembers()
+        {
+            return this._memberDAL.GetAllMembers();
+        }
     }
 }

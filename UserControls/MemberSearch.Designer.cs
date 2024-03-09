@@ -37,19 +37,22 @@
             MemberSearchLastNameColumnHeader = new ColumnHeader();
             MemberSearchFirstNameColumnHeader = new ColumnHeader();
             MemberSearchPhoneNumberColumnHeader = new ColumnHeader();
+            MemberSearchSearchButton = new Button();
             MemberSearchTableLayoutPanel.SuspendLayout();
             SuspendLayout();
             // 
             // MemberSearchTableLayoutPanel
             // 
-            MemberSearchTableLayoutPanel.ColumnCount = 3;
+            MemberSearchTableLayoutPanel.ColumnCount = 4;
             MemberSearchTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
-            MemberSearchTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
-            MemberSearchTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+            MemberSearchTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            MemberSearchTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
+            MemberSearchTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             MemberSearchTableLayoutPanel.Controls.Add(MemberSearchSearchLabel, 0, 0);
-            MemberSearchTableLayoutPanel.Controls.Add(MemberSearchSeachMessageLabel, 2, 0);
             MemberSearchTableLayoutPanel.Controls.Add(MemberSearchSearchTextBox, 1, 0);
             MemberSearchTableLayoutPanel.Controls.Add(MemberSearchListView, 0, 1);
+            MemberSearchTableLayoutPanel.Controls.Add(MemberSearchSeachMessageLabel, 3, 0);
+            MemberSearchTableLayoutPanel.Controls.Add(MemberSearchSearchButton, 2, 0);
             MemberSearchTableLayoutPanel.Dock = DockStyle.Fill;
             MemberSearchTableLayoutPanel.Location = new Point(0, 0);
             MemberSearchTableLayoutPanel.Name = "MemberSearchTableLayoutPanel";
@@ -75,7 +78,7 @@
             MemberSearchSeachMessageLabel.Anchor = AnchorStyles.Left;
             MemberSearchSeachMessageLabel.AutoSize = true;
             MemberSearchSeachMessageLabel.ForeColor = Color.Red;
-            MemberSearchSeachMessageLabel.Location = new Point(496, 11);
+            MemberSearchSeachMessageLabel.Location = new Point(530, 11);
             MemberSearchSeachMessageLabel.Name = "MemberSearchSeachMessageLabel";
             MemberSearchSeachMessageLabel.Size = new Size(84, 15);
             MemberSearchSeachMessageLabel.TabIndex = 1;
@@ -87,15 +90,17 @@
             MemberSearchSearchTextBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             MemberSearchSearchTextBox.Location = new Point(73, 7);
             MemberSearchSearchTextBox.Name = "MemberSearchSearchTextBox";
-            MemberSearchSearchTextBox.Size = new Size(417, 23);
+            MemberSearchSearchTextBox.Size = new Size(346, 23);
             MemberSearchSearchTextBox.TabIndex = 2;
             // 
             // MemberSearchListView
             // 
             MemberSearchListView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             MemberSearchListView.Columns.AddRange(new ColumnHeader[] { MemberSearchIDColumnHeader, MemberSearchLastNameColumnHeader, MemberSearchFirstNameColumnHeader, MemberSearchPhoneNumberColumnHeader });
-            MemberSearchTableLayoutPanel.SetColumnSpan(MemberSearchListView, 3);
+            MemberSearchTableLayoutPanel.SetColumnSpan(MemberSearchListView, 4);
+            MemberSearchListView.FullRowSelect = true;
             MemberSearchListView.Location = new Point(3, 41);
+            MemberSearchListView.MultiSelect = false;
             MemberSearchListView.Name = "MemberSearchListView";
             MemberSearchListView.Size = new Size(699, 210);
             MemberSearchListView.TabIndex = 3;
@@ -117,6 +122,16 @@
             // MemberSearchPhoneNumberColumnHeader
             // 
             MemberSearchPhoneNumberColumnHeader.Text = "Phone Number";
+            // 
+            // MemberSearchSearchButton
+            // 
+            MemberSearchSearchButton.Anchor = AnchorStyles.Left;
+            MemberSearchSearchButton.Location = new Point(425, 7);
+            MemberSearchSearchButton.Name = "MemberSearchSearchButton";
+            MemberSearchSearchButton.Size = new Size(75, 23);
+            MemberSearchSearchButton.TabIndex = 4;
+            MemberSearchSearchButton.Text = "Search";
+            MemberSearchSearchButton.UseVisualStyleBackColor = true;
             // 
             // MemberSearch
             // 
@@ -141,5 +156,6 @@
         private ColumnHeader MemberSearchLastNameColumnHeader;
         private ColumnHeader MemberSearchFirstNameColumnHeader;
         private ColumnHeader MemberSearchPhoneNumberColumnHeader;
+        private Button MemberSearchSearchButton;
     }
 }

@@ -90,6 +90,7 @@
             SearchMembersTabPage.Location = new Point(4, 24);
             SearchMembersTabPage.Name = "SearchMembersTabPage";
             SearchMembersTabPage.Padding = new Padding(3);
+            SearchMembersTabPage.RightToLeft = RightToLeft.No;
             SearchMembersTabPage.Size = new Size(786, 415);
             SearchMembersTabPage.TabIndex = 1;
             SearchMembersTabPage.Text = "Search Members";

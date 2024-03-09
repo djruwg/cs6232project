@@ -191,5 +191,48 @@ namespace RentMe.DAL
                 }
             }
         }
+
+        /// <summary>
+        /// Gets all members from Members table.
+        /// </summary>
+        /// <returns>List of Member objects</returns>
+        public List<Member> GetAllMembers()
+        {
+            List<Member> memberList = new List<Member>();
+
+            string selectStatement = @"
+                SELECT *
+                FROM Members;
+                ";
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Member member = new Member();
+                            member.MemberID = (int)reader["MemberID"];
+                            member.FirstName = reader["FirstName"].ToString();
+                            member.LastName = reader["LastName"].ToString();
+                            member.Sex = reader["Sex"].ToString();
+                            member.DateOfBirth = (DateTime)reader["DateOfBirth"];
+                            member.Phone = reader["Phone"].ToString();
+                            member.Address = reader["Address"].ToString();
+                            member.City = reader["City"].ToString();
+                            member.State = reader["State"].ToString();
+                            member.Zip = reader["Zip"].ToString();
+                            memberList.Add(member);
+                        }
+                    }
+                }
+            }
+
+            return memberList;
+        }
     }
 }
