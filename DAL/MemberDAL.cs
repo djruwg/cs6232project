@@ -191,5 +191,104 @@ namespace RentMe.DAL
                 }
             }
         }
+
+        /// <summary>
+        /// Gets all members from Members table.
+        /// </summary>
+        /// <returns>List of Member objects</returns>
+        public List<Member> GetAllMembers()
+        {
+            List<Member> memberList = new List<Member>();
+
+            string selectStatement = @"
+                SELECT *
+                FROM Members;
+                ";
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Member member = new Member();
+                            member.MemberID = (int)reader["MemberID"];
+                            member.FirstName = reader["FirstName"].ToString();
+                            member.LastName = reader["LastName"].ToString();
+                            member.Sex = reader["Sex"].ToString();
+                            member.DateOfBirth = (DateTime)reader["DateOfBirth"];
+                            member.Phone = reader["Phone"].ToString();
+                            member.Address = reader["Address"].ToString();
+                            member.City = reader["City"].ToString();
+                            member.State = reader["State"].ToString();
+                            member.Zip = reader["Zip"].ToString();
+                            memberList.Add(member);
+                        }
+                    }
+                }
+            }
+
+            return memberList;
+        }
+
+        /// <summary>
+        /// Gets the searched members.
+        /// </summary>
+        /// <param name="searchString">The search string.</param>
+        /// <returns>List of matching Member objects</returns>
+        /// <exception cref="System.ArgumentNullException"></exception>
+        public List<Member> GetSearchedMembers(String searchString)
+        {
+            ArgumentNullException.ThrowIfNull(searchString);
+
+            List<Member> memberList = new List<Member>();
+
+            string selectStatement = @"
+                DECLARE @SearchTerm NVARCHAR(100) = @searchString;
+
+                SELECT * FROM Members
+                WHERE 
+                    FirstName LIKE '%' + @SearchTerm + '%' 
+                    OR LastName LIKE '%' + @SearchTerm + '%'
+                    OR MemberID = TRY_CAST(@SearchTerm AS INT)
+                    OR Phone LIKE '%' + @SearchTerm + '%';
+                ";
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add("@searchString", SqlDbType.VarChar);
+                    selectCommand.Parameters["@searchString"].Value = searchString;
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Member member = new Member();
+                            member.MemberID = (int)reader["MemberID"];
+                            member.FirstName = reader["FirstName"].ToString();
+                            member.LastName = reader["LastName"].ToString();
+                            member.Sex = reader["Sex"].ToString();
+                            member.DateOfBirth = (DateTime)reader["DateOfBirth"];
+                            member.Phone = reader["Phone"].ToString();
+                            member.Address = reader["Address"].ToString();
+                            member.City = reader["City"].ToString();
+                            member.State = reader["State"].ToString();
+                            member.Zip = reader["Zip"].ToString();
+                            memberList.Add(member);
+                        }
+                    }
+                }
+            }
+
+            return memberList;
+        }
     }
 }

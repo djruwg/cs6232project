@@ -31,7 +31,8 @@
             MainDashboardTableLayoutPanel = new TableLayoutPanel();
             MainTabControl = new TabControl();
             WelcomeTabPage = new TabPage();
-            SearchMembers = new TabPage();
+            SearchMembersTabPage = new TabPage();
+            MemberSearchUserControl = new UserControls.MemberSearch();
             RegisterMemberTabPage = new TabPage();
             memberEditor1 = new UserControls.MemberEditor();
             SearchFurnitureTabPage = new TabPage();
@@ -39,6 +40,7 @@
             LogoutLinkLabel = new LinkLabel();
             MainDashboardTableLayoutPanel.SuspendLayout();
             MainTabControl.SuspendLayout();
+            SearchMembersTabPage.SuspendLayout();
             RegisterMemberTabPage.SuspendLayout();
             SuspendLayout();
             // 
@@ -60,7 +62,7 @@
             // MainTabControl
             // 
             MainTabControl.Controls.Add(WelcomeTabPage);
-            MainTabControl.Controls.Add(SearchMembers);
+            MainTabControl.Controls.Add(SearchMembersTabPage);
             MainTabControl.Controls.Add(RegisterMemberTabPage);
             MainTabControl.Controls.Add(SearchFurnitureTabPage);
             MainTabControl.Controls.Add(CartTabPage);
@@ -82,15 +84,25 @@
             WelcomeTabPage.Text = "Welcome";
             WelcomeTabPage.UseVisualStyleBackColor = true;
             // 
-            // SearchMembers
+            // SearchMembersTabPage
             // 
-            SearchMembers.Location = new Point(4, 24);
-            SearchMembers.Name = "SearchMembers";
-            SearchMembers.Padding = new Padding(3);
-            SearchMembers.Size = new Size(192, 72);
-            SearchMembers.TabIndex = 1;
-            SearchMembers.Text = "Search Members";
-            SearchMembers.UseVisualStyleBackColor = true;
+            SearchMembersTabPage.Controls.Add(MemberSearchUserControl);
+            SearchMembersTabPage.Location = new Point(4, 24);
+            SearchMembersTabPage.Name = "SearchMembersTabPage";
+            SearchMembersTabPage.Padding = new Padding(3);
+            SearchMembersTabPage.RightToLeft = RightToLeft.No;
+            SearchMembersTabPage.Size = new Size(786, 415);
+            SearchMembersTabPage.TabIndex = 1;
+            SearchMembersTabPage.Text = "Search Members";
+            SearchMembersTabPage.UseVisualStyleBackColor = true;
+            // 
+            // MemberSearchUserControl
+            // 
+            MemberSearchUserControl.Dock = DockStyle.Fill;
+            MemberSearchUserControl.Location = new Point(3, 3);
+            MemberSearchUserControl.Name = "MemberSearchUserControl";
+            MemberSearchUserControl.Size = new Size(780, 409);
+            MemberSearchUserControl.TabIndex = 0;
             // 
             // RegisterMemberTabPage
             // 
@@ -98,7 +110,7 @@
             RegisterMemberTabPage.Location = new Point(4, 24);
             RegisterMemberTabPage.Name = "RegisterMemberTabPage";
             RegisterMemberTabPage.Padding = new Padding(3);
-            RegisterMemberTabPage.Size = new Size(786, 415);
+            RegisterMemberTabPage.Size = new Size(192, 72);
             RegisterMemberTabPage.TabIndex = 2;
             RegisterMemberTabPage.Text = "Register Member";
             RegisterMemberTabPage.UseVisualStyleBackColor = true;
@@ -108,7 +120,7 @@
             memberEditor1.Dock = DockStyle.Fill;
             memberEditor1.Location = new Point(3, 3);
             memberEditor1.Name = "memberEditor1";
-            memberEditor1.Size = new Size(780, 409);
+            memberEditor1.Size = new Size(186, 66);
             memberEditor1.TabIndex = 0;
             // 
             // SearchFurnitureTabPage
@@ -156,6 +168,7 @@
             MainDashboardTableLayoutPanel.ResumeLayout(false);
             MainDashboardTableLayoutPanel.PerformLayout();
             MainTabControl.ResumeLayout(false);
+            SearchMembersTabPage.ResumeLayout(false);
             RegisterMemberTabPage.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -165,11 +178,12 @@
         private TableLayoutPanel MainDashboardTableLayoutPanel;
         private TabControl MainTabControl;
         private TabPage WelcomeTabPage;
-        private TabPage SearchMembers;
+        private TabPage SearchMembersTabPage;
         private TabPage RegisterMemberTabPage;
         private TabPage SearchFurnitureTabPage;
         private TabPage CartTabPage;
         private LinkLabel LogoutLinkLabel;
         private UserControls.MemberEditor memberEditor1;
+        private UserControls.MemberSearch MemberSearchUserControl;
     }
 }
