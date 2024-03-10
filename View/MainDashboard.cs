@@ -46,7 +46,7 @@
             }
             if (MainTabControl.SelectedTab == MainTabControl.TabPages["SearchMembersTabPage"])
             {
-                // Placeholder
+                this.MemberSearchUserControl.PopulateSearchWithAllMembers();
             }
         }
     }

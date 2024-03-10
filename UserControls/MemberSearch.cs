@@ -14,12 +14,22 @@ namespace RentMe.UserControls
         {
             InitializeComponent();
             this._memberController = new MemberController();
-            this.PopulateSearchListView(this._memberController.GetAllMembers());
         }
 
         private void UserControl_Resize(object sender, EventArgs e)
         {
             this.ResizeMemberSearchListViewColumns();
+        }
+
+        private void MemberSearchListView_ItemActivate(object sender, EventArgs e)
+        {
+            // Event that will trigger show customer
+            MessageBox.Show("MemberID: " + this.MemberSearchListView.SelectedItems[0].Text + " selected");
+        }
+
+        private void MemberSearchSearchButton_Click(object sender, EventArgs e)
+        {
+            this.PopulateSearchListView(this._memberController.GetSearchedMembers(this.MemberSearchSearchTextBox.Text));
         }
 
         private void ResizeMemberSearchListViewColumns()
@@ -32,7 +42,6 @@ namespace RentMe.UserControls
             }
 
             int totalWidth = this.MemberSearchListView.ClientSize.Width;
-            // Accounting for scroll bar
             totalWidth -= SystemInformation.VerticalScrollBarWidth;
 
             for (int i = 0; i < columnWidthPercentages.Length; i++)
@@ -43,15 +52,33 @@ namespace RentMe.UserControls
 
         private void PopulateSearchListView(List<Member> memberList)
         {
-            Member member;
-            for (int i = 0; i < memberList.Count; i++)
+            this.MemberSearchSeachMessageLabel.Hide();
+            this.MemberSearchListView.Items.Clear();
+            if (memberList.Count > 0)
             {
-                member = memberList[i];
-                this.MemberSearchListView.Items.Add(member.MemberID.ToString());
-                this.MemberSearchListView.Items[i].SubItems.Add(member.LastName.ToString());
-                this.MemberSearchListView.Items[i].SubItems.Add(member.FirstName.ToString());
-                this.MemberSearchListView.Items[i].SubItems.Add(member.Phone.ToString());
+                Member member;
+                for (int i = 0; i < memberList.Count; i++)
+                {
+                    member = memberList[i];
+                    this.MemberSearchListView.Items.Add(member.MemberID.ToString());
+                    this.MemberSearchListView.Items[i].SubItems.Add(member.LastName.ToString());
+                    this.MemberSearchListView.Items[i].SubItems.Add(member.FirstName.ToString());
+                    this.MemberSearchListView.Items[i].SubItems.Add(member.Phone.ToString());
+                }
             }
+            else
+            {
+                this.MemberSearchSeachMessageLabel.Text = "No members found";
+                this.MemberSearchSeachMessageLabel.Show();
+            }
+        }
+
+        /// <summary>
+        /// Populates the search with all members.
+        /// </summary>
+        public void PopulateSearchWithAllMembers()
+        {
+            this.PopulateSearchListView(this._memberController.GetAllMembers());
         }
     }
 }

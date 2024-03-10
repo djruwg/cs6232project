@@ -48,5 +48,16 @@ namespace RentMe.Controller
         {
             return this._memberDAL.GetAllMembers();
         }
+
+        /// <summary>
+        /// Gets the searched members.
+        /// </summary>
+        /// <param name="searchString">The search string.</param>
+        /// <returns>List of matching Member objects</returns>
+        /// <exception cref="System.ArgumentNullException"></exception>
+        public List<Member> GetSearchedMembers(String searchString)
+        {
+            return this._memberDAL.GetSearchedMembers(searchString);
+        }
     }
 }

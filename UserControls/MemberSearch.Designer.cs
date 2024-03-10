@@ -30,13 +30,13 @@
         {
             MemberSearchTableLayoutPanel = new TableLayoutPanel();
             MemberSearchSearchLabel = new Label();
-            MemberSearchSeachMessageLabel = new Label();
             MemberSearchSearchTextBox = new TextBox();
             MemberSearchListView = new ListView();
             MemberSearchIDColumnHeader = new ColumnHeader();
             MemberSearchLastNameColumnHeader = new ColumnHeader();
             MemberSearchFirstNameColumnHeader = new ColumnHeader();
             MemberSearchPhoneNumberColumnHeader = new ColumnHeader();
+            MemberSearchSeachMessageLabel = new Label();
             MemberSearchSearchButton = new Button();
             MemberSearchTableLayoutPanel.SuspendLayout();
             SuspendLayout();
@@ -73,18 +73,6 @@
             MemberSearchSearchLabel.TabIndex = 0;
             MemberSearchSearchLabel.Text = "Search:";
             // 
-            // MemberSearchSeachMessageLabel
-            // 
-            MemberSearchSeachMessageLabel.Anchor = AnchorStyles.Left;
-            MemberSearchSeachMessageLabel.AutoSize = true;
-            MemberSearchSeachMessageLabel.ForeColor = Color.Red;
-            MemberSearchSeachMessageLabel.Location = new Point(530, 11);
-            MemberSearchSeachMessageLabel.Name = "MemberSearchSeachMessageLabel";
-            MemberSearchSeachMessageLabel.Size = new Size(84, 15);
-            MemberSearchSeachMessageLabel.TabIndex = 1;
-            MemberSearchSeachMessageLabel.Text = "Message Label";
-            MemberSearchSeachMessageLabel.Visible = false;
-            // 
             // MemberSearchSearchTextBox
             // 
             MemberSearchSearchTextBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
@@ -106,6 +94,7 @@
             MemberSearchListView.TabIndex = 3;
             MemberSearchListView.UseCompatibleStateImageBehavior = false;
             MemberSearchListView.View = System.Windows.Forms.View.Details;
+            MemberSearchListView.ItemActivate += MemberSearchListView_ItemActivate;
             // 
             // MemberSearchIDColumnHeader
             // 
@@ -123,6 +112,18 @@
             // 
             MemberSearchPhoneNumberColumnHeader.Text = "Phone Number";
             // 
+            // MemberSearchSeachMessageLabel
+            // 
+            MemberSearchSeachMessageLabel.Anchor = AnchorStyles.Left;
+            MemberSearchSeachMessageLabel.AutoSize = true;
+            MemberSearchSeachMessageLabel.ForeColor = Color.Red;
+            MemberSearchSeachMessageLabel.Location = new Point(530, 11);
+            MemberSearchSeachMessageLabel.Name = "MemberSearchSeachMessageLabel";
+            MemberSearchSeachMessageLabel.Size = new Size(84, 15);
+            MemberSearchSeachMessageLabel.TabIndex = 1;
+            MemberSearchSeachMessageLabel.Text = "Message Label";
+            MemberSearchSeachMessageLabel.Visible = false;
+            // 
             // MemberSearchSearchButton
             // 
             MemberSearchSearchButton.Anchor = AnchorStyles.Left;
@@ -132,6 +133,7 @@
             MemberSearchSearchButton.TabIndex = 4;
             MemberSearchSearchButton.Text = "Search";
             MemberSearchSearchButton.UseVisualStyleBackColor = true;
+            MemberSearchSearchButton.Click += MemberSearchSearchButton_Click;
             // 
             // MemberSearch
             // 
