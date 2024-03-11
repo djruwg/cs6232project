@@ -1,31 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using RentMe.Controller;
+﻿using RentMe.Controller;
 using RentMe.Model;
 using RentMe.View;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace RentMe.UserControls
 {
+    /// <summary>
+    /// UserControl For Showing Member info
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class MemberShow : UserControl
     {
         private MemberController _memberController;
         private Member _member;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MemberShow"/> class.
+        /// </summary>
         public MemberShow()
         {
             InitializeComponent();
             this._memberController = new MemberController();
         }
 
+        /// <summary>
+        /// Sets the member.
+        /// </summary>
+        /// <param name="memberID">The member identifier.</param>
+        /// <exception cref="System.InvalidOperationException">No member was found with the given member ID.</exception>
         public void SetMember(int memberID)
         {
             this._member = this._memberController.GetMemberByID(memberID);
