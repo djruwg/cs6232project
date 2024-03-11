@@ -1,5 +1,6 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
+using RentMe.View;
 
 namespace RentMe.UserControls
 {
@@ -24,7 +25,11 @@ namespace RentMe.UserControls
         private void MemberSearchListView_ItemActivate(object sender, EventArgs e)
         {
             // Event that will trigger show customer
-            MessageBox.Show("MemberID: " + this.MemberSearchListView.SelectedItems[0].Text + " selected");
+            //MessageBox.Show("MemberID: " + this.MemberSearchListView.SelectedItems[0].Text + " selected");
+            ShowMemberForm showMemberForm =
+                new ShowMemberForm(Int32.Parse(this.MemberSearchListView.SelectedItems[0].Text));
+            showMemberForm.ShowDialog();
+
         }
 
         private void MemberSearchSearchButton_Click(object sender, EventArgs e)
