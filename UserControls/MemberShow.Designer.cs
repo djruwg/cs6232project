@@ -42,11 +42,15 @@
             MemberShowReturnsLabel = new Label();
             MemberShowEditMemberButton = new Button();
             MemberShowRentalsListView = new ListView();
+            RentalID = new ColumnHeader();
+            RentalDate = new ColumnHeader();
             MemberShowReturnsListView = new ListView();
+            ReturnID = new ColumnHeader();
+            ReturnDate = new ColumnHeader();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            MemberShowReturnItemsButton = new Button();
+            MemberShowAttachCartButton = new Button();
+            MemberShowCancelButton = new Button();
             MemberShowTableLayoutPanel.SuspendLayout();
             MemberShowIDTableLayoutPanel.SuspendLayout();
             MemberShowFirstNameTableLayoutPanel.SuspendLayout();
@@ -220,62 +224,82 @@
             // 
             // MemberShowRentalsListView
             // 
+            MemberShowRentalsListView.Columns.AddRange(new ColumnHeader[] { RentalID, RentalDate });
             MemberShowRentalsListView.Dock = DockStyle.Fill;
             MemberShowRentalsListView.Location = new Point(3, 139);
             MemberShowRentalsListView.Name = "MemberShowRentalsListView";
             MemberShowRentalsListView.Size = new Size(403, 313);
             MemberShowRentalsListView.TabIndex = 6;
             MemberShowRentalsListView.UseCompatibleStateImageBehavior = false;
+            MemberShowRentalsListView.View = System.Windows.Forms.View.Details;
+            // 
+            // RentalID
+            // 
+            RentalID.Text = "Rental ID";
+            // 
+            // RentalDate
+            // 
+            RentalDate.Text = "Rental Date";
             // 
             // MemberShowReturnsListView
             // 
+            MemberShowReturnsListView.Columns.AddRange(new ColumnHeader[] { ReturnID, ReturnDate });
             MemberShowReturnsListView.Dock = DockStyle.Fill;
             MemberShowReturnsListView.Location = new Point(412, 139);
             MemberShowReturnsListView.Name = "MemberShowReturnsListView";
             MemberShowReturnsListView.Size = new Size(404, 313);
             MemberShowReturnsListView.TabIndex = 7;
             MemberShowReturnsListView.UseCompatibleStateImageBehavior = false;
+            MemberShowReturnsListView.View = System.Windows.Forms.View.Details;
+            // 
+            // ReturnID
+            // 
+            ReturnID.Text = "Return ID";
+            // 
+            // ReturnDate
+            // 
+            ReturnDate.Text = "Return Date";
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.Controls.Add(button1);
-            flowLayoutPanel1.Controls.Add(button2);
-            flowLayoutPanel1.Controls.Add(button3);
+            flowLayoutPanel1.Controls.Add(MemberShowReturnItemsButton);
+            flowLayoutPanel1.Controls.Add(MemberShowAttachCartButton);
+            flowLayoutPanel1.Controls.Add(MemberShowCancelButton);
             flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.Location = new Point(3, 468);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(403, 26);
             flowLayoutPanel1.TabIndex = 8;
             // 
-            // button1
+            // MemberShowReturnItemsButton
             // 
-            button1.Location = new Point(3, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(100, 23);
-            button1.TabIndex = 0;
-            button1.Text = "Return Items";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            MemberShowReturnItemsButton.Location = new Point(3, 3);
+            MemberShowReturnItemsButton.Name = "MemberShowReturnItemsButton";
+            MemberShowReturnItemsButton.Size = new Size(100, 23);
+            MemberShowReturnItemsButton.TabIndex = 0;
+            MemberShowReturnItemsButton.Text = "Return Items";
+            MemberShowReturnItemsButton.UseVisualStyleBackColor = true;
+            MemberShowReturnItemsButton.Click += button1_Click;
             // 
-            // button2
+            // MemberShowAttachCartButton
             // 
-            button2.Location = new Point(109, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(100, 23);
-            button2.TabIndex = 1;
-            button2.Text = "Attach To Cart";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            MemberShowAttachCartButton.Location = new Point(109, 3);
+            MemberShowAttachCartButton.Name = "MemberShowAttachCartButton";
+            MemberShowAttachCartButton.Size = new Size(100, 23);
+            MemberShowAttachCartButton.TabIndex = 1;
+            MemberShowAttachCartButton.Text = "Attach To Cart";
+            MemberShowAttachCartButton.UseVisualStyleBackColor = true;
+            MemberShowAttachCartButton.Click += button2_Click;
             // 
-            // button3
+            // MemberShowCancelButton
             // 
-            button3.Location = new Point(215, 3);
-            button3.Name = "button3";
-            button3.Size = new Size(100, 23);
-            button3.TabIndex = 2;
-            button3.Text = "Close";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            MemberShowCancelButton.Location = new Point(215, 3);
+            MemberShowCancelButton.Name = "MemberShowCancelButton";
+            MemberShowCancelButton.Size = new Size(100, 23);
+            MemberShowCancelButton.TabIndex = 2;
+            MemberShowCancelButton.Text = "Close";
+            MemberShowCancelButton.UseVisualStyleBackColor = true;
+            MemberShowCancelButton.Click += button3_Click;
             // 
             // MemberShow
             // 
@@ -314,8 +338,12 @@
         private ListView MemberShowRentalsListView;
         private ListView MemberShowReturnsListView;
         private FlowLayoutPanel flowLayoutPanel1;
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private Button MemberShowReturnItemsButton;
+        private Button MemberShowAttachCartButton;
+        private Button MemberShowCancelButton;
+        private ColumnHeader RentalID;
+        private ColumnHeader RentalDate;
+        private ColumnHeader ReturnID;
+        private ColumnHeader ReturnDate;
     }
 }

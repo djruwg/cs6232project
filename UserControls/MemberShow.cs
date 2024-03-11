@@ -1,4 +1,7 @@
-﻿using RentMe.Controller;
+﻿using System.ComponentModel;
+using System.Diagnostics;
+using RentMe.Controller;
+using RentMe.DAL;
 using RentMe.Model;
 using RentMe.View;
 
@@ -11,7 +14,13 @@ namespace RentMe.UserControls
     public partial class MemberShow : UserControl
     {
         private MemberController _memberController;
+        private RentalsController _rentalsController;
+        private ReturnsController _returnsController;
         private Member _member;
+        private BindingList<RentalTransaction> _rentals;
+        private BindingList<ReturnTransaction> _returns;
+
+
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MemberShow"/> class.
@@ -20,6 +29,9 @@ namespace RentMe.UserControls
         {
             InitializeComponent();
             this._memberController = new MemberController();
+            this._rentalsController = new RentalsController();
+            this._returnsController = new ReturnsController();
+
         }
 
         /// <summary>
@@ -36,9 +48,15 @@ namespace RentMe.UserControls
                 throw new InvalidOperationException("No member was found with the given member ID.");
             }
 
-            MemberShowIDTextBox.Text = _member.MemberID.ToString();
-            MemberShowFirstNameTextBox.Text = _member.FirstName;
-            MemberShowLastNameTextBox.Text = _member.LastName;
+            this._rentals = this._rentalsController.GetRentalsByMember(this._member.MemberID);
+            PopulateRentalsListView();
+            this._returns = this._returnsController.GetReturnsByMember(this._member.MemberID);
+            PopulateReturnsListView();
+
+
+            MemberShowIDTextBox.Text = this._member.MemberID.ToString();
+            MemberShowFirstNameTextBox.Text = this._member.FirstName;
+            MemberShowLastNameTextBox.Text = this._member.LastName;
         }
 
         private void MemberShowEditMemberButton_Click(object sender, EventArgs e)
@@ -62,6 +80,58 @@ namespace RentMe.UserControls
         private void button3_Click(object sender, EventArgs e)
         {
             this.ParentForm.Close();
+        }
+
+        private void PopulateRentalsListView()
+        {
+
+            this.MemberShowRentalsListView.Items.Clear();
+
+            int width = MemberShowRentalsListView.Width;
+            MemberShowRentalsListView.Columns[0].Width = width / 2;
+            MemberShowRentalsListView.Columns[1].Width = width / 2;
+
+
+            if (this._rentals.Count > 0)
+            {
+                RentalTransaction rentalT;
+                
+                for (int i = 0; i < this._rentals.Count; i++)
+                {
+                    Debug.WriteLine($"i = {i}");
+                    rentalT = this._rentals[i];
+                    MemberShowRentalsListView.Items.Add(rentalT.RentalID.ToString());
+                    Debug.WriteLine($"Adding {rentalT.RentalID.ToString()}");
+                    MemberShowRentalsListView.Items[i].SubItems.Add(rentalT.DateRented.ToString("MM/dd/yyyy"));
+                    Debug.WriteLine($"Adding subitem  {rentalT.DateRented.ToString("MM/dd/yyyy")}");
+
+                }
+            }
+        }
+
+        private void PopulateReturnsListView()
+        {
+
+            this.MemberShowReturnsListView.Items.Clear();
+
+            int width = MemberShowReturnsListView.Width;
+            MemberShowReturnsListView.Columns[0].Width = width / 2;
+            MemberShowReturnsListView.Columns[1].Width = width / 2;
+
+
+            if (this._returns.Count > 0)
+            {
+                ReturnTransaction returnT;
+
+                for (int i = 0; i < this._returns.Count; i++)
+                {
+                    Debug.WriteLine($"i = {i}");
+                    returnT = this._returns[i];
+                    MemberShowReturnsListView.Items.Add(returnT.ReturnID.ToString());
+                    MemberShowReturnsListView.Items[i].SubItems.Add(returnT.DateReturned.ToString("MM/dd/yyyy"));
+
+                }
+            }
         }
     }
 }
