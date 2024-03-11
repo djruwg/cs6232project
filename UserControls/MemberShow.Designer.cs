@@ -93,7 +93,7 @@
             // MemberShowIDTableLayoutPanel
             // 
             MemberShowIDTableLayoutPanel.ColumnCount = 2;
-            MemberShowIDTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
+            MemberShowIDTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
             MemberShowIDTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             MemberShowIDTableLayoutPanel.Controls.Add(MemberShowIDTextBox, 1, 0);
             MemberShowIDTableLayoutPanel.Controls.Add(MemberShowIDLabel, 0, 0);
@@ -109,25 +109,25 @@
             // 
             MemberShowIDTextBox.Dock = DockStyle.Fill;
             MemberShowIDTextBox.Enabled = false;
-            MemberShowIDTextBox.Location = new Point(103, 3);
+            MemberShowIDTextBox.Location = new Point(83, 3);
             MemberShowIDTextBox.Name = "MemberShowIDTextBox";
-            MemberShowIDTextBox.Size = new Size(297, 23);
+            MemberShowIDTextBox.Size = new Size(317, 23);
             MemberShowIDTextBox.TabIndex = 1;
             // 
             // MemberShowIDLabel
             // 
+            MemberShowIDLabel.Anchor = AnchorStyles.Left;
             MemberShowIDLabel.AutoSize = true;
-            MemberShowIDLabel.Dock = DockStyle.Fill;
-            MemberShowIDLabel.Location = new Point(3, 0);
+            MemberShowIDLabel.Location = new Point(3, 5);
             MemberShowIDLabel.Name = "MemberShowIDLabel";
-            MemberShowIDLabel.Size = new Size(94, 26);
+            MemberShowIDLabel.Size = new Size(18, 15);
             MemberShowIDLabel.TabIndex = 2;
             MemberShowIDLabel.Text = "ID";
             // 
             // MemberShowFirstNameTableLayoutPanel
             // 
             MemberShowFirstNameTableLayoutPanel.ColumnCount = 2;
-            MemberShowFirstNameTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
+            MemberShowFirstNameTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
             MemberShowFirstNameTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             MemberShowFirstNameTableLayoutPanel.Controls.Add(MemberShowFirstNameLabel, 0, 0);
             MemberShowFirstNameTableLayoutPanel.Controls.Add(MemberShowFirstNameTextBox, 1, 0);
@@ -141,11 +141,11 @@
             // 
             // MemberShowFirstNameLabel
             // 
+            MemberShowFirstNameLabel.Anchor = AnchorStyles.Left;
             MemberShowFirstNameLabel.AutoSize = true;
-            MemberShowFirstNameLabel.Dock = DockStyle.Fill;
-            MemberShowFirstNameLabel.Location = new Point(3, 0);
+            MemberShowFirstNameLabel.Location = new Point(3, 5);
             MemberShowFirstNameLabel.Name = "MemberShowFirstNameLabel";
-            MemberShowFirstNameLabel.Size = new Size(94, 26);
+            MemberShowFirstNameLabel.Size = new Size(64, 15);
             MemberShowFirstNameLabel.TabIndex = 0;
             MemberShowFirstNameLabel.Text = "First Name";
             // 
@@ -153,15 +153,15 @@
             // 
             MemberShowFirstNameTextBox.Dock = DockStyle.Fill;
             MemberShowFirstNameTextBox.Enabled = false;
-            MemberShowFirstNameTextBox.Location = new Point(103, 3);
+            MemberShowFirstNameTextBox.Location = new Point(83, 3);
             MemberShowFirstNameTextBox.Name = "MemberShowFirstNameTextBox";
-            MemberShowFirstNameTextBox.Size = new Size(297, 23);
+            MemberShowFirstNameTextBox.Size = new Size(317, 23);
             MemberShowFirstNameTextBox.TabIndex = 1;
             // 
             // MemberShowLastNameTableLayoutPanel
             // 
             MemberShowLastNameTableLayoutPanel.ColumnCount = 2;
-            MemberShowLastNameTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
+            MemberShowLastNameTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
             MemberShowLastNameTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             MemberShowLastNameTableLayoutPanel.Controls.Add(MemberShowLastNameLabel, 0, 0);
             MemberShowLastNameTableLayoutPanel.Controls.Add(MemberShowLastNameTextBox, 1, 0);
@@ -175,11 +175,11 @@
             // 
             // MemberShowLastNameLabel
             // 
+            MemberShowLastNameLabel.Anchor = AnchorStyles.Left;
             MemberShowLastNameLabel.AutoSize = true;
-            MemberShowLastNameLabel.Dock = DockStyle.Fill;
-            MemberShowLastNameLabel.Location = new Point(3, 0);
+            MemberShowLastNameLabel.Location = new Point(3, 5);
             MemberShowLastNameLabel.Name = "MemberShowLastNameLabel";
-            MemberShowLastNameLabel.Size = new Size(94, 26);
+            MemberShowLastNameLabel.Size = new Size(63, 15);
             MemberShowLastNameLabel.TabIndex = 0;
             MemberShowLastNameLabel.Text = "Last Name";
             // 
@@ -187,36 +187,37 @@
             // 
             MemberShowLastNameTextBox.Dock = DockStyle.Fill;
             MemberShowLastNameTextBox.Enabled = false;
-            MemberShowLastNameTextBox.Location = new Point(103, 3);
+            MemberShowLastNameTextBox.Location = new Point(83, 3);
             MemberShowLastNameTextBox.Name = "MemberShowLastNameTextBox";
-            MemberShowLastNameTextBox.Size = new Size(298, 23);
+            MemberShowLastNameTextBox.Size = new Size(318, 23);
             MemberShowLastNameTextBox.TabIndex = 1;
             // 
             // MemberShowRentalsLabel
             // 
+            MemberShowRentalsLabel.Anchor = AnchorStyles.Left;
             MemberShowRentalsLabel.AutoSize = true;
-            MemberShowRentalsLabel.Dock = DockStyle.Fill;
-            MemberShowRentalsLabel.Location = new Point(3, 94);
+            MemberShowRentalsLabel.Location = new Point(3, 102);
             MemberShowRentalsLabel.Name = "MemberShowRentalsLabel";
-            MemberShowRentalsLabel.Size = new Size(403, 32);
+            MemberShowRentalsLabel.Size = new Size(45, 15);
             MemberShowRentalsLabel.TabIndex = 3;
             MemberShowRentalsLabel.Text = "Rentals";
             // 
             // MemberShowReturnsLabel
             // 
+            MemberShowReturnsLabel.Anchor = AnchorStyles.Left;
             MemberShowReturnsLabel.AutoSize = true;
-            MemberShowReturnsLabel.Dock = DockStyle.Fill;
-            MemberShowReturnsLabel.Location = new Point(412, 94);
+            MemberShowReturnsLabel.Location = new Point(412, 102);
             MemberShowReturnsLabel.Name = "MemberShowReturnsLabel";
-            MemberShowReturnsLabel.Size = new Size(404, 32);
+            MemberShowReturnsLabel.Size = new Size(47, 15);
             MemberShowReturnsLabel.TabIndex = 4;
             MemberShowReturnsLabel.Text = "Returns";
             // 
             // MemberShowEditMemberButton
             // 
-            MemberShowEditMemberButton.Location = new Point(412, 13);
+            MemberShowEditMemberButton.Anchor = AnchorStyles.Left;
+            MemberShowEditMemberButton.Location = new Point(412, 14);
             MemberShowEditMemberButton.Name = "MemberShowEditMemberButton";
-            MemberShowEditMemberButton.Size = new Size(75, 23);
+            MemberShowEditMemberButton.Size = new Size(80, 23);
             MemberShowEditMemberButton.TabIndex = 5;
             MemberShowEditMemberButton.Text = "Edit Member";
             MemberShowEditMemberButton.UseVisualStyleBackColor = true;

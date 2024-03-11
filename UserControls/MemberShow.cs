@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
 using RentMe.Controller;
-using RentMe.DAL;
 using RentMe.Model;
 using RentMe.View;
 
@@ -20,8 +19,6 @@ namespace RentMe.UserControls
         private BindingList<RentalTransaction> _rentals;
         private BindingList<ReturnTransaction> _returns;
 
-
-
         /// <summary>
         /// Initializes a new instance of the <see cref="MemberShow"/> class.
         /// </summary>
@@ -31,7 +28,6 @@ namespace RentMe.UserControls
             this._memberController = new MemberController();
             this._rentalsController = new RentalsController();
             this._returnsController = new ReturnsController();
-
         }
 
         /// <summary>
@@ -52,8 +48,7 @@ namespace RentMe.UserControls
             PopulateRentalsListView();
             this._returns = this._returnsController.GetReturnsByMember(this._member.MemberID);
             PopulateReturnsListView();
-
-
+            
             MemberShowIDTextBox.Text = this._member.MemberID.ToString();
             MemberShowFirstNameTextBox.Text = this._member.FirstName;
             MemberShowLastNameTextBox.Text = this._member.LastName;
@@ -61,13 +56,10 @@ namespace RentMe.UserControls
 
         private void MemberShowEditMemberButton_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("Not Yet Implemented", "Not Yet Implemented");
             EditMemberForm editMemberForm = new EditMemberForm(this._member.MemberID);
             editMemberForm.ShowDialog();
         }
-
-
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Not Yet Implemented", "Not Yet Implemented");
@@ -91,20 +83,15 @@ namespace RentMe.UserControls
             MemberShowRentalsListView.Columns[0].Width = width / 2;
             MemberShowRentalsListView.Columns[1].Width = width / 2;
 
-
             if (this._rentals.Count > 0)
             {
                 RentalTransaction rentalT;
                 
                 for (int i = 0; i < this._rentals.Count; i++)
                 {
-                    Debug.WriteLine($"i = {i}");
                     rentalT = this._rentals[i];
                     MemberShowRentalsListView.Items.Add(rentalT.RentalID.ToString());
-                    Debug.WriteLine($"Adding {rentalT.RentalID.ToString()}");
                     MemberShowRentalsListView.Items[i].SubItems.Add(rentalT.DateRented.ToString("MM/dd/yyyy"));
-                    Debug.WriteLine($"Adding subitem  {rentalT.DateRented.ToString("MM/dd/yyyy")}");
-
                 }
             }
         }
