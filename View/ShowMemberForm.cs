@@ -18,6 +18,7 @@ namespace RentMe.View
         {
             InitializeComponent();
             Debug.WriteLine($"Member ID passed is {memberID}");
+            ShowMemberMemberShowUserControl.SetMember(memberID);
 
         }
 

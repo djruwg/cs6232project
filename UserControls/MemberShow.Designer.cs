@@ -43,10 +43,15 @@
             MemberShowEditMemberButton = new Button();
             MemberShowRentalsListView = new ListView();
             MemberShowReturnsListView = new ListView();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
             MemberShowTableLayoutPanel.SuspendLayout();
             MemberShowIDTableLayoutPanel.SuspendLayout();
             MemberShowFirstNameTableLayoutPanel.SuspendLayout();
             MemberShowLastNameTableLayoutPanel.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // MemberShowTableLayoutPanel
@@ -62,10 +67,11 @@
             MemberShowTableLayoutPanel.Controls.Add(MemberShowEditMemberButton, 1, 1);
             MemberShowTableLayoutPanel.Controls.Add(MemberShowRentalsListView, 0, 7);
             MemberShowTableLayoutPanel.Controls.Add(MemberShowReturnsListView, 1, 7);
+            MemberShowTableLayoutPanel.Controls.Add(flowLayoutPanel1, 0, 9);
             MemberShowTableLayoutPanel.Dock = DockStyle.Fill;
             MemberShowTableLayoutPanel.Location = new Point(0, 0);
             MemberShowTableLayoutPanel.Name = "MemberShowTableLayoutPanel";
-            MemberShowTableLayoutPanel.RowCount = 9;
+            MemberShowTableLayoutPanel.RowCount = 11;
             MemberShowTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
             MemberShowTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
             MemberShowTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
@@ -75,7 +81,8 @@
             MemberShowTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
             MemberShowTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             MemberShowTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
-            MemberShowTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            MemberShowTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
+            MemberShowTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
             MemberShowTableLayoutPanel.Size = new Size(819, 507);
             MemberShowTableLayoutPanel.TabIndex = 2;
             // 
@@ -97,6 +104,7 @@
             // MemberShowIDTextBox
             // 
             MemberShowIDTextBox.Dock = DockStyle.Fill;
+            MemberShowIDTextBox.Enabled = false;
             MemberShowIDTextBox.Location = new Point(103, 3);
             MemberShowIDTextBox.Name = "MemberShowIDTextBox";
             MemberShowIDTextBox.Size = new Size(297, 23);
@@ -140,6 +148,7 @@
             // MemberShowFirstNameTextBox
             // 
             MemberShowFirstNameTextBox.Dock = DockStyle.Fill;
+            MemberShowFirstNameTextBox.Enabled = false;
             MemberShowFirstNameTextBox.Location = new Point(103, 3);
             MemberShowFirstNameTextBox.Name = "MemberShowFirstNameTextBox";
             MemberShowFirstNameTextBox.Size = new Size(297, 23);
@@ -173,6 +182,7 @@
             // MemberShowLastNameTextBox
             // 
             MemberShowLastNameTextBox.Dock = DockStyle.Fill;
+            MemberShowLastNameTextBox.Enabled = false;
             MemberShowLastNameTextBox.Location = new Point(103, 3);
             MemberShowLastNameTextBox.Name = "MemberShowLastNameTextBox";
             MemberShowLastNameTextBox.Size = new Size(298, 23);
@@ -213,7 +223,7 @@
             MemberShowRentalsListView.Dock = DockStyle.Fill;
             MemberShowRentalsListView.Location = new Point(3, 139);
             MemberShowRentalsListView.Name = "MemberShowRentalsListView";
-            MemberShowRentalsListView.Size = new Size(403, 355);
+            MemberShowRentalsListView.Size = new Size(403, 313);
             MemberShowRentalsListView.TabIndex = 6;
             MemberShowRentalsListView.UseCompatibleStateImageBehavior = false;
             // 
@@ -222,9 +232,50 @@
             MemberShowReturnsListView.Dock = DockStyle.Fill;
             MemberShowReturnsListView.Location = new Point(412, 139);
             MemberShowReturnsListView.Name = "MemberShowReturnsListView";
-            MemberShowReturnsListView.Size = new Size(404, 355);
+            MemberShowReturnsListView.Size = new Size(404, 313);
             MemberShowReturnsListView.TabIndex = 7;
             MemberShowReturnsListView.UseCompatibleStateImageBehavior = false;
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Controls.Add(button1);
+            flowLayoutPanel1.Controls.Add(button2);
+            flowLayoutPanel1.Controls.Add(button3);
+            flowLayoutPanel1.Dock = DockStyle.Fill;
+            flowLayoutPanel1.Location = new Point(3, 468);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(403, 26);
+            flowLayoutPanel1.TabIndex = 8;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(3, 3);
+            button1.Name = "button1";
+            button1.Size = new Size(100, 23);
+            button1.TabIndex = 0;
+            button1.Text = "Return Items";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(109, 3);
+            button2.Name = "button2";
+            button2.Size = new Size(100, 23);
+            button2.TabIndex = 1;
+            button2.Text = "Attach To Cart";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(215, 3);
+            button3.Name = "button3";
+            button3.Size = new Size(100, 23);
+            button3.TabIndex = 2;
+            button3.Text = "Close";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // MemberShow
             // 
@@ -241,6 +292,7 @@
             MemberShowFirstNameTableLayoutPanel.PerformLayout();
             MemberShowLastNameTableLayoutPanel.ResumeLayout(false);
             MemberShowLastNameTableLayoutPanel.PerformLayout();
+            flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -261,5 +313,9 @@
         private Button MemberShowEditMemberButton;
         private ListView MemberShowRentalsListView;
         private ListView MemberShowReturnsListView;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Button button1;
+        private Button button2;
+        private Button button3;
     }
 }
