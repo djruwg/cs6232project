@@ -13,10 +13,10 @@ namespace RentMe
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainDashboard());
+            // Application.Run(new MainDashboard());
 
             // FOR TESTING EDIT MEMBER FORM
-            // Application.Run(new EditMemberForm(2));
+            Application.Run(new ReportForm());
         }
     }
 }
