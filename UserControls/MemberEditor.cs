@@ -1,5 +1,6 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 
 namespace RentMe.UserControls
@@ -41,6 +42,8 @@ namespace RentMe.UserControls
                     throw new InvalidOperationException("No member was found with the given member ID.");
                 }
 
+                this._member.IsModified = false;
+
                 MemberEditorFirstNameTextField.Text = this._member.FirstName;
                 MemberEditorLastNameTextField.Text = this._member.LastName;
                 MemberEditorPhoneTextField.Text = this._member.Phone;
@@ -61,15 +64,16 @@ namespace RentMe.UserControls
 
         public void PopulateComboBox()
         {
-            Dictionary<string, char> dict = new Dictionary<string, char>()
+            Dictionary<string, string> dict = new Dictionary<string, string>()
             {
-                {"Male ",'M'},
-                {"Female", 'F'}
+                {"Male", "M"},
+                {"Female", "F"}
             };
 
             MemberEditorSexComboBox.DataSource = new BindingSource(dict, null);
             MemberEditorSexComboBox.DisplayMember = "Key";
             MemberEditorSexComboBox.ValueMember = "Value";
+            MemberEditorSexComboBox.SelectedItem = null;
         }
 
         private bool ValidateInput(string input, int maxLength)
@@ -93,7 +97,7 @@ namespace RentMe.UserControls
 
             this._member.FirstName = MemberEditorFirstNameTextField.Text;
             this._member.LastName = MemberEditorLastNameTextField.Text;
-            this._member.Phone = MemberEditorPhoneTextField.Text;
+            this._member.Phone = MemberEditorPhoneTextField.Text.Replace("-", "");
             this._member.Address = MemberEditorAddressTextField.Text;
             this._member.City = MemberEditorCityTextField.Text;
             this._member.State = MemberEditorStateComboBox.Text;
@@ -132,6 +136,18 @@ namespace RentMe.UserControls
                 hasErrors = true;
             }
 
+            if (string.IsNullOrEmpty(MemberEditorStateComboBox.Text))
+            {
+                MemberEditorStateMessageLabel.Text = "Please select a state.";
+                hasErrors = true;
+            }
+
+            if (MemberEditorSexComboBox.SelectedValue == null)
+            {
+                MemberEditorSexMessageLabel.Text = "Please select a gender.";
+                hasErrors = true;
+            }
+
             if (this.ValidateZip(MemberEditorZipTextField.Text) == false)
             {
                 MemberEditorZipMessageLabel.Text = "Zip must be XXXXX or XXXXX-XXXX format.";
@@ -155,13 +171,21 @@ namespace RentMe.UserControls
                 return;
             }
 
-            this.CopyInputToMemberObject();
             this.ClearMessages();
-            this.ClearInput();
+
+            this.CopyInputToMemberObject();
+
+            if (this._member.IsModified == false)
+            {
+                MemberEditorMessageLabel.Text = "No modifications were made.";
+                return;
+            }
 
             if (this._member.MemberID == 0)
             {
                 this._memberController.AddMember(this._member);
+
+                this.ClearInput();
 
                 MemberEditorMessageLabel.Text = "New member added.";
             }
@@ -171,6 +195,8 @@ namespace RentMe.UserControls
 
                 MemberEditorMessageLabel.Text = "Member updated.";
             }
+
+            this._member.IsModified = false;
         }
 
         private void ClearMessages()

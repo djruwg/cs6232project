@@ -34,7 +34,7 @@
             SearchMembersTabPage = new TabPage();
             MemberSearchUserControl = new UserControls.MemberSearch();
             RegisterMemberTabPage = new TabPage();
-            memberEditor1 = new UserControls.MemberEditor();
+            MainFormMemberEditorUserControl = new UserControls.MemberEditor();
             SearchFurnitureTabPage = new TabPage();
             CartTabPage = new TabPage();
             LogoutLinkLabel = new LinkLabel();
@@ -91,7 +91,7 @@
             SearchMembersTabPage.Name = "SearchMembersTabPage";
             SearchMembersTabPage.Padding = new Padding(3);
             SearchMembersTabPage.RightToLeft = RightToLeft.No;
-            SearchMembersTabPage.Size = new Size(786, 415);
+            SearchMembersTabPage.Size = new Size(192, 72);
             SearchMembersTabPage.TabIndex = 1;
             SearchMembersTabPage.Text = "Search Members";
             SearchMembersTabPage.UseVisualStyleBackColor = true;
@@ -101,34 +101,34 @@
             MemberSearchUserControl.Dock = DockStyle.Fill;
             MemberSearchUserControl.Location = new Point(3, 3);
             MemberSearchUserControl.Name = "MemberSearchUserControl";
-            MemberSearchUserControl.Size = new Size(780, 409);
+            MemberSearchUserControl.Size = new Size(186, 66);
             MemberSearchUserControl.TabIndex = 0;
             // 
             // RegisterMemberTabPage
             // 
-            RegisterMemberTabPage.Controls.Add(memberEditor1);
+            RegisterMemberTabPage.Controls.Add(MainFormMemberEditorUserControl);
             RegisterMemberTabPage.Location = new Point(4, 24);
             RegisterMemberTabPage.Name = "RegisterMemberTabPage";
             RegisterMemberTabPage.Padding = new Padding(3);
-            RegisterMemberTabPage.Size = new Size(192, 72);
+            RegisterMemberTabPage.Size = new Size(786, 415);
             RegisterMemberTabPage.TabIndex = 2;
             RegisterMemberTabPage.Text = "Register Member";
             RegisterMemberTabPage.UseVisualStyleBackColor = true;
             // 
-            // memberEditor1
+            // MainFormMemberEditorUserControl
             // 
-            memberEditor1.Dock = DockStyle.Fill;
-            memberEditor1.Location = new Point(3, 3);
-            memberEditor1.Name = "memberEditor1";
-            memberEditor1.Size = new Size(186, 66);
-            memberEditor1.TabIndex = 0;
+            MainFormMemberEditorUserControl.Dock = DockStyle.Fill;
+            MainFormMemberEditorUserControl.Location = new Point(3, 3);
+            MainFormMemberEditorUserControl.Name = "MainFormMemberEditorUserControl";
+            MainFormMemberEditorUserControl.Size = new Size(780, 409);
+            MainFormMemberEditorUserControl.TabIndex = 0;
             // 
             // SearchFurnitureTabPage
             // 
             SearchFurnitureTabPage.Location = new Point(4, 24);
             SearchFurnitureTabPage.Name = "SearchFurnitureTabPage";
             SearchFurnitureTabPage.Padding = new Padding(3);
-            SearchFurnitureTabPage.Size = new Size(192, 72);
+            SearchFurnitureTabPage.Size = new Size(786, 415);
             SearchFurnitureTabPage.TabIndex = 3;
             SearchFurnitureTabPage.Text = "Search Furniture";
             SearchFurnitureTabPage.UseVisualStyleBackColor = true;
@@ -163,7 +163,7 @@
             Controls.Add(MainDashboardTableLayoutPanel);
             Name = "MainDashboard";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "MainDashboard";
+            Text = "Dashboard";
             Shown += MainDashboard_Shown;
             MainDashboardTableLayoutPanel.ResumeLayout(false);
             MainDashboardTableLayoutPanel.PerformLayout();
@@ -183,7 +183,7 @@
         private TabPage SearchFurnitureTabPage;
         private TabPage CartTabPage;
         private LinkLabel LogoutLinkLabel;
-        private UserControls.MemberEditor memberEditor1;
+        private UserControls.MemberEditor MainFormMemberEditorUserControl;
         private UserControls.MemberSearch MemberSearchUserControl;
     }
 }
