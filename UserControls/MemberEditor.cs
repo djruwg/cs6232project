@@ -72,9 +72,19 @@ namespace RentMe.UserControls
             MemberEditorSexComboBox.ValueMember = "Value";
         }
 
+        private bool ValidateInput(string input, int maxLength)
+        {
+            return string.IsNullOrWhiteSpace(input) == false && input.Length <= maxLength;
+        }
+
         private bool ValidatePhone(string phone)
         {
             return Regex.IsMatch(phone, "\\A(\\+\\d{1,2}\\s?)?\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}\\z");
+        }
+
+        private bool ValidateZip(string zip)
+        {
+            return Regex.IsMatch(zip, "\\A\\d{5}(?:[-\\s]\\d{4})?\\z");
         }
 
         private void CopyInputToMemberObject()
@@ -97,6 +107,36 @@ namespace RentMe.UserControls
             bool hasErrors = false;
 
             this.ClearMessages();
+
+            if (this.ValidateInput(MemberEditorFirstNameTextField.Text, 50) == false)
+            {
+                MemberEditorFirstNameMessageLabel.Text = "First name cannot be blank or over 50 characters.";
+                hasErrors = true;
+            }
+
+            if (this.ValidateInput(MemberEditorLastNameTextField.Text, 50) == false)
+            {
+                MemberEditorLastNameMessageLabel.Text = "Last name cannot be blank or over 50 characters.";
+                hasErrors = true;
+            }
+
+            if (this.ValidateInput(MemberEditorAddressTextField.Text, 100) == false)
+            {
+                MemberEditorAddressMessageLabel.Text = "Address cannot be blank or over 100 characters.";
+                hasErrors = true;
+            }
+
+            if (this.ValidateInput(MemberEditorCityTextField.Text, 50) == false)
+            {
+                MemberEditorCityMessageLabel.Text = "Address cannot be blank or over 50 characters.";
+                hasErrors = true;
+            }
+
+            if (this.ValidateZip(MemberEditorZipTextField.Text) == false)
+            {
+                MemberEditorZipMessageLabel.Text = "Zip must be XXXXX or XXXXX-XXXX format.";
+                hasErrors = true;
+            }
 
             if (this.ValidatePhone(MemberEditorPhoneTextField.Text) == false)
             {
