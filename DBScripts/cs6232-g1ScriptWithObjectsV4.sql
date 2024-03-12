@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [cs6232-g1]    Script Date: 3/11/2024 12:48:56 PM ******/
+/****** Object:  Database [cs6232-g1]    Script Date: 3/11/2024 9:21:47 PM ******/
 CREATE DATABASE [cs6232-g1]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -82,7 +82,7 @@ ALTER DATABASE [cs6232-g1] SET QUERY_STORE = OFF
 GO
 USE [cs6232-g1]
 GO
-/****** Object:  Table [dbo].[Categories]    Script Date: 3/11/2024 12:48:56 PM ******/
+/****** Object:  Table [dbo].[Categories]    Script Date: 3/11/2024 9:21:47 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -95,7 +95,7 @@ CREATE TABLE [dbo].[Categories](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Employees]    Script Date: 3/11/2024 12:48:56 PM ******/
+/****** Object:  Table [dbo].[Employees]    Script Date: 3/11/2024 9:21:47 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -120,7 +120,7 @@ CREATE TABLE [dbo].[Employees](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Furniture]    Script Date: 3/11/2024 12:48:56 PM ******/
+/****** Object:  Table [dbo].[Furniture]    Script Date: 3/11/2024 9:21:47 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -140,7 +140,7 @@ CREATE TABLE [dbo].[Furniture](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Members]    Script Date: 3/11/2024 12:48:56 PM ******/
+/****** Object:  Table [dbo].[Members]    Script Date: 3/11/2024 9:21:47 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -162,7 +162,7 @@ CREATE TABLE [dbo].[Members](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[RentalLineItems]    Script Date: 3/11/2024 12:48:56 PM ******/
+/****** Object:  Table [dbo].[RentalLineItems]    Script Date: 3/11/2024 9:21:47 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -180,7 +180,7 @@ CREATE TABLE [dbo].[RentalLineItems](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[RentalTransactions]    Script Date: 3/11/2024 12:48:56 PM ******/
+/****** Object:  Table [dbo].[RentalTransactions]    Script Date: 3/11/2024 9:21:47 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -197,7 +197,7 @@ CREATE TABLE [dbo].[RentalTransactions](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ReturnLineItems]    Script Date: 3/11/2024 12:48:56 PM ******/
+/****** Object:  Table [dbo].[ReturnLineItems]    Script Date: 3/11/2024 9:21:47 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -217,7 +217,7 @@ CREATE TABLE [dbo].[ReturnLineItems](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ReturnTransactions]    Script Date: 3/11/2024 12:48:56 PM ******/
+/****** Object:  Table [dbo].[ReturnTransactions]    Script Date: 3/11/2024 9:21:47 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -233,7 +233,7 @@ CREATE TABLE [dbo].[ReturnTransactions](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Styles]    Script Date: 3/11/2024 12:48:56 PM ******/
+/****** Object:  Table [dbo].[Styles]    Script Date: 3/11/2024 9:21:47 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -245,6 +245,77 @@ CREATE TABLE [dbo].[Styles](
 	[Name] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
+GO
+INSERT [dbo].[Categories] ([Name]) VALUES (N'Bed')
+INSERT [dbo].[Categories] ([Name]) VALUES (N'Chair')
+INSERT [dbo].[Categories] ([Name]) VALUES (N'Night Stand')
+INSERT [dbo].[Categories] ([Name]) VALUES (N'Table')
+INSERT [dbo].[Categories] ([Name]) VALUES (N'Wardrobe')
+GO
+SET IDENTITY_INSERT [dbo].[Employees] ON 
+
+INSERT [dbo].[Employees] ([EmployeeID], [FirstName], [LastName], [Sex], [DateOfBirth], [Phone], [Address], [City], [State], [Zip], [UserName], [Password], [IsAdmin]) VALUES (1, N'Jane', N'Doe', N'F', CAST(N'2024-03-02' AS Date), N'404-555-1212', N'123 nowhere dr', N'Atlanta', N'Georgia', N'30303', N'jane', N'DA0BEB81A7A05A5D15F6FB770CE1C17E5658C4C361115E8F0827DED238F429CF12205D3F214B8DD3B469602569BEC55AD5FC2C5A9460B9226EC5673FF00AD325', 1)
+SET IDENTITY_INSERT [dbo].[Employees] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Furniture] ON 
+
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (1, N'Blue Modern Chair', N'Blue Modern Chair', 30, 0, 0.2500, N'Chair', N'Modern')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (2, N'Red Modern Chair', N'Red Modern Chair', 30, 0, 0.2500, N'Chair', N'Modern')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (3, N'Green Victorian Chair', N'Green Victorian Chair', 30, 0, 0.2500, N'Chair', N'Victorian')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (4, N'Brown Mission Chair', N'Brown Mission Chair', 30, 0, 0.2500, N'Chair', N'Mission')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (5, N'Oak Shaker Chair', N'Oak Shaker Chair', 30, 0, 0.2500, N'Chair', N'Shaker')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (6, N'4 Person Table', N'4 Person Table', 30, 0, 2.0000, N'Table', N'Modern')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (7, N'6 Person Table', N'6 Person Table', 30, 0, 2.1000, N'Table', N'Modern')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (8, N'8 Person Table', N'8 Person Table', 30, 0, 2.2000, N'Table', N'Modern')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (9, N'8 Person Oak Table', N'8 Person Oak Table', 30, 0, 2.3000, N'Table', N'Scandinavian')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (10, N'8 Person Cedar Table', N'8 Person Cedar Table', 30, 0, 2.4000, N'Table', N'Mission')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (11, N'8 Person Metal Table', N'8 Person Metal Table', 30, 0, 2.5000, N'Table', N'Shaker')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (12, N'Large Mahogany Wardrobe', N'Large Mahogany Wardrobe', 30, 0, 2.0000, N'Wardrobe', N'Scandinavian')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (13, N'Medium Mahogany Wardrobe', N'Medium Mahogany Wardrobe', 30, 0, 2.1000, N'Wardrobe', N'Scandinavian')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (14, N'Small Mahogany Wardrobe', N'Small Mahogany Wardrobe', 30, 0, 2.2000, N'Wardrobe', N'Scandinavian')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (15, N'Large Oak Wardrobe', N'Large Oak Wardrobe', 30, 0, 2.3000, N'Wardrobe', N'Contemporary')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (16, N'Medium Oak Wardrobe', N'Medium Oak Wardrobe', 30, 0, 2.4000, N'Wardrobe', N'Contemporary')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (17, N'Small Oak Wardrobe', N'Small Oak Wardrobe', 30, 0, 2.5000, N'Wardrobe', N'Contemporary')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (18, N'Twin Bed', N'Basic Twin Bed', 30, 0, 1.0000, N'Bed', N'Modern')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (19, N'Full Bed', N'Basic Full Bed', 30, 0, 1.2500, N'Bed', N'Modern')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (20, N'Queen Bed', N'Basic Queen Bed', 30, 0, 1.5000, N'Bed', N'Modern')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (21, N'King Bed', N'Basic King Bed', 30, 0, 1.7500, N'Bed', N'Modern')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (22, N'4 Post Queen Bed', N'4 Post Queen Bed', 30, 0, 2.2500, N'Bed', N'Victorian')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (23, N'4 Post King Bed', N'4 Post King Bed', 30, 0, 2.5000, N'Bed', N'Victorian')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (24, N'Oak Night Stand', N'description', 30, 0, 0.5000, N'Night Stand', N'Contemporary')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (25, N'Mahogany Night Stand', N'description', 30, 0, 0.5000, N'Night Stand', N'Scandinavian')
+INSERT [dbo].[Furniture] ([FurnitureID], [Name], [Description], [QuantityOwned], [QuantityRented], [DailyRentalRate], [Category], [Style]) VALUES (26, N'Plain Stand', N'description', 30, 0, 0.2500, N'Night Stand', N'Modern')
+SET IDENTITY_INSERT [dbo].[Furniture] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Members] ON 
+
+INSERT [dbo].[Members] ([MemberID], [FirstName], [LastName], [Sex], [DateOfBirth], [Phone], [Address], [City], [State], [Zip]) VALUES (1, N'John', N'Doe', N'M', CAST(N'1995-02-22' AS Date), N'404555-1212', N'123 random road', N'Kennesaw', N'Georgia', N'30144')
+INSERT [dbo].[Members] ([MemberID], [FirstName], [LastName], [Sex], [DateOfBirth], [Phone], [Address], [City], [State], [Zip]) VALUES (2, N'Tom', N'Smith', N'M', CAST(N'1995-09-12' AS Date), N'4705551212', N'19412 Quantom Loop', N'Tampa', N'Florida', N'33609')
+INSERT [dbo].[Members] ([MemberID], [FirstName], [LastName], [Sex], [DateOfBirth], [Phone], [Address], [City], [State], [Zip]) VALUES (3, N'Jack', N'Box', N' ', CAST(N'1996-06-11' AS Date), N'6785551212', N'123 validation lane', N'Atlanta', N'', N'30303')
+SET IDENTITY_INSERT [dbo].[Members] OFF
+GO
+SET IDENTITY_INSERT [dbo].[RentalTransactions] ON 
+
+INSERT [dbo].[RentalTransactions] ([RentalID], [DateRented], [DateDue], [EmployeeID], [MemberID]) VALUES (1, CAST(N'2024-03-10T23:54:24.197' AS DateTime), CAST(N'2024-03-20T23:54:24.197' AS DateTime), 1, 1)
+INSERT [dbo].[RentalTransactions] ([RentalID], [DateRented], [DateDue], [EmployeeID], [MemberID]) VALUES (2, CAST(N'2024-03-10T23:54:24.197' AS DateTime), CAST(N'2024-03-20T23:54:24.197' AS DateTime), 1, 1)
+INSERT [dbo].[RentalTransactions] ([RentalID], [DateRented], [DateDue], [EmployeeID], [MemberID]) VALUES (3, CAST(N'2024-03-10T23:54:24.197' AS DateTime), CAST(N'2024-03-20T23:54:24.197' AS DateTime), 1, 2)
+INSERT [dbo].[RentalTransactions] ([RentalID], [DateRented], [DateDue], [EmployeeID], [MemberID]) VALUES (4, CAST(N'2024-03-10T23:54:24.197' AS DateTime), CAST(N'2024-03-20T23:54:24.197' AS DateTime), 1, 2)
+SET IDENTITY_INSERT [dbo].[RentalTransactions] OFF
+GO
+SET IDENTITY_INSERT [dbo].[ReturnTransactions] ON 
+
+INSERT [dbo].[ReturnTransactions] ([ReturnID], [DateReturned], [EmployeeID], [MemberID]) VALUES (1, CAST(N'2024-03-21T00:30:45.627' AS DateTime), 1, 1)
+INSERT [dbo].[ReturnTransactions] ([ReturnID], [DateReturned], [EmployeeID], [MemberID]) VALUES (2, CAST(N'2024-03-21T00:30:45.627' AS DateTime), 1, 1)
+INSERT [dbo].[ReturnTransactions] ([ReturnID], [DateReturned], [EmployeeID], [MemberID]) VALUES (3, CAST(N'2024-03-21T00:30:45.627' AS DateTime), 1, 2)
+INSERT [dbo].[ReturnTransactions] ([ReturnID], [DateReturned], [EmployeeID], [MemberID]) VALUES (4, CAST(N'2024-03-21T00:30:45.627' AS DateTime), 1, 2)
+SET IDENTITY_INSERT [dbo].[ReturnTransactions] OFF
+GO
+INSERT [dbo].[Styles] ([Name]) VALUES (N'Contemporary')
+INSERT [dbo].[Styles] ([Name]) VALUES (N'Mission')
+INSERT [dbo].[Styles] ([Name]) VALUES (N'Modern')
+INSERT [dbo].[Styles] ([Name]) VALUES (N'Scandinavian')
+INSERT [dbo].[Styles] ([Name]) VALUES (N'Shaker')
+INSERT [dbo].[Styles] ([Name]) VALUES (N'Victorian')
 GO
 ALTER TABLE [dbo].[Furniture]  WITH CHECK ADD  CONSTRAINT [FK_Furniture_Categories] FOREIGN KEY([Category])
 REFERENCES [dbo].[Categories] ([Name])
