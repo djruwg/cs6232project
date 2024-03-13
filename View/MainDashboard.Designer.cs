@@ -34,14 +34,17 @@
             SearchMembersTabPage = new TabPage();
             MemberSearchUserControl = new UserControls.MemberSearch();
             RegisterMemberTabPage = new TabPage();
-            MainFormMemberEditorUserControl = new UserControls.MemberEditor();
+            MainDashboardMemberEditorUserControl = new UserControls.MemberEditor();
             SearchFurnitureTabPage = new TabPage();
             CartTabPage = new TabPage();
-            LogoutLinkLabel = new LinkLabel();
+            MainDashboardFlowLayoutPanel = new FlowLayoutPanel();
+            MainDashboardAdminLinkLabel = new LinkLabel();
+            MainDashboardLogoutLinkLabel = new LinkLabel();
             MainDashboardTableLayoutPanel.SuspendLayout();
             MainTabControl.SuspendLayout();
             SearchMembersTabPage.SuspendLayout();
             RegisterMemberTabPage.SuspendLayout();
+            MainDashboardFlowLayoutPanel.SuspendLayout();
             SuspendLayout();
             // 
             // MainDashboardTableLayoutPanel
@@ -49,7 +52,7 @@
             MainDashboardTableLayoutPanel.ColumnCount = 1;
             MainDashboardTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             MainDashboardTableLayoutPanel.Controls.Add(MainTabControl, 0, 1);
-            MainDashboardTableLayoutPanel.Controls.Add(LogoutLinkLabel, 0, 0);
+            MainDashboardTableLayoutPanel.Controls.Add(MainDashboardFlowLayoutPanel, 0, 0);
             MainDashboardTableLayoutPanel.Dock = DockStyle.Fill;
             MainDashboardTableLayoutPanel.Location = new Point(0, 0);
             MainDashboardTableLayoutPanel.Name = "MainDashboardTableLayoutPanel";
@@ -106,29 +109,29 @@
             // 
             // RegisterMemberTabPage
             // 
-            RegisterMemberTabPage.Controls.Add(MainFormMemberEditorUserControl);
+            RegisterMemberTabPage.Controls.Add(MainDashboardMemberEditorUserControl);
             RegisterMemberTabPage.Location = new Point(4, 24);
             RegisterMemberTabPage.Name = "RegisterMemberTabPage";
             RegisterMemberTabPage.Padding = new Padding(3);
-            RegisterMemberTabPage.Size = new Size(786, 415);
+            RegisterMemberTabPage.Size = new Size(192, 72);
             RegisterMemberTabPage.TabIndex = 2;
             RegisterMemberTabPage.Text = "Register Member";
             RegisterMemberTabPage.UseVisualStyleBackColor = true;
             // 
-            // MainFormMemberEditorUserControl
+            // MainDashboardMemberEditorUserControl
             // 
-            MainFormMemberEditorUserControl.Dock = DockStyle.Fill;
-            MainFormMemberEditorUserControl.Location = new Point(3, 3);
-            MainFormMemberEditorUserControl.Name = "MainFormMemberEditorUserControl";
-            MainFormMemberEditorUserControl.Size = new Size(780, 409);
-            MainFormMemberEditorUserControl.TabIndex = 0;
+            MainDashboardMemberEditorUserControl.Dock = DockStyle.Fill;
+            MainDashboardMemberEditorUserControl.Location = new Point(3, 3);
+            MainDashboardMemberEditorUserControl.Name = "MainDashboardMemberEditorUserControl";
+            MainDashboardMemberEditorUserControl.Size = new Size(186, 66);
+            MainDashboardMemberEditorUserControl.TabIndex = 0;
             // 
             // SearchFurnitureTabPage
             // 
             SearchFurnitureTabPage.Location = new Point(4, 24);
             SearchFurnitureTabPage.Name = "SearchFurnitureTabPage";
             SearchFurnitureTabPage.Padding = new Padding(3);
-            SearchFurnitureTabPage.Size = new Size(786, 415);
+            SearchFurnitureTabPage.Size = new Size(192, 72);
             SearchFurnitureTabPage.TabIndex = 3;
             SearchFurnitureTabPage.Text = "Search Furniture";
             SearchFurnitureTabPage.UseVisualStyleBackColor = true;
@@ -143,17 +146,39 @@
             CartTabPage.Text = "Cart";
             CartTabPage.UseVisualStyleBackColor = true;
             // 
-            // LogoutLinkLabel
+            // MainDashboardFlowLayoutPanel
             // 
-            LogoutLinkLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            LogoutLinkLabel.AutoSize = true;
-            LogoutLinkLabel.Location = new Point(752, 0);
-            LogoutLinkLabel.Name = "LogoutLinkLabel";
-            LogoutLinkLabel.Size = new Size(45, 15);
-            LogoutLinkLabel.TabIndex = 0;
-            LogoutLinkLabel.TabStop = true;
-            LogoutLinkLabel.Text = "Logout";
-            LogoutLinkLabel.LinkClicked += LogoutLinkLabel_LinkClicked;
+            MainDashboardFlowLayoutPanel.Controls.Add(MainDashboardAdminLinkLabel);
+            MainDashboardFlowLayoutPanel.Controls.Add(MainDashboardLogoutLinkLabel);
+            MainDashboardFlowLayoutPanel.Dock = DockStyle.Fill;
+            MainDashboardFlowLayoutPanel.FlowDirection = FlowDirection.RightToLeft;
+            MainDashboardFlowLayoutPanel.Location = new Point(3, 3);
+            MainDashboardFlowLayoutPanel.Name = "MainDashboardFlowLayoutPanel";
+            MainDashboardFlowLayoutPanel.Size = new Size(794, 53);
+            MainDashboardFlowLayoutPanel.TabIndex = 1;
+            // 
+            // MainDashboardAdminLinkLabel
+            // 
+            MainDashboardAdminLinkLabel.AutoSize = true;
+            MainDashboardAdminLinkLabel.Location = new Point(740, 0);
+            MainDashboardAdminLinkLabel.Name = "MainDashboardAdminLinkLabel";
+            MainDashboardAdminLinkLabel.Size = new Size(51, 15);
+            MainDashboardAdminLinkLabel.TabIndex = 2;
+            MainDashboardAdminLinkLabel.TabStop = true;
+            MainDashboardAdminLinkLabel.Text = "(Admin)";
+            MainDashboardAdminLinkLabel.LinkClicked += MainDashboardAdminLinkLabel_LinkClicked;
+            // 
+            // MainDashboardLogoutLinkLabel
+            // 
+            MainDashboardLogoutLinkLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            MainDashboardLogoutLinkLabel.AutoSize = true;
+            MainDashboardLogoutLinkLabel.Location = new Point(689, 0);
+            MainDashboardLogoutLinkLabel.Name = "MainDashboardLogoutLinkLabel";
+            MainDashboardLogoutLinkLabel.Size = new Size(45, 15);
+            MainDashboardLogoutLinkLabel.TabIndex = 1;
+            MainDashboardLogoutLinkLabel.TabStop = true;
+            MainDashboardLogoutLinkLabel.Text = "Logout";
+            MainDashboardLogoutLinkLabel.LinkClicked += MainDashboardLogoutLinkLabel_LinkClicked;
             // 
             // MainDashboard
             // 
@@ -166,10 +191,11 @@
             Text = "Dashboard";
             Shown += MainDashboard_Shown;
             MainDashboardTableLayoutPanel.ResumeLayout(false);
-            MainDashboardTableLayoutPanel.PerformLayout();
             MainTabControl.ResumeLayout(false);
             SearchMembersTabPage.ResumeLayout(false);
             RegisterMemberTabPage.ResumeLayout(false);
+            MainDashboardFlowLayoutPanel.ResumeLayout(false);
+            MainDashboardFlowLayoutPanel.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -182,8 +208,10 @@
         private TabPage RegisterMemberTabPage;
         private TabPage SearchFurnitureTabPage;
         private TabPage CartTabPage;
-        private LinkLabel LogoutLinkLabel;
-        private UserControls.MemberEditor MainFormMemberEditorUserControl;
+        private UserControls.MemberEditor MainDashboardMemberEditorUserControl;
         private UserControls.MemberSearch MemberSearchUserControl;
+        private FlowLayoutPanel MainDashboardFlowLayoutPanel;
+        private LinkLabel MainDashboardAdminLinkLabel;
+        private LinkLabel MainDashboardLogoutLinkLabel;
     }
 }

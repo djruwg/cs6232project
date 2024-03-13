@@ -12,7 +12,7 @@
             this.PresentLoginForm();
         }
 
-        private void LogoutLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void MainDashboardLogoutLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.PresentLoginForm();
         }
@@ -24,7 +24,8 @@
         {
             using (LoginForm loginForm = new LoginForm())
             {
-                LogoutLinkLabel.Text = String.Empty;
+                MainDashboardAdminLinkLabel.Hide();
+                MainDashboardLogoutLinkLabel.Text = String.Empty;
                 MainTabControl.SelectedIndex = 0;
 
                 DialogResult result = loginForm.ShowDialog();
@@ -34,7 +35,8 @@
                     Application.Exit();
                 }
 
-                LogoutLinkLabel.Text = "Logout: " + loginForm.Username;
+                MainDashboardLogoutLinkLabel.Text = "Logout: " + loginForm.Username;
+                MainDashboardAdminLinkLabel.Show();
             }
         }
 
@@ -48,6 +50,12 @@
             {
                 this.MemberSearchUserControl.PopulateSearchWithAllMembers();
             }
+        }
+
+        private void MainDashboardAdminLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ReportForm report = new ReportForm();
+            report.ShowDialog();
         }
     }
 }

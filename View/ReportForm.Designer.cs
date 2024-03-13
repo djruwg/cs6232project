@@ -136,6 +136,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(ReportFormLayoutPanel);
             Name = "ReportForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Reporting";
             ReportFormLayoutPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)ReportFormDataGridView).EndInit();
