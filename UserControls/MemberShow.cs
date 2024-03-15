@@ -99,11 +99,9 @@ namespace RentMe.UserControls
 
                 for (int i = 0; i < this._returns.Count; i++)
                 {
-                    Debug.WriteLine($"i = {i}");
                     returnT = this._returns[i];
                     MemberShowReturnsListView.Items.Add(returnT.ReturnID.ToString());
                     MemberShowReturnsListView.Items[i].SubItems.Add(returnT.DateReturned.ToString("MM/dd/yyyy"));
-
                 }
             }
         }
