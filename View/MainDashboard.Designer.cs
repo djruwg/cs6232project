@@ -31,6 +31,9 @@
             MainDashboardTableLayoutPanel = new TableLayoutPanel();
             MainTabControl = new TabControl();
             WelcomeTabPage = new TabPage();
+            MainDashboardWelcomeLayoutPanel = new TableLayoutPanel();
+            MainDashboardWelcomePictureBox = new PictureBox();
+            MainDashboardWelcomeLabel = new Label();
             SearchMembersTabPage = new TabPage();
             MemberSearchUserControl = new UserControls.MemberSearch();
             RegisterMemberTabPage = new TabPage();
@@ -42,6 +45,9 @@
             MainDashboardLogoutLinkLabel = new LinkLabel();
             MainDashboardTableLayoutPanel.SuspendLayout();
             MainTabControl.SuspendLayout();
+            WelcomeTabPage.SuspendLayout();
+            MainDashboardWelcomeLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)MainDashboardWelcomePictureBox).BeginInit();
             SearchMembersTabPage.SuspendLayout();
             RegisterMemberTabPage.SuspendLayout();
             MainDashboardFlowLayoutPanel.SuspendLayout();
@@ -79,6 +85,7 @@
             // 
             // WelcomeTabPage
             // 
+            WelcomeTabPage.Controls.Add(MainDashboardWelcomeLayoutPanel);
             WelcomeTabPage.Location = new Point(4, 24);
             WelcomeTabPage.Name = "WelcomeTabPage";
             WelcomeTabPage.Padding = new Padding(3);
@@ -86,6 +93,44 @@
             WelcomeTabPage.TabIndex = 0;
             WelcomeTabPage.Text = "Welcome";
             WelcomeTabPage.UseVisualStyleBackColor = true;
+            // 
+            // MainDashboardWelcomeLayoutPanel
+            // 
+            MainDashboardWelcomeLayoutPanel.ColumnCount = 1;
+            MainDashboardWelcomeLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            MainDashboardWelcomeLayoutPanel.Controls.Add(MainDashboardWelcomePictureBox, 0, 1);
+            MainDashboardWelcomeLayoutPanel.Controls.Add(MainDashboardWelcomeLabel, 0, 0);
+            MainDashboardWelcomeLayoutPanel.Dock = DockStyle.Fill;
+            MainDashboardWelcomeLayoutPanel.Location = new Point(3, 3);
+            MainDashboardWelcomeLayoutPanel.Name = "MainDashboardWelcomeLayoutPanel";
+            MainDashboardWelcomeLayoutPanel.RowCount = 2;
+            MainDashboardWelcomeLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 24.4498787F));
+            MainDashboardWelcomeLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 75.5501251F));
+            MainDashboardWelcomeLayoutPanel.Size = new Size(780, 409);
+            MainDashboardWelcomeLayoutPanel.TabIndex = 0;
+            // 
+            // MainDashboardWelcomePictureBox
+            // 
+            MainDashboardWelcomePictureBox.Dock = DockStyle.Fill;
+            MainDashboardWelcomePictureBox.Image = Properties.Resources.rentme_logo;
+            MainDashboardWelcomePictureBox.Location = new Point(3, 103);
+            MainDashboardWelcomePictureBox.Name = "MainDashboardWelcomePictureBox";
+            MainDashboardWelcomePictureBox.Size = new Size(774, 303);
+            MainDashboardWelcomePictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            MainDashboardWelcomePictureBox.TabIndex = 0;
+            MainDashboardWelcomePictureBox.TabStop = false;
+            // 
+            // MainDashboardWelcomeLabel
+            // 
+            MainDashboardWelcomeLabel.AutoSize = true;
+            MainDashboardWelcomeLabel.Dock = DockStyle.Fill;
+            MainDashboardWelcomeLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            MainDashboardWelcomeLabel.Location = new Point(3, 0);
+            MainDashboardWelcomeLabel.Name = "MainDashboardWelcomeLabel";
+            MainDashboardWelcomeLabel.Size = new Size(774, 100);
+            MainDashboardWelcomeLabel.TabIndex = 1;
+            MainDashboardWelcomeLabel.Text = "Welcome to the RentMe Furniture Rental Store";
+            MainDashboardWelcomeLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // SearchMembersTabPage
             // 
@@ -192,6 +237,10 @@
             Shown += MainDashboard_Shown;
             MainDashboardTableLayoutPanel.ResumeLayout(false);
             MainTabControl.ResumeLayout(false);
+            WelcomeTabPage.ResumeLayout(false);
+            MainDashboardWelcomeLayoutPanel.ResumeLayout(false);
+            MainDashboardWelcomeLayoutPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)MainDashboardWelcomePictureBox).EndInit();
             SearchMembersTabPage.ResumeLayout(false);
             RegisterMemberTabPage.ResumeLayout(false);
             MainDashboardFlowLayoutPanel.ResumeLayout(false);
@@ -213,5 +262,8 @@
         private FlowLayoutPanel MainDashboardFlowLayoutPanel;
         private LinkLabel MainDashboardAdminLinkLabel;
         private LinkLabel MainDashboardLogoutLinkLabel;
+        private TableLayoutPanel MainDashboardWelcomeLayoutPanel;
+        private PictureBox MainDashboardWelcomePictureBox;
+        private Label MainDashboardWelcomeLabel;
     }
 }
