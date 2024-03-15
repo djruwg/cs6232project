@@ -21,6 +21,7 @@ namespace RentMe.UserControls
         {
             InitializeComponent();
             this._memberController = new MemberController();
+            MemberSearchSearchMessageLabel.Text = string.Empty;
         }
 
         private void UserControl_Resize(object sender, EventArgs e)
@@ -67,7 +68,7 @@ namespace RentMe.UserControls
 
         private void PopulateSearchListView(List<Member> memberList)
         {
-            this.MemberSearchSeachMessageLabel.Hide();
+            this.MemberSearchSearchMessageLabel.Text = string.Empty;
             this.MemberSearchListView.Items.Clear();
             if (memberList.Count > 0)
             {
@@ -83,8 +84,7 @@ namespace RentMe.UserControls
             }
             else
             {
-                this.MemberSearchSeachMessageLabel.Text = "No members found";
-                this.MemberSearchSeachMessageLabel.Show();
+                this.MemberSearchSearchMessageLabel.Text = "No members found";
             }
         }
 
@@ -93,7 +93,14 @@ namespace RentMe.UserControls
         /// </summary>
         public void PopulateSearchWithAllMembers()
         {
-            this.PopulateSearchListView(this._memberController.GetAllMembers());
+            try
+            {
+                this.PopulateSearchListView(this._memberController.GetAllMembers());
+            }
+            catch (Exception ex)
+            {
+                MemberSearchSearchMessageLabel.Text = ex.Message;
+            }
         }
     }
 }

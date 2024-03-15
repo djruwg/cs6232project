@@ -51,7 +51,7 @@ namespace RentMe.View
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
+                this.ErrorMessageLabel.Text = "Authentication unavailable.";
             }
         }
 
