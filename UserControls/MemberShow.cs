@@ -48,7 +48,7 @@ namespace RentMe.UserControls
             PopulateRentalsListView();
             this._returns = this._returnsController.GetReturnsByMember(this._member.MemberID);
             PopulateReturnsListView();
-            
+
             MemberShowIDTextBox.Text = this._member.MemberID.ToString();
             MemberShowFirstNameTextBox.Text = this._member.FirstName;
             MemberShowLastNameTextBox.Text = this._member.LastName;
@@ -59,20 +59,6 @@ namespace RentMe.UserControls
             EditMemberForm editMemberForm = new EditMemberForm(this._member.MemberID);
             DialogResult result = editMemberForm.ShowDialog();
             this.SetMember(this._member.MemberID);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Not Yet Implemented", "Not Yet Implemented");
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Not Yet Implemented", "Not Yet Implemented");
-        }
-        private void button3_Click(object sender, EventArgs e)
-        {
-            ParentForm.Close();
         }
 
         private void PopulateRentalsListView()
@@ -87,7 +73,7 @@ namespace RentMe.UserControls
             if (this._rentals.Count > 0)
             {
                 RentalTransaction rentalT;
-                
+
                 for (int i = 0; i < this._rentals.Count; i++)
                 {
                     rentalT = this._rentals[i];
@@ -120,6 +106,21 @@ namespace RentMe.UserControls
 
                 }
             }
+        }
+
+        private void MemberShowReturnItemsButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not Yet Implemented", "Not Yet Implemented");
+        }
+
+        private void MemberShowAttachCartButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not Yet Implemented", "Not Yet Implemented");
+        }
+
+        private void MemberShowCancelButton_Click(object sender, EventArgs e)
+        {
+            ParentForm.Close();
         }
     }
 }

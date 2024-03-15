@@ -280,7 +280,7 @@
             MemberShowReturnItemsButton.TabIndex = 0;
             MemberShowReturnItemsButton.Text = "Return Items";
             MemberShowReturnItemsButton.UseVisualStyleBackColor = true;
-            MemberShowReturnItemsButton.Click += button1_Click;
+            MemberShowReturnItemsButton.Click += MemberShowReturnItemsButton_Click;
             // 
             // MemberShowAttachCartButton
             // 
@@ -290,7 +290,7 @@
             MemberShowAttachCartButton.TabIndex = 1;
             MemberShowAttachCartButton.Text = "Attach To Cart";
             MemberShowAttachCartButton.UseVisualStyleBackColor = true;
-            MemberShowAttachCartButton.Click += button2_Click;
+            MemberShowAttachCartButton.Click += MemberShowAttachCartButton_Click;
             // 
             // MemberShowCancelButton
             // 
@@ -300,7 +300,7 @@
             MemberShowCancelButton.TabIndex = 2;
             MemberShowCancelButton.Text = "Close";
             MemberShowCancelButton.UseVisualStyleBackColor = true;
-            MemberShowCancelButton.Click += button3_Click;
+            MemberShowCancelButton.Click += MemberShowCancelButton_Click;
             // 
             // MemberShow
             // 
