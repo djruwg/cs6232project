@@ -43,7 +43,20 @@ namespace RentMe.View
                     Application.Exit();
                 }
 
-                Employee employee = this._employeeController.GetEmployeeByID(LoginController.CurrentEmployeeID);
+                Employee employee = null;
+
+                try
+                {
+                    employee = this._employeeController.GetEmployeeByID(LoginController.CurrentEmployeeID);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+
+                    Application.Exit();
+
+                    return;
+                }
 
                 MainDashboardLogoutLinkLabel.Text = $"Logout:  {employee.FirstName} {employee.LastName} ({employee.UserName})";
 
@@ -64,7 +77,7 @@ namespace RentMe.View
         {
             if (MainTabControl.SelectedTab == MainTabControl.TabPages["SearchMembersTabPage"])
             {
-                this.MemberSearchUserControl.PopulateSearchWithAllMembers();
+                MemberSearchUserControl.PopulateSearchWithAllMembers();
             }
         }
 

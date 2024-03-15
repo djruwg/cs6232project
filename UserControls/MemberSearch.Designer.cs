@@ -36,7 +36,7 @@
             MemberSearchLastNameColumnHeader = new ColumnHeader();
             MemberSearchFirstNameColumnHeader = new ColumnHeader();
             MemberSearchPhoneNumberColumnHeader = new ColumnHeader();
-            MemberSearchSeachMessageLabel = new Label();
+            MemberSearchSearchMessageLabel = new Label();
             MemberSearchSearchButton = new Button();
             MemberSearchTableLayoutPanel.SuspendLayout();
             SuspendLayout();
@@ -51,7 +51,7 @@
             MemberSearchTableLayoutPanel.Controls.Add(MemberSearchSearchLabel, 0, 0);
             MemberSearchTableLayoutPanel.Controls.Add(MemberSearchSearchTextBox, 1, 0);
             MemberSearchTableLayoutPanel.Controls.Add(MemberSearchListView, 0, 1);
-            MemberSearchTableLayoutPanel.Controls.Add(MemberSearchSeachMessageLabel, 3, 0);
+            MemberSearchTableLayoutPanel.Controls.Add(MemberSearchSearchMessageLabel, 3, 0);
             MemberSearchTableLayoutPanel.Controls.Add(MemberSearchSearchButton, 2, 0);
             MemberSearchTableLayoutPanel.Dock = DockStyle.Fill;
             MemberSearchTableLayoutPanel.Location = new Point(0, 0);
@@ -112,17 +112,17 @@
             // 
             MemberSearchPhoneNumberColumnHeader.Text = "Phone Number";
             // 
-            // MemberSearchSeachMessageLabel
+            // MemberSearchSearchMessageLabel
             // 
-            MemberSearchSeachMessageLabel.Anchor = AnchorStyles.Left;
-            MemberSearchSeachMessageLabel.AutoSize = true;
-            MemberSearchSeachMessageLabel.ForeColor = Color.Red;
-            MemberSearchSeachMessageLabel.Location = new Point(530, 11);
-            MemberSearchSeachMessageLabel.Name = "MemberSearchSeachMessageLabel";
-            MemberSearchSeachMessageLabel.Size = new Size(84, 15);
-            MemberSearchSeachMessageLabel.TabIndex = 1;
-            MemberSearchSeachMessageLabel.Text = "Message Label";
-            MemberSearchSeachMessageLabel.Visible = false;
+            MemberSearchSearchMessageLabel.Anchor = AnchorStyles.Left;
+            MemberSearchSearchMessageLabel.AutoSize = true;
+            MemberSearchSearchMessageLabel.ForeColor = Color.Red;
+            MemberSearchSearchMessageLabel.Location = new Point(530, 11);
+            MemberSearchSearchMessageLabel.Name = "MemberSearchSearchMessageLabel";
+            MemberSearchSearchMessageLabel.Size = new Size(84, 15);
+            MemberSearchSearchMessageLabel.TabIndex = 1;
+            MemberSearchSearchMessageLabel.Text = "Message Label";
+            MemberSearchSearchMessageLabel.Visible = false;
             // 
             // MemberSearchSearchButton
             // 
@@ -151,7 +151,7 @@
 
         private TableLayoutPanel MemberSearchTableLayoutPanel;
         private Label MemberSearchSearchLabel;
-        private Label MemberSearchSeachMessageLabel;
+        private Label MemberSearchSearchMessageLabel;
         private TextBox MemberSearchSearchTextBox;
         private ListView MemberSearchListView;
         private ColumnHeader MemberSearchIDColumnHeader;
