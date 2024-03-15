@@ -5,6 +5,12 @@ namespace RentMe.DAL
 {
     internal class LoginDAL
     {
+        /// <summary>
+        /// Authenticates the specified username.
+        /// </summary>
+        /// <param name="username">The username.</param>
+        /// <param name="password">The password.</param>
+        /// <returns>Employee ID of loged in user</returns>
         public int Authenticate(string username, string password)
         {
             int employeeID = 0;

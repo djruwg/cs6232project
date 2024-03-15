@@ -5,8 +5,14 @@ namespace RentMe.Controller
 {
     internal class EmployeeController
     {
+        /// <summary>
+        /// The employee DAL
+        /// </summary>
         private EmployeeDAL _employeeDAL;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EmployeeController"/> class.
+        /// </summary>
         public EmployeeController()
         {
             this._employeeDAL = new EmployeeDAL();

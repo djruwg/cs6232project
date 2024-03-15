@@ -4,10 +4,17 @@ using System.Windows.Forms;
 
 namespace RentMe.View
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class MainDashboard : Form
     {
         private EmployeeController _employeeController;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainDashboard"/> class.
+        /// </summary>
         public MainDashboard()
         {
             InitializeComponent();

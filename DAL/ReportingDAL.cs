@@ -5,6 +5,12 @@ namespace RentMe.DAL
 {
     internal class ReportingDAL
     {
+        /// <summary>
+        /// Runs the report get most popular furniture during dates.
+        /// </summary>
+        /// <param name="startDate">The start date.</param>
+        /// <param name="endDate">The end date.</param>
+        /// <returns>A data table with the report data</returns>
         public DataTable RunReportGetMostPopularFurnitureDuringDates(DateTime startDate, DateTime endDate)
         {
             using (SqlConnection connection = DBConnection.GetConnection())
