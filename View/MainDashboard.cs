@@ -1,10 +1,18 @@
-﻿namespace RentMe.View
+﻿using RentMe.Controller;
+using RentMe.Model;
+using System.Windows.Forms;
+
+namespace RentMe.View
 {
     public partial class MainDashboard : Form
     {
+        private EmployeeController _employeeController;
+
         public MainDashboard()
         {
             InitializeComponent();
+
+            this._employeeController = new EmployeeController();
         }
 
         private void MainDashboard_Shown(object sender, EventArgs e)
@@ -35,17 +43,25 @@
                     Application.Exit();
                 }
 
-                MainDashboardLogoutLinkLabel.Text = "Logout: " + loginForm.Username;
-                MainDashboardAdminLinkLabel.Show();
+                Employee employee = this._employeeController.GetEmployeeByID(LoginController.CurrentEmployeeID);
+
+                MainDashboardLogoutLinkLabel.Text = $"Logout:  {employee.FirstName} {employee.LastName} ({employee.UserName})";
+
+                if (employee.IsAdmin)
+                {
+                    MainDashboardAdminLinkLabel.Show();
+                    this.EnableTabs(false);
+                }
+                else
+                {
+                    MainDashboardAdminLinkLabel.Hide();
+                    this.EnableTabs(true);
+                }
             }
         }
 
         private void MainTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (MainTabControl.SelectedTab == MainTabControl.TabPages["WelcomeTabPage"])
-            {
-                // Placeholder
-            }
             if (MainTabControl.SelectedTab == MainTabControl.TabPages["SearchMembersTabPage"])
             {
                 this.MemberSearchUserControl.PopulateSearchWithAllMembers();
@@ -56,6 +72,19 @@
         {
             ReportForm report = new ReportForm();
             report.ShowDialog();
+        }
+
+        private void EnableTabs(bool enabled)
+        {
+            foreach (TabPage page in MainTabControl.TabPages)
+            {
+                page.Enabled = enabled;
+            }
+        }
+
+        private void MainTabControl_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            e.Cancel = !((Control)e.TabPage).Enabled;
         }
     }
 }

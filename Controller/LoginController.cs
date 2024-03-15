@@ -5,6 +5,7 @@ namespace RentMe.Controller
 {
     internal class LoginController
     {
+        private static int _currentEmployeeID = 0;
         private LoginDAL _loginDAL;
 
         /// <summary>
@@ -16,16 +17,24 @@ namespace RentMe.Controller
         }
 
         /// <summary>
+        /// Gets the current employee identifier.
+        /// </summary>
+        /// <value>
+        /// The current employee identifier.
+        /// </value>
+        public static int CurrentEmployeeID { get { return _currentEmployeeID; } }
+
+        /// <summary>
         /// Authenticates the specified username.
         /// </summary>
         /// <param name="username">The username.</param>
         /// <param name="password">The password.</param>
         /// <returns>True on successfull authentication.</returns>
-        public bool Authenticate(string username, string password)
+        public int Authenticate(string username, string password)
         {
             var hash = PasswordHelper.Hash(password);
-
-            return this._loginDAL.Authenticate(username, hash);
+            _currentEmployeeID = this._loginDAL.Authenticate(username, hash);
+            return _currentEmployeeID;
         }
     }
 }

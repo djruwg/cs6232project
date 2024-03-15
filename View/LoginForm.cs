@@ -36,7 +36,7 @@ namespace RentMe.View
         {
             try
             {
-                if (this._loginController.Authenticate(UsernameTextBox.Text, PasswordTextBox.Text) == true)
+                if (this._loginController.Authenticate(UsernameTextBox.Text, PasswordTextBox.Text) > 0)
                 {
                     this.Hide();
 

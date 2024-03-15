@@ -5,13 +5,13 @@ namespace RentMe.DAL
 {
     internal class LoginDAL
     {
-        public bool Authenticate(string username, string password)
+        public int Authenticate(string username, string password)
         {
-            int count = 0;
+            int employeeID = 0;
 
             string selectStatement = @"
                 select
-                    count(*)
+                    EmployeeID
                 from
                     Employees
                 where
@@ -30,11 +30,11 @@ namespace RentMe.DAL
                     command.Parameters.Add("@password", SqlDbType.VarChar, 256);
                     command.Parameters["@password"].Value = password;
 
-                    count = Convert.ToInt32(command.ExecuteScalar());
+                    employeeID = Convert.ToInt32(command.ExecuteScalar());
                 }
             }
 
-            return count != 0;
+            return employeeID;
         }
     }
 }

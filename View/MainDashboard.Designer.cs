@@ -82,6 +82,7 @@
             MainTabControl.Size = new Size(794, 443);
             MainTabControl.TabIndex = 0;
             MainTabControl.SelectedIndexChanged += MainTabControl_SelectedIndexChanged;
+            MainTabControl.Selecting += MainTabControl_Selecting;
             // 
             // WelcomeTabPage
             // 
