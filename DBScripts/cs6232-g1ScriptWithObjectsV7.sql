@@ -255,6 +255,8 @@ GO
 SET IDENTITY_INSERT [dbo].[Employees] ON 
 
 INSERT [dbo].[Employees] ([EmployeeID], [FirstName], [LastName], [Sex], [DateOfBirth], [Phone], [Address], [City], [State], [Zip], [UserName], [Password], [IsAdmin]) VALUES (1, N'Jane', N'Doe', N'F', CAST(N'2024-03-02' AS Date), N'404-555-1212', N'123 nowhere dr', N'Atlanta', N'Georgia', N'30303', N'jane', N'DA0BEB81A7A05A5D15F6FB770CE1C17E5658C4C361115E8F0827DED238F429CF12205D3F214B8DD3B469602569BEC55AD5FC2C5A9460B9226EC5673FF00AD325', 1)
+INSERT [dbo].[Employees] ([EmployeeID], [FirstName], [LastName], [Sex], [DateOfBirth], [Phone], [Address], [City], [State], [Zip], [UserName], [Password], [IsAdmin]) VALUES (2, N'John', N'Doe', N'M', CAST(N'2024-03-01' AS Date), N'404-555-1213', N'123 somewhere dr', N'Atlanta', N'Georgia', N'30303', N'john', N'DA0BEB81A7A05A5D15F6FB770CE1C17E5658C4C361115E8F0827DED238F429CF12205D3F214B8DD3B469602569BEC55AD5FC2C5A9460B9226EC5673FF00AD325', 0)
+INSERT [dbo].[Employees] ([EmployeeID], [FirstName], [LastName], [Sex], [DateOfBirth], [Phone], [Address], [City], [State], [Zip], [UserName], [Password], [IsAdmin]) VALUES (3, N'Rob', N'Roberts', N'M', CAST(N'2024-03-03' AS Date), N'404-555-1214', N'123 everywhere dr', N'Atlanta', N'Georgia', N'30303', N'rob', N'DA0BEB81A7A05A5D15F6FB770CE1C17E5658C4C361115E8F0827DED238F429CF12205D3F214B8DD3B469602569BEC55AD5FC2C5A9460B9226EC5673FF00AD325', 0)
 SET IDENTITY_INSERT [dbo].[Employees] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Furniture] ON 
