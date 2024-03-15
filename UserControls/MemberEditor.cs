@@ -5,6 +5,10 @@ using System.Text.RegularExpressions;
 
 namespace RentMe.UserControls
 {
+    /// <summary>
+    /// Member Editor User Control, Used by both the Add and Edit features
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class MemberEditor : UserControl
     {
         private MemberController _memberController;
@@ -62,6 +66,9 @@ namespace RentMe.UserControls
             }
         }
 
+        /// <summary>
+        /// Populates the ComboBox.
+        /// </summary>
         public void PopulateComboBox()
         {
             Dictionary<string, string> dict = new Dictionary<string, string>()

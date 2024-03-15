@@ -5,6 +5,11 @@ using System.Text.RegularExpressions;
 
 namespace RentMe.UserControls
 {
+
+    /// <summary>
+    /// Member Search User Control
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class MemberSearch : UserControl
     {
         private MemberController _memberController;
