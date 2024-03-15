@@ -254,8 +254,10 @@ namespace RentMe.DAL
                 WHERE 
                     FirstName LIKE '%' + @SearchTerm + '%' 
                     OR LastName LIKE '%' + @SearchTerm + '%'
+                    OR FirstName + ' ' + LastName LIKE '%' + @SearchTerm + '%' 
+                    OR LastName + ' ' + FirstName LIKE '%' + @SearchTerm + '%'
                     OR MemberID = TRY_CAST(@SearchTerm AS INT)
-                    OR Phone LIKE '%' + @SearchTerm + '%';
+                    OR Phone = @SearchTerm;
                 ";
 
             using (SqlConnection connection = DBConnection.GetConnection())

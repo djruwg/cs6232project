@@ -97,7 +97,7 @@ namespace RentMe.UserControls
 
             this._member.FirstName = MemberEditorFirstNameTextField.Text;
             this._member.LastName = MemberEditorLastNameTextField.Text;
-            this._member.Phone = MemberEditorPhoneTextField.Text.Replace("-", "");
+            this._member.Phone = Regex.Replace(MemberEditorPhoneTextField.Text, @"[-() ]", "");
             this._member.Address = MemberEditorAddressTextField.Text;
             this._member.City = MemberEditorCityTextField.Text;
             this._member.State = MemberEditorStateComboBox.Text;
@@ -194,6 +194,8 @@ namespace RentMe.UserControls
                 this._memberController.UpdateMember(this._member);
 
                 MemberEditorMessageLabel.Text = "Member updated.";
+
+                ParentForm.Close();
             }
 
             this._member.IsModified = false;
@@ -235,7 +237,7 @@ namespace RentMe.UserControls
 
             if (this._member.MemberID != 0)
             {
-                this.ParentForm.Close();
+                ParentForm.Close();
 
                 return;
             }

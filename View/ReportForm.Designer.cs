@@ -30,7 +30,7 @@
         {
             ReportFormLayoutPanel = new TableLayoutPanel();
             ReportFormDataGridView = new DataGridView();
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            ReportFormFlowLayoutPane = new FlowLayoutPanel();
             ReportFormStartDateLabel = new Label();
             ReportFormStartDatePicker = new DateTimePicker();
             ReportFormEndDateLabel = new Label();
@@ -38,7 +38,7 @@
             ReportFormRunReportButton = new Button();
             ReportFormLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ReportFormDataGridView).BeginInit();
-            flowLayoutPanel1.SuspendLayout();
+            ReportFormFlowLayoutPane.SuspendLayout();
             SuspendLayout();
             // 
             // ReportFormLayoutPanel
@@ -46,7 +46,7 @@
             ReportFormLayoutPanel.ColumnCount = 1;
             ReportFormLayoutPanel.ColumnStyles.Add(new ColumnStyle());
             ReportFormLayoutPanel.Controls.Add(ReportFormDataGridView, 0, 1);
-            ReportFormLayoutPanel.Controls.Add(flowLayoutPanel1, 0, 0);
+            ReportFormLayoutPanel.Controls.Add(ReportFormFlowLayoutPane, 0, 0);
             ReportFormLayoutPanel.Dock = DockStyle.Fill;
             ReportFormLayoutPanel.Location = new Point(0, 0);
             ReportFormLayoutPanel.Name = "ReportFormLayoutPanel";
@@ -66,20 +66,20 @@
             ReportFormDataGridView.Size = new Size(794, 400);
             ReportFormDataGridView.TabIndex = 0;
             // 
-            // flowLayoutPanel1
+            // ReportFormFlowLayoutPane
             // 
-            ReportFormLayoutPanel.SetColumnSpan(flowLayoutPanel1, 5);
-            flowLayoutPanel1.Controls.Add(ReportFormStartDateLabel);
-            flowLayoutPanel1.Controls.Add(ReportFormStartDatePicker);
-            flowLayoutPanel1.Controls.Add(ReportFormEndDateLabel);
-            flowLayoutPanel1.Controls.Add(ReportFormEndDatePicker);
-            flowLayoutPanel1.Controls.Add(ReportFormRunReportButton);
-            flowLayoutPanel1.Dock = DockStyle.Fill;
-            flowLayoutPanel1.Location = new Point(3, 3);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Padding = new Padding(0, 5, 0, 0);
-            flowLayoutPanel1.Size = new Size(794, 38);
-            flowLayoutPanel1.TabIndex = 5;
+            ReportFormLayoutPanel.SetColumnSpan(ReportFormFlowLayoutPane, 5);
+            ReportFormFlowLayoutPane.Controls.Add(ReportFormStartDateLabel);
+            ReportFormFlowLayoutPane.Controls.Add(ReportFormStartDatePicker);
+            ReportFormFlowLayoutPane.Controls.Add(ReportFormEndDateLabel);
+            ReportFormFlowLayoutPane.Controls.Add(ReportFormEndDatePicker);
+            ReportFormFlowLayoutPane.Controls.Add(ReportFormRunReportButton);
+            ReportFormFlowLayoutPane.Dock = DockStyle.Fill;
+            ReportFormFlowLayoutPane.Location = new Point(3, 3);
+            ReportFormFlowLayoutPane.Name = "ReportFormFlowLayoutPane";
+            ReportFormFlowLayoutPane.Padding = new Padding(0, 5, 0, 0);
+            ReportFormFlowLayoutPane.Size = new Size(794, 38);
+            ReportFormFlowLayoutPane.TabIndex = 5;
             // 
             // ReportFormStartDateLabel
             // 
@@ -140,8 +140,8 @@
             Text = "Reporting";
             ReportFormLayoutPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)ReportFormDataGridView).EndInit();
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
+            ReportFormFlowLayoutPane.ResumeLayout(false);
+            ReportFormFlowLayoutPane.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -153,7 +153,7 @@
         private DateTimePicker ReportFormStartDatePicker;
         private Label ReportFormStartDateLabel;
         private Label ReportFormEndDateLabel;
-        private FlowLayoutPanel flowLayoutPanel1;
+        private FlowLayoutPanel ReportFormFlowLayoutPane;
         private Button ReportFormRunReportButton;
     }
 }

@@ -57,9 +57,10 @@ namespace RentMe.UserControls
         private void MemberShowEditMemberButton_Click(object sender, EventArgs e)
         {
             EditMemberForm editMemberForm = new EditMemberForm(this._member.MemberID);
-            editMemberForm.ShowDialog();
+            DialogResult result = editMemberForm.ShowDialog();
+            this.SetMember(this._member.MemberID);
         }
-        
+
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Not Yet Implemented", "Not Yet Implemented");
@@ -71,7 +72,7 @@ namespace RentMe.UserControls
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            this.ParentForm.Close();
+            ParentForm.Close();
         }
 
         private void PopulateRentalsListView()

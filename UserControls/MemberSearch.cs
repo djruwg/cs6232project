@@ -1,6 +1,7 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
 using RentMe.View;
+using System.Text.RegularExpressions;
 
 namespace RentMe.UserControls
 {
@@ -24,17 +25,21 @@ namespace RentMe.UserControls
 
         private void MemberSearchListView_ItemActivate(object sender, EventArgs e)
         {
-            // Event that will trigger show customer
-            //MessageBox.Show("MemberID: " + this.MemberSearchListView.SelectedItems[0].Text + " selected");
             ShowMemberForm showMemberForm =
                 new ShowMemberForm(Int32.Parse(this.MemberSearchListView.SelectedItems[0].Text));
             showMemberForm.ShowDialog();
-
+            this.PopulateSearchListView(this._memberController.GetSearchedMembers(string.Empty));
         }
 
         private void MemberSearchSearchButton_Click(object sender, EventArgs e)
         {
-            this.PopulateSearchListView(this._memberController.GetSearchedMembers(this.MemberSearchSearchTextBox.Text));
+            this.SearchMembers();
+        }
+
+        private void SearchMembers()
+        {
+            string searchString = Regex.Replace(this.MemberSearchSearchTextBox.Text, @"\s+", " ");
+            this.PopulateSearchListView(this._memberController.GetSearchedMembers(searchString));
         }
 
         private void ResizeMemberSearchListViewColumns()
