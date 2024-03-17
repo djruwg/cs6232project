@@ -122,7 +122,6 @@
             MemberSearchSearchMessageLabel.Size = new Size(84, 15);
             MemberSearchSearchMessageLabel.TabIndex = 1;
             MemberSearchSearchMessageLabel.Text = "Message Label";
-            MemberSearchSearchMessageLabel.Visible = false;
             // 
             // MemberSearchSearchButton
             // 
