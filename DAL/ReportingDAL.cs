@@ -17,7 +17,7 @@ namespace RentMe.DAL
             {
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand("getMostPopularFurnitureDuringDatesTesting", connection))
+                using (SqlCommand command = new SqlCommand("getMostPopularFurnitureDuringDates", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
 

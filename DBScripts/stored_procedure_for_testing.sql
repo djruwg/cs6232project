@@ -9,7 +9,7 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE [dbo].[getMostPopularFurnitureDuringDatesTesting]
+CREATE PROCEDURE [dbo].[getMostPopularFurnitureDuringDates]
 	-- Add the parameters for the stored procedure here
 	(@startDate Date, @endDate Date)
 AS

@@ -1,5 +1,6 @@
 ﻿using RentMe.DAL;
 using System.Data;
+using System.Diagnostics;
 
 namespace RentMe.Controller
 {
