@@ -31,10 +31,17 @@ namespace RentMe.UserControls
 
         private void MemberSearchListView_ItemActivate(object sender, EventArgs e)
         {
-            ShowMemberForm showMemberForm =
-                new ShowMemberForm(Int32.Parse(this.MemberSearchListView.SelectedItems[0].Text));
-            showMemberForm.ShowDialog();
-            this.PopulateSearchListView(this._memberController.GetSearchedMembers(string.Empty));
+            try
+            {
+                ShowMemberForm showMemberForm =
+                    new ShowMemberForm(Int32.Parse(this.MemberSearchListView.SelectedItems[0].Text));
+                showMemberForm.ShowDialog();
+                this.PopulateSearchListView(this._memberController.GetSearchedMembers(string.Empty));
+            }
+            catch
+            {
+                this.MemberSearchSearchMessageLabel.Text = "Failed to open selected member";
+            }
         }
 
         private void MemberSearchSearchButton_Click(object sender, EventArgs e)
