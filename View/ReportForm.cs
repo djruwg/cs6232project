@@ -19,6 +19,8 @@ namespace RentMe.View
 
             this._reportingController = new ReportingController();
 
+            ReportFormMessageLabel.Text = string.Empty;
+
             this.ClearInput();
         }
 
@@ -38,10 +40,19 @@ namespace RentMe.View
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ReportFormRunReportButton_Click(object sender, EventArgs e)
         {
+            ReportFormMessageLabel.Text = string.Empty;
+
             DateTime startDate = ReportFormStartDatePicker.Value.Date;
             DateTime endDate = ReportFormEndDatePicker.Value.Date;
 
-            ReportFormDataGridView.DataSource = this._reportingController.RunReportGetMostPopularFurnitureDuringDates(startDate, endDate);
+            try
+            {
+                ReportFormDataGridView.DataSource = this._reportingController.RunReportGetMostPopularFurnitureDuringDates(startDate, endDate);
+            }
+            catch
+            {
+                ReportFormMessageLabel.Text = "Error running report.";
+            }
         }
     }
 }

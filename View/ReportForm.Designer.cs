@@ -36,6 +36,7 @@
             ReportFormEndDateLabel = new Label();
             ReportFormEndDatePicker = new DateTimePicker();
             ReportFormRunReportButton = new Button();
+            ReportFormMessageLabel = new Label();
             ReportFormLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ReportFormDataGridView).BeginInit();
             ReportFormFlowLayoutPane.SuspendLayout();
@@ -74,6 +75,7 @@
             ReportFormFlowLayoutPane.Controls.Add(ReportFormEndDateLabel);
             ReportFormFlowLayoutPane.Controls.Add(ReportFormEndDatePicker);
             ReportFormFlowLayoutPane.Controls.Add(ReportFormRunReportButton);
+            ReportFormFlowLayoutPane.Controls.Add(ReportFormMessageLabel);
             ReportFormFlowLayoutPane.Dock = DockStyle.Fill;
             ReportFormFlowLayoutPane.Location = new Point(3, 3);
             ReportFormFlowLayoutPane.Name = "ReportFormFlowLayoutPane";
@@ -129,6 +131,17 @@
             ReportFormRunReportButton.UseVisualStyleBackColor = true;
             ReportFormRunReportButton.Click += ReportFormRunReportButton_Click;
             // 
+            // ReportFormMessageLabel
+            // 
+            ReportFormMessageLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            ReportFormMessageLabel.AutoSize = true;
+            ReportFormMessageLabel.ForeColor = Color.Red;
+            ReportFormMessageLabel.Location = new Point(528, 12);
+            ReportFormMessageLabel.Name = "ReportFormMessageLabel";
+            ReportFormMessageLabel.Size = new Size(84, 15);
+            ReportFormMessageLabel.TabIndex = 6;
+            ReportFormMessageLabel.Text = "Message Label";
+            // 
             // ReportForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -155,5 +168,6 @@
         private Label ReportFormEndDateLabel;
         private FlowLayoutPanel ReportFormFlowLayoutPane;
         private Button ReportFormRunReportButton;
+        private Label ReportFormMessageLabel;
     }
 }
