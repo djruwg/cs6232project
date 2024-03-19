@@ -40,6 +40,7 @@
             MainDashboardMemberEditorUserControl = new UserControls.MemberEditor();
             SearchFurnitureTabPage = new TabPage();
             CartTabPage = new TabPage();
+            cartUserControl1 = new UserControls.CartUserControl();
             MainDashboardFlowLayoutPanel = new FlowLayoutPanel();
             MainDashboardAdminLinkLabel = new LinkLabel();
             MainDashboardLogoutLinkLabel = new LinkLabel();
@@ -50,6 +51,7 @@
             ((System.ComponentModel.ISupportInitialize)MainDashboardWelcomePictureBox).BeginInit();
             SearchMembersTabPage.SuspendLayout();
             RegisterMemberTabPage.SuspendLayout();
+            CartTabPage.SuspendLayout();
             MainDashboardFlowLayoutPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -184,13 +186,22 @@
             // 
             // CartTabPage
             // 
+            CartTabPage.Controls.Add(cartUserControl1);
             CartTabPage.Location = new Point(4, 24);
             CartTabPage.Name = "CartTabPage";
             CartTabPage.Padding = new Padding(3);
-            CartTabPage.Size = new Size(192, 72);
+            CartTabPage.Size = new Size(786, 415);
             CartTabPage.TabIndex = 4;
             CartTabPage.Text = "Cart";
             CartTabPage.UseVisualStyleBackColor = true;
+            // 
+            // cartUserControl1
+            // 
+            cartUserControl1.Dock = DockStyle.Fill;
+            cartUserControl1.Location = new Point(3, 3);
+            cartUserControl1.Name = "cartUserControl1";
+            cartUserControl1.Size = new Size(780, 409);
+            cartUserControl1.TabIndex = 0;
             // 
             // MainDashboardFlowLayoutPanel
             // 
@@ -244,6 +255,7 @@
             ((System.ComponentModel.ISupportInitialize)MainDashboardWelcomePictureBox).EndInit();
             SearchMembersTabPage.ResumeLayout(false);
             RegisterMemberTabPage.ResumeLayout(false);
+            CartTabPage.ResumeLayout(false);
             MainDashboardFlowLayoutPanel.ResumeLayout(false);
             MainDashboardFlowLayoutPanel.PerformLayout();
             ResumeLayout(false);
@@ -266,5 +278,6 @@
         private TableLayoutPanel MainDashboardWelcomeLayoutPanel;
         private PictureBox MainDashboardWelcomePictureBox;
         private Label MainDashboardWelcomeLabel;
+        private UserControls.CartUserControl cartUserControl1;
     }
 }
