@@ -5,16 +5,16 @@ namespace RentMe.Controller
 {
     internal class CartController
     {
-        private List<Furniture> _furnitureList;
-        private Member _attachedMember;
+        private static List<Furniture> _furnitureList;
+        private static Member _attachedMember;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CartController"/> class.
         /// </summary>
         public CartController()
         {
-            this._furnitureList = new List<Furniture>();
-            this._attachedMember = new Member();
+            CartController._furnitureList = new List<Furniture>();
+            CartController._attachedMember = new Member();
         }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace RentMe.Controller
         /// <value>
         /// The furniture list.
         /// </value>
-        public List<Furniture> FurnitureList { get => this._furnitureList; }
+        public List<Furniture> FurnitureList { get => CartController._furnitureList; }
 
         /// <summary>
         /// Gets or sets the attached member.
@@ -33,8 +33,8 @@ namespace RentMe.Controller
         /// </value>
         public Member AttachedMember
         {
-            get => this._attachedMember;
-            set => this._attachedMember = value ?? new Member();
+            get => CartController._attachedMember;
+            set => CartController._attachedMember = value ?? new Member();
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace RentMe.Controller
         /// <param name="furniture">The furniture.</param>
         public void AddToCart(Furniture furniture)
         {
-            this._furnitureList.Add(furniture);
+            CartController._furnitureList.Add(furniture);
         }
 
         /// <summary>
@@ -52,13 +52,13 @@ namespace RentMe.Controller
         /// <param name="furnitureID">The furniture identifier.</param>
         public void RemoveFromCart(int furnitureID)
         {
-            this._furnitureList = this._furnitureList.Where(furniture => furniture.FurnitureID != furnitureID).ToList();
+            CartController._furnitureList = CartController._furnitureList.Where(furniture => furniture.FurnitureID != furnitureID).ToList();
         }
 
         public void ClearCart()
         {
-            this._attachedMember = new Member();
-            this._furnitureList?.Clear();
+            CartController._attachedMember = new Member();
+            CartController._furnitureList?.Clear();
         }
     }
 }

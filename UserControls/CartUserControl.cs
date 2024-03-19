@@ -19,6 +19,7 @@ namespace RentMe.UserControls
 
             this._cartController = new CartController();
 
+            // Load some demo data while waiting on other supporting features
             Member member = new MemberController().GetMemberByID(1);
             this._cartController.AttachedMember = member;
 
@@ -69,6 +70,8 @@ namespace RentMe.UserControls
                 CartListView.Items.Add(furnitureList[i].FurnitureID.ToString());
                 CartListView.Items[i].SubItems.Add(furnitureList[i].Description);
                 CartListView.Items[i].SubItems.Add(furnitureList[i].DailyRentalRate.ToString());
+                // There is no overdue charge in the Furniture model.  Need to
+                // calculate this from the transaction?
                 CartListView.Items[i].SubItems.Add("0");
                 CartListView.Items[i].SubItems.Add(furnitureList[i].QuantityRented.ToString());
             }
@@ -80,14 +83,6 @@ namespace RentMe.UserControls
             CartListView.Columns[4].Width = -2;
 
             // CartListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-        }
-
-        private void CartClearButton_Click(object sender, EventArgs e)
-        {
-            this._cartController.AttachedMember = new Member();
-            this.ClearMessages();
-            this.RefreshTransactionView();
-            this.RefeshCartListView();
         }
 
         private void CartRentItemsButton_Click(object sender, EventArgs e)
@@ -105,7 +100,8 @@ namespace RentMe.UserControls
         {
             ListView.SelectedListViewItemCollection items = CartListView.SelectedItems;
 
-            Debug.WriteLine(items[0]);
+            // Call the "Furniture Details" form to update quantity.
+            Debug.WriteLine("Call Furniture Details Form: " + items[0]);
         }
 
         private void CartRemoveButton_Click(object sender, EventArgs e)
@@ -118,6 +114,15 @@ namespace RentMe.UserControls
                 this._cartController.RemoveFromCart(id);
             }
 
+            this.RefeshCartListView();
+        }
+
+        private void CartCancelButton_Click(object sender, EventArgs e)
+        {
+            this._cartController.ClearCart();
+            this._cartController.AttachedMember = new Member();
+            this.ClearMessages();
+            this.RefreshTransactionView();
             this.RefeshCartListView();
         }
     }
