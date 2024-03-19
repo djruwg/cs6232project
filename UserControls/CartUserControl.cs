@@ -63,6 +63,15 @@ namespace RentMe.UserControls
         {
             CartListView.Items.Clear();
 
+            // This whole thing may need to be the rental transaction list items
+            // since it requires the quantity rented.  How do we want to get this
+            // value from the Furniture Details form?  Can pass this in as an
+            // argument in AddToCart, but how do we associate it with a particular
+            // furniture item to populate this list view?  Does the CartController
+            // become a RentalTransactionController and I create a RentalLineItem
+            // contained within a List in the RentalTransactionController?  The
+            // RentalLineItem would then track a FurnitureItem and a quantity.  That
+            // would be what I iterate through here.
             List<Furniture> furnitureList = this._cartController.FurnitureList;
 
             for (int i = 0; i < furnitureList.Count; i++)
@@ -70,9 +79,10 @@ namespace RentMe.UserControls
                 CartListView.Items.Add(furnitureList[i].FurnitureID.ToString());
                 CartListView.Items[i].SubItems.Add(furnitureList[i].Description);
                 CartListView.Items[i].SubItems.Add(furnitureList[i].DailyRentalRate.ToString());
-                // There is no overdue charge in the Furniture model.  Need to
-                // calculate this from the transaction?
-                CartListView.Items[i].SubItems.Add("0");
+                // This is the same as the daily rental rate according to the specs right?
+                CartListView.Items[i].SubItems.Add(furnitureList[i].DailyRentalRate.ToString())
+                // This quantity rented is for the store.  Need to make this
+                // the rental transaction's quantity for this piece of furniture.
                 CartListView.Items[i].SubItems.Add(furnitureList[i].QuantityRented.ToString());
             }
 
