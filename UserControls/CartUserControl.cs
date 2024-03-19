@@ -1,5 +1,6 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
+using System.Diagnostics;
 
 namespace RentMe.UserControls
 {
@@ -25,7 +26,7 @@ namespace RentMe.UserControls
 
             this._cartController.AddToCart(new Furniture
             {
-                FurnitureID = 1,
+                FurnitureID = 7,
                 Name = "Sofa",
                 Description = "Fluffy Sofa",
                 DailyRentalRate = 2,
@@ -34,7 +35,7 @@ namespace RentMe.UserControls
 
             this._cartController.AddToCart(new Furniture
             {
-                FurnitureID = 2,
+                FurnitureID = 9,
                 Name = "Rocking Chair",
                 Description = "Wooden Rocking Chair",
                 DailyRentalRate = 1,
@@ -98,6 +99,26 @@ namespace RentMe.UserControls
                 CartMessageLabel.Text = "You must attach a member to the transaction.";
                 return;
             }
+        }
+
+        private void CartListView_ItemActivate(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection items = CartListView.SelectedItems;
+
+            Debug.WriteLine(items[0]);
+        }
+
+        private void CartRemoveButton_Click(object sender, EventArgs e)
+        {
+            ListView.SelectedListViewItemCollection items = CartListView.SelectedItems;
+
+            foreach (ListViewItem item in items)
+            {
+                int id = int.Parse(item.SubItems[0].Text);
+                this._cartController.RemoveFromCart(id);
+            }
+
+            this.RefeshCartListView();
         }
     }
 }

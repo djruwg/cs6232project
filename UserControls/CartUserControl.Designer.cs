@@ -35,6 +35,7 @@
             CartLeftFlowLayoutPanel = new FlowLayoutPanel();
             CartRentItemsButton = new Button();
             CartCancelButton = new Button();
+            CartMessageLabel = new Label();
             CartRentalIDTextBox = new TextBox();
             CartMemberIDTextBox = new TextBox();
             CartFirstNameTextBox = new TextBox();
@@ -48,7 +49,7 @@
             CartOverdueChargeHeader = new ColumnHeader();
             CartQuantityHeader = new ColumnHeader();
             CartMemberIDLabel = new Label();
-            CartMessageLabel = new Label();
+            CartRemoveButton = new Button();
             CartTableLayoutPanel.SuspendLayout();
             CartLeftFlowLayoutPanel.SuspendLayout();
             CartRightFlowLayoutPanel.SuspendLayout();
@@ -120,6 +121,7 @@
             CartLeftFlowLayoutPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             CartTableLayoutPanel.SetColumnSpan(CartLeftFlowLayoutPanel, 4);
             CartLeftFlowLayoutPanel.Controls.Add(CartRentItemsButton);
+            CartLeftFlowLayoutPanel.Controls.Add(CartRemoveButton);
             CartLeftFlowLayoutPanel.Controls.Add(CartCancelButton);
             CartLeftFlowLayoutPanel.Controls.Add(CartMessageLabel);
             CartLeftFlowLayoutPanel.Location = new Point(3, 385);
@@ -139,12 +141,23 @@
             // 
             // CartCancelButton
             // 
-            CartCancelButton.Location = new Point(84, 3);
+            CartCancelButton.Location = new Point(165, 3);
             CartCancelButton.Name = "CartCancelButton";
             CartCancelButton.Size = new Size(75, 23);
-            CartCancelButton.TabIndex = 6;
+            CartCancelButton.TabIndex = 7;
             CartCancelButton.Text = "Cancel";
             CartCancelButton.UseVisualStyleBackColor = true;
+            // 
+            // CartMessageLabel
+            // 
+            CartMessageLabel.Anchor = AnchorStyles.Left;
+            CartMessageLabel.AutoSize = true;
+            CartMessageLabel.ForeColor = Color.Red;
+            CartMessageLabel.Location = new Point(246, 7);
+            CartMessageLabel.Name = "CartMessageLabel";
+            CartMessageLabel.Size = new Size(84, 15);
+            CartMessageLabel.TabIndex = 0;
+            CartMessageLabel.Text = "Message Label";
             // 
             // CartRentalIDTextBox
             // 
@@ -197,7 +210,7 @@
             CartClearButton.Location = new Point(106, 3);
             CartClearButton.Name = "CartClearButton";
             CartClearButton.Size = new Size(75, 23);
-            CartClearButton.TabIndex = 7;
+            CartClearButton.TabIndex = 8;
             CartClearButton.Text = "Clear";
             CartClearButton.UseVisualStyleBackColor = true;
             CartClearButton.Click += CartClearButton_Click;
@@ -207,12 +220,15 @@
             CartListView.Columns.AddRange(new ColumnHeader[] { CartFurnitureIDHeader, CartDescriptionHeader, CartRentalRateHeader, CartOverdueChargeHeader, CartQuantityHeader });
             CartTableLayoutPanel.SetColumnSpan(CartListView, 5);
             CartListView.Dock = DockStyle.Fill;
+            CartListView.FullRowSelect = true;
+            CartListView.GridLines = true;
             CartListView.Location = new Point(3, 61);
             CartListView.Name = "CartListView";
             CartListView.Size = new Size(776, 318);
             CartListView.TabIndex = 4;
             CartListView.UseCompatibleStateImageBehavior = false;
             CartListView.View = System.Windows.Forms.View.Details;
+            CartListView.ItemActivate += CartListView_ItemActivate;
             // 
             // CartFurnitureIDHeader
             // 
@@ -244,16 +260,15 @@
             CartMemberIDLabel.TabIndex = 0;
             CartMemberIDLabel.Text = "Member ID";
             // 
-            // CartMessageLabel
+            // CartRemoveButton
             // 
-            CartMessageLabel.Anchor = AnchorStyles.Left;
-            CartMessageLabel.AutoSize = true;
-            CartMessageLabel.ForeColor = Color.Red;
-            CartMessageLabel.Location = new Point(165, 7);
-            CartMessageLabel.Name = "CartMessageLabel";
-            CartMessageLabel.Size = new Size(84, 15);
-            CartMessageLabel.TabIndex = 0;
-            CartMessageLabel.Text = "Message Label";
+            CartRemoveButton.Location = new Point(84, 3);
+            CartRemoveButton.Name = "CartRemoveButton";
+            CartRemoveButton.Size = new Size(75, 23);
+            CartRemoveButton.TabIndex = 6;
+            CartRemoveButton.Text = "Remove";
+            CartRemoveButton.UseVisualStyleBackColor = true;
+            CartRemoveButton.Click += CartRemoveButton_Click;
             // 
             // CartUserControl
             // 
@@ -293,5 +308,6 @@
         private ColumnHeader CartOverdueChargeHeader;
         private ColumnHeader CartQuantityHeader;
         private Label CartMessageLabel;
+        private Button CartRemoveButton;
     }
 }

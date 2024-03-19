@@ -46,6 +46,15 @@ namespace RentMe.Controller
             this._furnitureList.Add(furniture);
         }
 
+        /// <summary>
+        /// Removes from cart.
+        /// </summary>
+        /// <param name="furnitureID">The furniture identifier.</param>
+        public void RemoveFromCart(int furnitureID)
+        {
+            this._furnitureList = this._furnitureList.Where(furniture => furniture.FurnitureID != furnitureID).ToList();
+        }
+
         public void ClearCart()
         {
             this._attachedMember = new Member();
