@@ -22,27 +22,10 @@ namespace RentMe.UserControls
             // Load some demo data while waiting on other supporting features
             Member member = new MemberController().GetMemberByID(1);
             this._cartController.AttachedMember = member;
+            this._cartController.AddToCart(7, 4);
+            this._cartController.AddToCart(9, 4);
 
             this.RefreshTransactionView();
-
-            this._cartController.AddToCart(new Furniture
-            {
-                FurnitureID = 7,
-                Name = "Sofa",
-                Description = "Fluffy Sofa",
-                DailyRentalRate = 2,
-                QuantityRented = 4
-            });
-
-            this._cartController.AddToCart(new Furniture
-            {
-                FurnitureID = 9,
-                Name = "Rocking Chair",
-                Description = "Wooden Rocking Chair",
-                DailyRentalRate = 1,
-                QuantityRented = 1
-            });
-
             this.RefeshCartListView();
         }
 
@@ -53,7 +36,7 @@ namespace RentMe.UserControls
 
         private void RefreshTransactionView()
         {
-            CartRentalIDTextBox.Text = "1";
+            CartRentalIDTextBox.Text = this._cartController.GetRentalTransaction.RentalID.ToString();
             CartMemberIDTextBox.Text = this._cartController.AttachedMember.MemberID.ToString();
             CartFirstNameTextBox.Text = this._cartController.AttachedMember.FirstName;
             CartLastNameTextBox.Text = this._cartController.AttachedMember.LastName;
@@ -63,27 +46,18 @@ namespace RentMe.UserControls
         {
             CartListView.Items.Clear();
 
-            // This whole thing may need to be the rental transaction list items
-            // since it requires the quantity rented.  How do we want to get this
-            // value from the Furniture Details form?  Can pass this in as an
-            // argument in AddToCart, but how do we associate it with a particular
-            // furniture item to populate this list view?  Does the CartController
-            // become a RentalTransactionController and I create a RentalLineItem
-            // contained within a List in the RentalTransactionController?  The
-            // RentalLineItem would then track a FurnitureItem and a quantity.  That
-            // would be what I iterate through here.
-            List<Furniture> furnitureList = this._cartController.FurnitureList;
+            List<RentalLineItem> lineItems = this._cartController.GetRentalTransaction.RentalLineItems;
 
-            for (int i = 0; i < furnitureList.Count; i++)
+            for (int i = 0; i < lineItems.Count; i++)
             {
-                CartListView.Items.Add(furnitureList[i].FurnitureID.ToString());
-                CartListView.Items[i].SubItems.Add(furnitureList[i].Description);
-                CartListView.Items[i].SubItems.Add(furnitureList[i].DailyRentalRate.ToString());
+                // Furniture furniture = this._furnitureController.GetFurnitureByID(id);
+
+                CartListView.Items.Add(lineItems[i].FurnitureID.ToString());
+                CartListView.Items[i].SubItems.Add(""); // furniture.Description
+                CartListView.Items[i].SubItems.Add(""); // furniture.DailyRentalRate.ToString()
                 // This is the same as the daily rental rate according to the specs right?
-                CartListView.Items[i].SubItems.Add(furnitureList[i].DailyRentalRate.ToString())
-                // This quantity rented is for the store.  Need to make this
-                // the rental transaction's quantity for this piece of furniture.
-                CartListView.Items[i].SubItems.Add(furnitureList[i].QuantityRented.ToString());
+                CartListView.Items[i].SubItems.Add(""); // furniture.DailyRentalRate.ToString()
+                CartListView.Items[i].SubItems.Add(lineItems[i].Quantity.ToString());
             }
 
             CartListView.Columns[0].Width = -2;

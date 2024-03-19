@@ -5,7 +5,7 @@ namespace RentMe.Controller
 {
     internal class CartController
     {
-        private static List<Furniture> _furnitureList;
+        private static RentalTransaction _rentalTransaction;
         private static Member _attachedMember;
 
         /// <summary>
@@ -13,8 +13,13 @@ namespace RentMe.Controller
         /// </summary>
         public CartController()
         {
-            CartController._furnitureList = new List<Furniture>();
+            CartController._rentalTransaction = new RentalTransaction();
             CartController._attachedMember = new Member();
+        }
+
+        public RentalTransaction GetRentalTransaction
+        {
+            get => CartController._rentalTransaction;
         }
 
         /// <summary>
@@ -23,7 +28,7 @@ namespace RentMe.Controller
         /// <value>
         /// The furniture list.
         /// </value>
-        public List<Furniture> FurnitureList { get => CartController._furnitureList; }
+        // public List<Furniture> FurnitureList { get => CartController._furnitureList; }
 
         /// <summary>
         /// Gets or sets the attached member.
@@ -41,9 +46,9 @@ namespace RentMe.Controller
         /// Adds to cart.
         /// </summary>
         /// <param name="furniture">The furniture.</param>
-        public void AddToCart(Furniture furniture)
+        public void AddToCart(int furnitureID, int quantity)
         {
-            CartController._furnitureList.Add(furniture);
+            CartController._rentalTransaction.AddLineItem(furnitureID, quantity);
         }
 
         /// <summary>
@@ -52,13 +57,13 @@ namespace RentMe.Controller
         /// <param name="furnitureID">The furniture identifier.</param>
         public void RemoveFromCart(int furnitureID)
         {
-            CartController._furnitureList = CartController._furnitureList.Where(furniture => furniture.FurnitureID != furnitureID).ToList();
+            CartController._rentalTransaction.RemoveLineItem(furnitureID);
         }
 
         public void ClearCart()
         {
             CartController._attachedMember = new Member();
-            CartController._furnitureList?.Clear();
+            CartController._rentalTransaction.ClearLineItems();
         }
     }
 }
