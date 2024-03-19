@@ -85,7 +85,6 @@ namespace RentMe.UserControls
 
         private void PopulateReturnsListView()
         {
-
             this.MemberShowReturnsListView.Items.Clear();
 
             int width = MemberShowReturnsListView.Width;
@@ -113,7 +112,9 @@ namespace RentMe.UserControls
 
         private void MemberShowAttachCartButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not Yet Implemented", "Not Yet Implemented");
+            // MessageBox.Show("Not Yet Implemented", "Not Yet Implemented");
+            CartController cartController = new CartController();
+            cartController.AttachedMember = this._member;
         }
 
         private void MemberShowCancelButton_Click(object sender, EventArgs e)

@@ -1,5 +1,6 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
+using RentMe.UserControls;
 using System.Windows.Forms;
 
 namespace RentMe.View
@@ -85,6 +86,10 @@ namespace RentMe.View
             if (MainTabControl.SelectedTab == MainTabControl.TabPages["SearchMembersTabPage"])
             {
                 MemberSearchUserControl.PopulateSearchWithAllMembers();
+            }
+            else if (MainTabControl.SelectedTab == MainTabControl.TabPages["CartTabPage"])
+            {
+                CartUserControl.UpdateCart();
             }
         }
 

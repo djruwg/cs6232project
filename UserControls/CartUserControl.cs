@@ -20,11 +20,16 @@ namespace RentMe.UserControls
             this._cartController = new CartController();
 
             // Load some demo data while waiting on other supporting forms.
-            Member member = new MemberController().GetMemberByID(1);
-            this._cartController.AttachedMember = member;
             this._cartController.AddToCart(7, 4);
             this._cartController.AddToCart(9, 4);
 
+            this.RefreshTransactionView();
+            this.RefeshCartListView();
+        }
+
+        public void UpdateCart()
+        {
+            this.ClearMessages();
             this.RefreshTransactionView();
             this.RefeshCartListView();
         }
