@@ -49,7 +49,7 @@ namespace RentMe.View
                     this.ErrorMessageLabel.Text = "Invalid username/password.";
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 this.ErrorMessageLabel.Text = "Authentication unavailable.";
             }

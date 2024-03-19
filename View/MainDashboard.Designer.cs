@@ -190,7 +190,7 @@
             CartTabPage.Location = new Point(4, 24);
             CartTabPage.Name = "CartTabPage";
             CartTabPage.Padding = new Padding(3);
-            CartTabPage.Size = new Size(786, 415);
+            CartTabPage.Size = new Size(192, 72);
             CartTabPage.TabIndex = 4;
             CartTabPage.Text = "Cart";
             CartTabPage.UseVisualStyleBackColor = true;
@@ -200,7 +200,7 @@
             CartUserControl.Dock = DockStyle.Fill;
             CartUserControl.Location = new Point(3, 3);
             CartUserControl.Name = "CartUserControl";
-            CartUserControl.Size = new Size(780, 409);
+            CartUserControl.Size = new Size(186, 66);
             CartUserControl.TabIndex = 0;
             // 
             // MainDashboardFlowLayoutPanel

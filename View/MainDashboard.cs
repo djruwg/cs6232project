@@ -1,7 +1,9 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
 using RentMe.UserControls;
+using System.Diagnostics;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace RentMe.View
 {
@@ -19,7 +21,6 @@ namespace RentMe.View
         public MainDashboard()
         {
             InitializeComponent();
-
             this._employeeController = new EmployeeController();
         }
 
@@ -110,6 +111,11 @@ namespace RentMe.View
         private void MainTabControl_Selecting(object sender, TabControlCancelEventArgs e)
         {
             e.Cancel = !((Control)e.TabPage).Enabled;
+        }
+
+        public void SelectCartTab()
+        {
+            MainTabControl.SelectedIndex = 4;
         }
     }
 }

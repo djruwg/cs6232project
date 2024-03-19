@@ -1,11 +1,11 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
 using RentMe.View;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 
 namespace RentMe.UserControls
 {
-
     /// <summary>
     /// Member Search User Control
     /// </summary>
@@ -35,8 +35,15 @@ namespace RentMe.UserControls
             {
                 ShowMemberForm showMemberForm =
                     new ShowMemberForm(Int32.Parse(this.MemberSearchListView.SelectedItems[0].Text));
-                showMemberForm.ShowDialog();
+                DialogResult result = showMemberForm.ShowDialog();
                 this.PopulateSearchListView(this._memberController.GetSearchedMembers(string.Empty));
+
+                if (result == DialogResult.Continue)
+                {
+                    // This isn't great, since it ties the user control to the main window
+                    MainDashboard mainDashboard = (MainDashboard)this.ParentForm!;
+                    mainDashboard?.SelectCartTab();
+                }
             }
             catch
             {
