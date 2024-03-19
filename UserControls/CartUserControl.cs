@@ -19,7 +19,7 @@ namespace RentMe.UserControls
 
             this._cartController = new CartController();
 
-            // Load some demo data while waiting on other supporting features
+            // Load some demo data while waiting on other supporting forms.
             Member member = new MemberController().GetMemberByID(1);
             this._cartController.AttachedMember = member;
             this._cartController.AddToCart(7, 4);
@@ -36,6 +36,7 @@ namespace RentMe.UserControls
 
         private void RefreshTransactionView()
         {
+            // Can this be eliminated, since we don't have the ID until the database assigns one?
             CartRentalIDTextBox.Text = this._cartController.GetRentalTransaction.RentalID.ToString();
             CartMemberIDTextBox.Text = this._cartController.AttachedMember.MemberID.ToString();
             CartFirstNameTextBox.Text = this._cartController.AttachedMember.FirstName;
@@ -50,6 +51,7 @@ namespace RentMe.UserControls
 
             for (int i = 0; i < lineItems.Count; i++)
             {
+                // Call this once the FurnitureController exists:
                 // Furniture furniture = this._furnitureController.GetFurnitureByID(id);
 
                 CartListView.Items.Add(lineItems[i].FurnitureID.ToString());
