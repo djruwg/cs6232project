@@ -103,7 +103,7 @@ namespace RentMe.UserControls
             this.RefeshCartListView();
         }
 
-        private void CartCancelButton_Click(object sender, EventArgs e)
+        private void CartNewCartButton_Click(object sender, EventArgs e)
         {
             this._cartController.ClearCart();
             this._cartController.AttachedMember = new Member();

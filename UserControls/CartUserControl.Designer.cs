@@ -35,13 +35,13 @@
             CartLeftFlowLayoutPanel = new FlowLayoutPanel();
             CartRentItemsButton = new Button();
             CartRemoveButton = new Button();
-            CartCancelButton = new Button();
             CartMessageLabel = new Label();
             CartRentalIDTextBox = new TextBox();
             CartMemberIDTextBox = new TextBox();
             CartFirstNameTextBox = new TextBox();
             CartLastNameTextBox = new TextBox();
             CartRightFlowLayoutPanel = new FlowLayoutPanel();
+            CartNewCartButton = new Button();
             CartListView = new ListView();
             CartFurnitureIDHeader = new ColumnHeader();
             CartDescriptionHeader = new ColumnHeader();
@@ -147,16 +147,6 @@
             CartRemoveButton.UseVisualStyleBackColor = true;
             CartRemoveButton.Click += CartRemoveButton_Click;
             // 
-            // CartCancelButton
-            // 
-            CartCancelButton.Location = new Point(106, 3);
-            CartCancelButton.Name = "CartCancelButton";
-            CartCancelButton.Size = new Size(75, 23);
-            CartCancelButton.TabIndex = 7;
-            CartCancelButton.Text = "Cancel";
-            CartCancelButton.UseVisualStyleBackColor = true;
-            CartCancelButton.Click += CartCancelButton_Click;
-            // 
             // CartMessageLabel
             // 
             CartMessageLabel.Anchor = AnchorStyles.Left;
@@ -207,12 +197,22 @@
             // CartRightFlowLayoutPanel
             // 
             CartRightFlowLayoutPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            CartRightFlowLayoutPanel.Controls.Add(CartCancelButton);
+            CartRightFlowLayoutPanel.Controls.Add(CartNewCartButton);
             CartRightFlowLayoutPanel.FlowDirection = FlowDirection.RightToLeft;
             CartRightFlowLayoutPanel.Location = new Point(595, 385);
             CartRightFlowLayoutPanel.Name = "CartRightFlowLayoutPanel";
             CartRightFlowLayoutPanel.Size = new Size(184, 37);
             CartRightFlowLayoutPanel.TabIndex = 10;
+            // 
+            // CartNewCartButton
+            // 
+            CartNewCartButton.Location = new Point(106, 3);
+            CartNewCartButton.Name = "CartNewCartButton";
+            CartNewCartButton.Size = new Size(75, 23);
+            CartNewCartButton.TabIndex = 7;
+            CartNewCartButton.Text = "New Cart";
+            CartNewCartButton.UseVisualStyleBackColor = true;
+            CartNewCartButton.Click += CartNewCartButton_Click;
             // 
             // CartListView
             // 
@@ -283,7 +283,7 @@
         private Label CartLastNameLabel;
         private FlowLayoutPanel CartLeftFlowLayoutPanel;
         private Button CartRentItemsButton;
-        private Button CartCancelButton;
+        private Button CartNewCartButton;
         private TextBox CartRentalIDTextBox;
         private TextBox CartMemberIDTextBox;
         private TextBox CartFirstNameTextBox;
