@@ -70,10 +70,9 @@
             CartTableLayoutPanel.Controls.Add(CartMemberIDTextBox, 3, 0);
             CartTableLayoutPanel.Controls.Add(CartFirstNameTextBox, 1, 1);
             CartTableLayoutPanel.Controls.Add(CartLastNameTextBox, 3, 1);
-            CartTableLayoutPanel.Controls.Add(CartRightFlowLayoutPanel, 3, 3);
+            CartTableLayoutPanel.Controls.Add(CartRightFlowLayoutPanel, 4, 3);
             CartTableLayoutPanel.Controls.Add(CartListView, 0, 2);
             CartTableLayoutPanel.Controls.Add(CartMemberIDLabel, 2, 0);
-            CartTableLayoutPanel.Controls.Add(CartMessageLabel, 4, 1);
             CartTableLayoutPanel.Dock = DockStyle.Fill;
             CartTableLayoutPanel.Location = new Point(0, 0);
             CartTableLayoutPanel.Name = "CartTableLayoutPanel";
@@ -82,6 +81,7 @@
             CartTableLayoutPanel.RowStyles.Add(new RowStyle());
             CartTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             CartTableLayoutPanel.RowStyles.Add(new RowStyle());
+            CartTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             CartTableLayoutPanel.Size = new Size(782, 425);
             CartTableLayoutPanel.TabIndex = 0;
             // 
@@ -118,12 +118,13 @@
             // CartLeftFlowLayoutPanel
             // 
             CartLeftFlowLayoutPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            CartTableLayoutPanel.SetColumnSpan(CartLeftFlowLayoutPanel, 3);
+            CartTableLayoutPanel.SetColumnSpan(CartLeftFlowLayoutPanel, 4);
             CartLeftFlowLayoutPanel.Controls.Add(CartRentItemsButton);
             CartLeftFlowLayoutPanel.Controls.Add(CartCancelButton);
+            CartLeftFlowLayoutPanel.Controls.Add(CartMessageLabel);
             CartLeftFlowLayoutPanel.Location = new Point(3, 385);
             CartLeftFlowLayoutPanel.Name = "CartLeftFlowLayoutPanel";
-            CartLeftFlowLayoutPanel.Size = new Size(361, 37);
+            CartLeftFlowLayoutPanel.Size = new Size(586, 37);
             CartLeftFlowLayoutPanel.TabIndex = 4;
             // 
             // CartRentItemsButton
@@ -134,6 +135,7 @@
             CartRentItemsButton.TabIndex = 5;
             CartRentItemsButton.Text = "Rent Items";
             CartRentItemsButton.UseVisualStyleBackColor = true;
+            CartRentItemsButton.Click += CartRentItemsButton_Click;
             // 
             // CartCancelButton
             // 
@@ -183,22 +185,22 @@
             // CartRightFlowLayoutPanel
             // 
             CartRightFlowLayoutPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            CartTableLayoutPanel.SetColumnSpan(CartRightFlowLayoutPanel, 2);
             CartRightFlowLayoutPanel.Controls.Add(CartClearButton);
             CartRightFlowLayoutPanel.FlowDirection = FlowDirection.RightToLeft;
-            CartRightFlowLayoutPanel.Location = new Point(370, 385);
+            CartRightFlowLayoutPanel.Location = new Point(595, 385);
             CartRightFlowLayoutPanel.Name = "CartRightFlowLayoutPanel";
-            CartRightFlowLayoutPanel.Size = new Size(409, 37);
+            CartRightFlowLayoutPanel.Size = new Size(184, 37);
             CartRightFlowLayoutPanel.TabIndex = 10;
             // 
             // CartClearButton
             // 
-            CartClearButton.Location = new Point(331, 3);
+            CartClearButton.Location = new Point(106, 3);
             CartClearButton.Name = "CartClearButton";
             CartClearButton.Size = new Size(75, 23);
             CartClearButton.TabIndex = 7;
             CartClearButton.Text = "Clear";
             CartClearButton.UseVisualStyleBackColor = true;
+            CartClearButton.Click += CartClearButton_Click;
             // 
             // CartListView
             // 
@@ -246,7 +248,8 @@
             // 
             CartMessageLabel.Anchor = AnchorStyles.Left;
             CartMessageLabel.AutoSize = true;
-            CartMessageLabel.Location = new Point(595, 36);
+            CartMessageLabel.ForeColor = Color.Red;
+            CartMessageLabel.Location = new Point(165, 7);
             CartMessageLabel.Name = "CartMessageLabel";
             CartMessageLabel.Size = new Size(84, 15);
             CartMessageLabel.TabIndex = 0;
@@ -262,6 +265,7 @@
             CartTableLayoutPanel.ResumeLayout(false);
             CartTableLayoutPanel.PerformLayout();
             CartLeftFlowLayoutPanel.ResumeLayout(false);
+            CartLeftFlowLayoutPanel.PerformLayout();
             CartRightFlowLayoutPanel.ResumeLayout(false);
             ResumeLayout(false);
         }

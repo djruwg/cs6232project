@@ -1,14 +1,5 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace RentMe.UserControls
 {
@@ -16,16 +7,21 @@ namespace RentMe.UserControls
     {
         private CartController _cartController;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CartUserControl"/> class.
+        /// </summary>
         public CartUserControl()
         {
             InitializeComponent();
 
+            this.ClearMessages();
+
             this._cartController = new CartController();
 
-            CartRentalIDTextBox.Text = "009874";
-            CartMemberIDTextBox.Text = "001321";
-            CartFirstNameTextBox.Text = "Billy";
-            CartLastNameTextBox.Text = "Jones";
+            Member member = new MemberController().GetMemberByID(1);
+            this._cartController.AttachedMember = member;
+
+            this.RefreshTransactionView();
 
             this._cartController.AddToCart(new Furniture
             {
@@ -48,7 +44,20 @@ namespace RentMe.UserControls
             this.RefeshCartListView();
         }
 
-        public void RefeshCartListView()
+        private void ClearMessages()
+        {
+            CartMessageLabel.Text = string.Empty;
+        }
+
+        private void RefreshTransactionView()
+        {
+            CartRentalIDTextBox.Text = "1";
+            CartMemberIDTextBox.Text = this._cartController.AttachedMember.MemberID.ToString();
+            CartFirstNameTextBox.Text = this._cartController.AttachedMember.FirstName;
+            CartLastNameTextBox.Text = this._cartController.AttachedMember.LastName;
+        }
+
+        private void RefeshCartListView()
         {
             CartListView.Items.Clear();
 
@@ -70,6 +79,25 @@ namespace RentMe.UserControls
             CartListView.Columns[4].Width = -2;
 
             // CartListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
+        private void CartClearButton_Click(object sender, EventArgs e)
+        {
+            this._cartController.AttachedMember = new Member();
+            this.ClearMessages();
+            this.RefreshTransactionView();
+            this.RefeshCartListView();
+        }
+
+        private void CartRentItemsButton_Click(object sender, EventArgs e)
+        {
+            this.ClearMessages();
+
+            if (this._cartController.AttachedMember.MemberID == 0)
+            {
+                CartMessageLabel.Text = "You must attach a member to the transaction.";
+                return;
+            }
         }
     }
 }
