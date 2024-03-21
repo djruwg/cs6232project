@@ -23,10 +23,14 @@ namespace RentMe.UserControls
             this._cartController.AddToCart(7, 4);
             this._cartController.AddToCart(9, 4);
 
+            this.ConfigureDataGridView();
             this.RefreshTransactionView();
             this.RefeshCartListView();
         }
 
+        /// <summary>
+        /// Updates the cart.
+        /// </summary>
         public void UpdateCart()
         {
             this.ClearMessages();
@@ -48,32 +52,38 @@ namespace RentMe.UserControls
             CartLastNameTextBox.Text = this._cartController.AttachedMember.LastName;
         }
 
-        private void RefeshCartListView()
+        private void ConfigureDataGridView()
         {
-            CartListView.Items.Clear();
+            CartDataGridView.AutoGenerateColumns = false;
+            // CartDataGridView.MultiSelect = true;
+            // CartDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            CartDataGridView.RowHeadersVisible = false;
+            CartDataGridView.BackgroundColor = Color.White;
 
-            List<RentalLineItem> lineItems = this._cartController.GetRentalTransaction.RentalLineItems;
+            DataGridViewCheckBoxColumn column1 = new DataGridViewCheckBoxColumn(false);
+            column1.Name = "CheckBoxColumn";
+            column1.HeaderText = "Selected";
+            CartDataGridView.Columns.Add(column1);
 
-            for (int i = 0; i < lineItems.Count; i++)
-            {
-                // Call this once the FurnitureController exists:
-                // Furniture furniture = this._furnitureController.GetFurnitureByID(id);
+            DataGridViewTextBoxColumn column2 = new DataGridViewTextBoxColumn();
+            column2.DataPropertyName = "FurnitureID";
+            column2.Name = "FurnitureID";
+            column2.HeaderText = "Furniture ID";
+            column2.ReadOnly = true;
+            CartDataGridView.Columns.Add(column2);
 
-                CartListView.Items.Add(lineItems[i].FurnitureID.ToString());
-                CartListView.Items[i].SubItems.Add(""); // furniture.Description
-                CartListView.Items[i].SubItems.Add(""); // furniture.DailyRentalRate.ToString()
-                // This is the same as the daily rental rate according to the specs right?
-                CartListView.Items[i].SubItems.Add(""); // furniture.DailyRentalRate.ToString()
-                CartListView.Items[i].SubItems.Add(lineItems[i].Quantity.ToString());
-            }
+            DataGridViewTextBoxColumn column3 = new DataGridViewTextBoxColumn();
+            column3.DataPropertyName = "Quantity";
+            column3.Name = "Quantity";
+            column3.HeaderText = "Quantity";
+            column3.ReadOnly = false;
+            CartDataGridView.Columns.Add(column3);
+        }
 
-            CartListView.Columns[0].Width = -2;
-            CartListView.Columns[1].Width = -2;
-            CartListView.Columns[2].Width = -2;
-            CartListView.Columns[3].Width = -2;
-            CartListView.Columns[4].Width = -2;
-
-            // CartListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        private void RefeshCartListView()
+        {            
+            CartDataGridView.DataSource = null;
+            CartDataGridView.DataSource = this._cartController.GetRentalTransaction.RentalLineItems;
         }
 
         private void CartRentItemsButton_Click(object sender, EventArgs e)
@@ -87,22 +97,15 @@ namespace RentMe.UserControls
             }
         }
 
-        private void CartListView_ItemActivate(object sender, EventArgs e)
-        {
-            ListView.SelectedListViewItemCollection items = CartListView.SelectedItems;
-
-            // Call the "Furniture Details" form to update quantity.
-            Debug.WriteLine("Call Furniture Details Form: " + items[0]);
-        }
-
         private void CartRemoveButton_Click(object sender, EventArgs e)
         {
-            ListView.SelectedListViewItemCollection items = CartListView.SelectedItems;
-
-            foreach (ListViewItem item in items)
+            foreach (DataGridViewRow row in CartDataGridView.Rows)
             {
-                int id = int.Parse(item.SubItems[0].Text);
-                this._cartController.RemoveFromCart(id);
+                if (Convert.ToBoolean(row.Cells[0].Value) == true)
+                {
+                    int id = (int)row.Cells[1].Value;
+                    this._cartController.RemoveFromCart(id);
+                }
             }
 
             this.RefeshCartListView();
@@ -115,6 +118,23 @@ namespace RentMe.UserControls
             this.ClearMessages();
             this.RefreshTransactionView();
             this.RefeshCartListView();
+        }
+
+        private void CartDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewSelectedRowCollection rows = CartDataGridView.SelectedRows;
+            Debug.WriteLine("Call Furniture Details Form: " + e.RowIndex);
+        }
+
+        private void CartDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex != 2) return;
+
+            if (CartDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                int quantity = (int)CartDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                this._cartController.GetRentalTransaction.RentalLineItems[e.RowIndex].Quantity = quantity;
+            }
         }
     }
 }
