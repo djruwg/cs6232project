@@ -1,6 +1,8 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
+using System.Data;
 using System.Diagnostics;
+
 
 namespace RentMe.UserControls
 {
@@ -21,7 +23,8 @@ namespace RentMe.UserControls
 
             // Load some demo data while waiting on other supporting forms.
             this._cartController.AddToCart(7, 4);
-            this._cartController.AddToCart(9, 4);
+            this._cartController.AddToCart(9, 2);
+            this._cartController.AddToCart(5, 3);
 
             this.ConfigureDataGridView();
             this.RefreshTransactionView();
@@ -45,8 +48,6 @@ namespace RentMe.UserControls
 
         private void RefreshTransactionView()
         {
-            // Can this be eliminated, since we don't have the ID until the database assigns one?
-            CartRentalIDTextBox.Text = this._cartController.GetRentalTransaction.RentalID.ToString();
             CartMemberIDTextBox.Text = this._cartController.AttachedMember.MemberID.ToString();
             CartFirstNameTextBox.Text = this._cartController.AttachedMember.FirstName;
             CartLastNameTextBox.Text = this._cartController.AttachedMember.LastName;
@@ -55,35 +56,37 @@ namespace RentMe.UserControls
         private void ConfigureDataGridView()
         {
             CartDataGridView.AutoGenerateColumns = false;
-            // CartDataGridView.MultiSelect = true;
-            // CartDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            CartDataGridView.RowHeadersVisible = false;
-            CartDataGridView.BackgroundColor = Color.White;
 
-            DataGridViewCheckBoxColumn column1 = new DataGridViewCheckBoxColumn(false);
-            column1.Name = "CheckBoxColumn";
-            column1.HeaderText = "Selected";
-            CartDataGridView.Columns.Add(column1);
+            DataGridViewCheckBoxColumn column = new DataGridViewCheckBoxColumn(false);
+            column.Name = "CheckBoxColumn";
+            column.HeaderText = "Selected";
+            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            CartDataGridView.Columns.Add(column);
 
-            DataGridViewTextBoxColumn column2 = new DataGridViewTextBoxColumn();
-            column2.DataPropertyName = "FurnitureID";
-            column2.Name = "FurnitureID";
-            column2.HeaderText = "Furniture ID";
-            column2.ReadOnly = true;
-            CartDataGridView.Columns.Add(column2);
+            this.AddColumn("Furniture ID", "FurnitureID", true);
+            this.AddColumn("Name", "Name", true);
+            this.AddColumn("Description", "Description", true);
+            this.AddColumn("DailyRentalRate", "RailyRentalDate", true);
+            this.AddColumn("Quantity", "Quantity", false);
+        }
 
-            DataGridViewTextBoxColumn column3 = new DataGridViewTextBoxColumn();
-            column3.DataPropertyName = "Quantity";
-            column3.Name = "Quantity";
-            column3.HeaderText = "Quantity";
-            column3.ReadOnly = false;
-            CartDataGridView.Columns.Add(column3);
+        private void AddColumn(string headerText, string properyName, bool readOnly)
+        {
+            DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
+            column.DataPropertyName = properyName;
+            column.Name = properyName;
+            column.HeaderText = headerText;
+            column.ReadOnly = readOnly;
+            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            CartDataGridView.Columns.Add(column);
         }
 
         private void RefeshCartListView()
         {            
             CartDataGridView.DataSource = null;
-            CartDataGridView.DataSource = this._cartController.GetRentalTransaction.RentalLineItems;
+            /// CartDataGridView.DataSource = this._cartController.GetRentalTransaction.RentalLineItems;
+            Debug.WriteLine(this._cartController.GetData());
+            CartDataGridView.DataSource = this._cartController.GetData();
         }
 
         private void CartRentItemsButton_Click(object sender, EventArgs e)
@@ -103,7 +106,7 @@ namespace RentMe.UserControls
             {
                 if (Convert.ToBoolean(row.Cells[0].Value) == true)
                 {
-                    int id = (int)row.Cells[1].Value;
+                    int id = Int32.Parse((string)row.Cells[1].Value);
                     this._cartController.RemoveFromCart(id);
                 }
             }
@@ -128,12 +131,13 @@ namespace RentMe.UserControls
 
         private void CartDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0 || e.ColumnIndex != 2) return;
-
+            if (e.RowIndex < 0 || e.ColumnIndex != 5) return;
+ 
             if (CartDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
-                int quantity = (int)CartDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-                this._cartController.GetRentalTransaction.RentalLineItems[e.RowIndex].Quantity = quantity;
+                int quantity = Int32.Parse((string)CartDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
+                DataTable dataTable = this._cartController.GetData();
+                dataTable.Rows[e.RowIndex]["Quantity"] = quantity;
             }
         }
     }

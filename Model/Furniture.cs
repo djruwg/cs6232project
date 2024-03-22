@@ -14,7 +14,7 @@ public class Furniture
     public string Description { get; set; }
     public int QuantityOwned { get; set; }
     public int QuantityRented { get; set; }
-    public int DailyRentalRate { get; set; }
-    public int CategoryID { get; set; }
-    public int StyleID { get; set; }
+    public decimal DailyRentalRate { get; set; }
+    public string Category { get; set; }
+    public string Style { get; set; }
 }

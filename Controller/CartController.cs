@@ -1,39 +1,26 @@
 ﻿using RentMe.Model;
+using System.Data;
 
 namespace RentMe.Controller
 {
+    /// <summary>
+    /// Manages the cart.
+    /// </summary>
     internal class CartController
     {
-        private static RentalTransaction? _rentalTransaction;
+        private static Cart? _cartDataTable;
         private static Member? _attachedMember;
+        private FurnitureController _furnitureController;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CartController"/> class.
         /// </summary>
         public CartController()
         {
-            CartController._rentalTransaction = new RentalTransaction();
-            CartController._attachedMember = new Member();
+            _cartDataTable = new Cart();
+            _attachedMember = new Member();
+            this._furnitureController = new FurnitureController();
         }
-
-        /// <summary>
-        /// Gets the get rental transaction.
-        /// </summary>
-        /// <value>
-        /// The get rental transaction.
-        /// </value>
-        public RentalTransaction GetRentalTransaction
-        {
-            get => CartController._rentalTransaction!;
-        }
-
-        /// <summary>
-        /// Gets the furniture list.
-        /// </summary>
-        /// <value>
-        /// The furniture list.
-        /// </value>
-        // public List<Furniture> FurnitureList { get => CartController._furnitureList; }
 
         /// <summary>
         /// Gets or sets the attached member.
@@ -43,8 +30,8 @@ namespace RentMe.Controller
         /// </value>
         public Member AttachedMember
         {
-            get => CartController._attachedMember!;
-            set => CartController._attachedMember = value ?? new Member();
+            get => _attachedMember!;
+            set => _attachedMember = value ?? new Member();
         }
 
         /// <summary>
@@ -53,7 +40,20 @@ namespace RentMe.Controller
         /// <param name="furniture">The furniture.</param>
         public void AddToCart(int furnitureID, int quantity)
         {
-            CartController._rentalTransaction?.AddLineItem(furnitureID, quantity);
+            Furniture furniture = this._furnitureController.GetFurnitureByID(furnitureID);
+
+            ArgumentNullException.ThrowIfNull(furniture);
+
+            _cartDataTable!.AddRow(furniture, quantity);
+        }
+
+        /// <summary>
+        /// Gets the data.
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetData()
+        {
+            return _cartDataTable!.GetData();
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace RentMe.Controller
         /// <param name="furnitureID">The furniture identifier.</param>
         public void RemoveFromCart(int furnitureID)
         {
-            CartController._rentalTransaction?.RemoveLineItem(furnitureID);
+            _cartDataTable!.RemoveRow(furnitureID);
         }
 
         /// <summary>
@@ -70,8 +70,8 @@ namespace RentMe.Controller
         /// </summary>
         public void ClearCart()
         {
-            CartController._attachedMember = new Member();
-            CartController._rentalTransaction = new RentalTransaction();
+            _attachedMember = new Member();
+            _cartDataTable!.ClearRows();
         }
     }
 }
