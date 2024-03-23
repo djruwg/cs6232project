@@ -21,7 +21,8 @@ namespace RentMe.View
             this.AddColumn("Name", "Name", true);
             this.AddColumn("Description", "Description", true);
             this.AddColumn("DailyRentalRate", "RailyRentalDate", true);
-            this.AddColumn("Quantity", "Quantity", false);
+            this.AddColumn("QuantityRentedByCustomer", "QuantityRentedByCustomer", true);
+            this.AddColumn("QuantityReturnedByCustomer", "QuantityReturnedByCustomer", false);
         }
 
         private void AddColumn(string headerText, string properyName, bool readOnly)

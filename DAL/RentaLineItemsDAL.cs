@@ -30,10 +30,11 @@ namespace RentMe.DAL
                     f.Style,
                     f.Category,
                     f.Description,
-                    f.QuantityOwned,
-                    f.QuantityRented as QuantityStoreRented,
+                    f.QuantityOwned as QuantityOwnedByStore,
+                    f.QuantityRented as QuantityRentedByStore,
                     f.DailyRentalRate,
-                    l.QuantityRented
+                    l.QuantityRented as QuantityRentedByCustomer,
+                    l.QuantityReturned as QuantityRenturnedByCustomer
                 FROM RentalTransactions t, RentalLineItems l, Furniture f
                 WHERE t.MemberID = @MemberID and t.RentalID = l.RentalID and f.FurnitureID = l.FurnitureID";
 
@@ -56,12 +57,13 @@ namespace RentMe.DAL
                             workRow["FurnitureID"] = (int)reader["FurnitureID"];
                             workRow["Name"] = (string)reader["Name"];
                             workRow["Description"] = (string)reader["Description"];
-                            workRow["QuantityOwned"] = (int)reader["QuantityOwned"];
-                            workRow["QuantityRented"] = (int)reader["QuantityRented"];
-                            // workRow["DailyRentalRate"] = (double)reader["DailyRentalRate"];
+                            workRow["QuantityOwnedByStore"] = (int)reader["QuantityOwnedByStore"];
+                            workRow["QuantityRentedByStore"] = (int)reader["QuantityRentedByStore"];
+                            workRow["DailyRentalRate"] = Convert.ToDouble(reader["DailyRentalRate"]);
                             workRow["Category"] = (string)reader["Category"];
                             workRow["Style"] = (string)reader["Style"];
-                            // workRow["Quantity"] = (int)reader["QuantityRented"];
+                            workRow["QuantityRentedByCustomer"] = (int)reader["QuantityRentedByCustomer"];
+                            workRow["QuantityReturnedByCustomer"] = (int)reader["QuantityRenturnedByCustomer"];
 
                             _lineItem.GetDataTable().Rows.Add(workRow);
                         }

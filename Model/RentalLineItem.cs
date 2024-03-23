@@ -12,16 +12,22 @@ public class RentalLineItem
     {
         _dataTable = new DataTable();
 
+        // Transaction
         _dataTable.Columns.Add("RentalID");
+
+        // Furniture
         _dataTable.Columns.Add("FurnitureID");
         _dataTable.Columns.Add("Name");
         _dataTable.Columns.Add("Description");
-        _dataTable.Columns.Add("QuantityOwned", typeof(int));
-        _dataTable.Columns.Add("QuantityRented", typeof(int));
+        _dataTable.Columns.Add("QuantityOwnedByStore", typeof(int));
+        _dataTable.Columns.Add("QuantityRentedByStore", typeof(int));
         _dataTable.Columns.Add("DailyRentalRate", typeof(double));
         _dataTable.Columns.Add("Category");
         _dataTable.Columns.Add("Style");
-        _dataTable.Columns.Add("Quantity");
+
+        // Line Item
+        _dataTable.Columns.Add("QuantityRentedByCustomer", typeof(int));
+        _dataTable.Columns.Add("QuantityReturnedByCustomer", typeof(int));
     }
 
     public DataTable GetDataTable()

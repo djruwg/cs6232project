@@ -66,8 +66,8 @@ namespace RentMe.UserControls
             this.AddColumn("Furniture ID", "FurnitureID", true);
             this.AddColumn("Name", "Name", true);
             this.AddColumn("Description", "Description", true);
-            this.AddColumn("DailyRentalRate", "RailyRentalDate", true);
-            this.AddColumn("Quantity", "Quantity", false);
+            this.AddColumn("DailyRentalRate", "DailyRentalRate", true);
+            this.AddColumn("Quantity", "QuantityRentedByCustomer", false);
         }
 
         private void AddColumn(string headerText, string properyName, bool readOnly)

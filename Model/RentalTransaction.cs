@@ -43,15 +43,17 @@ public class RentalTransaction
         ArgumentNullException.ThrowIfNull(furniture);
 
         DataRow workRow = _rentalLineItems!.GetDataTable().NewRow();
+        workRow["RentalID"] = this.RentalID;
         workRow["FurnitureID"] = furnitureID;
         workRow["Name"] = furniture.Name;
         workRow["Description"] = furniture.Description;
-        workRow["QuantityOwned"] = furniture.QuantityOwned;
-        workRow["QuantityRented"] = furniture.QuantityRented;
+        workRow["QuantityOwnedByStore"] = furniture.QuantityOwned;
+        workRow["QuantityRentedByStore"] = furniture.QuantityRented;
         workRow["DailyRentalRate"] = furniture.DailyRentalRate;
         workRow["Category"] = furniture.Category;
         workRow["Style"] = furniture.Style;
-        workRow["Quantity"] = quantity;
+        workRow["QuantityRentedByCustomer"] = quantity;
+        workRow["QuantityReturnedByCustomer"] = 0;
 
         _rentalLineItems.GetDataTable().Rows.Add(workRow);
     }
