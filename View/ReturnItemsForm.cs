@@ -1,4 +1,6 @@
 ﻿using RentMe.Controller;
+using System.Data;
+using System.Diagnostics;
 
 namespace RentMe.View
 {
@@ -10,7 +12,16 @@ namespace RentMe.View
 
             this.ConfigureDataGridView();
 
-            ReturnItemsDataGridView.DataSource = new RentalsController().GetRentalLineItemsByMemberID(memberID).GetDataTable();
+            /*
+             * Select filters the data table by outstanding rentals and
+             * returns a Row, which we convert back to a DataTable as a
+             * data source.
+             */
+            ReturnItemsDataGridView.DataSource = new RentalsController()
+                .GetRentalLineItemsByMemberID(memberID)
+                .GetDataTable()
+                .Select("QuantityReturnedByCustomer < QuantityRentedByCustomer")
+                .CopyToDataTable();
         }
 
         private void ConfigureDataGridView()
