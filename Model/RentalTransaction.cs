@@ -1,6 +1,4 @@
-﻿using RentMe.Controller;
-using RentMe.DAL;
-using System.ComponentModel;
+﻿using RentMe.DAL;
 using System.Data;
 
 namespace RentMe.Model;
@@ -13,6 +11,9 @@ public class RentalTransaction
     private RentalLineItem _rentalLineItems;
     private FurnitureDAL _furnitureDAL;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RentalTransaction"/> class.
+    /// </summary>
     public RentalTransaction()
     {
         this._rentalLineItems = new RentalLineItem();
@@ -27,6 +28,12 @@ public class RentalTransaction
     public int EmployeeID { get; set; }
     public int MemberID { get; set; }
 
+    /// <summary>
+    /// Gets the rental line items.
+    /// </summary>
+    /// <value>
+    /// The rental line items.
+    /// </value>
     public RentalLineItem RentalLineItems
     {
         get => this._rentalLineItems;
@@ -52,8 +59,8 @@ public class RentalTransaction
         workRow["DailyRentalRate"] = furniture.DailyRentalRate;
         workRow["Category"] = furniture.Category;
         workRow["Style"] = furniture.Style;
-        workRow["QuantityRentedByCustomer"] = quantity;
-        workRow["QuantityReturnedByCustomer"] = 0;
+        workRow["QuantityRentedByMember"] = quantity;
+        workRow["QuantityReturnedByMember"] = 0;
 
         _rentalLineItems.GetDataTable().Rows.Add(workRow);
     }

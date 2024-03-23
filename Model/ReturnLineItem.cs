@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace RentMe.Model;
+﻿namespace RentMe.Model;
 
 /// <summary>
 ///  ReturnLineItem model class

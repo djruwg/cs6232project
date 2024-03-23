@@ -3,6 +3,9 @@ using System.Data;
 
 namespace RentMe.DAL
 {
+    /// <summary>
+    /// Reporting data access layer.
+    /// </summary>
     internal class ReportingDAL
     {
         /// <summary>

@@ -1,10 +1,12 @@
 ﻿using RentMe.DAL;
 using RentMe.Model;
 using System.ComponentModel;
-using System.Data;
 
 namespace RentMe.Controller
 {
+    /// <summary>
+    /// Manages rental data access layers.
+    /// </summary>
     internal class RentalsController
     {
         private RentalsDAL _rentalsDAL;
@@ -23,12 +25,17 @@ namespace RentMe.Controller
         /// Gets the rentals by member.
         /// </summary>
         /// <param name="memberID">The member identifier.</param>
-        /// <returns>returns a list of rental transactions</returns>
+        /// <returns></returns>
         public BindingList<RentalTransaction> GetRentalsByMember(int memberID)
         {
             return this._rentalsDAL.GetRentalsByMember(memberID);
         }
 
+        /// <summary>
+        /// Gets the rental line items by member identifier.
+        /// </summary>
+        /// <param name="memberID">The member identifier.</param>
+        /// <returns></returns>
         public RentalLineItem GetRentalLineItemsByMemberID(int memberID)
         {
             return this._rentalLineItemsDAL.GetRentalsLineItemsByMemberID((int)memberID);

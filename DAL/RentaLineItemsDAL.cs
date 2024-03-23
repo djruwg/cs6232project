@@ -1,21 +1,29 @@
 ﻿using RentMe.Model;
-using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Diagnostics;
 
 namespace RentMe.DAL
 {
+    /// <summary>
+    /// RentalLineItems data access layer.
+    /// </summary>
     internal class RentaLineItemsDAL
     {
         private RentalLineItem _lineItem;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RentaLineItemsDAL"/> class.
+        /// </summary>
         public RentaLineItemsDAL()
         {
             _lineItem = new RentalLineItem();
         }
 
+        /// <summary>
+        /// Gets the rentals line items by member identifier.
+        /// </summary>
+        /// <param name="memberID">The member identifier.</param>
+        /// <returns></returns>
         public RentalLineItem GetRentalsLineItemsByMemberID(int memberID)
         {
             string selectStatement = @"
@@ -33,8 +41,8 @@ namespace RentMe.DAL
                     f.QuantityOwned as QuantityOwnedByStore,
                     f.QuantityRented as QuantityRentedByStore,
                     f.DailyRentalRate,
-                    l.QuantityRented as QuantityRentedByCustomer,
-                    l.QuantityReturned as QuantityRenturnedByCustomer
+                    l.QuantityRented as QuantityRentedByMember,
+                    l.QuantityReturned as QuantityReturnedByMember
                 FROM RentalTransactions t, RentalLineItems l, Furniture f
                 WHERE t.MemberID = @MemberID and t.RentalID = l.RentalID and f.FurnitureID = l.FurnitureID";
 
@@ -62,8 +70,8 @@ namespace RentMe.DAL
                             workRow["DailyRentalRate"] = Convert.ToDouble(reader["DailyRentalRate"]);
                             workRow["Category"] = (string)reader["Category"];
                             workRow["Style"] = (string)reader["Style"];
-                            workRow["QuantityRentedByCustomer"] = (int)reader["QuantityRentedByCustomer"];
-                            workRow["QuantityReturnedByCustomer"] = (int)reader["QuantityRenturnedByCustomer"];
+                            workRow["QuantityRentedByMember"] = (int)reader["QuantityRentedByMember"];
+                            workRow["QuantityReturnedByMember"] = (int)reader["QuantityReturnedByMember"];
 
                             _lineItem.GetDataTable().Rows.Add(workRow);
                         }

@@ -1,11 +1,18 @@
 ﻿using RentMe.Controller;
 using System.Data;
-using System.Diagnostics;
 
 namespace RentMe.View
 {
+    /// <summary>
+    /// Form for returning furniture.
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class ReturnItemsForm : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ReturnItemsForm"/> class.
+        /// </summary>
+        /// <param name="memberID">The member identifier.</param>
         public ReturnItemsForm(int memberID)
         {
             InitializeComponent();
@@ -20,7 +27,7 @@ namespace RentMe.View
             ReturnItemsDataGridView.DataSource = new RentalsController()
                 .GetRentalLineItemsByMemberID(memberID)
                 .GetDataTable()
-                .Select("QuantityReturnedByCustomer < QuantityRentedByCustomer")
+                .Select("QuantityReturnedByMember < QuantityRentedByMember")
                 .CopyToDataTable();
         }
 
@@ -31,9 +38,11 @@ namespace RentMe.View
             this.AddColumn("Furniture ID", "FurnitureID", true);
             this.AddColumn("Name", "Name", true);
             this.AddColumn("Description", "Description", true);
-            this.AddColumn("DailyRentalRate", "RailyRentalDate", true);
-            this.AddColumn("QuantityRentedByCustomer", "QuantityRentedByCustomer", true);
-            this.AddColumn("QuantityReturnedByCustomer", "QuantityReturnedByCustomer", false);
+            this.AddColumn("DailyRentalRate", "DailyRentalRate", true);
+            this.AddColumn("QuantityRentedByMember", "QuantityRentedByMember", true);
+            this.AddColumn("QuantityReturnedByMember", "QuantityReturnedByMember", false);
+
+            ReturnItemsDataGridView.Columns["DailyRentalRate"].DefaultCellStyle.Format = "c";
         }
 
         private void AddColumn(string headerText, string properyName, bool readOnly)

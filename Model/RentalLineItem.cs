@@ -7,7 +7,11 @@ namespace RentMe.Model;
 /// </summary>
 public class RentalLineItem
 {
-    private static DataTable? _dataTable;
+    private DataTable? _dataTable;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RentalLineItem"/> class.
+    /// </summary>
     public RentalLineItem()
     {
         _dataTable = new DataTable();
@@ -26,10 +30,14 @@ public class RentalLineItem
         _dataTable.Columns.Add("Style");
 
         // Line Item
-        _dataTable.Columns.Add("QuantityRentedByCustomer", typeof(int));
-        _dataTable.Columns.Add("QuantityReturnedByCustomer", typeof(int));
+        _dataTable.Columns.Add("QuantityRentedByMember", typeof(int));
+        _dataTable.Columns.Add("QuantityReturnedByMember", typeof(int));
     }
 
+    /// <summary>
+    /// Gets the data table.
+    /// </summary>
+    /// <returns></returns>
     public DataTable GetDataTable()
     {
         return _dataTable!;

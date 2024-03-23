@@ -4,8 +4,16 @@ using System.Data;
 
 namespace RentMe.DAL
 {
+    /// <summary>
+    /// Furniture data access layer
+    /// </summary>
     internal class FurnitureDAL
     {
+        /// <summary>
+        /// Gets the furniture by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public Furniture GetFurnitureByID(int id)
         {
             Furniture returnValue = null;

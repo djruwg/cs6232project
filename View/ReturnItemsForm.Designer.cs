@@ -70,7 +70,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(ReturnItemsTableLayoutPanel);
             Name = "ReturnItemsForm";
-            Text = "ReturnItemsForm";
+            Text = "Return Items";
             ((System.ComponentModel.ISupportInitialize)ReturnItemsDataGridView).EndInit();
             ReturnItemsTableLayoutPanel.ResumeLayout(false);
             ResumeLayout(false);

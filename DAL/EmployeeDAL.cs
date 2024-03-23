@@ -4,6 +4,9 @@ using System.Data.SqlClient;
 
 namespace RentMe.DAL
 {
+    /// <summary>
+    /// Employee data access layer.
+    /// </summary>
     internal class EmployeeDAL
     {
         /// <summary>

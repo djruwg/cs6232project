@@ -6,6 +6,10 @@ using System.Diagnostics;
 
 namespace RentMe.UserControls
 {
+    /// <summary>
+    /// Provides a cart user control.
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class CartUserControl : UserControl
     {
         private CartController _cartController;
@@ -67,7 +71,10 @@ namespace RentMe.UserControls
             this.AddColumn("Name", "Name", true);
             this.AddColumn("Description", "Description", true);
             this.AddColumn("DailyRentalRate", "DailyRentalRate", true);
-            this.AddColumn("Quantity", "QuantityRentedByCustomer", false);
+            this.AddColumn("Quantity", "QuantityRentedByMember", false);
+
+            CartDataGridView.Columns["DailyRentalRate"].DefaultCellStyle.Format = "c";
+
         }
 
         private void AddColumn(string headerText, string properyName, bool readOnly)
@@ -84,7 +91,7 @@ namespace RentMe.UserControls
         private void RefeshCartListView()
         {            
             CartDataGridView.DataSource = null;
-            CartDataGridView.DataSource = this._cartController.GetData();
+            CartDataGridView.DataSource = this._cartController.LineItems();
         }
 
         private void CartRentItemsButton_Click(object sender, EventArgs e)
@@ -133,9 +140,9 @@ namespace RentMe.UserControls
  
             if (CartDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
-                int quantity = Int32.Parse((string)CartDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
-                DataTable dataTable = this._cartController.GetData();
-                dataTable.Rows[e.RowIndex]["Quantity"] = quantity;
+                int quantity = (int)CartDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                DataTable dataTable = this._cartController.LineItems();
+                dataTable.Rows[e.RowIndex]["QuantityRentedByMember"] = quantity;
             }
         }
     }

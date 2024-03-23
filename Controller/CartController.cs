@@ -44,10 +44,10 @@ namespace RentMe.Controller
         }
 
         /// <summary>
-        /// Gets the data.
+        /// Returns the line items.
         /// </summary>
         /// <returns></returns>
-        public DataTable GetData()
+        public DataTable LineItems()
         {
             return _rentalTransaction!.RentalLineItems.GetDataTable();
         }

@@ -3,9 +3,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 
-
 namespace RentMe.DAL
 {
+    /// <summary>
+    /// Rentals data access layer
+    /// </summary>
     internal class RentalsDAL
     {
 
