@@ -107,7 +107,9 @@ namespace RentMe.UserControls
 
         private void MemberShowReturnItemsButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not Yet Implemented", "Not Yet Implemented");
+            // MessageBox.Show("Not Yet Implemented", "Not Yet Implemented");
+            ReturnItemsForm returnItems = new ReturnItemsForm(this._member.MemberID);
+            returnItems.ShowDialog();
         }
 
         private void MemberShowAttachCartButton_Click(object sender, EventArgs e)

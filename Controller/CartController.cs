@@ -8,7 +8,7 @@ namespace RentMe.Controller
     /// </summary>
     internal class CartController
     {
-        private static Cart? _cartDataTable;
+        private static RentalTransaction? _rentalTransaction;
         private static Member? _attachedMember;
         private FurnitureController _furnitureController;
 
@@ -17,7 +17,7 @@ namespace RentMe.Controller
         /// </summary>
         public CartController()
         {
-            _cartDataTable = new Cart();
+            _rentalTransaction = new RentalTransaction();
             _attachedMember = new Member();
             this._furnitureController = new FurnitureController();
         }
@@ -40,11 +40,7 @@ namespace RentMe.Controller
         /// <param name="furniture">The furniture.</param>
         public void AddToCart(int furnitureID, int quantity)
         {
-            Furniture furniture = this._furnitureController.GetFurnitureByID(furnitureID);
-
-            ArgumentNullException.ThrowIfNull(furniture);
-
-            _cartDataTable!.AddRow(furniture, quantity);
+            _rentalTransaction!.AddLineItem(furnitureID, quantity);
         }
 
         /// <summary>
@@ -53,7 +49,7 @@ namespace RentMe.Controller
         /// <returns></returns>
         public DataTable GetData()
         {
-            return _cartDataTable!.GetData();
+            return _rentalTransaction!.RentalLineItems.GetDataTable();
         }
 
         /// <summary>
@@ -62,7 +58,7 @@ namespace RentMe.Controller
         /// <param name="furnitureID">The furniture identifier.</param>
         public void RemoveFromCart(int furnitureID)
         {
-            _cartDataTable!.RemoveRow(furnitureID);
+            _rentalTransaction!.RemoveLineItem(furnitureID);
         }
 
         /// <summary>
@@ -71,7 +67,7 @@ namespace RentMe.Controller
         public void ClearCart()
         {
             _attachedMember = new Member();
-            _cartDataTable!.ClearRows();
+            _rentalTransaction!.ClearLineItems();
         }
     }
 }

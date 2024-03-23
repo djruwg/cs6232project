@@ -84,8 +84,6 @@ namespace RentMe.UserControls
         private void RefeshCartListView()
         {            
             CartDataGridView.DataSource = null;
-            /// CartDataGridView.DataSource = this._cartController.GetRentalTransaction.RentalLineItems;
-            Debug.WriteLine(this._cartController.GetData());
             CartDataGridView.DataSource = this._cartController.GetData();
         }
 

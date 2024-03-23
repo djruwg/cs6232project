@@ -1,12 +1,14 @@
 ﻿using RentMe.DAL;
 using RentMe.Model;
 using System.ComponentModel;
+using System.Data;
 
 namespace RentMe.Controller
 {
     internal class RentalsController
     {
         private RentalsDAL _rentalsDAL;
+        private RentaLineItemsDAL _rentalLineItemsDAL;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RentalsController"/> class.
@@ -14,6 +16,7 @@ namespace RentMe.Controller
         public RentalsController()
         {
             this._rentalsDAL = new RentalsDAL();
+            this._rentalLineItemsDAL = new RentaLineItemsDAL();
         }
 
         /// <summary>
@@ -24,6 +27,11 @@ namespace RentMe.Controller
         public BindingList<RentalTransaction> GetRentalsByMember(int memberID)
         {
             return this._rentalsDAL.GetRentalsByMember(memberID);
+        }
+
+        public RentalLineItem GetRentalLineItemsByMemberID(int memberID)
+        {
+            return this._rentalLineItemsDAL.GetRentalsLineItemsByMemberID((int)memberID);
         }
     }
 }
