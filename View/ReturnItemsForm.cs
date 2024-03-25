@@ -1,5 +1,4 @@
 ﻿using RentMe.Controller;
-using System.Data;
 
 namespace RentMe.View
 {
@@ -19,22 +18,20 @@ namespace RentMe.View
 
             this.ConfigureDataGridView();
 
-            /*
-             * Select filters the data table by outstanding rentals and
-             * returns a Row, which we convert back to a DataTable as a
-             * data source.
-             */
-            ReturnItemsDataGridView.DataSource = new RentalsController()
-                .GetRentalLineItemsByMemberID(memberID)
-                .GetDataTable()
-                .Select("QuantityReturnedByMember < QuantityRentedByMember")
-                .CopyToDataTable();
+            ReturnItemsDataGridView.DataSource = new RentalsController().GetOutstandingRentalLineItemsByMemberID(memberID);
         }
 
         private void ConfigureDataGridView()
         {
             ReturnItemsDataGridView.AutoGenerateColumns = false;
 
+            DataGridViewCheckBoxColumn column = new DataGridViewCheckBoxColumn(false);
+            column.Name = "CheckBoxColumn";
+            column.HeaderText = "Selected";
+            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            ReturnItemsDataGridView.Columns.Add(column);
+
+            this.AddColumn("Rental ID", "RentalID", true);
             this.AddColumn("Furniture ID", "FurnitureID", true);
             this.AddColumn("Name", "Name", true);
             this.AddColumn("Description", "Description", true);

@@ -1,6 +1,5 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
-using System.Data;
 using System.Diagnostics;
 
 
@@ -74,7 +73,6 @@ namespace RentMe.UserControls
             this.AddColumn("Quantity", "QuantityRentedByMember", false);
 
             CartDataGridView.Columns["DailyRentalRate"].DefaultCellStyle.Format = "c";
-
         }
 
         private void AddColumn(string headerText, string properyName, bool readOnly)
@@ -89,7 +87,7 @@ namespace RentMe.UserControls
         }
 
         private void RefeshCartListView()
-        {            
+        {
             CartDataGridView.DataSource = null;
             CartDataGridView.DataSource = this._cartController.LineItems();
         }
@@ -111,7 +109,7 @@ namespace RentMe.UserControls
             {
                 if (Convert.ToBoolean(row.Cells[0].Value) == true)
                 {
-                    int id = Int32.Parse((string)row.Cells[1].Value);
+                    int id = (int)row.Cells[1].Value;
                     this._cartController.RemoveFromCart(id);
                 }
             }
@@ -137,12 +135,11 @@ namespace RentMe.UserControls
         private void CartDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || e.ColumnIndex != 5) return;
- 
+
             if (CartDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 int quantity = (int)CartDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-                DataTable dataTable = this._cartController.LineItems();
-                dataTable.Rows[e.RowIndex]["QuantityRentedByMember"] = quantity;
+                _cartController.LineItems().ElementAt(e.RowIndex).QuantityRentedByMember = quantity;
             }
         }
     }

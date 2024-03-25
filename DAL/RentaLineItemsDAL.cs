@@ -1,6 +1,7 @@
 ﻿using RentMe.Model;
 using System.Data.SqlClient;
 using System.Data;
+using System.ComponentModel;
 
 namespace RentMe.DAL
 {
@@ -9,14 +10,14 @@ namespace RentMe.DAL
     /// </summary>
     internal class RentaLineItemsDAL
     {
-        private RentalLineItem _lineItem;
+        // private RentalLineItem _lineItem;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RentaLineItemsDAL"/> class.
         /// </summary>
         public RentaLineItemsDAL()
         {
-            _lineItem = new RentalLineItem();
+            // _lineItem = new RentalLineItem();
         }
 
         /// <summary>
@@ -24,8 +25,10 @@ namespace RentMe.DAL
         /// </summary>
         /// <param name="memberID">The member identifier.</param>
         /// <returns></returns>
-        public RentalLineItem GetRentalsLineItemsByMemberID(int memberID)
+        public BindingList<RentalLineItem> GetRentalsLineItemsByMemberID(int memberID)
         {
+            BindingList<RentalLineItem> lineItems = new BindingList<RentalLineItem>();
+
             string selectStatement = @"
                 SELECT 
                     t.RentalID,
@@ -52,7 +55,6 @@ namespace RentMe.DAL
 
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-
                     selectCommand.Parameters.Add("@MemberID", SqlDbType.Int);
                     selectCommand.Parameters["@MemberID"].Value = memberID;
 
@@ -60,26 +62,28 @@ namespace RentMe.DAL
                     {
                         while (reader.Read())
                         {
-                            DataRow workRow = _lineItem.GetDataTable().NewRow();
-                            workRow["RentalID"] = (int)reader["RentalID"];
-                            workRow["FurnitureID"] = (int)reader["FurnitureID"];
-                            workRow["Name"] = (string)reader["Name"];
-                            workRow["Description"] = (string)reader["Description"];
-                            workRow["QuantityOwnedByStore"] = (int)reader["QuantityOwnedByStore"];
-                            workRow["QuantityRentedByStore"] = (int)reader["QuantityRentedByStore"];
-                            workRow["DailyRentalRate"] = Convert.ToDouble(reader["DailyRentalRate"]);
-                            workRow["Category"] = (string)reader["Category"];
-                            workRow["Style"] = (string)reader["Style"];
-                            workRow["QuantityRentedByMember"] = (int)reader["QuantityRentedByMember"];
-                            workRow["QuantityReturnedByMember"] = (int)reader["QuantityReturnedByMember"];
+                            RentalLineItem lineItem = new RentalLineItem
+                            {
+                                RentalID = (int)reader["RentalID"],
+                                FurnitureID = (int)reader["FurnitureID"],
+                                Name = (string)reader["Name"],
+                                Description = (string)reader["Description"],
+                                QuantityOwnedByStore = (int)reader["QuantityOwnedByStore"],
+                                QuantityRentedByStore = (int)reader["QuantityRentedByStore"],
+                                DailyRentalRate = Convert.ToDouble(reader["DailyRentalRate"]),
+                                Category = (string)reader["Category"],
+                                Style = (string)reader["Style"],
+                                QuantityRentedByMember = (int)reader["QuantityRentedByMember"],
+                                QuantityReturnedByMember = (int)reader["QuantityReturnedByMember"]
+                            };
 
-                            _lineItem.GetDataTable().Rows.Add(workRow);
+                            lineItems.Add(lineItem);
                         }
                     }
                 }
             }
 
-            return _lineItem;
+            return lineItems;
         }
     }
 }

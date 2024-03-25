@@ -1,45 +1,95 @@
-﻿using System.Data;
-
-namespace RentMe.Model;
+﻿namespace RentMe.Model;
 
 /// <summary>
 ///  RentalLineItem model class
 /// </summary>
 public class RentalLineItem
 {
-    private DataTable? _dataTable;
+    /// <summary>
+    /// Gets or sets the rental identifier.
+    /// </summary>
+    /// <value>
+    /// The rental identifier.
+    /// </value>
+    public int RentalID { get; set; }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="RentalLineItem"/> class.
+    /// Gets or sets the furniture identifier.
     /// </summary>
-    public RentalLineItem()
-    {
-        _dataTable = new DataTable();
-
-        // Transaction
-        _dataTable.Columns.Add("RentalID");
-
-        // Furniture
-        _dataTable.Columns.Add("FurnitureID");
-        _dataTable.Columns.Add("Name");
-        _dataTable.Columns.Add("Description");
-        _dataTable.Columns.Add("QuantityOwnedByStore", typeof(int));
-        _dataTable.Columns.Add("QuantityRentedByStore", typeof(int));
-        _dataTable.Columns.Add("DailyRentalRate", typeof(double));
-        _dataTable.Columns.Add("Category");
-        _dataTable.Columns.Add("Style");
-
-        // Line Item
-        _dataTable.Columns.Add("QuantityRentedByMember", typeof(int));
-        _dataTable.Columns.Add("QuantityReturnedByMember", typeof(int));
-    }
+    /// <value>
+    /// The furniture identifier.
+    /// </value>
+    public int FurnitureID { get; set; }
 
     /// <summary>
-    /// Gets the data table.
+    /// Gets or sets the name.
     /// </summary>
-    /// <returns></returns>
-    public DataTable GetDataTable()
-    {
-        return _dataTable!;
-    }
+    /// <value>
+    /// The name.
+    /// </value>
+    public string? Name { get; set; }
+
+    /// <summary>
+    /// Gets or sets the description.
+    /// </summary>
+    /// <value>
+    /// The description.
+    /// </value>
+    public string? Description { get; set; }
+
+    /// <summary>
+    /// Gets or sets the quantity owned by store.
+    /// </summary>
+    /// <value>
+    /// The quantity owned by store.
+    /// </value>
+    public int QuantityOwnedByStore { get; set; }
+
+    /// <summary>
+    /// Gets or sets the quantity rented by store.
+    /// </summary>
+    /// <value>
+    /// The quantity rented by store.
+    /// </value>
+    public int QuantityRentedByStore {  get; set; }
+
+    /// <summary>
+    /// Gets or sets the daily rental rate.
+    /// </summary>
+    /// <value>
+    /// The daily rental rate.
+    /// </value>
+    public double DailyRentalRate { get; set; }
+
+    /// <summary>
+    /// Gets or sets the category.
+    /// </summary>
+    /// <value>
+    /// The category.
+    /// </value>
+    public string? Category {  get; set; }
+
+    /// <summary>
+    /// Gets or sets the style.
+    /// </summary>
+    /// <value>
+    /// The style.
+    /// </value>
+    public string? Style {  get; set; }
+
+    /// <summary>
+    /// Gets or sets the quantity rented by member.
+    /// </summary>
+    /// <value>
+    /// The quantity rented by member.
+    /// </value>
+/    public int QuantityRentedByMember {  get; set; }
+
+    /// <summary>
+    /// Gets or sets the quantity returned by member.
+    /// </summary>
+    /// <value>
+    /// The quantity returned by member.
+    /// </value>
+    public int QuantityReturnedByMember {  get; set; }
 }

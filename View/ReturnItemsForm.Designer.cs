@@ -36,6 +36,8 @@
             // 
             // ReturnItemsDataGridView
             // 
+            ReturnItemsDataGridView.AllowUserToAddRows = false;
+            ReturnItemsDataGridView.AllowUserToDeleteRows = false;
             ReturnItemsDataGridView.BackgroundColor = SystemColors.ControlLightLight;
             ReturnItemsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             ReturnItemsTableLayoutPanel.SetColumnSpan(ReturnItemsDataGridView, 2);

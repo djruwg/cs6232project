@@ -32,13 +32,16 @@ namespace RentMe.Controller
         }
 
         /// <summary>
-        /// Gets the rental line items by member identifier.
+        /// Gets the outstanding rental line items by member ID.
         /// </summary>
-        /// <param name="memberID">The member identifier.</param>
+        /// <param name="memberID">The member ID.</param>
         /// <returns></returns>
-        public RentalLineItem GetRentalLineItemsByMemberID(int memberID)
+        public BindingList<RentalLineItem> GetOutstandingRentalLineItemsByMemberID(int memberID)
         {
-            return this._rentalLineItemsDAL.GetRentalsLineItemsByMemberID((int)memberID);
+            BindingList<RentalLineItem> lineItems = this._rentalLineItemsDAL.GetRentalsLineItemsByMemberID((int)memberID);
+            return new BindingList<RentalLineItem>(
+                lineItems.Where(lineItem => lineItem.QuantityReturnedByMember < lineItem.QuantityRentedByMember)
+                .ToList());
         }
     }
 }

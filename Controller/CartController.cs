@@ -1,4 +1,5 @@
 ﻿using RentMe.Model;
+using System.ComponentModel;
 using System.Data;
 
 namespace RentMe.Controller
@@ -44,16 +45,16 @@ namespace RentMe.Controller
         }
 
         /// <summary>
-        /// Returns the line items.
+        /// Returns the transaction line items for this cart.
         /// </summary>
         /// <returns></returns>
-        public DataTable LineItems()
+        public BindingList<RentalLineItem> LineItems()
         {
-            return _rentalTransaction!.RentalLineItems.GetDataTable();
+            return _rentalTransaction!.RentalLineItems;
         }
 
         /// <summary>
-        /// Removes from cart.
+        /// Removes transaciton line items from cart.
         /// </summary>
         /// <param name="furnitureID">The furniture identifier.</param>
         public void RemoveFromCart(int furnitureID)
