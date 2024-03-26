@@ -1,6 +1,7 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 
 namespace RentMe.UserControls
@@ -140,6 +141,16 @@ namespace RentMe.UserControls
             {
                 int quantity = (int)CartDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
                 _cartController.LineItems().ElementAt(e.RowIndex).QuantityRentedByMember = quantity;
+            }
+        }
+
+        private void CartDataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex != 5) return;
+
+            if (!int.TryParse(e.FormattedValue?.ToString(), out int newInteger) || newInteger < 0)
+            {
+                e.Cancel = true;
             }
         }
     }

@@ -203,6 +203,7 @@
             CartDataGridView.Size = new Size(778, 322);
             CartDataGridView.TabIndex = 11;
             CartDataGridView.CellDoubleClick += CartDataGridView_CellDoubleClick;
+            CartDataGridView.CellValidating += CartDataGridView_CellValidating;
             CartDataGridView.CellValueChanged += CartDataGridView_CellValueChanged;
             // 
             // CartMemberIDLabel
