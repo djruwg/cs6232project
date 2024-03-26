@@ -26,7 +26,7 @@ public class RentalTransaction
     /// <value>
     /// The rental identifier.
     /// </value>
-/    public int RentalID { get; set; }
+    public int RentalID { get; set; }
 
     /// <summary>
     /// Gets or sets the date rented.

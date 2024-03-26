@@ -83,7 +83,7 @@ public class RentalLineItem
     /// <value>
     /// The quantity rented by member.
     /// </value>
-/    public int QuantityRentedByMember {  get; set; }
+    public int QuantityRentedByMember {  get; set; }
 
     /// <summary>
     /// Gets or sets the quantity returned by member.
