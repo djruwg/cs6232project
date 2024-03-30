@@ -1,8 +1,7 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
+using RentMe.View;
 using System.Diagnostics;
-using System.Windows.Forms;
-
 
 namespace RentMe.UserControls
 {
@@ -102,6 +101,9 @@ namespace RentMe.UserControls
                 CartMessageLabel.Text = "You must attach a member to the transaction.";
                 return;
             }
+
+            RentalDetailsForm rentalDetails = new RentalDetailsForm();
+            rentalDetails.ShowDialog();
         }
 
         private void CartRemoveButton_Click(object sender, EventArgs e)
@@ -133,6 +135,11 @@ namespace RentMe.UserControls
             Debug.WriteLine("Call Furniture Details Form: " + e.RowIndex);
         }
 
+        /// <summary>
+        /// Updates our data source when the data grid view cell is updated.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CartDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || e.ColumnIndex != 5) return;
@@ -144,6 +151,11 @@ namespace RentMe.UserControls
             }
         }
 
+        /// <summary>
+        /// Ensures data grid view cells have valid data format.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CartDataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             if (e.RowIndex < 0 || e.ColumnIndex != 5) return;
