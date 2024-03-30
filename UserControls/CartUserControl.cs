@@ -148,8 +148,12 @@ namespace RentMe.UserControls
         {
             if (e.RowIndex < 0 || e.ColumnIndex != 5) return;
 
+            CartMessageLabel.Text = string.Empty;
+
             if (!int.TryParse(e.FormattedValue?.ToString(), out int newInteger) || newInteger < 0)
             {
+                CartMessageLabel.Text = "Cell must be a positive integer";
+
                 e.Cancel = true;
             }
         }
