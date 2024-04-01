@@ -36,5 +36,16 @@ namespace RentMe.Controller
         {
             return this._furnitureDAL.GetAllFurniture();
         }
+
+        /// <summary>
+        /// Gets the searched furniture by search parameter.
+        /// </summary>
+        /// <param name="searchString">The search string.</param>
+        /// <returns>A list of Furniture model objects found by search string</returns>
+        /// <exception cref="System.ArgumentNullException"></exception>
+        public List<Furniture> GetSearchedFurniture(String searchString)
+        {
+            return this._furnitureDAL.GetSearchedFurniture(searchString);
+        }
     }
 }

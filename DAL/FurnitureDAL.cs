@@ -111,5 +111,57 @@ namespace RentMe.DAL
 
             return furnitureList;
         }
+
+        /// <summary>
+        /// Gets the searched furniture by search parameter.
+        /// </summary>
+        /// <param name="searchString">The search string.</param>
+        /// <returns>A list of Furniture model objects found by search string</returns>
+        /// <exception cref="System.ArgumentNullException"></exception>
+        public List<Furniture> GetSearchedFurniture(String searchString)
+        {
+            ArgumentNullException.ThrowIfNull(searchString);
+
+            List<Furniture> furnitureList = new List<Furniture>();
+
+            string selectStatement = @"
+                DECLARE @SearchTerm NVARCHAR(100) = @searchString;
+
+                SELECT * FROM Furniture
+                WHERE 
+                    Category LIKE '%' + @SearchTerm + '%' 
+                    OR Style LIKE '%' + @SearchTerm + '%'
+                    OR FurnitureID = TRY_CAST(@SearchTerm AS INT);
+                ";
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add("@searchString", SqlDbType.VarChar);
+                    selectCommand.Parameters["@searchString"].Value = searchString;
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Furniture furniture = new Furniture();
+                            furniture.FurnitureID = (int)reader["FurnitureID"];
+                            furniture.Name = reader["Name"].ToString();
+                            furniture.Description = reader["Description"].ToString();
+                            furniture.QuantityOwned = (int)reader["QuantityOwned"];
+                            furniture.QuantityRented = (int)reader["QuantityRented"];
+                            furniture.DailyRentalRate = (decimal)reader["DailyRentalRate"];
+                            furniture.Category = reader["Category"].ToString();
+                            furniture.Style = reader["Style"].ToString();
+                            furnitureList.Add(furniture);
+                        }
+                    }
+                }
+            }
+            return furnitureList;
+        }
     }
 }

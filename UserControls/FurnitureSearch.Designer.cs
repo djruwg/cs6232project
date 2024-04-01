@@ -146,6 +146,7 @@
             FurnitureSearchSearchButton.TabIndex = 4;
             FurnitureSearchSearchButton.Text = "Search";
             FurnitureSearchSearchButton.UseVisualStyleBackColor = true;
+            FurnitureSearchSearchButton.Click += FurnitureSearchSearchButton_Click;
             // 
             // FurnitureSearch
             // 

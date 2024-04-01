@@ -37,6 +37,17 @@ namespace RentMe.UserControls
             }
         }
 
+        private void FurnitureSearchSearchButton_Click(object sender, EventArgs e)
+        {
+            this.SearchFurniture();
+        }
+
+        private void SearchFurniture()
+        {
+            string searchString = this.FurnitureSearchSearchTextBox.Text;
+            this.PopulateSearchListView(this._furnitureController.GetSearchedFurniture(searchString));
+        }
+
         private void PopulateSearchListView(List<Furniture> furnitureList)
         {
             this.FurnitureSearchSearchMessageLabel.Text = string.Empty;
