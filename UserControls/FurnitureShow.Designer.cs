@@ -62,6 +62,7 @@
             FurnitureShowQuantityTableLayoutPanel = new TableLayoutPanel();
             FurnitureShowQuantityLabel = new Label();
             FurnitureShowQuantityNumericUpDown = new NumericUpDown();
+            FurnitureShowErrorMessageLabel = new Label();
             FurnitureShowIDTableLayoutPanel.SuspendLayout();
             FurnitureShowNameTableLayoutPanel.SuspendLayout();
             FurnitureShowDescriptionTableLayoutPanel.SuspendLayout();
@@ -202,6 +203,7 @@
             FurnitureShowAddToCartButton.TabIndex = 1;
             FurnitureShowAddToCartButton.Text = "Add To Cart";
             FurnitureShowAddToCartButton.UseVisualStyleBackColor = true;
+            FurnitureShowAddToCartButton.Click += FurnitureShowAddToCartButton_Click;
             // 
             // FurnitureShowButtonsFlowLayoutPanel
             // 
@@ -229,6 +231,7 @@
             FurnitureShowTableLayoutPanel.Controls.Add(FurnitureShowInStockTableLayoutPanel, 0, 11);
             FurnitureShowTableLayoutPanel.Controls.Add(FurnitureShowDailyRateTableLayoutPanel, 1, 11);
             FurnitureShowTableLayoutPanel.Controls.Add(FurnitureShowQuantityTableLayoutPanel, 0, 13);
+            FurnitureShowTableLayoutPanel.Controls.Add(FurnitureShowErrorMessageLabel, 1, 15);
             FurnitureShowTableLayoutPanel.Dock = DockStyle.Fill;
             FurnitureShowTableLayoutPanel.Location = new Point(0, 0);
             FurnitureShowTableLayoutPanel.Name = "FurnitureShowTableLayoutPanel";
@@ -502,6 +505,18 @@
             FurnitureShowQuantityNumericUpDown.Name = "FurnitureShowQuantityNumericUpDown";
             FurnitureShowQuantityNumericUpDown.Size = new Size(55, 23);
             FurnitureShowQuantityNumericUpDown.TabIndex = 1;
+            FurnitureShowQuantityNumericUpDown.ValueChanged += ClearMessageLabel_ChangeValue;
+            // 
+            // FurnitureShowErrorMessageLabel
+            // 
+            FurnitureShowErrorMessageLabel.Anchor = AnchorStyles.Left;
+            FurnitureShowErrorMessageLabel.AutoSize = true;
+            FurnitureShowErrorMessageLabel.ForeColor = Color.Red;
+            FurnitureShowErrorMessageLabel.Location = new Point(412, 473);
+            FurnitureShowErrorMessageLabel.Name = "FurnitureShowErrorMessageLabel";
+            FurnitureShowErrorMessageLabel.Size = new Size(84, 15);
+            FurnitureShowErrorMessageLabel.TabIndex = 16;
+            FurnitureShowErrorMessageLabel.Text = "Message Label";
             // 
             // FurnitureShow
             // 
@@ -518,6 +533,7 @@
             FurnitureShowDescriptionTableLayoutPanel.PerformLayout();
             FurnitureShowButtonsFlowLayoutPanel.ResumeLayout(false);
             FurnitureShowTableLayoutPanel.ResumeLayout(false);
+            FurnitureShowTableLayoutPanel.PerformLayout();
             FurnitureShowCategoryTableLayoutPanel.ResumeLayout(false);
             FurnitureShowCategoryTableLayoutPanel.PerformLayout();
             FurnitureShowStyleTableLayoutPanel.ResumeLayout(false);
@@ -573,5 +589,6 @@
         private Label FurnitureShowQuantityLabel;
         private TextBox FurnitureShowQuantityTextBox;
         private NumericUpDown FurnitureShowQuantityNumericUpDown;
+        private Label FurnitureShowErrorMessageLabel;
     }
 }
