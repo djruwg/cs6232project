@@ -79,6 +79,7 @@
             FurnitureSearchListView.TabIndex = 5;
             FurnitureSearchListView.UseCompatibleStateImageBehavior = false;
             FurnitureSearchListView.View = System.Windows.Forms.View.Details;
+            FurnitureSearchListView.ItemActivate += FurnitureSearchListView_ItemActivate;
             // 
             // FurnitureSearchIDColumnHeader
             // 

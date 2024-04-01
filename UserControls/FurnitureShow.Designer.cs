@@ -28,28 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.FurnitureShowCancelButton = new Button();
+            FurnitureShowCancelButton = new Button();
             FurnitureShowIDTableLayoutPanel = new TableLayoutPanel();
             FurnitureShowIDTextBox = new TextBox();
             FurnitureShowIDLabel = new Label();
             FurnitureShowNameTableLayoutPanel = new TableLayoutPanel();
-            MemberShowNameLabel = new Label();
+            FurnitureShowNameLabel = new Label();
             FurnitureShowNameTextBox = new TextBox();
             FurnitureShowDescriptionTableLayoutPanel = new TableLayoutPanel();
             FurnitureShowDescriptionLabel = new Label();
-            MemberShowLastNameTextBox = new TextBox();
-            this.FurnitureShowAddToCartButton = new Button();
+            FurnitureShowDescriptionTextBox = new TextBox();
+            FurnitureShowAddToCartButton = new Button();
             FurnitureShowButtonsFlowLayoutPanel = new FlowLayoutPanel();
             FurnitureShowTableLayoutPanel = new TableLayoutPanel();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            label1 = new Label();
-            textBox1 = new TextBox();
             FurnitureShowCategoryTableLayoutPanel = new TableLayoutPanel();
             FurnitureShowCategoryLabel = new Label();
             FurnitureShowCategoryTextBox = new TextBox();
-            tableLayoutPanel3 = new TableLayoutPanel();
-            label3 = new Label();
-            textBox3 = new TextBox();
             FurnitureShowStyleTableLayoutPanel = new TableLayoutPanel();
             FurnitureShowStyleLabel = new Label();
             FurnitureShowStyleTextBox = new TextBox();
@@ -61,13 +55,10 @@
             FurnitureShowRentedTextBox = new TextBox();
             FurnitureShowInStockTableLayoutPanel = new TableLayoutPanel();
             FurnitureShowInStockLabel = new Label();
-            FurnitureShowInStockLabelTextBox = new TextBox();
+            FurnitureShowInStockTextBox = new TextBox();
             FurnitureShowDailyRateTableLayoutPanel = new TableLayoutPanel();
             FurnitureShowDailyRateLabel = new Label();
             FurnitureShowDailyRateTextBox = new TextBox();
-            tableLayoutPanel2 = new TableLayoutPanel();
-            label2 = new Label();
-            textBox2 = new TextBox();
             FurnitureShowQuantityTableLayoutPanel = new TableLayoutPanel();
             FurnitureShowQuantityLabel = new Label();
             FurnitureShowQuantityNumericUpDown = new NumericUpDown();
@@ -76,27 +67,25 @@
             FurnitureShowDescriptionTableLayoutPanel.SuspendLayout();
             FurnitureShowButtonsFlowLayoutPanel.SuspendLayout();
             FurnitureShowTableLayoutPanel.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
             FurnitureShowCategoryTableLayoutPanel.SuspendLayout();
-            tableLayoutPanel3.SuspendLayout();
             FurnitureShowStyleTableLayoutPanel.SuspendLayout();
             FurnitureShowQuantityOwnedTableLayoutPanel.SuspendLayout();
             FurnitureShowRentedTableLayoutPanel.SuspendLayout();
             FurnitureShowInStockTableLayoutPanel.SuspendLayout();
             FurnitureShowDailyRateTableLayoutPanel.SuspendLayout();
-            tableLayoutPanel2.SuspendLayout();
             FurnitureShowQuantityTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)FurnitureShowQuantityNumericUpDown).BeginInit();
             SuspendLayout();
             // 
             // FurnitureShowCancelButton
             // 
-            this.FurnitureShowCancelButton.Location = new Point(109, 3);
-            this.FurnitureShowCancelButton.Name = "FurnitureShowCancelButton";
-            this.FurnitureShowCancelButton.Size = new Size(100, 23);
-            this.FurnitureShowCancelButton.TabIndex = 2;
-            this.FurnitureShowCancelButton.Text = "Close";
-            this.FurnitureShowCancelButton.UseVisualStyleBackColor = true;
+            FurnitureShowCancelButton.Location = new Point(109, 3);
+            FurnitureShowCancelButton.Name = "FurnitureShowCancelButton";
+            FurnitureShowCancelButton.Size = new Size(100, 23);
+            FurnitureShowCancelButton.TabIndex = 2;
+            FurnitureShowCancelButton.Text = "Close";
+            FurnitureShowCancelButton.UseVisualStyleBackColor = true;
+            FurnitureShowCancelButton.Click += FurnitureShowCancelButton_Click;
             // 
             // FurnitureShowIDTableLayoutPanel
             // 
@@ -138,7 +127,7 @@
             FurnitureShowNameTableLayoutPanel.ColumnCount = 2;
             FurnitureShowNameTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
             FurnitureShowNameTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            FurnitureShowNameTableLayoutPanel.Controls.Add(MemberShowNameLabel, 0, 0);
+            FurnitureShowNameTableLayoutPanel.Controls.Add(FurnitureShowNameLabel, 0, 0);
             FurnitureShowNameTableLayoutPanel.Controls.Add(FurnitureShowNameTextBox, 1, 0);
             FurnitureShowNameTableLayoutPanel.Dock = DockStyle.Fill;
             FurnitureShowNameTableLayoutPanel.Location = new Point(3, 55);
@@ -149,15 +138,15 @@
             FurnitureShowNameTableLayoutPanel.Size = new Size(403, 26);
             FurnitureShowNameTableLayoutPanel.TabIndex = 1;
             // 
-            // MemberShowNameLabel
+            // FurnitureShowNameLabel
             // 
-            MemberShowNameLabel.Anchor = AnchorStyles.Left;
-            MemberShowNameLabel.AutoSize = true;
-            MemberShowNameLabel.Location = new Point(3, 5);
-            MemberShowNameLabel.Name = "MemberShowNameLabel";
-            MemberShowNameLabel.Size = new Size(39, 15);
-            MemberShowNameLabel.TabIndex = 0;
-            MemberShowNameLabel.Text = "Name";
+            FurnitureShowNameLabel.Anchor = AnchorStyles.Left;
+            FurnitureShowNameLabel.AutoSize = true;
+            FurnitureShowNameLabel.Location = new Point(3, 5);
+            FurnitureShowNameLabel.Name = "FurnitureShowNameLabel";
+            FurnitureShowNameLabel.Size = new Size(39, 15);
+            FurnitureShowNameLabel.TabIndex = 0;
+            FurnitureShowNameLabel.Text = "Name";
             // 
             // FurnitureShowNameTextBox
             // 
@@ -175,7 +164,7 @@
             FurnitureShowDescriptionTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
             FurnitureShowDescriptionTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             FurnitureShowDescriptionTableLayoutPanel.Controls.Add(FurnitureShowDescriptionLabel, 0, 0);
-            FurnitureShowDescriptionTableLayoutPanel.Controls.Add(MemberShowLastNameTextBox, 1, 0);
+            FurnitureShowDescriptionTableLayoutPanel.Controls.Add(FurnitureShowDescriptionTextBox, 1, 0);
             FurnitureShowDescriptionTableLayoutPanel.Dock = DockStyle.Fill;
             FurnitureShowDescriptionTableLayoutPanel.Location = new Point(3, 97);
             FurnitureShowDescriptionTableLayoutPanel.Name = "FurnitureShowDescriptionTableLayoutPanel";
@@ -194,30 +183,30 @@
             FurnitureShowDescriptionLabel.TabIndex = 0;
             FurnitureShowDescriptionLabel.Text = "Description";
             // 
-            // MemberShowLastNameTextBox
+            // FurnitureShowDescriptionTextBox
             // 
-            MemberShowLastNameTextBox.Dock = DockStyle.Fill;
-            MemberShowLastNameTextBox.Enabled = false;
-            MemberShowLastNameTextBox.Location = new Point(83, 3);
-            MemberShowLastNameTextBox.Multiline = true;
-            MemberShowLastNameTextBox.Name = "MemberShowLastNameTextBox";
-            MemberShowLastNameTextBox.ReadOnly = true;
-            MemberShowLastNameTextBox.Size = new Size(317, 181);
-            MemberShowLastNameTextBox.TabIndex = 1;
+            FurnitureShowDescriptionTextBox.Dock = DockStyle.Fill;
+            FurnitureShowDescriptionTextBox.Enabled = false;
+            FurnitureShowDescriptionTextBox.Location = new Point(83, 3);
+            FurnitureShowDescriptionTextBox.Multiline = true;
+            FurnitureShowDescriptionTextBox.Name = "FurnitureShowDescriptionTextBox";
+            FurnitureShowDescriptionTextBox.ReadOnly = true;
+            FurnitureShowDescriptionTextBox.Size = new Size(317, 181);
+            FurnitureShowDescriptionTextBox.TabIndex = 1;
             // 
             // FurnitureShowAddToCartButton
             // 
-            this.FurnitureShowAddToCartButton.Location = new Point(3, 3);
-            this.FurnitureShowAddToCartButton.Name = "FurnitureShowAddToCartButton";
-            this.FurnitureShowAddToCartButton.Size = new Size(100, 23);
-            this.FurnitureShowAddToCartButton.TabIndex = 1;
-            this.FurnitureShowAddToCartButton.Text = "Add To Cart";
-            this.FurnitureShowAddToCartButton.UseVisualStyleBackColor = true;
+            FurnitureShowAddToCartButton.Location = new Point(3, 3);
+            FurnitureShowAddToCartButton.Name = "FurnitureShowAddToCartButton";
+            FurnitureShowAddToCartButton.Size = new Size(100, 23);
+            FurnitureShowAddToCartButton.TabIndex = 1;
+            FurnitureShowAddToCartButton.Text = "Add To Cart";
+            FurnitureShowAddToCartButton.UseVisualStyleBackColor = true;
             // 
             // FurnitureShowButtonsFlowLayoutPanel
             // 
-            FurnitureShowButtonsFlowLayoutPanel.Controls.Add(this.FurnitureShowAddToCartButton);
-            FurnitureShowButtonsFlowLayoutPanel.Controls.Add(this.FurnitureShowCancelButton);
+            FurnitureShowButtonsFlowLayoutPanel.Controls.Add(FurnitureShowAddToCartButton);
+            FurnitureShowButtonsFlowLayoutPanel.Controls.Add(FurnitureShowCancelButton);
             FurnitureShowButtonsFlowLayoutPanel.Dock = DockStyle.Fill;
             FurnitureShowButtonsFlowLayoutPanel.Location = new Point(3, 468);
             FurnitureShowButtonsFlowLayoutPanel.Name = "FurnitureShowButtonsFlowLayoutPanel";
@@ -264,39 +253,6 @@
             FurnitureShowTableLayoutPanel.Size = new Size(819, 507);
             FurnitureShowTableLayoutPanel.TabIndex = 3;
             // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Controls.Add(label1, 0, 0);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.Size = new Size(200, 100);
-            tableLayoutPanel1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.Left;
-            label1.AutoSize = true;
-            label1.Location = new Point(3, 42);
-            label1.Name = "label1";
-            label1.Size = new Size(39, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Name";
-            // 
-            // textBox1
-            // 
-            textBox1.Dock = DockStyle.Fill;
-            textBox1.Enabled = false;
-            textBox1.Location = new Point(83, 3);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(114, 23);
-            textBox1.TabIndex = 1;
-            // 
             // FurnitureShowCategoryTableLayoutPanel
             // 
             FurnitureShowCategoryTableLayoutPanel.ColumnCount = 2;
@@ -332,39 +288,6 @@
             FurnitureShowCategoryTextBox.ReadOnly = true;
             FurnitureShowCategoryTextBox.Size = new Size(317, 23);
             FurnitureShowCategoryTextBox.TabIndex = 1;
-            // 
-            // tableLayoutPanel3
-            // 
-            tableLayoutPanel3.ColumnCount = 2;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.Controls.Add(label3, 0, 0);
-            tableLayoutPanel3.Location = new Point(0, 0);
-            tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 1;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.Size = new Size(200, 100);
-            tableLayoutPanel3.TabIndex = 0;
-            // 
-            // label3
-            // 
-            label3.Anchor = AnchorStyles.Left;
-            label3.AutoSize = true;
-            label3.Location = new Point(3, 42);
-            label3.Name = "label3";
-            label3.Size = new Size(39, 15);
-            label3.TabIndex = 0;
-            label3.Text = "Name";
-            // 
-            // textBox3
-            // 
-            textBox3.Dock = DockStyle.Fill;
-            textBox3.Enabled = false;
-            textBox3.Location = new Point(83, 3);
-            textBox3.Name = "textBox3";
-            textBox3.ReadOnly = true;
-            textBox3.Size = new Size(114, 23);
-            textBox3.TabIndex = 1;
             // 
             // FurnitureShowStyleTableLayoutPanel
             // 
@@ -480,7 +403,7 @@
             FurnitureShowInStockTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
             FurnitureShowInStockTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             FurnitureShowInStockTableLayoutPanel.Controls.Add(FurnitureShowInStockLabel, 0, 0);
-            FurnitureShowInStockTableLayoutPanel.Controls.Add(FurnitureShowInStockLabelTextBox, 1, 0);
+            FurnitureShowInStockTableLayoutPanel.Controls.Add(FurnitureShowInStockTextBox, 1, 0);
             FurnitureShowInStockTableLayoutPanel.Dock = DockStyle.Fill;
             FurnitureShowInStockTableLayoutPanel.Location = new Point(3, 384);
             FurnitureShowInStockTableLayoutPanel.Name = "FurnitureShowInStockTableLayoutPanel";
@@ -500,15 +423,15 @@
             FurnitureShowInStockLabel.TabIndex = 0;
             FurnitureShowInStockLabel.Text = "In Stock";
             // 
-            // FurnitureShowInStockLabelTextBox
+            // FurnitureShowInStockTextBox
             // 
-            FurnitureShowInStockLabelTextBox.Dock = DockStyle.Fill;
-            FurnitureShowInStockLabelTextBox.Enabled = false;
-            FurnitureShowInStockLabelTextBox.Location = new Point(83, 3);
-            FurnitureShowInStockLabelTextBox.Name = "FurnitureShowInStockLabelTextBox";
-            FurnitureShowInStockLabelTextBox.ReadOnly = true;
-            FurnitureShowInStockLabelTextBox.Size = new Size(317, 23);
-            FurnitureShowInStockLabelTextBox.TabIndex = 1;
+            FurnitureShowInStockTextBox.Dock = DockStyle.Fill;
+            FurnitureShowInStockTextBox.Enabled = false;
+            FurnitureShowInStockTextBox.Location = new Point(83, 3);
+            FurnitureShowInStockTextBox.Name = "FurnitureShowInStockTextBox";
+            FurnitureShowInStockTextBox.ReadOnly = true;
+            FurnitureShowInStockTextBox.Size = new Size(317, 23);
+            FurnitureShowInStockTextBox.TabIndex = 1;
             // 
             // FurnitureShowDailyRateTableLayoutPanel
             // 
@@ -545,39 +468,6 @@
             FurnitureShowDailyRateTextBox.ReadOnly = true;
             FurnitureShowDailyRateTextBox.Size = new Size(318, 23);
             FurnitureShowDailyRateTextBox.TabIndex = 1;
-            // 
-            // tableLayoutPanel2
-            // 
-            tableLayoutPanel2.ColumnCount = 2;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Controls.Add(label2, 0, 0);
-            tableLayoutPanel2.Location = new Point(0, 0);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 1;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel2.Size = new Size(200, 100);
-            tableLayoutPanel2.TabIndex = 0;
-            // 
-            // label2
-            // 
-            label2.Anchor = AnchorStyles.Left;
-            label2.AutoSize = true;
-            label2.Location = new Point(3, 42);
-            label2.Name = "label2";
-            label2.Size = new Size(59, 15);
-            label2.TabIndex = 0;
-            label2.Text = "Daily Rate";
-            // 
-            // textBox2
-            // 
-            textBox2.Dock = DockStyle.Fill;
-            textBox2.Enabled = false;
-            textBox2.Location = new Point(83, 3);
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.Size = new Size(114, 23);
-            textBox2.TabIndex = 1;
             // 
             // FurnitureShowQuantityTableLayoutPanel
             // 
@@ -628,12 +518,8 @@
             FurnitureShowDescriptionTableLayoutPanel.PerformLayout();
             FurnitureShowButtonsFlowLayoutPanel.ResumeLayout(false);
             FurnitureShowTableLayoutPanel.ResumeLayout(false);
-            tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
             FurnitureShowCategoryTableLayoutPanel.ResumeLayout(false);
             FurnitureShowCategoryTableLayoutPanel.PerformLayout();
-            tableLayoutPanel3.ResumeLayout(false);
-            tableLayoutPanel3.PerformLayout();
             FurnitureShowStyleTableLayoutPanel.ResumeLayout(false);
             FurnitureShowStyleTableLayoutPanel.PerformLayout();
             FurnitureShowQuantityOwnedTableLayoutPanel.ResumeLayout(false);
@@ -644,8 +530,6 @@
             FurnitureShowInStockTableLayoutPanel.PerformLayout();
             FurnitureShowDailyRateTableLayoutPanel.ResumeLayout(false);
             FurnitureShowDailyRateTableLayoutPanel.PerformLayout();
-            tableLayoutPanel2.ResumeLayout(false);
-            tableLayoutPanel2.PerformLayout();
             FurnitureShowQuantityTableLayoutPanel.ResumeLayout(false);
             FurnitureShowQuantityTableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)FurnitureShowQuantityNumericUpDown).EndInit();
@@ -654,18 +538,17 @@
 
         #endregion
 
-        private Button MemberShowCancelButton;
+        private Button FurnitureShowCancelButton;
         private TableLayoutPanel FurnitureShowIDTableLayoutPanel;
         private TextBox FurnitureShowIDTextBox;
         private Label FurnitureShowIDLabel;
-        private Button MemberShowReturnItemsButton;
         private TableLayoutPanel FurnitureShowNameTableLayoutPanel;
-        private Label MemberShowNameLabel;
+        private Label FurnitureShowNameLabel;
         private TextBox FurnitureShowNameTextBox;
         private TableLayoutPanel FurnitureShowDescriptionTableLayoutPanel;
         private Label FurnitureShowDescriptionLabel;
-        private TextBox MemberShowLastNameTextBox;
-        private Button MemberShowAttachCartButton;
+        private TextBox FurnitureShowDescriptionTextBox;
+        private Button FurnitureShowAddToCartButton;
         private FlowLayoutPanel FurnitureShowButtonsFlowLayoutPanel;
         private TableLayoutPanel FurnitureShowTableLayoutPanel;
         private TableLayoutPanel FurnitureShowCategoryTableLayoutPanel;
@@ -682,22 +565,13 @@
         private TextBox FurnitureShowRentedTextBox;
         private TableLayoutPanel FurnitureShowInStockTableLayoutPanel;
         private Label FurnitureShowInStockLabel;
-        private TextBox FurnitureShowInStockLabelTextBox;
+        private TextBox FurnitureShowInStockTextBox;
         private TableLayoutPanel FurnitureShowDailyRateTableLayoutPanel;
         private Label FurnitureShowDailyRateLabel;
         private TextBox FurnitureShowDailyRateTextBox;
-        private TableLayoutPanel tableLayoutPanel1;
-        private Label label1;
-        private TextBox textBox1;
-        private TableLayoutPanel tableLayoutPanel3;
-        private Label label3;
-        private TextBox textBox3;
         private TableLayoutPanel FurnitureShowQuantityTableLayoutPanel;
         private Label FurnitureShowQuantityLabel;
         private TextBox FurnitureShowQuantityTextBox;
-        private TableLayoutPanel tableLayoutPanel2;
-        private Label label2;
-        private TextBox textBox2;
         private NumericUpDown FurnitureShowQuantityNumericUpDown;
     }
 }

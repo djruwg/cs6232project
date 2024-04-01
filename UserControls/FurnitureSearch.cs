@@ -1,5 +1,6 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
+using RentMe.View;
 
 namespace RentMe.UserControls
 {
@@ -7,6 +8,9 @@ namespace RentMe.UserControls
     {
         private FurnitureController _furnitureController;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FurnitureSearch"/> class.
+        /// </summary>
         public FurnitureSearch()
         {
             InitializeComponent();
@@ -17,6 +21,28 @@ namespace RentMe.UserControls
         private void UserControl_Resize(object sender, EventArgs e)
         {
             this.ResizeFurnitureSearchListViewColumns();
+        }
+
+        private void FurnitureSearchListView_ItemActivate(object sender, EventArgs e)
+        {
+            try
+            {
+                ShowFurnitureForm showFurnitureForm =
+                    new ShowFurnitureForm(Int32.Parse(this.FurnitureSearchListView.SelectedItems[0].Text));
+                DialogResult result = showFurnitureForm.ShowDialog();
+                this.PopulateSearchListView(this._furnitureController.GetSearchedFurniture(string.Empty));
+
+                if (result == DialogResult.Continue)
+                {
+                    // This isn't great, since it ties the user control to the main window
+                    MainDashboard mainDashboard = (MainDashboard)this.ParentForm!;
+                    mainDashboard?.SelectCartTab();
+                }
+            }
+            catch
+            {
+                this.FurnitureSearchSearchMessageLabel.Text = "Failed to open selected furniture";
+            }
         }
 
         private void ResizeFurnitureSearchListViewColumns()
