@@ -27,5 +27,14 @@ namespace RentMe.Controller
         {
             return this._furnitureDAL.GetFurnitureByID(id);
         }
+
+        /// <summary>
+        /// Gets all furniture from db.
+        /// </summary>
+        /// <returns>List of furniture model objects</returns>
+        public List<Furniture> GetAllFurniture()
+        {
+            return this._furnitureDAL.GetAllFurniture();
+        }
     }
 }

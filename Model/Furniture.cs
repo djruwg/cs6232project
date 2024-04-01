@@ -17,4 +17,13 @@ public class Furniture
     public decimal DailyRentalRate { get; set; }
     public string Category { get; set; }
     public string Style { get; set; }
+
+    /// <summary>
+    /// Calculates the quantity in stock by taking Owned - Rented
+    /// </summary>
+    /// <returns>Quantity in Stock of furniture</returns>
+    public int CalculateQuantityInStock()
+    {
+        return this.QuantityOwned - this.QuantityRented;
+    }
 }

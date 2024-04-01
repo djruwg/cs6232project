@@ -39,7 +39,7 @@
             RegisterMemberTabPage = new TabPage();
             MainDashboardMemberEditorUserControl = new UserControls.MemberEditor();
             SearchFurnitureTabPage = new TabPage();
-            furnitureSearch1 = new UserControls.FurnitureSearch();
+            FurnitureSearchUserControl = new UserControls.FurnitureSearch();
             CartTabPage = new TabPage();
             CartUserControl = new UserControls.CartUserControl();
             MainDashboardFlowLayoutPanel = new FlowLayoutPanel();
@@ -178,7 +178,7 @@
             // 
             // SearchFurnitureTabPage
             // 
-            SearchFurnitureTabPage.Controls.Add(furnitureSearch1);
+            SearchFurnitureTabPage.Controls.Add(FurnitureSearchUserControl);
             SearchFurnitureTabPage.Location = new Point(4, 24);
             SearchFurnitureTabPage.Name = "SearchFurnitureTabPage";
             SearchFurnitureTabPage.Padding = new Padding(3);
@@ -187,13 +187,13 @@
             SearchFurnitureTabPage.Text = "Search Furniture";
             SearchFurnitureTabPage.UseVisualStyleBackColor = true;
             // 
-            // furnitureSearch1
+            // FurnitureSearchUserControl
             // 
-            furnitureSearch1.Dock = DockStyle.Fill;
-            furnitureSearch1.Location = new Point(3, 3);
-            furnitureSearch1.Name = "furnitureSearch1";
-            furnitureSearch1.Size = new Size(780, 409);
-            furnitureSearch1.TabIndex = 0;
+            FurnitureSearchUserControl.Dock = DockStyle.Fill;
+            FurnitureSearchUserControl.Location = new Point(3, 3);
+            FurnitureSearchUserControl.Name = "FurnitureSearchUserControl";
+            FurnitureSearchUserControl.Size = new Size(780, 409);
+            FurnitureSearchUserControl.TabIndex = 0;
             // 
             // CartTabPage
             // 
@@ -291,6 +291,6 @@
         private PictureBox MainDashboardWelcomePictureBox;
         private Label MainDashboardWelcomeLabel;
         private UserControls.CartUserControl CartUserControl;
-        private UserControls.FurnitureSearch furnitureSearch1;
+        private UserControls.FurnitureSearch FurnitureSearchUserControl;
     }
 }

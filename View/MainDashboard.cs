@@ -88,6 +88,10 @@ namespace RentMe.View
             {
                 MemberSearchUserControl.PopulateSearchWithAllMembers();
             }
+            else if (MainTabControl.SelectedTab == MainTabControl.TabPages["SearchFurnitureTabPage"])
+            {
+                FurnitureSearchUserControl.PopulateSearchWithAllFurniture();
+            }
             else if (MainTabControl.SelectedTab == MainTabControl.TabPages["CartTabPage"])
             {
                 CartUserControl.UpdateCart();
