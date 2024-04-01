@@ -39,6 +39,7 @@
             RegisterMemberTabPage = new TabPage();
             MainDashboardMemberEditorUserControl = new UserControls.MemberEditor();
             SearchFurnitureTabPage = new TabPage();
+            furnitureSearch1 = new UserControls.FurnitureSearch();
             CartTabPage = new TabPage();
             CartUserControl = new UserControls.CartUserControl();
             MainDashboardFlowLayoutPanel = new FlowLayoutPanel();
@@ -51,6 +52,7 @@
             ((System.ComponentModel.ISupportInitialize)MainDashboardWelcomePictureBox).BeginInit();
             SearchMembersTabPage.SuspendLayout();
             RegisterMemberTabPage.SuspendLayout();
+            SearchFurnitureTabPage.SuspendLayout();
             CartTabPage.SuspendLayout();
             MainDashboardFlowLayoutPanel.SuspendLayout();
             SuspendLayout();
@@ -176,13 +178,22 @@
             // 
             // SearchFurnitureTabPage
             // 
+            SearchFurnitureTabPage.Controls.Add(furnitureSearch1);
             SearchFurnitureTabPage.Location = new Point(4, 24);
             SearchFurnitureTabPage.Name = "SearchFurnitureTabPage";
             SearchFurnitureTabPage.Padding = new Padding(3);
-            SearchFurnitureTabPage.Size = new Size(192, 72);
+            SearchFurnitureTabPage.Size = new Size(786, 415);
             SearchFurnitureTabPage.TabIndex = 3;
             SearchFurnitureTabPage.Text = "Search Furniture";
             SearchFurnitureTabPage.UseVisualStyleBackColor = true;
+            // 
+            // furnitureSearch1
+            // 
+            furnitureSearch1.Dock = DockStyle.Fill;
+            furnitureSearch1.Location = new Point(3, 3);
+            furnitureSearch1.Name = "furnitureSearch1";
+            furnitureSearch1.Size = new Size(780, 409);
+            furnitureSearch1.TabIndex = 0;
             // 
             // CartTabPage
             // 
@@ -255,6 +266,7 @@
             ((System.ComponentModel.ISupportInitialize)MainDashboardWelcomePictureBox).EndInit();
             SearchMembersTabPage.ResumeLayout(false);
             RegisterMemberTabPage.ResumeLayout(false);
+            SearchFurnitureTabPage.ResumeLayout(false);
             CartTabPage.ResumeLayout(false);
             MainDashboardFlowLayoutPanel.ResumeLayout(false);
             MainDashboardFlowLayoutPanel.PerformLayout();
@@ -279,5 +291,6 @@
         private PictureBox MainDashboardWelcomePictureBox;
         private Label MainDashboardWelcomeLabel;
         private UserControls.CartUserControl CartUserControl;
+        private UserControls.FurnitureSearch furnitureSearch1;
     }
 }
