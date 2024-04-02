@@ -25,9 +25,9 @@ namespace RentMe.UserControls
             this._cartController = new CartController();
 
             // Load some demo data while waiting on other supporting forms.
-            this._cartController.AddToCart(7, 4);
-            this._cartController.AddToCart(9, 2);
-            this._cartController.AddToCart(5, 3);
+            //this._cartController.AddToCart(7, 4);
+            //this._cartController.AddToCart(9, 2);
+            //this._cartController.AddToCart(5, 3);
 
             this.ConfigureDataGridView();
             this.RefreshTransactionView();
