@@ -15,6 +15,7 @@ namespace RentMe.UserControls
         {
             InitializeComponent();
             this._furnitureController = new FurnitureController();
+            this.FurnitureSearchSearchMessageLabel.ForeColor = Color.Red;
             FurnitureSearchSearchMessageLabel.Text = string.Empty;
         }
 
@@ -38,9 +39,12 @@ namespace RentMe.UserControls
                     MainDashboard mainDashboard = (MainDashboard)this.ParentForm!;
                     mainDashboard?.SelectCartTab();
                 }
+                this.FurnitureSearchSearchMessageLabel.ForeColor = Color.Green;
+                this.FurnitureSearchSearchMessageLabel.Text = showFurnitureForm.GetAddedToCartText();
             }
             catch
             {
+                this.FurnitureSearchSearchMessageLabel.ForeColor = Color.Red;
                 this.FurnitureSearchSearchMessageLabel.Text = "Failed to open selected furniture";
             }
         }
@@ -76,6 +80,7 @@ namespace RentMe.UserControls
 
         private void PopulateSearchListView(List<Furniture> furnitureList)
         {
+            this.FurnitureSearchSearchMessageLabel.ForeColor = Color.Red;
             this.FurnitureSearchSearchMessageLabel.Text = string.Empty;
             this.FurnitureSearchListView.Items.Clear();
             if (furnitureList.Count > 0)

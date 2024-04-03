@@ -19,7 +19,16 @@ namespace RentMe.View
         public ShowFurnitureForm(int furnitureID)
         {
             InitializeComponent();
-            ShowFurnitureFurnitureShowUserControl.SetFurniture(furnitureID);
+            this.ShowFurnitureFurnitureShowUserControl.SetFurniture(furnitureID);
+        }
+
+        /// <summary>
+        /// Gets the added to cart text.
+        /// </summary>
+        /// <returns>String to update the label on parent</returns>
+        public string GetAddedToCartText()
+        {
+            return this.ShowFurnitureFurnitureShowUserControl._addToCartText;
         }
     }
 }

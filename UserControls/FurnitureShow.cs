@@ -8,6 +8,7 @@ namespace RentMe.UserControls
         private FurnitureController _furnitureController;
         private Furniture _furniture;
         private CartController _cartController;
+        public string _addToCartText;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FurnitureShow"/> class.
@@ -17,6 +18,7 @@ namespace RentMe.UserControls
             InitializeComponent();
             this._furnitureController = new FurnitureController();
             this._cartController = new CartController();
+            this._addToCartText = string.Empty;
         }
 
         /// <summary>
@@ -64,15 +66,9 @@ namespace RentMe.UserControls
                 }
                 else if (quantity <= inStock)
                 {
-                    if (this._cartController.AddToCart(this._furniture.FurnitureID, quantity) == false)
-                    {
-                        this.FurnitureShowErrorMessageLabel.Text = "Quantity exceeds inventory";
-                        return;
-                    }
-
-
-                    this.FurnitureShowErrorMessageLabel.ForeColor = Color.Green;
-                    this.FurnitureShowErrorMessageLabel.Text = quantity + " x " + this._furniture.Name + " added to cart";
+                    this._cartController.AddToCart(this._furniture.FurnitureID, quantity);
+                    this._addToCartText = quantity + " x " + this._furniture.Name + " added to cart";
+                    ParentForm.Close();
                 }
                 else
                 {
@@ -92,7 +88,6 @@ namespace RentMe.UserControls
 
         private void ClearMessageLabel()
         {
-            this.FurnitureShowErrorMessageLabel.ForeColor = Color.Red;
             this.FurnitureShowErrorMessageLabel.Text = string.Empty;
         }
     }
