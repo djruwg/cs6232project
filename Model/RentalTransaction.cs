@@ -96,7 +96,24 @@ public class RentalTransaction
             QuantityReturnedByMember = 0
         };
 
-        _rentalLineItems.Add(lineItem);
+        if (this.DeduplicateLineItems(furnitureID, quantity) == false)
+        {
+            _rentalLineItems.Add(lineItem);
+        }
+    }
+
+    private Boolean DeduplicateLineItems(int furnitureID, int quantity)
+    {
+        foreach (RentalLineItem lineItem in this._rentalLineItems)
+        {
+            if (lineItem.FurnitureID == furnitureID)
+            {
+                lineItem.QuantityRentedByMember += quantity;
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /// <summary>

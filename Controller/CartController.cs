@@ -18,8 +18,8 @@ namespace RentMe.Controller
         /// </summary>
         public CartController()
         {
-            _rentalTransaction = new RentalTransaction();
-            _attachedMember = new Member();
+            _rentalTransaction ??= new RentalTransaction();
+            _attachedMember ??= new Member();
             this._furnitureController = new FurnitureController();
         }
 
