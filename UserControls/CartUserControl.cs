@@ -147,6 +147,13 @@ namespace RentMe.UserControls
             if (CartDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 int quantity = (int)CartDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                int furnitureID = (int)CartDataGridView.Rows[e.RowIndex].Cells[1].Value;
+
+                //if (_cartController.GetQuantityFurnitureInCartByID(furnitureID))
+                //{
+
+                //}
+
                 _cartController.LineItems().ElementAt(e.RowIndex).QuantityRentedByMember = quantity;
             }
         }

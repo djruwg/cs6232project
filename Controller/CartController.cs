@@ -38,10 +38,12 @@ namespace RentMe.Controller
         /// <summary>
         /// Adds to cart.
         /// </summary>
-        /// <param name="furniture">The furniture.</param>
-        public void AddToCart(int furnitureID, int quantity)
+        /// <param name="furnitureID">The furniture identifier.</param>
+        /// <param name="quantity">The quantity.</param>
+        /// <returns></returns>
+        public Boolean AddToCart(int furnitureID, int quantity)
         {
-            _rentalTransaction!.AddLineItem(furnitureID, quantity);
+            return _rentalTransaction!.AddLineItem(furnitureID, quantity);
         }
 
         /// <summary>
@@ -70,5 +72,16 @@ namespace RentMe.Controller
             _attachedMember = new Member();
             _rentalTransaction!.ClearLineItems();
         }
+
+        /// <summary>
+        /// Gets the quantity furniture in cart by identifier.
+        /// </summary>
+        /// <param name="furnitureID">The furniture identifier.</param>
+        /// <returns></returns>
+        public int GetQuantityFurnitureInCartByID(int furnitureID)
+        {
+            return _rentalTransaction.GetQuantityFurnitureInTransactionByID(furnitureID);
+        }
+
     }
 }

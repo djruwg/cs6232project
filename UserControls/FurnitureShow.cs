@@ -64,7 +64,13 @@ namespace RentMe.UserControls
                 }
                 else if (quantity <= inStock)
                 {
-                    this._cartController.AddToCart(this._furniture.FurnitureID, quantity);
+                    if (this._cartController.AddToCart(this._furniture.FurnitureID, quantity) == false)
+                    {
+                        this.FurnitureShowErrorMessageLabel.Text = "Quantity exceeds inventory";
+                        return;
+                    }
+
+
                     this.FurnitureShowErrorMessageLabel.ForeColor = Color.Green;
                     this.FurnitureShowErrorMessageLabel.Text = quantity + " x " + this._furniture.Name + " added to cart";
                 }

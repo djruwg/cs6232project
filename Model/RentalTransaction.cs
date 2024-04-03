@@ -75,11 +75,17 @@ public class RentalTransaction
     /// Adds a line item.
     /// </summary>
     /// <param name="lineItem">The line item.</param>
-    public void AddLineItem(int furnitureID, int quantity)
+    public Boolean AddLineItem(int furnitureID, int quantity)
     {
         Furniture furniture = this._furnitureDAL.GetFurnitureByID(furnitureID);
 
         ArgumentNullException.ThrowIfNull(furniture);
+
+
+        if (GetQuantityFurnitureInTransactionByID(furnitureID) + quantity > furniture.QuantityOwned - furniture.QuantityRented)
+        {
+            return false;
+        }
 
         RentalLineItem lineItem = new RentalLineItem
         {
@@ -100,6 +106,8 @@ public class RentalTransaction
         {
             _rentalLineItems.Add(lineItem);
         }
+
+        return true;
     }
 
     private Boolean DeduplicateLineItems(int furnitureID, int quantity)
@@ -114,6 +122,18 @@ public class RentalTransaction
         }
 
         return false;
+    }
+
+    public int GetQuantityFurnitureInTransactionByID(int furnitureID)
+    {
+        RentalLineItem? lineItems = _rentalLineItems!.Where(lineItem => lineItem.FurnitureID == furnitureID).SingleOrDefault();
+
+        if (lineItems != null)
+        {
+            return lineItems.QuantityRentedByMember;
+        }
+
+        return 0;
     }
 
     /// <summary>
