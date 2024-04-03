@@ -1,5 +1,6 @@
 ﻿using RentMe.DAL;
 using System.ComponentModel;
+using System.Diagnostics;
 
 namespace RentMe.Model;
 
@@ -81,7 +82,6 @@ public class RentalTransaction
 
         ArgumentNullException.ThrowIfNull(furniture);
 
-
         if (GetQuantityFurnitureInTransactionByID(furnitureID) + quantity > furniture.QuantityOwned - furniture.QuantityRented)
         {
             return false;
@@ -124,6 +124,11 @@ public class RentalTransaction
         return false;
     }
 
+    /// <summary>
+    /// Gets the quantity furniture in transaction by identifier.
+    /// </summary>
+    /// <param name="furnitureID">The furniture identifier.</param>
+    /// <returns></returns>
     public int GetQuantityFurnitureInTransactionByID(int furnitureID)
     {
         RentalLineItem? lineItems = _rentalLineItems!.Where(lineItem => lineItem.FurnitureID == furnitureID).SingleOrDefault();
@@ -134,6 +139,29 @@ public class RentalTransaction
         }
 
         return 0;
+    }
+
+    /// <summary>
+    /// Determines whether [has needed inventory to satisfy quantity requested] [the specified furniture identifier].
+    /// </summary>
+    /// <param name="furnitureID">The furniture identifier.</param>
+    /// <param name="quantity">The quantity.</param>
+    /// <returns>
+    ///   <c>true</c> if [has needed inventory to satisfy quantity requested] [the specified furniture identifier]; otherwise, <c>false</c>.
+    /// </returns>
+    /// <exception cref="System.ArgumentNullException"></exception>
+    public Boolean HasNeededInventoryToSatisfyQuantityRequested(int furnitureID, int quantity)
+    {
+        Furniture furniture = this._furnitureDAL.GetFurnitureByID(furnitureID);
+
+        ArgumentNullException.ThrowIfNull(furniture);
+
+        if (quantity > furniture.QuantityOwned - furniture.QuantityRented)
+        {
+            return false;
+        }
+
+        return true;
     }
 
     /// <summary>

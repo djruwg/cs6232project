@@ -24,11 +24,6 @@ namespace RentMe.UserControls
 
             this._cartController = new CartController();
 
-            // Load some demo data while waiting on other supporting forms.
-            //this._cartController.AddToCart(7, 4);
-            //this._cartController.AddToCart(9, 2);
-            //this._cartController.AddToCart(5, 3);
-
             this.ConfigureDataGridView();
             this.RefreshTransactionView();
             this.RefeshCartListView();
@@ -147,13 +142,6 @@ namespace RentMe.UserControls
             if (CartDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 int quantity = (int)CartDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-                int furnitureID = (int)CartDataGridView.Rows[e.RowIndex].Cells[1].Value;
-
-                //if (_cartController.GetQuantityFurnitureInCartByID(furnitureID))
-                //{
-
-                //}
-
                 _cartController.LineItems().ElementAt(e.RowIndex).QuantityRentedByMember = quantity;
             }
         }
@@ -173,6 +161,15 @@ namespace RentMe.UserControls
             {
                 CartMessageLabel.Text = "Cell must be a positive integer";
 
+                e.Cancel = true;
+            }
+
+            int furnitureID = (int)CartDataGridView.Rows[e.RowIndex].Cells[1].Value;
+
+            if (_cartController.HasNeededInventoryToSatisfyQuantityRequested(furnitureID, newInteger) == false)
+            {
+                CartMessageLabel.Text = "Insufficient inventory";
+                
                 e.Cancel = true;
             }
         }

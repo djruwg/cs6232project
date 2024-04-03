@@ -1,6 +1,5 @@
 ﻿using RentMe.Model;
 using System.ComponentModel;
-using System.Data;
 
 namespace RentMe.Controller
 {
@@ -11,7 +10,6 @@ namespace RentMe.Controller
     {
         private static RentalTransaction? _rentalTransaction;
         private static Member? _attachedMember;
-        private FurnitureController _furnitureController;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CartController"/> class.
@@ -20,7 +18,6 @@ namespace RentMe.Controller
         {
             _rentalTransaction ??= new RentalTransaction();
             _attachedMember ??= new Member();
-            this._furnitureController = new FurnitureController();
         }
 
         /// <summary>
@@ -80,8 +77,20 @@ namespace RentMe.Controller
         /// <returns></returns>
         public int GetQuantityFurnitureInCartByID(int furnitureID)
         {
-            return _rentalTransaction.GetQuantityFurnitureInTransactionByID(furnitureID);
+            return _rentalTransaction!.GetQuantityFurnitureInTransactionByID(furnitureID);
         }
 
+        /// <summary>
+        /// Determines whether [has needed inventory to satisfy quantity requested] [the specified furniture identifier].
+        /// </summary>
+        /// <param name="furnitureID">The furniture identifier.</param>
+        /// <param name="quantity">The quantity.</param>
+        /// <returns>
+        ///   <c>true</c> if [has needed inventory to satisfy quantity requested] [the specified furniture identifier]; otherwise, <c>false</c>.
+        /// </returns>
+        public Boolean HasNeededInventoryToSatisfyQuantityRequested(int furnitureID, int quantity)
+        {
+            return _rentalTransaction!.HasNeededInventoryToSatisfyQuantityRequested(furnitureID, quantity);
+        }
     }
 }
