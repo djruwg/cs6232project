@@ -59,16 +59,17 @@ namespace RentMe.UserControls
             {
                 int quantity = (int) this.FurnitureShowQuantityNumericUpDown.Value;
                 
-                int inStock = this._furniture.CalculateQuantityInStock();
+                // Should no longer need this since AddToCart returns true if sufficient inventory
+                // int inStock = this._furniture.CalculateQuantityInStock();
+
                 if (quantity <= 0)
                 {
                     this.FurnitureShowErrorMessageLabel.Text = "Must add 1 or more items to cart";
                 }
-                else if (quantity <= inStock)
+                else if (this._cartController.AddToCart(this._furniture.FurnitureID, quantity))
                 {
-                    this._cartController.AddToCart(this._furniture.FurnitureID, quantity);
                     this._addToCartText = quantity + " x " + this._furniture.Name + " added to cart";
-                    ParentForm.Close();
+                    ParentForm?.Close();
                 }
                 else
                 {
