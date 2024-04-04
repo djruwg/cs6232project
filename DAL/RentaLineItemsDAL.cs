@@ -85,5 +85,54 @@ namespace RentMe.DAL
 
             return lineItems;
         }
+
+
+        public Boolean SaveRentalLineItem(RentalLineItem rentalLineItem)
+        {
+            ArgumentNullException.ThrowIfNull(rentalLineItem);
+
+            string statement = @"
+                insert into RentalLineItem (
+                    RentalID,
+                    FurnitureID,
+                    QuantityRented,
+                    QuantityReturned,
+                    Cost )
+                values (
+                    @RentalID,
+                    @FurnitureID,
+                    @QuantityRented,
+                    @QuantityReturned,
+                    @Cost )";
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(statement, connection))
+                {
+                    command.Parameters.Add("@RentalID", SqlDbType.Int);
+                    command.Parameters["@RentalID"].Value = rentalLineItem.RentalID;
+                    command.Parameters.Add("@FurnitureID", SqlDbType.Int);
+                    command.Parameters["@FurnitureID"].Value = rentalLineItem.FurnitureID;
+                    command.Parameters.Add("@QuantityRented", SqlDbType.Int);
+                    command.Parameters["@QuantityRented"].Value = rentalLineItem.QuantityRentedByMember;
+                    command.Parameters.Add("@QuantityReturned", SqlDbType.Int);
+                    command.Parameters["@QuantityReturned"].Value = rentalLineItem.QuantityReturnedByMember;
+                    command.Parameters.Add("@Cost", SqlDbType.Money);
+                    command.Parameters["@Cost"].Value = rentalLineItem.DailyRentalRate;
+
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        return true; // The operation was successful
+                    }
+                    else
+                    {
+                        return false; // The operation failed
+                    }
+                }
+            }
+        }
     }
 }
