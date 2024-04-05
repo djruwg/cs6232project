@@ -60,21 +60,33 @@ namespace RentMe.DAL
 
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
+                        int rentalIdOrdinal = reader.GetOrdinal("RentalID");
+                        int furnitureIdOrdinal = reader.GetOrdinal("FurnitureID");
+                        int nameOrdinal = reader.GetOrdinal("Name");
+                        int descriptionOrdinal = reader.GetOrdinal("Description");
+                        int quantityOwnedByStoreOrdinal = reader.GetOrdinal("QuantityOwnedByStore");
+                        int quantityRentedByStoreOrdinal = reader.GetOrdinal("QuantityRentedByStore");
+                        int dailyRentalRateOrdinal = reader.GetOrdinal("DailyRentalRate");
+                        int categoryOrdinal = reader.GetOrdinal("Category");
+                        int styleOrdinal = reader.GetOrdinal("Style");
+                        int quantityRentedByMemberOrdinal = reader.GetOrdinal("QuantityRentedByMember");
+                        int quantityReturnedByMemberOrdinal = reader.GetOrdinal("QuantityReturnedByMember");
+
                         while (reader.Read())
                         {
                             RentalLineItem lineItem = new RentalLineItem
                             {
-                                RentalID = (int)reader["RentalID"],
-                                FurnitureID = (int)reader["FurnitureID"],
-                                Name = (string)reader["Name"],
-                                Description = (string)reader["Description"],
-                                QuantityOwnedByStore = (int)reader["QuantityOwnedByStore"],
-                                QuantityRentedByStore = (int)reader["QuantityRentedByStore"],
-                                DailyRentalRate = Convert.ToDouble(reader["DailyRentalRate"]),
-                                Category = (string)reader["Category"],
-                                Style = (string)reader["Style"],
-                                QuantityRentedByMember = (int)reader["QuantityRentedByMember"],
-                                QuantityReturnedByMember = (int)reader["QuantityReturnedByMember"]
+                                RentalID = reader.GetInt32(rentalIdOrdinal),
+                                FurnitureID = reader.GetInt32(furnitureIdOrdinal),
+                                Name = reader.GetString(nameOrdinal),
+                                Description = reader.GetString(descriptionOrdinal),
+                                QuantityOwnedByStore = reader.GetInt32(quantityOwnedByStoreOrdinal),
+                                QuantityRentedByStore = reader.GetInt32(quantityRentedByStoreOrdinal),
+                                DailyRentalRate = Convert.ToDouble(reader.GetDecimal(dailyRentalRateOrdinal)),
+                                Category = reader.GetString(categoryOrdinal),
+                                Style = reader.GetString(styleOrdinal),
+                                QuantityRentedByMember = reader.GetInt32(quantityRentedByMemberOrdinal),
+                                QuantityReturnedByMember = reader.GetInt32(quantityReturnedByMemberOrdinal)
                             };
 
                             lineItems.Add(lineItem);
