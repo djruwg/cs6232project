@@ -36,13 +36,18 @@ namespace RentMe.DAL
 
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
+                        int returnIdOrdinal = reader.GetOrdinal("ReturnID");
+                        int dateReturnedOrdinal = reader.GetOrdinal("DateReturned");
+                        int employeeIdOrdinal = reader.GetOrdinal("EmployeeID");
+                        int memberIdOrdinal = reader.GetOrdinal("MemberID");
+
                         while (reader.Read())
                         {
                             ReturnTransaction returns = new ReturnTransaction();
-                            returns.ReturnID = (int)reader["ReturnID"];
-                            returns.DateReturned = (DateTime)reader["DateReturned"];
-                            returns.EmployeeID = (int)reader["EmployeeID"];
-                            returns.MemberID = (int)reader["MemberID"];
+                            returns.ReturnID = reader.GetInt32(returnIdOrdinal);
+                            returns.DateReturned = reader.GetDateTime(dateReturnedOrdinal);
+                            returns.EmployeeID = reader.GetInt32(employeeIdOrdinal);
+                            returns.MemberID = reader.GetInt32(memberIdOrdinal);
                             returnsList.Add(returns);
                         }
                     }
