@@ -216,19 +216,30 @@ namespace RentMe.DAL
                 {
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
+                        int memberIdOrdinal = reader.GetOrdinal("MemberID");
+                        int firstNameOrdinal = reader.GetOrdinal("FirstName");
+                        int lastNameOrdinal = reader.GetOrdinal("LastName");
+                        int sexOrdinal = reader.GetOrdinal("Sex");
+                        int dateOfBirthOrdinal = reader.GetOrdinal("DateOfBirth");
+                        int phoneOrdinal = reader.GetOrdinal("Phone");
+                        int addressOrdinal = reader.GetOrdinal("Address");
+                        int cityOrdinal = reader.GetOrdinal("City");
+                        int stateOrdinal = reader.GetOrdinal("State");
+                        int zipOrdinal = reader.GetOrdinal("Zip");
+
                         while (reader.Read())
                         {
                             Member member = new Member();
-                            member.MemberID = (int)reader["MemberID"];
-                            member.FirstName = reader["FirstName"].ToString();
-                            member.LastName = reader["LastName"].ToString();
-                            member.Sex = reader["Sex"].ToString();
-                            member.DateOfBirth = (DateTime)reader["DateOfBirth"];
-                            member.Phone = reader["Phone"].ToString();
-                            member.Address = reader["Address"].ToString();
-                            member.City = reader["City"].ToString();
-                            member.State = reader["State"].ToString();
-                            member.Zip = reader["Zip"].ToString();
+                            member.MemberID = reader.GetInt32(memberIdOrdinal);
+                            member.FirstName = reader.GetString(firstNameOrdinal);
+                            member.LastName = reader.GetString(lastNameOrdinal);
+                            member.Sex = reader.GetString(sexOrdinal);
+                            member.DateOfBirth = reader.GetDateTime(dateOfBirthOrdinal);
+                            member.Phone = reader.GetString(phoneOrdinal);
+                            member.Address = reader.GetString(addressOrdinal);
+                            member.City = reader.GetString(cityOrdinal);
+                            member.State = reader.GetString(stateOrdinal);
+                            member.Zip = reader.GetString(zipOrdinal);
                             memberList.Add(member);
                         }
                     }
@@ -274,19 +285,30 @@ namespace RentMe.DAL
 
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
+                        int memberIdOrdinal = reader.GetOrdinal("MemberID");
+                        int firstNameOrdinal = reader.GetOrdinal("FirstName");
+                        int lastNameOrdinal = reader.GetOrdinal("LastName");
+                        int sexOrdinal = reader.GetOrdinal("Sex");
+                        int dateOfBirthOrdinal = reader.GetOrdinal("DateOfBirth");
+                        int phoneOrdinal = reader.GetOrdinal("Phone");
+                        int addressOrdinal = reader.GetOrdinal("Address");
+                        int cityOrdinal = reader.GetOrdinal("City");
+                        int stateOrdinal = reader.GetOrdinal("State");
+                        int zipOrdinal = reader.GetOrdinal("Zip");
+
                         while (reader.Read())
                         {
                             Member member = new Member();
-                            member.MemberID = (int)reader["MemberID"];
-                            member.FirstName = reader["FirstName"].ToString();
-                            member.LastName = reader["LastName"].ToString();
-                            member.Sex = reader["Sex"].ToString();
-                            member.DateOfBirth = (DateTime)reader["DateOfBirth"];
-                            member.Phone = reader["Phone"].ToString();
-                            member.Address = reader["Address"].ToString();
-                            member.City = reader["City"].ToString();
-                            member.State = reader["State"].ToString();
-                            member.Zip = reader["Zip"].ToString();
+                            member.MemberID = reader.GetInt32(memberIdOrdinal);
+                            member.FirstName = reader.GetString(firstNameOrdinal);
+                            member.LastName = reader.GetString(lastNameOrdinal);
+                            member.Sex = reader.GetString(sexOrdinal);
+                            member.DateOfBirth = reader.GetDateTime(dateOfBirthOrdinal);
+                            member.Phone = reader.GetString(phoneOrdinal);
+                            member.Address = reader.GetString(addressOrdinal);
+                            member.City = reader.GetString(cityOrdinal);
+                            member.State = reader.GetString(stateOrdinal);
+                            member.Zip = reader.GetString(zipOrdinal);
                             memberList.Add(member);
                         }
                     }
