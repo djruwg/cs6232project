@@ -181,5 +181,39 @@ namespace RentMe.DAL
             }
             return furnitureList;
         }
+
+        public Boolean UpdateFurnitureQuantityRented(int furnitureID, int quantity)
+        {
+            string statement = @"
+                update
+                    Furniture
+                set
+                    QuantityRented = @QuantityRented
+                where
+                    FurnitureID = @FurnitureID";
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(statement, connection))
+                {
+                    command.Parameters.Add("@QuantityRented", SqlDbType.Int);
+                    command.Parameters["@QuantityRented"].Value = quantity;
+                    command.Parameters.Add("@FurnitureID", SqlDbType.Int);
+                    command.Parameters["@FurnitureID"].Value = furnitureID;
+
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        return true; // The operation was successful
+                    }
+                    else
+                    {
+                        return false; // The operation failed
+                    }
+                }
+            }
+        }
     }
 }
