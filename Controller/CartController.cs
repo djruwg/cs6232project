@@ -1,4 +1,5 @@
-﻿using RentMe.Model;
+﻿using RentMe.DAL;
+using RentMe.Model;
 using System.ComponentModel;
 
 namespace RentMe.Controller
@@ -10,6 +11,8 @@ namespace RentMe.Controller
     {
         private static RentalTransaction? _rentalTransaction;
         private static Member? _attachedMember;
+        private RentalsDAL _rentalsDAL;
+
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CartController"/> class.
@@ -18,6 +21,7 @@ namespace RentMe.Controller
         {
             _rentalTransaction ??= new RentalTransaction();
             _attachedMember ??= new Member();
+            this._rentalsDAL = new RentalsDAL();
         }
 
         /// <summary>
@@ -91,6 +95,19 @@ namespace RentMe.Controller
         public Boolean HasNeededInventoryToSatisfyQuantityRequested(int furnitureID, int quantity)
         {
             return _rentalTransaction!.HasNeededInventoryToSatisfyQuantityRequested(furnitureID, quantity);
+        }
+
+        /// <summary>
+        /// Saves the cart as rental transaction.
+        /// </summary>
+        /// <returns>Boolean success</returns>
+        public Boolean SaveCartAsRentalTransaction()
+        {
+            _rentalTransaction.MemberID = _attachedMember.MemberID;
+            _rentalTransaction.DateDue = DateTime.Today; 
+            LoginController _loginController = new LoginController();
+            _rentalTransaction.EmployeeID = LoginController.CurrentEmployeeID;
+            return _rentalsDAL.SaveRentalTransaction(_rentalTransaction);
         }
     }
 }

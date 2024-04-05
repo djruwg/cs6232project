@@ -97,6 +97,7 @@ namespace RentMe.UserControls
                 return;
             }
 
+            this._cartController.SaveCartAsRentalTransaction();
             RentalDetailsForm rentalDetails = new RentalDetailsForm();
             rentalDetails.ShowDialog();
         }
