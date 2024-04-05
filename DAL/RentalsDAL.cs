@@ -54,23 +54,38 @@ namespace RentMe.DAL
             return rentalsList;
         }
 
+
         public Boolean SaveRentalTransaction(RentalTransaction rentalTransaction)
+        {
+            int rentalID = SaveRentalTransactionRecord(rentalTransaction);
+            if (rentalID == -1)
+            {
+                return false;
+            }
+            else
+            {
+                rentalTransaction.RentalID = rentalID;
+            }
+            return true;
+        }
+
+
+        public int SaveRentalTransactionRecord(RentalTransaction rentalTransaction)
         {
             ArgumentNullException.ThrowIfNull(rentalTransaction);
 
             string statement = @"
-                insert into RentalLineItem (
-                    RentalID,
+                insert into RentalTransactions (
                     DateRented,
                     DateDue,
                     EmployeeID,
                     MemberID )
                 values (
-                    @RentalID,
-                    @DateRented,
+                    GETDATE(),
                     @DateDue,
                     @EmployeeID,
-                    @MemberID )";
+                    @MemberID );
+                    SELECT SCOPE_IDENTITY();";
 
             using (SqlConnection connection = DBConnection.GetConnection())
             {
@@ -78,10 +93,6 @@ namespace RentMe.DAL
 
                 using (SqlCommand command = new SqlCommand(statement, connection))
                 {
-                    command.Parameters.Add("@RentalID", SqlDbType.Int);
-                    command.Parameters["@RentalID"].Value = rentalTransaction.RentalID;
-                    command.Parameters.Add("@DateRented", SqlDbType.DateTime);
-                    command.Parameters["@DateRented"].Value = rentalTransaction.DateRented;
                     command.Parameters.Add("@DateDue", SqlDbType.DateTime);
                     command.Parameters["@DateDue"].Value = rentalTransaction.DateDue;
                     command.Parameters.Add("@EmployeeID", SqlDbType.Int);
@@ -89,17 +100,21 @@ namespace RentMe.DAL
                     command.Parameters.Add("@MemberID", SqlDbType.Int);
                     command.Parameters["@MemberID"].Value = rentalTransaction.MemberID;
 
-                    int rowsAffected = command.ExecuteNonQuery();
-                    if (rowsAffected > 0)
+                    object result = command.ExecuteScalar();
+                    if (result == null)
                     {
-                        return true; // The operation was successful
+                        return -1;
                     }
                     else
                     {
-                        return false; // The operation failed
+                        rentalTransaction.RentalID = Convert.ToInt32(result);
+                        return rentalTransaction.RentalID;
                     }
+
+
                 }
             }
         }
+
     }
 }
