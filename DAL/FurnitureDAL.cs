@@ -92,17 +92,26 @@ namespace RentMe.DAL
                 {
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
+                        int furnitureIdOrdinal = reader.GetOrdinal("FurnitureID");
+                        int nameOrdinal = reader.GetOrdinal("Name");
+                        int descriptionOrdinal = reader.GetOrdinal("Description");
+                        int quantityOwnedOrdinal = reader.GetOrdinal("QuantityOwned");
+                        int quantityRentedOrdinal = reader.GetOrdinal("QuantityRented");
+                        int dailyRentalRateOrdinal = reader.GetOrdinal("DailyRentalRate");
+                        int categoryOrdinal = reader.GetOrdinal("Category");
+                        int styleOrdinal = reader.GetOrdinal("Style");
+
                         while (reader.Read())
                         {
                             Furniture furniture = new Furniture();
-                            furniture.FurnitureID = (int)reader["FurnitureID"];
-                            furniture.Name = reader["Name"].ToString();
-                            furniture.Description = reader["Description"].ToString();
-                            furniture.QuantityOwned = (int)reader["QuantityOwned"];
-                            furniture.QuantityRented = (int)reader["QuantityRented"];
-                            furniture.DailyRentalRate = (decimal)reader["DailyRentalRate"];
-                            furniture.Category = reader["Category"].ToString();
-                            furniture.Style = reader["Style"].ToString();
+                            furniture.FurnitureID = reader.GetInt32(furnitureIdOrdinal);
+                            furniture.Name = reader.GetString(nameOrdinal);
+                            furniture.Description = reader.GetString(descriptionOrdinal);
+                            furniture.QuantityOwned = reader.GetInt32(quantityOwnedOrdinal);
+                            furniture.QuantityRented = reader.GetInt32(quantityRentedOrdinal);
+                            furniture.DailyRentalRate = reader.GetDecimal(dailyRentalRateOrdinal);
+                            furniture.Category = reader.GetString(categoryOrdinal);
+                            furniture.Style = reader.GetString(styleOrdinal);
                             furnitureList.Add(furniture);
                         }
                     }
@@ -145,17 +154,26 @@ namespace RentMe.DAL
 
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
+                        int furnitureIdOrdinal = reader.GetOrdinal("FurnitureID");
+                        int nameOrdinal = reader.GetOrdinal("Name");
+                        int descriptionOrdinal = reader.GetOrdinal("Description");
+                        int quantityOwnedOrdinal = reader.GetOrdinal("QuantityOwned");
+                        int quantityRentedOrdinal = reader.GetOrdinal("QuantityRented");
+                        int dailyRentalRateOrdinal = reader.GetOrdinal("DailyRentalRate");
+                        int categoryOrdinal = reader.GetOrdinal("Category");
+                        int styleOrdinal = reader.GetOrdinal("Style");
+
                         while (reader.Read())
                         {
                             Furniture furniture = new Furniture();
-                            furniture.FurnitureID = (int)reader["FurnitureID"];
-                            furniture.Name = reader["Name"].ToString();
-                            furniture.Description = reader["Description"].ToString();
-                            furniture.QuantityOwned = (int)reader["QuantityOwned"];
-                            furniture.QuantityRented = (int)reader["QuantityRented"];
-                            furniture.DailyRentalRate = (decimal)reader["DailyRentalRate"];
-                            furniture.Category = reader["Category"].ToString();
-                            furniture.Style = reader["Style"].ToString();
+                            furniture.FurnitureID = reader.GetInt32(furnitureIdOrdinal);
+                            furniture.Name = reader.GetString(nameOrdinal);
+                            furniture.Description = reader.GetString(descriptionOrdinal);
+                            furniture.QuantityOwned = reader.GetInt32(quantityOwnedOrdinal);
+                            furniture.QuantityRented = reader.GetInt32(quantityRentedOrdinal);
+                            furniture.DailyRentalRate = reader.GetDecimal(dailyRentalRateOrdinal);
+                            furniture.Category = reader.GetString(categoryOrdinal);
+                            furniture.Style = reader.GetString(styleOrdinal);
                             furnitureList.Add(furniture);
                         }
                     }
