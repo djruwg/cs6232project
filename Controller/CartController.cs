@@ -97,6 +97,16 @@ namespace RentMe.Controller
             return _rentalTransaction!.HasNeededInventoryToSatisfyQuantityRequested(furnitureID, quantity);
         }
 
+
+        /// <summary>
+        /// Sets the due date.
+        /// </summary>
+        /// <param name="dateDue">The date due.</param>
+        public void SetDueDate(DateTime dateDue)
+        {
+            _rentalTransaction.DateDue = dateDue;
+        }
+        
         /// <summary>
         /// Saves the cart as rental transaction.
         /// </summary>
@@ -104,9 +114,9 @@ namespace RentMe.Controller
         public int SaveCartAsRentalTransaction()
         {
             _rentalTransaction.MemberID = _attachedMember.MemberID;
-            _rentalTransaction.DateDue = DateTime.Today; 
             _rentalTransaction.EmployeeID = LoginController.CurrentEmployeeID;
             return _rentalsDAL.TransactionSaveOfRentalCart(_rentalTransaction);
         }
+
     }
 }

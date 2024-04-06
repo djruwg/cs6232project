@@ -11,6 +11,7 @@ public class RentalTransaction
 {
     private BindingList<RentalLineItem> _rentalLineItems;
     private FurnitureDAL _furnitureDAL;
+    private DateTime _DateDue;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="RentalTransaction"/> class.
@@ -43,7 +44,19 @@ public class RentalTransaction
     /// <value>
     /// The date due.
     /// </value>
-    public DateTime DateDue { get; set; }
+    public DateTime DateDue
+    {
+        get => _DateDue;
+        set
+        {
+            _DateDue = value;
+            int RentalDuration = (value.Date - DateTime.Today.Date).Days;
+            foreach (RentalLineItem lineItem in this._rentalLineItems)
+            {
+                lineItem.DaysRented = RentalDuration;
+            }
+        }
+    }
 
     /// <summary>
     /// Gets or sets the employee identifier.

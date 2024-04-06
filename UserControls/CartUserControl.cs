@@ -96,8 +96,7 @@ namespace RentMe.UserControls
                 CartMessageLabel.Text = "You must attach a member to the transaction.";
                 return;
             }
-
-            this._cartController.SaveCartAsRentalTransaction();
+            
             RentalDetailsForm rentalDetails = new RentalDetailsForm();
             rentalDetails.ShowDialog();
         }

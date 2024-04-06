@@ -1,4 +1,7 @@
-﻿namespace RentMe.Model;
+﻿using System.Data.SqlTypes;
+using System.Diagnostics;
+
+namespace RentMe.Model;
 
 /// <summary>
 ///  RentalLineItem model class
@@ -92,4 +95,21 @@ public class RentalLineItem
     /// The quantity returned by member.
     /// </value>
     public int QuantityReturnedByMember {  get; set; }
+
+    /// <summary>
+    /// Gets or sets the days rented.
+    /// </summary>
+    /// <value>
+    /// The days rented.
+    /// </value>
+    public int DaysRented { get; set; }
+
+    /// <summary>
+    /// Gets the rental cost.
+    /// </summary>
+    /// <value>
+    /// The rental cost.
+    /// </value>
+    public double RentalCost { get => DaysRented * QuantityRentedByMember * DailyRentalRate;}
+
 }

@@ -33,15 +33,15 @@
             RentalDetailsDueDateLabel = new Label();
             RentalDetailsRentalIDTextBox = new TextBox();
             RentalDetailsDataGridView = new DataGridView();
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            button1 = new Button();
-            button2 = new Button();
             RentalDetailsDueDateTimePicker = new DateTimePicker();
             RentalDetailsTotalLabel = new Label();
             RentalDetailsTotalTextBox = new TextBox();
+            RentalDetailsConfirmButton = new Button();
+            RentalDetailsCloseBotton = new Button();
+            RentalDetailsCancelButton = new Button();
+            RentalDetailsMessageLabel = new Label();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)RentalDetailsDataGridView).BeginInit();
-            flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -56,10 +56,13 @@
             tableLayoutPanel1.Controls.Add(RentalDetailsDueDateLabel, 2, 0);
             tableLayoutPanel1.Controls.Add(RentalDetailsRentalIDTextBox, 1, 0);
             tableLayoutPanel1.Controls.Add(RentalDetailsDataGridView, 0, 1);
-            tableLayoutPanel1.Controls.Add(flowLayoutPanel1, 0, 3);
             tableLayoutPanel1.Controls.Add(RentalDetailsDueDateTimePicker, 3, 0);
             tableLayoutPanel1.Controls.Add(RentalDetailsTotalLabel, 2, 2);
             tableLayoutPanel1.Controls.Add(RentalDetailsTotalTextBox, 3, 2);
+            tableLayoutPanel1.Controls.Add(RentalDetailsConfirmButton, 0, 4);
+            tableLayoutPanel1.Controls.Add(RentalDetailsCloseBotton, 1, 4);
+            tableLayoutPanel1.Controls.Add(RentalDetailsCancelButton, 4, 4);
+            tableLayoutPanel1.Controls.Add(RentalDetailsMessageLabel, 0, 2);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -68,14 +71,15 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.Size = new Size(800, 450);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // RentalDetailsRentalIDLabel
             // 
-            RentalDetailsRentalIDLabel.Anchor = AnchorStyles.Left;
+            RentalDetailsRentalIDLabel.Anchor = AnchorStyles.Right;
             RentalDetailsRentalIDLabel.AutoSize = true;
-            RentalDetailsRentalIDLabel.Location = new Point(3, 7);
+            RentalDetailsRentalIDLabel.Location = new Point(103, 7);
             RentalDetailsRentalIDLabel.Name = "RentalDetailsRentalIDLabel";
             RentalDetailsRentalIDLabel.Size = new Size(54, 15);
             RentalDetailsRentalIDLabel.TabIndex = 0;
@@ -83,9 +87,9 @@
             // 
             // RentalDetailsDueDateLabel
             // 
-            RentalDetailsDueDateLabel.Anchor = AnchorStyles.Left;
+            RentalDetailsDueDateLabel.Anchor = AnchorStyles.Right;
             RentalDetailsDueDateLabel.AutoSize = true;
-            RentalDetailsDueDateLabel.Location = new Point(323, 7);
+            RentalDetailsDueDateLabel.Location = new Point(422, 7);
             RentalDetailsDueDateLabel.Name = "RentalDetailsDueDateLabel";
             RentalDetailsDueDateLabel.Size = new Size(55, 15);
             RentalDetailsDueDateLabel.TabIndex = 1;
@@ -111,51 +115,24 @@
             RentalDetailsDataGridView.Name = "RentalDetailsDataGridView";
             RentalDetailsDataGridView.ReadOnly = true;
             RentalDetailsDataGridView.RowHeadersVisible = false;
-            RentalDetailsDataGridView.Size = new Size(794, 280);
+            RentalDetailsDataGridView.Size = new Size(794, 357);
             RentalDetailsDataGridView.TabIndex = 4;
-            // 
-            // flowLayoutPanel1
-            // 
-            tableLayoutPanel1.SetColumnSpan(flowLayoutPanel1, 5);
-            flowLayoutPanel1.Controls.Add(button1);
-            flowLayoutPanel1.Controls.Add(button2);
-            flowLayoutPanel1.Dock = DockStyle.Fill;
-            flowLayoutPanel1.Location = new Point(3, 347);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(794, 100);
-            flowLayoutPanel1.TabIndex = 5;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(3, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(84, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 1;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
             // 
             // RentalDetailsDueDateTimePicker
             // 
             RentalDetailsDueDateTimePicker.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.SetColumnSpan(RentalDetailsDueDateTimePicker, 2);
             RentalDetailsDueDateTimePicker.Location = new Point(483, 3);
             RentalDetailsDueDateTimePicker.Name = "RentalDetailsDueDateTimePicker";
-            RentalDetailsDueDateTimePicker.Size = new Size(154, 23);
+            RentalDetailsDueDateTimePicker.Size = new Size(314, 23);
             RentalDetailsDueDateTimePicker.TabIndex = 6;
+            RentalDetailsDueDateTimePicker.ValueChanged += RentalDetailsDueDateTimePicker_ValueChanged;
             // 
             // RentalDetailsTotalLabel
             // 
-            RentalDetailsTotalLabel.Anchor = AnchorStyles.Left;
+            RentalDetailsTotalLabel.Anchor = AnchorStyles.Right;
             RentalDetailsTotalLabel.AutoSize = true;
-            RentalDetailsTotalLabel.Location = new Point(323, 322);
+            RentalDetailsTotalLabel.Location = new Point(445, 399);
             RentalDetailsTotalLabel.Name = "RentalDetailsTotalLabel";
             RentalDetailsTotalLabel.Size = new Size(32, 15);
             RentalDetailsTotalLabel.TabIndex = 7;
@@ -164,11 +141,60 @@
             // RentalDetailsTotalTextBox
             // 
             RentalDetailsTotalTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.SetColumnSpan(RentalDetailsTotalTextBox, 2);
             RentalDetailsTotalTextBox.Enabled = false;
-            RentalDetailsTotalTextBox.Location = new Point(483, 318);
+            RentalDetailsTotalTextBox.Location = new Point(483, 395);
             RentalDetailsTotalTextBox.Name = "RentalDetailsTotalTextBox";
-            RentalDetailsTotalTextBox.Size = new Size(154, 23);
+            RentalDetailsTotalTextBox.Size = new Size(314, 23);
             RentalDetailsTotalTextBox.TabIndex = 8;
+            // 
+            // RentalDetailsConfirmButton
+            // 
+            RentalDetailsConfirmButton.Anchor = AnchorStyles.Top;
+            RentalDetailsConfirmButton.Location = new Point(42, 424);
+            RentalDetailsConfirmButton.Name = "RentalDetailsConfirmButton";
+            RentalDetailsConfirmButton.Size = new Size(75, 23);
+            RentalDetailsConfirmButton.TabIndex = 9;
+            RentalDetailsConfirmButton.Text = "Confirm";
+            RentalDetailsConfirmButton.UseVisualStyleBackColor = true;
+            RentalDetailsConfirmButton.Click += RentalDetailsConfirmButton_Click;
+            // 
+            // RentalDetailsCloseBotton
+            // 
+            RentalDetailsCloseBotton.Anchor = AnchorStyles.Top;
+            RentalDetailsCloseBotton.Enabled = false;
+            RentalDetailsCloseBotton.Location = new Point(202, 424);
+            RentalDetailsCloseBotton.Name = "RentalDetailsCloseBotton";
+            RentalDetailsCloseBotton.Size = new Size(75, 23);
+            RentalDetailsCloseBotton.TabIndex = 10;
+            RentalDetailsCloseBotton.Text = "Close";
+            RentalDetailsCloseBotton.UseVisualStyleBackColor = true;
+            RentalDetailsCloseBotton.Click += RentalDetailsCloseBotton_Click;
+            // 
+            // RentalDetailsCancelButton
+            // 
+            RentalDetailsCancelButton.Anchor = AnchorStyles.Top;
+            RentalDetailsCancelButton.Location = new Point(682, 424);
+            RentalDetailsCancelButton.Name = "RentalDetailsCancelButton";
+            RentalDetailsCancelButton.Size = new Size(75, 23);
+            RentalDetailsCancelButton.TabIndex = 11;
+            RentalDetailsCancelButton.Text = "Canel";
+            RentalDetailsCancelButton.UseVisualStyleBackColor = true;
+            RentalDetailsCancelButton.Click += RentalDetailsCancelButton_Click;
+            // 
+            // RentalDetailsMessageLabel
+            // 
+            RentalDetailsMessageLabel.Anchor = AnchorStyles.Left;
+            RentalDetailsMessageLabel.AutoSize = true;
+            tableLayoutPanel1.SetColumnSpan(RentalDetailsMessageLabel, 2);
+            RentalDetailsMessageLabel.ForeColor = Color.Red;
+            RentalDetailsMessageLabel.Location = new Point(20, 399);
+            RentalDetailsMessageLabel.Margin = new Padding(20, 0, 3, 0);
+            RentalDetailsMessageLabel.Name = "RentalDetailsMessageLabel";
+            RentalDetailsMessageLabel.Size = new Size(38, 15);
+            RentalDetailsMessageLabel.TabIndex = 12;
+            RentalDetailsMessageLabel.Text = "label1";
+            RentalDetailsMessageLabel.Visible = false;
             // 
             // RentalDetailsForm
             // 
@@ -181,7 +207,6 @@
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)RentalDetailsDataGridView).EndInit();
-            flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -192,11 +217,12 @@
         private Label RentalDetailsDueDateLabel;
         private TextBox RentalDetailsRentalIDTextBox;
         private DataGridView RentalDetailsDataGridView;
-        private FlowLayoutPanel flowLayoutPanel1;
-        private Button button1;
-        private Button button2;
         private DateTimePicker RentalDetailsDueDateTimePicker;
         private Label RentalDetailsTotalLabel;
         private TextBox RentalDetailsTotalTextBox;
+        private Button RentalDetailsConfirmButton;
+        private Button RentalDetailsCloseBotton;
+        private Button RentalDetailsCancelButton;
+        private Label RentalDetailsMessageLabel;
     }
 }
