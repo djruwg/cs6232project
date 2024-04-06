@@ -46,6 +46,13 @@ namespace RentMe.UserControls
             this.FurnitureShowRentedTextBox.Text = this._furniture.QuantityRented.ToString();
             this.FurnitureShowInStockTextBox.Text = this._furniture.CalculateQuantityInStock().ToString();
             this.FurnitureShowDailyRateTextBox.Text = this._furniture.DailyRentalRate.ToString("C");
+
+            int quantityInCart = this._cartController.GetQuantityFurnitureInCartByID(this._furniture.FurnitureID);
+
+            if (this._cartController.HasNeededInventoryToSatisfyQuantityRequested(this._furniture.FurnitureID, quantityInCart + 1))
+            {
+                this.FurnitureShowQuantityNumericUpDown.Value = 1;
+            }
         }
 
         private void FurnitureShowCancelButton_Click(object sender, EventArgs e)

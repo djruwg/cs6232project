@@ -47,7 +47,7 @@
             Controls.Add(ShowFurnitureFurnitureShowUserControl);
             Name = "ShowFurnitureForm";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "ShowFurnitureForm";
+            Text = "Furniture Details";
             ResumeLayout(false);
         }
 
