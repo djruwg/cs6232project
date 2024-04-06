@@ -100,14 +100,13 @@ namespace RentMe.Controller
         /// <summary>
         /// Saves the cart as rental transaction.
         /// </summary>
-        /// <returns>Boolean success</returns>
-        public Boolean SaveCartAsRentalTransaction()
+        /// <returns>RentalTransaction RentalID</returns>
+        public int SaveCartAsRentalTransaction()
         {
             _rentalTransaction.MemberID = _attachedMember.MemberID;
             _rentalTransaction.DateDue = DateTime.Today; 
             _rentalTransaction.EmployeeID = LoginController.CurrentEmployeeID;
-            _rentalsDAL.TransactionSaveOfRentalCart(_rentalTransaction);
-            return false;
+            return _rentalsDAL.TransactionSaveOfRentalCart(_rentalTransaction);
         }
     }
 }
