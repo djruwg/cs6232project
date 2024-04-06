@@ -182,7 +182,13 @@ namespace RentMe.DAL
             return furnitureList;
         }
 
-        
+        /// <summary>
+        /// Updates the furniture quantity rented.
+        /// </summary>
+        /// <param name="command">The command.</param>
+        /// <param name="furnitureID">The furniture identifier.</param>
+        /// <param name="quantity">The quantity.</param>
+        /// <returns>Boolean success</returns>
         public Boolean UpdateFurnitureQuantityRented(SqlCommand command, int furnitureID, int quantity)
         {
             Furniture furniture;
@@ -227,11 +233,11 @@ namespace RentMe.DAL
             int rowsAffected = command.ExecuteNonQuery();
             if (rowsAffected == 1)
             {
-                return true; // The operation was successful
+                return true; 
             }
             else
             {
-                return false; // The operation failed
+                return false; 
             }
         }
 

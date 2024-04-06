@@ -133,7 +133,13 @@ namespace RentMe.DAL
         }
 
 
-
+        /// <summary>
+        /// Saves the rental transaction record.
+        /// </summary>
+        /// <param name="command">The command.</param>
+        /// <param name="rentalTransaction">The rental transaction.</param>
+        /// <returns>TransactionID</returns>
+        /// <exception cref="System.ArgumentNullException"></exception>
         public int SaveRentalTransactionRecord(SqlCommand command, RentalTransaction rentalTransaction)
         {
             ArgumentNullException.ThrowIfNull(rentalTransaction);

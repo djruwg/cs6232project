@@ -7,6 +7,9 @@ namespace RentMe.Controller
     {
         private MemberDAL _memberDAL;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MemberController"/> class.
+        /// </summary>
         public MemberController()
         {
             this._memberDAL = new MemberDAL();
