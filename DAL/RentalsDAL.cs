@@ -2,6 +2,8 @@
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
+using System.Transactions;
 
 namespace RentMe.DAL
 {
@@ -61,23 +63,78 @@ namespace RentMe.DAL
             return rentalsList;
         }
 
-
-        public Boolean SaveRentalTransaction(RentalTransaction rentalTransaction)
+        /// <summary>
+        /// Transactions the save of rental cart.
+        /// </summary>
+        /// <param name="RentalTransaction">The rental transaction.</param>
+        /// <returns>int: Rental Transaction Number or -1</returns>
+        public int TransactionSaveOfRentalCart(RentalTransaction rentalTransaction)
         {
-            int rentalID = SaveRentalTransactionRecord(rentalTransaction);
-            if (rentalID == -1)
+            int TransactionID = -1;
+            RentaLineItemsDAL rentalLineItemsDAL = new RentaLineItemsDAL();
+            FurnitureDAL furnitureDAL = new FurnitureDAL();
+
+            using (SqlConnection connection = DBConnection.GetConnection())
             {
-                return false;
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    using (SqlTransaction transaction = connection.BeginTransaction("SampleTransaction"))
+                    {
+                        Boolean success = false;
+
+                        command.Connection = connection;
+                        command.Transaction = transaction;
+
+
+                        TransactionID = SaveRentalTransactionRecord(command, rentalTransaction);
+                        if (TransactionID == -1)
+                        {
+                            success = false;
+                        }
+                        else
+                        {
+
+                            // Loop updating line items and quantities 
+
+                            foreach (RentalLineItem rentalLineItem in rentalTransaction.RentalLineItems)
+                            {
+                                rentalLineItem.RentalID = TransactionID;
+                                success = rentalLineItemsDAL.SaveRentalLineItem(command, rentalLineItem);
+                                if (!success)
+                                {
+                                    break;
+                                }
+
+                                success = true; // replace with update furnature
+                                if (!success)
+                                {
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (success)
+                        {
+                            transaction.Commit();
+                            return TransactionID;
+                        }
+                        else
+                        {
+                            transaction.Rollback();
+                            return -1;
+                        }
+                    }
+                }
             }
-            else
-            {
-                rentalTransaction.RentalID = rentalID;
-            }
-            return true;
+
+            return -1;
         }
 
 
-        public int SaveRentalTransactionRecord(RentalTransaction rentalTransaction)
+
+        public int SaveRentalTransactionRecord(SqlCommand command, RentalTransaction rentalTransaction)
         {
             ArgumentNullException.ThrowIfNull(rentalTransaction);
 
@@ -94,33 +151,26 @@ namespace RentMe.DAL
                     @MemberID );
                     SELECT SCOPE_IDENTITY();";
 
-            using (SqlConnection connection = DBConnection.GetConnection())
+            command.CommandText = statement;
+
+            command.Parameters.Add("@DateDue", SqlDbType.DateTime);
+            command.Parameters["@DateDue"].Value = rentalTransaction.DateDue;
+            command.Parameters.Add("@EmployeeID", SqlDbType.Int);
+            command.Parameters["@EmployeeID"].Value = rentalTransaction.EmployeeID;
+            command.Parameters.Add("@MemberID", SqlDbType.Int);
+            command.Parameters["@MemberID"].Value = rentalTransaction.MemberID;
+
+            object result = command.ExecuteScalar();
+            if (result == null)
             {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand(statement, connection))
-                {
-                    command.Parameters.Add("@DateDue", SqlDbType.DateTime);
-                    command.Parameters["@DateDue"].Value = rentalTransaction.DateDue;
-                    command.Parameters.Add("@EmployeeID", SqlDbType.Int);
-                    command.Parameters["@EmployeeID"].Value = rentalTransaction.EmployeeID;
-                    command.Parameters.Add("@MemberID", SqlDbType.Int);
-                    command.Parameters["@MemberID"].Value = rentalTransaction.MemberID;
-
-                    object result = command.ExecuteScalar();
-                    if (result == null)
-                    {
-                        return -1;
-                    }
-                    else
-                    {
-                        rentalTransaction.RentalID = Convert.ToInt32(result);
-                        return rentalTransaction.RentalID;
-                    }
-
-
-                }
+                return -1;
             }
+            else
+            {
+                rentalTransaction.RentalID = Convert.ToInt32(result);
+                return rentalTransaction.RentalID;
+            }
+            
         }
 
     }

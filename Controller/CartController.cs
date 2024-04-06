@@ -105,9 +105,9 @@ namespace RentMe.Controller
         {
             _rentalTransaction.MemberID = _attachedMember.MemberID;
             _rentalTransaction.DateDue = DateTime.Today; 
-            LoginController _loginController = new LoginController();
             _rentalTransaction.EmployeeID = LoginController.CurrentEmployeeID;
-            return _rentalsDAL.SaveRentalTransaction(_rentalTransaction);
+            _rentalsDAL.TransactionSaveOfRentalCart(_rentalTransaction);
+            return false;
         }
     }
 }

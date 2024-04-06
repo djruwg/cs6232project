@@ -98,13 +98,19 @@ namespace RentMe.DAL
             return lineItems;
         }
 
-
-        public Boolean SaveRentalLineItem(RentalLineItem rentalLineItem)
+        /// <summary>
+        /// Saves the rental line item with support for being a subpart of a transaction
+        /// </summary>
+        /// <param name="command">The command.</param>
+        /// <param name="rentalLineItem">The rental line item.</param>
+        /// <returns>boolean success</returns>
+        /// <exception cref="System.ArgumentNullException"></exception>
+        public Boolean SaveRentalLineItem(SqlCommand command, RentalLineItem rentalLineItem)
         {
             ArgumentNullException.ThrowIfNull(rentalLineItem);
 
             string statement = @"
-                insert into RentalLineItem (
+                insert into RentalLineItems (
                     RentalID,
                     FurnitureID,
                     QuantityRented,
@@ -117,33 +123,46 @@ namespace RentMe.DAL
                     @QuantityReturned,
                     @Cost )";
 
-            using (SqlConnection connection = DBConnection.GetConnection())
+            command.CommandText = statement;
+
+            if (!command.Parameters.Contains("@RentalID"))
             {
-                connection.Open();
+                command.Parameters.Add("@RentalID", SqlDbType.Int);
+            }
+            command.Parameters["@RentalID"].Value = rentalLineItem.RentalID;
+            
+            if (!command.Parameters.Contains("@FurnitureID"))
+            {
+                command.Parameters.Add("@FurnitureID", SqlDbType.Int);
+            }
+            command.Parameters["@FurnitureID"].Value = rentalLineItem.FurnitureID;
+            
+            if (!command.Parameters.Contains("@QuantityRented"))
+            {
+                command.Parameters.Add("@QuantityRented", SqlDbType.Int);
+            }
+            command.Parameters["@QuantityRented"].Value = rentalLineItem.QuantityRentedByMember;
+            
+            if (!command.Parameters.Contains("@QuantityReturned"))
+            {
+                command.Parameters.Add("@QuantityReturned", SqlDbType.Int);
+            }
+            command.Parameters["@QuantityReturned"].Value = rentalLineItem.QuantityReturnedByMember;
+            
+            if (!command.Parameters.Contains("@Cost"))
+            {
+                command.Parameters.Add("@Cost", SqlDbType.Money);
+            }
+            command.Parameters["@Cost"].Value = rentalLineItem.DailyRentalRate;
 
-                using (SqlCommand command = new SqlCommand(statement, connection))
-                {
-                    command.Parameters.Add("@RentalID", SqlDbType.Int);
-                    command.Parameters["@RentalID"].Value = rentalLineItem.RentalID;
-                    command.Parameters.Add("@FurnitureID", SqlDbType.Int);
-                    command.Parameters["@FurnitureID"].Value = rentalLineItem.FurnitureID;
-                    command.Parameters.Add("@QuantityRented", SqlDbType.Int);
-                    command.Parameters["@QuantityRented"].Value = rentalLineItem.QuantityRentedByMember;
-                    command.Parameters.Add("@QuantityReturned", SqlDbType.Int);
-                    command.Parameters["@QuantityReturned"].Value = rentalLineItem.QuantityReturnedByMember;
-                    command.Parameters.Add("@Cost", SqlDbType.Money);
-                    command.Parameters["@Cost"].Value = rentalLineItem.DailyRentalRate;
-
-                    int rowsAffected = command.ExecuteNonQuery();
-                    if (rowsAffected > 0)
-                    {
-                        return true; // The operation was successful
-                    }
-                    else
-                    {
-                        return false; // The operation failed
-                    }
-                }
+            int rowsAffected = command.ExecuteNonQuery();
+            if (rowsAffected == 1)
+            {
+                return true; // The operation was successful
+            }
+            else
+            {
+                return false; // The operation failed
             }
         }
     }
