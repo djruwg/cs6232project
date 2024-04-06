@@ -86,6 +86,26 @@ public class RentalTransaction
     }
 
     /// <summary>
+    /// Gets the total rental cost.
+    /// </summary>
+    /// <value>
+    /// The total rental cost.
+    /// </value>
+    public double TotalRentalCost
+    {
+        get
+        {
+            double sum = 0;
+            foreach (RentalLineItem LineItem in this._rentalLineItems)
+            {
+                sum += LineItem.RentalCost;
+            }
+
+            return sum;
+        }
+    }
+
+    /// <summary>
     /// Adds a line item.
     /// </summary>
     /// <param name="lineItem">The line item.</param>

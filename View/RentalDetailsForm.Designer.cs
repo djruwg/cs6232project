@@ -100,6 +100,7 @@
             RentalDetailsRentalIDTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             RentalDetailsRentalIDTextBox.Location = new Point(163, 3);
             RentalDetailsRentalIDTextBox.Name = "RentalDetailsRentalIDTextBox";
+            RentalDetailsRentalIDTextBox.ReadOnly = true;
             RentalDetailsRentalIDTextBox.Size = new Size(154, 23);
             RentalDetailsRentalIDTextBox.TabIndex = 2;
             // 
@@ -191,9 +192,9 @@
             RentalDetailsMessageLabel.Location = new Point(20, 399);
             RentalDetailsMessageLabel.Margin = new Padding(20, 0, 3, 0);
             RentalDetailsMessageLabel.Name = "RentalDetailsMessageLabel";
-            RentalDetailsMessageLabel.Size = new Size(38, 15);
+            RentalDetailsMessageLabel.Size = new Size(78, 15);
             RentalDetailsMessageLabel.TabIndex = 12;
-            RentalDetailsMessageLabel.Text = "label1";
+            RentalDetailsMessageLabel.Text = "Message area";
             RentalDetailsMessageLabel.Visible = false;
             // 
             // RentalDetailsForm

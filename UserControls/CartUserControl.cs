@@ -98,7 +98,12 @@ namespace RentMe.UserControls
             }
             
             RentalDetailsForm rentalDetails = new RentalDetailsForm();
-            rentalDetails.ShowDialog();
+            DialogResult result = rentalDetails.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                this._cartController.ClearCart();
+            }
         }
 
         private void CartRemoveButton_Click(object sender, EventArgs e)

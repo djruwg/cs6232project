@@ -50,6 +50,7 @@ namespace RentMe.View
         {
             RentalDetailsDataGridView.DataSource = null; 
             RentalDetailsDataGridView.DataSource = this._cartController.LineItems();
+            RentalDetailsTotalTextBox.Text = this._cartController.TotalRentalCost().ToString("C");
         }
 
 
@@ -78,7 +79,12 @@ namespace RentMe.View
             else
             {
                 RentalDetailsCloseBotton.Enabled = true;
+                RentalDetailsConfirmButton.Enabled = false;
                 RentalDetailsCancelButton.Enabled = false;
+                RentalDetailsDueDateTimePicker.Enabled = false; 
+                RentalDetailsMessageLabel.Text = $"Rental Transaction Successfully Saved ({rentalTransactionID})";
+                RentalDetailsMessageLabel.Visible = true;
+                RentalDetailsRentalIDTextBox.Text = rentalTransactionID.ToString();
             }
 
         }

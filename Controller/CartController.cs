@@ -118,5 +118,13 @@ namespace RentMe.Controller
             return _rentalsDAL.TransactionSaveOfRentalCart(_rentalTransaction);
         }
 
+        /// <summary>
+        /// Totals the rental cost.
+        /// </summary>
+        /// <returns>Current total value of the rental transaction</returns>
+        public double TotalRentalCost()
+        {
+            return _rentalTransaction.TotalRentalCost;
+        }
     }
 }
