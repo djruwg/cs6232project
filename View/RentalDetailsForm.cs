@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Data.Common;
+using System.Diagnostics;
 using System.Runtime.InteropServices.Marshalling;
 using RentMe.Controller;
 using RentMe.Model;
@@ -13,16 +14,18 @@ namespace RentMe.View
         public RentalDetailsForm()
         {
             InitializeComponent();
+            this.ConfigureDataGridView();
+
             this._cartController = new CartController();
             RentalDetailsDueDateTimePicker.MinDate = DateTime.Now.AddDays(1);
             this._cartController.SetDueDate(RentalDetailsDueDateTimePicker.Value);
+            
             RentalDetailsConfirmButton.Enabled = true;
             RentalDetailsCloseBotton.Enabled = false;
             RentalDetailsCancelButton.Enabled = true;
             RentalDetailsRentalIDTextBox.ReadOnly = true;
 
-            this.ConfigureDataGridView();
-            this.RefeshCartListView();
+            this.RefeshDataGrid();
         }
 
 
@@ -30,23 +33,20 @@ namespace RentMe.View
         private void ConfigureDataGridView()
         {
             RentalDetailsDataGridView.AutoGenerateColumns = false;
-
-            this.AddColumn("XFurniture ID", "FurnitureID", true);
-            this.AddColumn("XName", "Name", true);
-            this.AddColumn("XDescription", "Description", true);
-            this.AddColumn("XDailyRentalRate", "DailyRentalRate", true);
-            this.AddColumn("XQuantity", "QuantityRentedByMember", true);
-            this.AddColumn("XDays Rented", "DaysRented", true);
-            this.AddColumn("XCost of Rental", "RentalCost", true);
+            
+            this.AddColumn("Furniture ID", "FurnitureID", true);
+            this.AddColumn("Name", "Name", true);
+            this.AddColumn("Description", "Description", true);
+            this.AddColumn("DailyRentalRate", "DailyRentalRate", true);
+            this.AddColumn("Quantity", "QuantityRentedByMember", true);
+            this.AddColumn("Days Rented", "DaysRented", true);
+            this.AddColumn("Cost of Rental", "RentalCost", true);
 
             RentalDetailsDataGridView.Columns["DailyRentalRate"].DefaultCellStyle.Format = "c";
             RentalDetailsDataGridView.Columns["RentalCost"].DefaultCellStyle.Format = "c";
-            RentalDetailsDataGridView.Columns["XCost of Rental"].DefaultCellStyle.Format = "c";
-
-
         }
 
-        private void RefeshCartListView()
+        private void RefeshDataGrid()
         {
             RentalDetailsDataGridView.DataSource = null; 
             RentalDetailsDataGridView.DataSource = this._cartController.LineItems();
@@ -73,7 +73,7 @@ namespace RentMe.View
             rentalTransactionID = this._cartController.SaveCartAsRentalTransaction();
             if (rentalTransactionID == -1)
             {
-                // log error
+                RentalDetailsMessageLabel.Text = "Transaction failed, please try again or cancel";
             }
             else
             {
@@ -86,7 +86,7 @@ namespace RentMe.View
         private void RentalDetailsDueDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             this._cartController.SetDueDate(RentalDetailsDueDateTimePicker.Value);
-            RefeshCartListView();
+            RefeshDataGrid();
         }
 
         private void AddColumn(string headerText, string properyName, bool readOnly)
