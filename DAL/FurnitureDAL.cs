@@ -182,8 +182,26 @@ namespace RentMe.DAL
             return furnitureList;
         }
 
-        public Boolean UpdateFurnitureQuantityRented(int furnitureID, int quantity)
+        
+        public Boolean UpdateFurnitureQuantityRented(SqlCommand command, int furnitureID, int quantity)
         {
+            Furniture furniture;
+            int newQuantity;
+
+            furniture = GetFurnitureByID(furnitureID);
+
+            if (furniture == null)
+            {
+                return false;
+            }
+            
+            newQuantity = furniture.QuantityRented + quantity;
+
+            if (newQuantity > furniture.QuantityOwned)
+            {
+                return false;
+            }
+            
             string statement = @"
                 update
                     Furniture
@@ -192,28 +210,30 @@ namespace RentMe.DAL
                 where
                     FurnitureID = @FurnitureID";
 
-            using (SqlConnection connection = DBConnection.GetConnection())
+            command.CommandText = statement;
+
+            if (!command.Parameters.Contains("@RentalID"))
             {
-                connection.Open();
+                command.Parameters.Add("@QuantityRented", SqlDbType.Int);
+            }
+            command.Parameters["@QuantityRented"].Value = newQuantity;
 
-                using (SqlCommand command = new SqlCommand(statement, connection))
-                {
-                    command.Parameters.Add("@QuantityRented", SqlDbType.Int);
-                    command.Parameters["@QuantityRented"].Value = quantity;
-                    command.Parameters.Add("@FurnitureID", SqlDbType.Int);
-                    command.Parameters["@FurnitureID"].Value = furnitureID;
+            if (!command.Parameters.Contains("@RentalID"))
+            {
+                command.Parameters.Add("@FurnitureID", SqlDbType.Int);
+            }
+            command.Parameters["@FurnitureID"].Value = furnitureID;
 
-                    int rowsAffected = command.ExecuteNonQuery();
-                    if (rowsAffected > 0)
-                    {
-                        return true; // The operation was successful
-                    }
-                    else
-                    {
-                        return false; // The operation failed
-                    }
-                }
+            int rowsAffected = command.ExecuteNonQuery();
+            if (rowsAffected == 1)
+            {
+                return true; // The operation was successful
+            }
+            else
+            {
+                return false; // The operation failed
             }
         }
+
     }
 }

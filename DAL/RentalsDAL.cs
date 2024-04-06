@@ -96,18 +96,18 @@ namespace RentMe.DAL
                         else
                         {
 
-                            // Loop updating line items and quantities 
-
+                            // Update furniture quantities and save rental line items.
                             foreach (RentalLineItem rentalLineItem in rentalTransaction.RentalLineItems)
                             {
                                 rentalLineItem.RentalID = TransactionID;
-                                success = rentalLineItemsDAL.SaveRentalLineItem(command, rentalLineItem);
+
+                                success = furnitureDAL.UpdateFurnitureQuantityRented(command, rentalLineItem.FurnitureID, rentalLineItem.QuantityRentedByMember);
                                 if (!success)
                                 {
                                     break;
                                 }
 
-                                success = true; // replace with update furnature
+                                success = rentalLineItemsDAL.SaveRentalLineItem(command, rentalLineItem);
                                 if (!success)
                                 {
                                     break;
