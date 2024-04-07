@@ -1,7 +1,4 @@
-﻿using System.Data.SqlTypes;
-using System.Diagnostics;
-
-namespace RentMe.Model;
+﻿namespace RentMe.Model;
 
 /// <summary>
 ///  RentalLineItem model class
