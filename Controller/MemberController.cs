@@ -3,6 +3,9 @@ using RentMe.Model;
 
 namespace RentMe.Controller
 {
+    /// <summary>
+    /// Manages the Members
+    /// </summary>
     internal class MemberController
     {
         private MemberDAL _memberDAL;

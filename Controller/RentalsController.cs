@@ -5,7 +5,7 @@ using System.ComponentModel;
 namespace RentMe.Controller
 {
     /// <summary>
-    /// Manages rental data access layers.
+    /// Manages the Rentals
     /// </summary>
     internal class RentalsController
     {

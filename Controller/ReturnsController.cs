@@ -4,6 +4,10 @@ using System.ComponentModel;
 
 namespace RentMe.Controller
 {
+
+    /// <summary>
+    /// Manage Returns
+    /// </summary>
     internal class ReturnsController
     {
         private ReturnsDAL _returnsDAL;

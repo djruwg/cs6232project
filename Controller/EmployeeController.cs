@@ -3,6 +3,9 @@ using RentMe.Model;
 
 namespace RentMe.Controller
 {
+    /// <summary>
+    /// Manage Employees
+    /// </summary>
     internal class EmployeeController
     {
         /// <summary>

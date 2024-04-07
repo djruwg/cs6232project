@@ -3,6 +3,9 @@ using RentMe.Helper;
 
 namespace RentMe.Controller
 {
+    /// <summary>
+    /// Manage the Login
+    /// </summary>
     internal class LoginController
     {
         private static int _currentEmployeeID = 0;

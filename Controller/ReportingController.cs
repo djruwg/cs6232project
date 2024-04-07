@@ -3,6 +3,9 @@ using System.Data;
 
 namespace RentMe.Controller
 {
+    /// <summary>
+    /// Manage reports
+    /// </summary>
     internal class ReportingController
     {
         /// <summary>
