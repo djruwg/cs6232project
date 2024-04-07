@@ -3,6 +3,9 @@ using System.Text;
 
 namespace RentMe.Helper
 {
+    /// <summary>
+    /// Crypt helper for the password
+    /// </summary>
     internal class PasswordHelper
     {
         private static readonly int _keySize = 64;
