@@ -28,6 +28,8 @@ namespace RentMe.UserControls
             this._memberController = new MemberController();
             this._rentalsController = new RentalsController();
             this._returnsController = new ReturnsController();
+
+            MemberShowMessageLabel.Text = string.Empty;
         }
 
         /// <summary>
@@ -123,6 +125,23 @@ namespace RentMe.UserControls
         private void MemberShowCancelButton_Click(object sender, EventArgs e)
         {
             ParentForm.Close();
+        }
+
+        private void MemberShowRentalsListView_ItemActivate(object sender, EventArgs e)
+        {
+            MemberShowMessageLabel.Text = string.Empty;
+
+            try
+            {
+                Int32 rentalID = Int32.Parse(MemberShowRentalsListView.SelectedItems[0].Text);
+                Debug.WriteLine(rentalID);
+                // DialogResult result = SomeForm.ShowDialog(rentalID);
+            }
+            catch
+            {
+                MemberShowMessageLabel.Text = "Failed to open rental history details.";
+            }
+
         }
     }
 }

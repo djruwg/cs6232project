@@ -47,15 +47,16 @@
             MemberShowReturnsListView = new ListView();
             ReturnID = new ColumnHeader();
             ReturnDate = new ColumnHeader();
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            MemberShowFlowLayoutPanel = new FlowLayoutPanel();
             MemberShowReturnItemsButton = new Button();
             MemberShowAttachCartButton = new Button();
             MemberShowCancelButton = new Button();
+            MemberShowMessageLabel = new Label();
             MemberShowTableLayoutPanel.SuspendLayout();
             MemberShowIDTableLayoutPanel.SuspendLayout();
             MemberShowFirstNameTableLayoutPanel.SuspendLayout();
             MemberShowLastNameTableLayoutPanel.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
+            MemberShowFlowLayoutPanel.SuspendLayout();
             SuspendLayout();
             // 
             // MemberShowTableLayoutPanel
@@ -71,7 +72,8 @@
             MemberShowTableLayoutPanel.Controls.Add(MemberShowEditMemberButton, 1, 1);
             MemberShowTableLayoutPanel.Controls.Add(MemberShowRentalsListView, 0, 7);
             MemberShowTableLayoutPanel.Controls.Add(MemberShowReturnsListView, 1, 7);
-            MemberShowTableLayoutPanel.Controls.Add(flowLayoutPanel1, 0, 9);
+            MemberShowTableLayoutPanel.Controls.Add(MemberShowFlowLayoutPanel, 0, 9);
+            MemberShowTableLayoutPanel.Controls.Add(MemberShowMessageLabel, 1, 9);
             MemberShowTableLayoutPanel.Dock = DockStyle.Fill;
             MemberShowTableLayoutPanel.Location = new Point(0, 0);
             MemberShowTableLayoutPanel.Name = "MemberShowTableLayoutPanel";
@@ -227,12 +229,14 @@
             // 
             MemberShowRentalsListView.Columns.AddRange(new ColumnHeader[] { RentalID, RentalDate });
             MemberShowRentalsListView.Dock = DockStyle.Fill;
+            MemberShowRentalsListView.FullRowSelect = true;
             MemberShowRentalsListView.Location = new Point(3, 139);
             MemberShowRentalsListView.Name = "MemberShowRentalsListView";
             MemberShowRentalsListView.Size = new Size(403, 313);
             MemberShowRentalsListView.TabIndex = 6;
             MemberShowRentalsListView.UseCompatibleStateImageBehavior = false;
             MemberShowRentalsListView.View = System.Windows.Forms.View.Details;
+            MemberShowRentalsListView.ItemActivate += MemberShowRentalsListView_ItemActivate;
             // 
             // RentalID
             // 
@@ -261,16 +265,16 @@
             // 
             ReturnDate.Text = "Return Date";
             // 
-            // flowLayoutPanel1
+            // MemberShowFlowLayoutPanel
             // 
-            flowLayoutPanel1.Controls.Add(MemberShowReturnItemsButton);
-            flowLayoutPanel1.Controls.Add(MemberShowAttachCartButton);
-            flowLayoutPanel1.Controls.Add(MemberShowCancelButton);
-            flowLayoutPanel1.Dock = DockStyle.Fill;
-            flowLayoutPanel1.Location = new Point(3, 468);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(403, 26);
-            flowLayoutPanel1.TabIndex = 8;
+            MemberShowFlowLayoutPanel.Controls.Add(MemberShowReturnItemsButton);
+            MemberShowFlowLayoutPanel.Controls.Add(MemberShowAttachCartButton);
+            MemberShowFlowLayoutPanel.Controls.Add(MemberShowCancelButton);
+            MemberShowFlowLayoutPanel.Dock = DockStyle.Fill;
+            MemberShowFlowLayoutPanel.Location = new Point(3, 468);
+            MemberShowFlowLayoutPanel.Name = "MemberShowFlowLayoutPanel";
+            MemberShowFlowLayoutPanel.Size = new Size(403, 26);
+            MemberShowFlowLayoutPanel.TabIndex = 8;
             // 
             // MemberShowReturnItemsButton
             // 
@@ -302,6 +306,17 @@
             MemberShowCancelButton.UseVisualStyleBackColor = true;
             MemberShowCancelButton.Click += MemberShowCancelButton_Click;
             // 
+            // MemberShowMessageLabel
+            // 
+            MemberShowMessageLabel.Anchor = AnchorStyles.Left;
+            MemberShowMessageLabel.AutoSize = true;
+            MemberShowMessageLabel.ForeColor = Color.Red;
+            MemberShowMessageLabel.Location = new Point(412, 473);
+            MemberShowMessageLabel.Name = "MemberShowMessageLabel";
+            MemberShowMessageLabel.Size = new Size(84, 15);
+            MemberShowMessageLabel.TabIndex = 9;
+            MemberShowMessageLabel.Text = "Message Label";
+            // 
             // MemberShow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -317,7 +332,7 @@
             MemberShowFirstNameTableLayoutPanel.PerformLayout();
             MemberShowLastNameTableLayoutPanel.ResumeLayout(false);
             MemberShowLastNameTableLayoutPanel.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
+            MemberShowFlowLayoutPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -338,7 +353,7 @@
         private Button MemberShowEditMemberButton;
         private ListView MemberShowRentalsListView;
         private ListView MemberShowReturnsListView;
-        private FlowLayoutPanel flowLayoutPanel1;
+        private FlowLayoutPanel MemberShowFlowLayoutPanel;
         private Button MemberShowReturnItemsButton;
         private Button MemberShowAttachCartButton;
         private Button MemberShowCancelButton;
@@ -346,5 +361,6 @@
         private ColumnHeader RentalDate;
         private ColumnHeader ReturnID;
         private ColumnHeader ReturnDate;
+        private Label MemberShowMessageLabel;
     }
 }
