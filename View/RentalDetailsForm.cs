@@ -75,6 +75,7 @@ namespace RentMe.View
             if (rentalTransactionID == -1)
             {
                 RentalDetailsMessageLabel.Text = "Transaction failed, please try again or cancel";
+                RentalDetailsMessageLabel.Visible = true;
             }
             else
             {
@@ -92,6 +93,7 @@ namespace RentMe.View
         private void RentalDetailsDueDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             this._cartController.SetDueDate(RentalDetailsDueDateTimePicker.Value);
+            RentalDetailsMessageLabel.Visible = false;
             RefeshDataGrid();
         }
 

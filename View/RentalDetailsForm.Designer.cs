@@ -204,6 +204,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(tableLayoutPanel1);
             Name = "RentalDetailsForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Rental Transaction Details";
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();

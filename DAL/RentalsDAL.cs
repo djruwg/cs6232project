@@ -87,32 +87,40 @@ namespace RentMe.DAL
                         command.Connection = connection;
                         command.Transaction = transaction;
 
-
-                        TransactionID = SaveRentalTransactionRecord(command, rentalTransaction);
-                        if (TransactionID == -1)
+                        try
                         {
-                            success = false;
-                        }
-                        else
-                        {
-
-                            // Update furniture quantities and save rental line items.
-                            foreach (RentalLineItem rentalLineItem in rentalTransaction.RentalLineItems)
+                            TransactionID = SaveRentalTransactionRecord(command, rentalTransaction);
+                            if (TransactionID == -1)
                             {
-                                rentalLineItem.RentalID = TransactionID;
+                                success = false;
+                            }
+                            else
+                            {
 
-                                success = furnitureDAL.UpdateFurnitureQuantityRented(command, rentalLineItem.FurnitureID, rentalLineItem.QuantityRentedByMember);
-                                if (!success)
+                                // Update furniture quantities and save rental line items.
+                                foreach (RentalLineItem rentalLineItem in rentalTransaction.RentalLineItems)
                                 {
-                                    break;
-                                }
+                                    rentalLineItem.RentalID = TransactionID;
 
-                                success = rentalLineItemsDAL.SaveRentalLineItem(command, rentalLineItem);
-                                if (!success)
-                                {
-                                    break;
+                                    success = furnitureDAL.UpdateFurnitureQuantityRented(command,
+                                        rentalLineItem.FurnitureID, rentalLineItem.QuantityRentedByMember);
+                                    if (!success)
+                                    {
+                                        break;
+                                    }
+
+                                    success = rentalLineItemsDAL.SaveRentalLineItem(command, rentalLineItem);
+                                    if (!success)
+                                    {
+                                        break;
+                                    }
                                 }
                             }
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            return -1;
                         }
 
                         if (success)
