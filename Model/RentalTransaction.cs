@@ -53,6 +53,10 @@ public class RentalTransaction
         }
     }
 
+    /// <summary>
+    /// Sets the rental line item days rented.
+    /// </summary>
+    /// <param name="value">The value.</param>
     private void SetRentalLineItemDaysRented(DateTime value)
     {
         int RentalDuration = (value.Date - DateTime.Today.Date).Days;
@@ -152,6 +156,12 @@ public class RentalTransaction
         return true;
     }
 
+    /// <summary>
+    /// Deduplicates the line items.
+    /// </summary>
+    /// <param name="furnitureID">The furniture identifier.</param>
+    /// <param name="quantity">The quantity.</param>
+    /// <returns></returns>
     private Boolean DeduplicateLineItems(int furnitureID, int quantity)
     {
         foreach (RentalLineItem lineItem in this._rentalLineItems)
