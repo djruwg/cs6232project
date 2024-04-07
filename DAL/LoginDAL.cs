@@ -3,6 +3,9 @@ using System.Data.SqlClient;
 
 namespace RentMe.DAL
 {
+    /// <summary>
+    /// Login data access layer
+    /// </summary>
     internal class LoginDAL
     {
         /// <summary>

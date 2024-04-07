@@ -2,6 +2,10 @@
 
 namespace RentMe.DAL
 {
+
+    /// <summary>
+    /// Create a database connection
+    /// </summary>
     internal class DBConnection
     {
         /// <summary>

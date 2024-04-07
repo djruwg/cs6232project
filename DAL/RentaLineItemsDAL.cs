@@ -10,15 +10,6 @@ namespace RentMe.DAL
     /// </summary>
     internal class RentaLineItemsDAL
     {
-        // private RentalLineItem _lineItem;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RentaLineItemsDAL"/> class.
-        /// </summary>
-        public RentaLineItemsDAL()
-        {
-            // _lineItem = new RentalLineItem();
-        }
 
         /// <summary>
         /// Gets the rentals line items by member identifier.
@@ -98,6 +89,11 @@ namespace RentMe.DAL
             return lineItems;
         }
 
+        /// <summary>
+        /// Gets the rental line items by rental identifier.
+        /// </summary>
+        /// <param name="rentalID">The rental identifier.</param>
+        /// <returns>All rental line items related to RentalID</returns>
         public BindingList<RentalLineItem> GetRentalLineItemsByRentalID(int rentalID)
         {
             BindingList<RentalLineItem> lineItems = new BindingList<RentalLineItem>();
