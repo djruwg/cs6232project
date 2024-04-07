@@ -1,6 +1,5 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
-using System.Diagnostics;
 using System.Text.RegularExpressions;
 
 namespace RentMe.UserControls

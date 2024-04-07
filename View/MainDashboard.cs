@@ -1,9 +1,5 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
-using RentMe.UserControls;
-using System.Diagnostics;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace RentMe.View
 {

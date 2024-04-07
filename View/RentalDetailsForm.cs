@@ -1,7 +1,4 @@
-﻿using System.Data.Common;
-using System.Diagnostics;
-using System.Runtime.InteropServices.Marshalling;
-using RentMe.Controller;
+﻿using RentMe.Controller;
 using RentMe.Model;
 
 namespace RentMe.View

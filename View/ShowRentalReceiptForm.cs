@@ -1,7 +1,6 @@
 ﻿using RentMe.DAL;
 using RentMe.Model;
 
-
 namespace RentMe.View
 {
     /// <summary>
