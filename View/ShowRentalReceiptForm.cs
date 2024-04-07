@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using RentMe.DAL;
+﻿using RentMe.DAL;
 using RentMe.Model;
 
 
@@ -23,9 +22,6 @@ namespace RentMe.View
             RentalsDAL rentalDal = new RentalsDAL();
 
             displayRentalTransaction = rentalDal.GetRentalTransactionByRentalID(rentalID);
-
-            Debug.WriteLine($"got called with a RentalID of {rentalID} with {displayRentalTransaction.RentalLineItems.Count} sub elements");
-
 
             ShowRentalReceiptRentalIDTextBox.Text = displayRentalTransaction.RentalID.ToString();
             ShowRentalReceiptDateDueDatePicker.Value = displayRentalTransaction.DateDue;    
