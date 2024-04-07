@@ -134,14 +134,13 @@ namespace RentMe.UserControls
             try
             {
                 Int32 rentalID = Int32.Parse(MemberShowRentalsListView.SelectedItems[0].Text);
-                Debug.WriteLine(rentalID);
-                // DialogResult result = SomeForm.ShowDialog(rentalID);
+                ShowRentalReceiptForm showRentalReceiptForm = new ShowRentalReceiptForm(rentalID);
+                showRentalReceiptForm.ShowDialog();
             }
             catch
             {
                 MemberShowMessageLabel.Text = "Failed to open rental history details.";
             }
-
         }
     }
 }

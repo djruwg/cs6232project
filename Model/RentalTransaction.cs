@@ -50,11 +50,16 @@ public class RentalTransaction
         set
         {
             _DateDue = value;
-            int RentalDuration = (value.Date - DateTime.Today.Date).Days;
-            foreach (RentalLineItem lineItem in this._rentalLineItems)
-            {
-                lineItem.DaysRented = RentalDuration;
-            }
+            SetRentalLineItemDaysRented(value);
+        }
+    }
+
+    private void SetRentalLineItemDaysRented(DateTime value)
+    {
+        int RentalDuration = (value.Date - DateTime.Today.Date).Days;
+        foreach (RentalLineItem lineItem in this._rentalLineItems)
+        {
+            lineItem.DaysRented = RentalDuration;
         }
     }
 
@@ -83,6 +88,11 @@ public class RentalTransaction
     public BindingList<RentalLineItem> RentalLineItems
     {
         get => this._rentalLineItems;
+        set
+        {
+            this._rentalLineItems = value;
+            SetRentalLineItemDaysRented(this.DateDue);
+        }
     }
 
     /// <summary>

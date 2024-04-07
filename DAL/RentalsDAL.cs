@@ -64,6 +64,66 @@ namespace RentMe.DAL
         }
 
         /// <summary>
+        /// Gets the rental transaction by rental identifier.
+        /// </summary>
+        /// <param name="rentalID">The rental identifier.</param>
+        /// <returns>A fully populated rentals line Item</returns>
+        public RentalTransaction GetRentalTransactionByRentalID(int rentalID)
+        {
+            RentaLineItemsDAL rentaLineItemsDAL = new RentaLineItemsDAL();
+            RentalTransaction rentalTransaction;
+            rentalTransaction = GetRentalTransactionRowByRentalID(rentalID);
+            rentalTransaction.RentalLineItems = rentaLineItemsDAL.GetRentalLineItemsByRentalID(rentalID);
+            return rentalTransaction;
+        }
+
+        /// <summary>
+        /// Gets the rental transaction by rental identifier.
+        /// </summary>
+        /// <param name="RentalID">The rental identifier.</param>
+        /// <returns></returns>
+        public RentalTransaction GetRentalTransactionRowByRentalID(int rentalID)
+        {
+            RentalTransaction rentalTransaction = new RentalTransaction();
+
+            string selectStatement = @"
+                SELECT RentalID, DateRented, DateDue, EmployeeID, MemberID
+                FROM RentalTransactions
+                WHERE RentalID = @RentalID";
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+
+                    selectCommand.Parameters.Add("@RentalID", SqlDbType.Int);
+                    selectCommand.Parameters["@RentalID"].Value = rentalID;
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        reader.Read();
+
+                        int rentalIdOrdinal = reader.GetOrdinal("RentalID");
+                        int dateRentedOrdinal = reader.GetOrdinal("DateRented");
+                        int dueDateOrdinal = reader.GetOrdinal("DateDue");
+                        int employeeIdOrdinal = reader.GetOrdinal("EmployeeID");
+                        int memberIdOrdinal = reader.GetOrdinal("MemberID");
+
+                        rentalTransaction.RentalID = reader.GetInt32(rentalIdOrdinal);
+                        rentalTransaction.DateRented = reader.GetDateTime(dateRentedOrdinal);
+                        rentalTransaction.DateDue = reader.GetDateTime(dueDateOrdinal);
+                        rentalTransaction.EmployeeID = reader.GetInt32(employeeIdOrdinal);
+                        rentalTransaction.MemberID = reader.GetInt32(memberIdOrdinal);
+                    }
+                }
+            }
+
+            return rentalTransaction;
+        }
+
+        /// <summary>
         /// Transactions the save of rental cart.
         /// </summary>
         /// <param name="RentalTransaction">The rental transaction.</param>

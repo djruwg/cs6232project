@@ -98,6 +98,80 @@ namespace RentMe.DAL
             return lineItems;
         }
 
+        public BindingList<RentalLineItem> GetRentalLineItemsByRentalID(int rentalID)
+        {
+            BindingList<RentalLineItem> lineItems = new BindingList<RentalLineItem>();
+
+            string selectStatement = @"
+                SELECT 
+                    t.RentalID,
+                    t.DateRented,
+                    t.DateDue,
+                    t.EmployeeID,
+                    t.MemberID,
+                    f.FurnitureID,
+                    f.Name,
+                    f.Style,
+                    f.Category,
+                    f.Description,
+                    f.QuantityOwned as QuantityOwnedByStore,
+                    f.QuantityRented as QuantityRentedByStore,
+                    f.DailyRentalRate,
+                    l.QuantityRented as QuantityRentedByMember,
+                    l.QuantityReturned as QuantityReturnedByMember
+                FROM RentalTransactions t, RentalLineItems l, Furniture f
+                WHERE t.RentalID = @RentalID and t.RentalID = l.RentalID and f.FurnitureID = l.FurnitureID";
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add("@RentalID", SqlDbType.Int);
+                    selectCommand.Parameters["@RentalID"].Value = rentalID;
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        int rentalIdOrdinal = reader.GetOrdinal("RentalID");
+                        int furnitureIdOrdinal = reader.GetOrdinal("FurnitureID");
+                        int nameOrdinal = reader.GetOrdinal("Name");
+                        int descriptionOrdinal = reader.GetOrdinal("Description");
+                        int quantityOwnedByStoreOrdinal = reader.GetOrdinal("QuantityOwnedByStore");
+                        int quantityRentedByStoreOrdinal = reader.GetOrdinal("QuantityRentedByStore");
+                        int dailyRentalRateOrdinal = reader.GetOrdinal("DailyRentalRate");
+                        int categoryOrdinal = reader.GetOrdinal("Category");
+                        int styleOrdinal = reader.GetOrdinal("Style");
+                        int quantityRentedByMemberOrdinal = reader.GetOrdinal("QuantityRentedByMember");
+                        int quantityReturnedByMemberOrdinal = reader.GetOrdinal("QuantityReturnedByMember");
+
+                        while (reader.Read())
+                        {
+                            RentalLineItem lineItem = new RentalLineItem
+                            {
+                                RentalID = reader.GetInt32(rentalIdOrdinal),
+                                FurnitureID = reader.GetInt32(furnitureIdOrdinal),
+                                Name = reader.GetString(nameOrdinal),
+                                Description = reader.GetString(descriptionOrdinal),
+                                QuantityOwnedByStore = reader.GetInt32(quantityOwnedByStoreOrdinal),
+                                QuantityRentedByStore = reader.GetInt32(quantityRentedByStoreOrdinal),
+                                DailyRentalRate = Convert.ToDouble(reader.GetDecimal(dailyRentalRateOrdinal)),
+                                Category = reader.GetString(categoryOrdinal),
+                                Style = reader.GetString(styleOrdinal),
+                                QuantityRentedByMember = reader.GetInt32(quantityRentedByMemberOrdinal),
+                                QuantityReturnedByMember = reader.GetInt32(quantityReturnedByMemberOrdinal)
+                            };
+
+                            lineItems.Add(lineItem);
+                        }
+                    }
+                }
+            }
+
+            return lineItems;
+        }
+
+
         /// <summary>
         /// Saves the rental line item with support for being a subpart of a transaction
         /// </summary>
