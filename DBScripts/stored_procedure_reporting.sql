@@ -1,6 +1,6 @@
 ﻿USE [cs6232-g1]
 GO
-/****** Object:  StoredProcedure [dbo].[getMostPopularFurnitureDuringDates]    Script Date: 3/12/2024 12:52:10 PM ******/
+/****** Object:  StoredProcedure [dbo].[getMostPopularFurnitureDuringDates]    Script Date: 4/7/2024 1:02:59 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -21,13 +21,13 @@ BEGIN
 
 	select
         f.FurnitureId,
-        c.Name as 'category',
-        f.description,
+        c.Name as 'Category',
+        f.Name,
         count(distinct ren.RentalId) as QualifiedRentals,
-        count(distinct all_rentals.RentalId) as 'all_rentals',
-        concat(format(count(distinct ren.RentalId) / count(distinct all_rentals.RentalId) * 100, '##.##'), '%') as 'transaction ratio',
-        concat(format(count(certain_members.MemberId) / count(all_members.MemberId) * 100, '##.##'), '%') as '% within 18 to 29',
-        concat(format(100.0 - (count(certain_members.MemberId) / count(all_members.MemberId) * 100), '##.##'), '%') '% outside 18 to 29'
+        count(distinct all_rentals.RentalId) as 'All Rentals',
+        concat(format(count(distinct ren.RentalId) * 1.0 / count(distinct all_rentals.RentalId) * 100.0, '0.00'), '%') as 'Transaction Ratio',
+        concat(format(count(certain_members.MemberId) * 1.0 / count(all_members.MemberId) * 100.0, '0.00'), '%') as '% within 18 to 29',
+        concat(format(100.0 - (count(certain_members.MemberId) * 1.0 / count(all_members.MemberId) * 100.0), '0.00'), '%') '% outside 18 to 29'
 	from
         RentalTransactions ren 
         join RentalLineItems ren_li 
@@ -40,12 +40,12 @@ BEGIN
                 on all_members.MemberId = ren.MemberId
         left join Members certain_members 
                 on certain_members.MemberId = ren.MemberId
-                and datediff(day, ren.DateRented, certain_members.DateOfBirth) / 365 between 18 and 29 
+                and datediff(year, certain_members.DateOfBirth, ren.DateRented) between 18 and 29 
         left join RentalTransactions all_rentals
                 on all_rentals.DateRented between @startDate and @endDate
 	where
         ren.DateRented between @startDate and @endDate
-	group by f.FurnitureId, c.name, f.description
+	group by f.FurnitureId, c.Name, f.Name
 	having count(distinct ren.RentalId) > 1
 	order by QualifiedRentals desc, f.FurnitureId desc;
 

@@ -60,10 +60,17 @@
             // 
             // ReportFormDataGridView
             // 
+            ReportFormDataGridView.AllowUserToAddRows = false;
+            ReportFormDataGridView.AllowUserToDeleteRows = false;
+            ReportFormDataGridView.AllowUserToResizeRows = false;
+            ReportFormDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ReportFormDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             ReportFormDataGridView.Dock = DockStyle.Fill;
             ReportFormDataGridView.Location = new Point(3, 47);
+            ReportFormDataGridView.MultiSelect = false;
             ReportFormDataGridView.Name = "ReportFormDataGridView";
+            ReportFormDataGridView.ReadOnly = true;
+            ReportFormDataGridView.RowHeadersVisible = false;
             ReportFormDataGridView.Size = new Size(794, 400);
             ReportFormDataGridView.TabIndex = 0;
             // 

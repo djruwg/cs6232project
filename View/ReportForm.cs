@@ -17,6 +17,8 @@ namespace RentMe.View
         {
             InitializeComponent();
 
+            ReportFormDataGridView.AutoResizeColumns();
+
             this._reportingController = new ReportingController();
 
             ReportFormMessageLabel.Text = string.Empty;
@@ -29,8 +31,8 @@ namespace RentMe.View
         /// </summary>
         private void ClearInput()
         {
-            ReportFormStartDatePicker.Value = DateTime.Now;
-            ReportFormEndDatePicker.Value = DateTime.Now;
+            ReportFormStartDatePicker.Value = DateTime.Now.AddDays(-30);
+            ReportFormEndDatePicker.Value = DateTime.Now.AddDays(1);
         }
 
         /// <summary>
