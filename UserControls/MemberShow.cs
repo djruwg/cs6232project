@@ -107,16 +107,12 @@ namespace RentMe.UserControls
 
         private void MemberShowReturnItemsButton_Click(object sender, EventArgs e)
         {
-            // MessageBox.Show("Not Yet Implemented", "Not Yet Implemented");
             ReturnItemsForm returnItems = new ReturnItemsForm(this._member.MemberID);
             returnItems.ShowDialog();
         }
 
         private void MemberShowAttachCartButton_Click(object sender, EventArgs e)
         {
-            // TODO:  Should show a message to notify the user that this member was attached
-            // to the cart.  Alternatively, we could see how feasible it would be to close
-            // this window and jump to the Cart tab.
             CartController cartController = new CartController();
             cartController.AttachedMember = this._member;
 
