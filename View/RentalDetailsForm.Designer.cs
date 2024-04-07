@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tableLayoutPanel1 = new TableLayoutPanel();
+            RentalDetailsTableLayoutPanel = new TableLayoutPanel();
             RentalDetailsRentalIDLabel = new Label();
             RentalDetailsDueDateLabel = new Label();
             RentalDetailsRentalIDTextBox = new TextBox();
@@ -40,40 +40,40 @@
             RentalDetailsCloseBotton = new Button();
             RentalDetailsCancelButton = new Button();
             RentalDetailsMessageLabel = new Label();
-            tableLayoutPanel1.SuspendLayout();
+            RentalDetailsTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)RentalDetailsDataGridView).BeginInit();
             SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // RentalDetailsTableLayoutPanel
             // 
-            tableLayoutPanel1.ColumnCount = 5;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.Controls.Add(RentalDetailsRentalIDLabel, 0, 0);
-            tableLayoutPanel1.Controls.Add(RentalDetailsDueDateLabel, 2, 0);
-            tableLayoutPanel1.Controls.Add(RentalDetailsRentalIDTextBox, 1, 0);
-            tableLayoutPanel1.Controls.Add(RentalDetailsDataGridView, 0, 1);
-            tableLayoutPanel1.Controls.Add(RentalDetailsDueDateTimePicker, 3, 0);
-            tableLayoutPanel1.Controls.Add(RentalDetailsTotalLabel, 2, 2);
-            tableLayoutPanel1.Controls.Add(RentalDetailsTotalTextBox, 3, 2);
-            tableLayoutPanel1.Controls.Add(RentalDetailsConfirmButton, 0, 4);
-            tableLayoutPanel1.Controls.Add(RentalDetailsCloseBotton, 1, 4);
-            tableLayoutPanel1.Controls.Add(RentalDetailsCancelButton, 4, 4);
-            tableLayoutPanel1.Controls.Add(RentalDetailsMessageLabel, 0, 2);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 4;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.Size = new Size(800, 450);
-            tableLayoutPanel1.TabIndex = 0;
+            RentalDetailsTableLayoutPanel.ColumnCount = 5;
+            RentalDetailsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            RentalDetailsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            RentalDetailsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            RentalDetailsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            RentalDetailsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            RentalDetailsTableLayoutPanel.Controls.Add(RentalDetailsRentalIDLabel, 0, 0);
+            RentalDetailsTableLayoutPanel.Controls.Add(RentalDetailsDueDateLabel, 2, 0);
+            RentalDetailsTableLayoutPanel.Controls.Add(RentalDetailsRentalIDTextBox, 1, 0);
+            RentalDetailsTableLayoutPanel.Controls.Add(RentalDetailsDataGridView, 0, 1);
+            RentalDetailsTableLayoutPanel.Controls.Add(RentalDetailsDueDateTimePicker, 3, 0);
+            RentalDetailsTableLayoutPanel.Controls.Add(RentalDetailsTotalLabel, 2, 2);
+            RentalDetailsTableLayoutPanel.Controls.Add(RentalDetailsTotalTextBox, 3, 2);
+            RentalDetailsTableLayoutPanel.Controls.Add(RentalDetailsConfirmButton, 0, 4);
+            RentalDetailsTableLayoutPanel.Controls.Add(RentalDetailsCloseBotton, 1, 4);
+            RentalDetailsTableLayoutPanel.Controls.Add(RentalDetailsCancelButton, 4, 4);
+            RentalDetailsTableLayoutPanel.Controls.Add(RentalDetailsMessageLabel, 0, 2);
+            RentalDetailsTableLayoutPanel.Dock = DockStyle.Fill;
+            RentalDetailsTableLayoutPanel.Location = new Point(0, 0);
+            RentalDetailsTableLayoutPanel.Name = "RentalDetailsTableLayoutPanel";
+            RentalDetailsTableLayoutPanel.RowCount = 4;
+            RentalDetailsTableLayoutPanel.RowStyles.Add(new RowStyle());
+            RentalDetailsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            RentalDetailsTableLayoutPanel.RowStyles.Add(new RowStyle());
+            RentalDetailsTableLayoutPanel.RowStyles.Add(new RowStyle());
+            RentalDetailsTableLayoutPanel.RowStyles.Add(new RowStyle());
+            RentalDetailsTableLayoutPanel.Size = new Size(800, 450);
+            RentalDetailsTableLayoutPanel.TabIndex = 0;
             // 
             // RentalDetailsRentalIDLabel
             // 
@@ -110,7 +110,7 @@
             RentalDetailsDataGridView.AllowUserToDeleteRows = false;
             RentalDetailsDataGridView.BackgroundColor = SystemColors.ControlLightLight;
             RentalDetailsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tableLayoutPanel1.SetColumnSpan(RentalDetailsDataGridView, 5);
+            RentalDetailsTableLayoutPanel.SetColumnSpan(RentalDetailsDataGridView, 5);
             RentalDetailsDataGridView.Dock = DockStyle.Fill;
             RentalDetailsDataGridView.Location = new Point(3, 32);
             RentalDetailsDataGridView.Name = "RentalDetailsDataGridView";
@@ -122,7 +122,7 @@
             // RentalDetailsDueDateTimePicker
             // 
             RentalDetailsDueDateTimePicker.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel1.SetColumnSpan(RentalDetailsDueDateTimePicker, 2);
+            RentalDetailsTableLayoutPanel.SetColumnSpan(RentalDetailsDueDateTimePicker, 2);
             RentalDetailsDueDateTimePicker.Location = new Point(483, 3);
             RentalDetailsDueDateTimePicker.Name = "RentalDetailsDueDateTimePicker";
             RentalDetailsDueDateTimePicker.Size = new Size(314, 23);
@@ -142,7 +142,7 @@
             // RentalDetailsTotalTextBox
             // 
             RentalDetailsTotalTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel1.SetColumnSpan(RentalDetailsTotalTextBox, 2);
+            RentalDetailsTableLayoutPanel.SetColumnSpan(RentalDetailsTotalTextBox, 2);
             RentalDetailsTotalTextBox.Enabled = false;
             RentalDetailsTotalTextBox.Location = new Point(483, 395);
             RentalDetailsTotalTextBox.Name = "RentalDetailsTotalTextBox";
@@ -187,7 +187,7 @@
             // 
             RentalDetailsMessageLabel.Anchor = AnchorStyles.Left;
             RentalDetailsMessageLabel.AutoSize = true;
-            tableLayoutPanel1.SetColumnSpan(RentalDetailsMessageLabel, 2);
+            RentalDetailsTableLayoutPanel.SetColumnSpan(RentalDetailsMessageLabel, 2);
             RentalDetailsMessageLabel.ForeColor = Color.Red;
             RentalDetailsMessageLabel.Location = new Point(20, 399);
             RentalDetailsMessageLabel.Margin = new Padding(20, 0, 3, 0);
@@ -202,19 +202,19 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(tableLayoutPanel1);
+            Controls.Add(RentalDetailsTableLayoutPanel);
             Name = "RentalDetailsForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Rental Transaction Details";
-            tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
+            RentalDetailsTableLayoutPanel.ResumeLayout(false);
+            RentalDetailsTableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)RentalDetailsDataGridView).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel RentalDetailsTableLayoutPanel;
         private Label RentalDetailsRentalIDLabel;
         private Label RentalDetailsDueDateLabel;
         private TextBox RentalDetailsRentalIDTextBox;
