@@ -1,12 +1,12 @@
 Admin Login
-Username: Jane
+Username: jane
 Password: test1234
 
 Employee Logins
-Username: John
+Username: john
 Password: test1234
 
-Username: Rob
+Username: rob
 Password: test1234
 
 Partially Complete Features
