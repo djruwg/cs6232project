@@ -14,8 +14,10 @@ namespace RentMe.View
             this.ConfigureDataGridView();
 
             this._cartController = new CartController();
-            RentalDetailsDueDateTimePicker.MinDate = DateTime.Now.AddDays(1);
-            this._cartController.SetDueDate(RentalDetailsDueDateTimePicker.Value);
+            DateTime pickerDate = DateTime.Now.AddDays(1);
+            RentalDetailsDueDateTimePicker.MinDate = pickerDate;
+            DateTime dueDate = new DateTime(pickerDate.Year, pickerDate.Month, pickerDate.Day, 23, 59, 59);
+            this._cartController.SetDueDate(dueDate);
             
             RentalDetailsConfirmButton.Enabled = true;
             RentalDetailsCloseBotton.Enabled = false;
@@ -89,7 +91,9 @@ namespace RentMe.View
 
         private void RentalDetailsDueDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            this._cartController.SetDueDate(RentalDetailsDueDateTimePicker.Value);
+            DateTime pickerDate = RentalDetailsDueDateTimePicker.Value;
+            DateTime dueDate = new DateTime(pickerDate.Year, pickerDate.Month, pickerDate.Day, 23, 59, 59);
+            this._cartController.SetDueDate(dueDate);
             RentalDetailsMessageLabel.Visible = false;
             RefeshDataGrid();
         }
