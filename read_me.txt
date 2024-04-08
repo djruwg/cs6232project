@@ -10,5 +10,5 @@ Username: Rob
 Password: test1234
 
 Partially Complete Features
-(This includes features that have been started but not comepleted)
+(This includes features that have been started but not completed)
 - Admin reports
