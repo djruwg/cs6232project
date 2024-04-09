@@ -63,6 +63,7 @@
             ShowRentalReceiptTableLayoutPanel.Controls.Add(ShowRentalReceiptTotalCostTextBox, 4, 3);
             ShowRentalReceiptTableLayoutPanel.Dock = DockStyle.Fill;
             ShowRentalReceiptTableLayoutPanel.Location = new Point(0, 0);
+            ShowRentalReceiptTableLayoutPanel.Margin = new Padding(6, 6, 6, 6);
             ShowRentalReceiptTableLayoutPanel.Name = "ShowRentalReceiptTableLayoutPanel";
             ShowRentalReceiptTableLayoutPanel.RowCount = 5;
             ShowRentalReceiptTableLayoutPanel.RowStyles.Add(new RowStyle());
@@ -70,16 +71,17 @@
             ShowRentalReceiptTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             ShowRentalReceiptTableLayoutPanel.RowStyles.Add(new RowStyle());
             ShowRentalReceiptTableLayoutPanel.RowStyles.Add(new RowStyle());
-            ShowRentalReceiptTableLayoutPanel.Size = new Size(800, 450);
+            ShowRentalReceiptTableLayoutPanel.Size = new Size(1486, 960);
             ShowRentalReceiptTableLayoutPanel.TabIndex = 0;
             // 
             // ShowRentalReceiptRentalIDLabel
             // 
             ShowRentalReceiptRentalIDLabel.Anchor = AnchorStyles.Right;
             ShowRentalReceiptRentalIDLabel.AutoSize = true;
-            ShowRentalReceiptRentalIDLabel.Location = new Point(103, 7);
+            ShowRentalReceiptRentalIDLabel.Location = new Point(181, 9);
+            ShowRentalReceiptRentalIDLabel.Margin = new Padding(6, 0, 6, 0);
             ShowRentalReceiptRentalIDLabel.Name = "ShowRentalReceiptRentalIDLabel";
-            ShowRentalReceiptRentalIDLabel.Size = new Size(54, 15);
+            ShowRentalReceiptRentalIDLabel.Size = new Size(110, 32);
             ShowRentalReceiptRentalIDLabel.TabIndex = 1;
             ShowRentalReceiptRentalIDLabel.Text = "Rental ID";
             // 
@@ -87,9 +89,10 @@
             // 
             ShowRentalReceiptDateRentedLabel.Anchor = AnchorStyles.Right;
             ShowRentalReceiptDateRentedLabel.AutoSize = true;
-            ShowRentalReceiptDateRentedLabel.Location = new Point(404, 7);
+            ShowRentalReceiptDateRentedLabel.Location = new Point(739, 9);
+            ShowRentalReceiptDateRentedLabel.Margin = new Padding(6, 0, 6, 0);
             ShowRentalReceiptDateRentedLabel.Name = "ShowRentalReceiptDateRentedLabel";
-            ShowRentalReceiptDateRentedLabel.Size = new Size(71, 15);
+            ShowRentalReceiptDateRentedLabel.Size = new Size(146, 32);
             ShowRentalReceiptDateRentedLabel.TabIndex = 2;
             ShowRentalReceiptDateRentedLabel.Text = "Date Rented";
             // 
@@ -97,9 +100,10 @@
             // 
             ShowRentalReceiptDateDueLabel.Anchor = AnchorStyles.Right;
             ShowRentalReceiptDateDueLabel.AutoSize = true;
-            ShowRentalReceiptDateDueLabel.Location = new Point(420, 36);
+            ShowRentalReceiptDateDueLabel.Location = new Point(770, 60);
+            ShowRentalReceiptDateDueLabel.Margin = new Padding(6, 0, 6, 0);
             ShowRentalReceiptDateDueLabel.Name = "ShowRentalReceiptDateDueLabel";
-            ShowRentalReceiptDateDueLabel.Size = new Size(55, 15);
+            ShowRentalReceiptDateDueLabel.Size = new Size(115, 32);
             ShowRentalReceiptDateDueLabel.TabIndex = 3;
             ShowRentalReceiptDateDueLabel.Text = "Date Due";
             // 
@@ -108,9 +112,10 @@
             ShowRentalReceiptDateRentedDatePicker.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             ShowRentalReceiptTableLayoutPanel.SetColumnSpan(ShowRentalReceiptDateRentedDatePicker, 2);
             ShowRentalReceiptDateRentedDatePicker.Enabled = false;
-            ShowRentalReceiptDateRentedDatePicker.Location = new Point(481, 3);
+            ShowRentalReceiptDateRentedDatePicker.Location = new Point(897, 6);
+            ShowRentalReceiptDateRentedDatePicker.Margin = new Padding(6, 6, 6, 6);
             ShowRentalReceiptDateRentedDatePicker.Name = "ShowRentalReceiptDateRentedDatePicker";
-            ShowRentalReceiptDateRentedDatePicker.Size = new Size(316, 23);
+            ShowRentalReceiptDateRentedDatePicker.Size = new Size(583, 39);
             ShowRentalReceiptDateRentedDatePicker.TabIndex = 4;
             // 
             // ShowRentalReceiptDateDueDatePicker
@@ -118,51 +123,58 @@
             ShowRentalReceiptDateDueDatePicker.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             ShowRentalReceiptTableLayoutPanel.SetColumnSpan(ShowRentalReceiptDateDueDatePicker, 2);
             ShowRentalReceiptDateDueDatePicker.Enabled = false;
-            ShowRentalReceiptDateDueDatePicker.Location = new Point(481, 32);
+            ShowRentalReceiptDateDueDatePicker.Location = new Point(897, 57);
+            ShowRentalReceiptDateDueDatePicker.Margin = new Padding(6, 6, 6, 6);
             ShowRentalReceiptDateDueDatePicker.Name = "ShowRentalReceiptDateDueDatePicker";
-            ShowRentalReceiptDateDueDatePicker.Size = new Size(316, 23);
+            ShowRentalReceiptDateDueDatePicker.Size = new Size(583, 39);
             ShowRentalReceiptDateDueDatePicker.TabIndex = 5;
             // 
             // ShowRentalReceiptRentalIDTextBox
             // 
             ShowRentalReceiptRentalIDTextBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             ShowRentalReceiptRentalIDTextBox.Enabled = false;
-            ShowRentalReceiptRentalIDTextBox.Location = new Point(163, 3);
+            ShowRentalReceiptRentalIDTextBox.Location = new Point(303, 6);
+            ShowRentalReceiptRentalIDTextBox.Margin = new Padding(6, 6, 6, 6);
             ShowRentalReceiptRentalIDTextBox.Name = "ShowRentalReceiptRentalIDTextBox";
-            ShowRentalReceiptRentalIDTextBox.Size = new Size(153, 23);
+            ShowRentalReceiptRentalIDTextBox.Size = new Size(285, 39);
             ShowRentalReceiptRentalIDTextBox.TabIndex = 6;
             // 
             // ShowRentalReceiptDataGridView
             // 
             ShowRentalReceiptDataGridView.AllowUserToAddRows = false;
             ShowRentalReceiptDataGridView.AllowUserToDeleteRows = false;
+            ShowRentalReceiptDataGridView.AllowUserToResizeRows = false;
             ShowRentalReceiptDataGridView.BackgroundColor = SystemColors.ControlLightLight;
             ShowRentalReceiptDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             ShowRentalReceiptTableLayoutPanel.SetColumnSpan(ShowRentalReceiptDataGridView, 5);
             ShowRentalReceiptDataGridView.Dock = DockStyle.Fill;
-            ShowRentalReceiptDataGridView.Location = new Point(3, 61);
+            ShowRentalReceiptDataGridView.Location = new Point(6, 108);
+            ShowRentalReceiptDataGridView.Margin = new Padding(6, 6, 6, 6);
             ShowRentalReceiptDataGridView.Name = "ShowRentalReceiptDataGridView";
             ShowRentalReceiptDataGridView.ReadOnly = true;
             ShowRentalReceiptDataGridView.RowHeadersVisible = false;
-            ShowRentalReceiptDataGridView.Size = new Size(794, 328);
+            ShowRentalReceiptDataGridView.RowHeadersWidth = 82;
+            ShowRentalReceiptDataGridView.Size = new Size(1474, 734);
             ShowRentalReceiptDataGridView.TabIndex = 7;
             // 
             // ShowRentalReceiptTotalCostLabel
             // 
             ShowRentalReceiptTotalCostLabel.Anchor = AnchorStyles.Right;
             ShowRentalReceiptTotalCostLabel.AutoSize = true;
-            ShowRentalReceiptTotalCostLabel.Location = new Point(575, 399);
+            ShowRentalReceiptTotalCostLabel.Location = new Point(1063, 857);
+            ShowRentalReceiptTotalCostLabel.Margin = new Padding(6, 0, 6, 0);
             ShowRentalReceiptTotalCostLabel.Name = "ShowRentalReceiptTotalCostLabel";
-            ShowRentalReceiptTotalCostLabel.Size = new Size(59, 15);
+            ShowRentalReceiptTotalCostLabel.Size = new Size(119, 32);
             ShowRentalReceiptTotalCostLabel.TabIndex = 8;
             ShowRentalReceiptTotalCostLabel.Text = "Total Cost";
             // 
             // ShowRentalReceiptCloseButton
             // 
             ShowRentalReceiptCloseButton.Anchor = AnchorStyles.None;
-            ShowRentalReceiptCloseButton.Location = new Point(42, 424);
+            ShowRentalReceiptCloseButton.Location = new Point(79, 905);
+            ShowRentalReceiptCloseButton.Margin = new Padding(6, 6, 6, 6);
             ShowRentalReceiptCloseButton.Name = "ShowRentalReceiptCloseButton";
-            ShowRentalReceiptCloseButton.Size = new Size(75, 23);
+            ShowRentalReceiptCloseButton.Size = new Size(139, 49);
             ShowRentalReceiptCloseButton.TabIndex = 0;
             ShowRentalReceiptCloseButton.Text = "Close";
             ShowRentalReceiptCloseButton.UseVisualStyleBackColor = true;
@@ -172,17 +184,19 @@
             // 
             ShowRentalReceiptTotalCostTextBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             ShowRentalReceiptTotalCostTextBox.Enabled = false;
-            ShowRentalReceiptTotalCostTextBox.Location = new Point(640, 395);
+            ShowRentalReceiptTotalCostTextBox.Location = new Point(1194, 854);
+            ShowRentalReceiptTotalCostTextBox.Margin = new Padding(6, 6, 6, 6);
             ShowRentalReceiptTotalCostTextBox.Name = "ShowRentalReceiptTotalCostTextBox";
-            ShowRentalReceiptTotalCostTextBox.Size = new Size(157, 23);
+            ShowRentalReceiptTotalCostTextBox.Size = new Size(286, 39);
             ShowRentalReceiptTotalCostTextBox.TabIndex = 9;
             // 
             // ShowRentalReceiptForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1486, 960);
             Controls.Add(ShowRentalReceiptTableLayoutPanel);
+            Margin = new Padding(6, 6, 6, 6);
             Name = "ShowRentalReceiptForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "ShowRentalReceiptForm";
