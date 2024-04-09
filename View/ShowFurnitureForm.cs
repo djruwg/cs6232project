@@ -1,5 +1,9 @@
 ﻿namespace RentMe.View
 {
+    /// <summary>
+    /// Form to Show Furniture 
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class ShowFurnitureForm : Form
     {
         /// <summary>

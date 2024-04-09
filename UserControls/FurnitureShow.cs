@@ -3,6 +3,11 @@ using RentMe.Model;
 
 namespace RentMe.UserControls
 {
+
+    /// <summary>
+    /// User control to show Furniture
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class FurnitureShow : UserControl
     {
         private FurnitureController _furnitureController;

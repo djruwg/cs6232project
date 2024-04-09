@@ -3,11 +3,18 @@ using RentMe.Model;
 
 namespace RentMe.View
 {
+    /// <summary>
+    /// Form to show rental details
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class RentalDetailsForm : Form
     {
         private CartController _cartController;
         private RentalTransaction rentalTransaction;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RentalDetailsForm"/> class.
+        /// </summary>
         public RentalDetailsForm()
         {
             InitializeComponent();

@@ -117,6 +117,9 @@ namespace RentMe.View
             e.Cancel = !((Control)e.TabPage).Enabled;
         }
 
+        /// <summary>
+        /// Selects the cart tab.
+        /// </summary>
         public void SelectCartTab()
         {
             MainTabControl.SelectedIndex = 4;
