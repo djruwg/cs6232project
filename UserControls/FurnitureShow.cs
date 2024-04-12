@@ -42,6 +42,8 @@ namespace RentMe.UserControls
                 throw new InvalidOperationException("No furniture was found with the given furniture ID.");
             }
 
+            int quantityInCart = this._cartController.GetQuantityFurnitureInCartByID(this._furniture.FurnitureID);
+
             this.FurnitureShowIDTextBox.Text = this._furniture.FurnitureID.ToString();
             this.FurnitureShowNameTextBox.Text = this._furniture.Name;
             this.FurnitureShowDescriptionTextBox.Text = this._furniture.Description;
@@ -49,10 +51,8 @@ namespace RentMe.UserControls
             this.FurnitureShowStyleTextBox.Text = this._furniture.Style;
             this.FurnitureShowOwnedTextBox.Text = this._furniture.QuantityOwned.ToString();
             this.FurnitureShowRentedTextBox.Text = this._furniture.QuantityRented.ToString();
-            this.FurnitureShowInStockTextBox.Text = this._furniture.CalculateQuantityInStock().ToString();
+            this.FurnitureShowInStockTextBox.Text = (this._furniture.CalculateQuantityInStock() - quantityInCart).ToString();
             this.FurnitureShowDailyRateTextBox.Text = this._furniture.DailyRentalRate.ToString("C");
-
-            int quantityInCart = this._cartController.GetQuantityFurnitureInCartByID(this._furniture.FurnitureID);
 
             if (this._cartController.HasNeededInventoryToSatisfyQuantityRequested(this._furniture.FurnitureID, quantityInCart + 1))
             {

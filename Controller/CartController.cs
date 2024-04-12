@@ -12,6 +12,7 @@ namespace RentMe.Controller
         private static RentalTransaction? _rentalTransaction;
         private static Member? _attachedMember;
         private RentalsDAL _rentalsDAL;
+        private FurnitureDAL _furnitureDAL;
 
 
         /// <summary>
@@ -22,6 +23,7 @@ namespace RentMe.Controller
             _rentalTransaction ??= new RentalTransaction();
             _attachedMember ??= new Member();
             this._rentalsDAL = new RentalsDAL();
+            this._furnitureDAL = new FurnitureDAL();
         }
 
         /// <summary>
@@ -44,7 +46,9 @@ namespace RentMe.Controller
         /// <returns></returns>
         public Boolean AddToCart(int furnitureID, int quantity)
         {
-            return _rentalTransaction!.AddLineItem(furnitureID, quantity);
+            Furniture furniture = this._furnitureDAL.GetFurnitureByID(furnitureID);
+
+            return _rentalTransaction!.AddLineItem(furniture, quantity);
         }
 
         /// <summary>
@@ -94,7 +98,9 @@ namespace RentMe.Controller
         /// </returns>
         public Boolean HasNeededInventoryToSatisfyQuantityRequested(int furnitureID, int quantity)
         {
-            return _rentalTransaction!.HasNeededInventoryToSatisfyQuantityRequested(furnitureID, quantity);
+            Furniture furniture = this._furnitureDAL.GetFurnitureByID(furnitureID);
+
+            return _rentalTransaction!.HasNeededInventoryToSatisfyQuantityRequested(furniture, quantity);
         }
 
 
@@ -104,7 +110,7 @@ namespace RentMe.Controller
         /// <param name="dateDue">The date due.</param>
         public void SetDueDate(DateTime dateDue)
         {
-            _rentalTransaction.DateDue = dateDue;
+            _rentalTransaction!.DateDue = dateDue;
         }
         
         /// <summary>
@@ -113,8 +119,8 @@ namespace RentMe.Controller
         /// <returns>RentalTransaction RentalID</returns>
         public int SaveCartAsRentalTransaction()
         {
-            _rentalTransaction.MemberID = _attachedMember.MemberID;
-            _rentalTransaction.EmployeeID = LoginController.CurrentEmployeeID;
+            _rentalTransaction!.MemberID = _attachedMember!.MemberID;
+            _rentalTransaction!.EmployeeID = LoginController.CurrentEmployeeID;
             return _rentalsDAL.TransactionSaveOfRentalCart(_rentalTransaction);
         }
 
@@ -124,7 +130,7 @@ namespace RentMe.Controller
         /// <returns>Current total value of the rental transaction</returns>
         public double TotalRentalCost()
         {
-            return _rentalTransaction.TotalRentalCost;
+            return _rentalTransaction!.TotalRentalCost;
         }
     }
 }
