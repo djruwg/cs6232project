@@ -1,5 +1,4 @@
-﻿using RentMe.DAL;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace RentMe.Model;
 
@@ -9,7 +8,6 @@ namespace RentMe.Model;
 public class RentalTransaction
 {
     private BindingList<RentalLineItem> _rentalLineItems;
-    private FurnitureDAL _furnitureDAL;
     private DateTime _DateDue;
 
     /// <summary>
@@ -18,7 +16,6 @@ public class RentalTransaction
     public RentalTransaction()
     {
         this._rentalLineItems = new BindingList<RentalLineItem>();
-        this._furnitureDAL = new FurnitureDAL();
     }
 
     /// <summary>
@@ -122,13 +119,11 @@ public class RentalTransaction
     /// Adds a line item.
     /// </summary>
     /// <param name="lineItem">The line item.</param>
-    public Boolean AddLineItem(int furnitureID, int quantity)
+    public Boolean AddLineItem(Furniture furniture, int quantity)
     {
-        Furniture furniture = this._furnitureDAL.GetFurnitureByID(furnitureID);
-
         ArgumentNullException.ThrowIfNull(furniture);
 
-        if (GetQuantityFurnitureInTransactionByID(furnitureID) + quantity > furniture.QuantityOwned - furniture.QuantityRented)
+        if (GetQuantityFurnitureInTransactionByID(furniture.FurnitureID) + quantity > furniture.QuantityOwned - furniture.QuantityRented)
         {
             return false;
         }
@@ -136,7 +131,7 @@ public class RentalTransaction
         RentalLineItem lineItem = new RentalLineItem
         {
             RentalID = this.RentalID,
-            FurnitureID = furnitureID,
+            FurnitureID = furniture.FurnitureID,
             Name = furniture.Name,
             Description = furniture.Description,
             QuantityOwnedByStore = furniture.QuantityOwned,
@@ -148,7 +143,7 @@ public class RentalTransaction
             QuantityReturnedByMember = 0
         };
 
-        if (this.DeduplicateLineItems(furnitureID, quantity) == false)
+        if (this.DeduplicateLineItems(furniture.FurnitureID, quantity) == false)
         {
             _rentalLineItems.Add(lineItem);
         }
@@ -202,10 +197,8 @@ public class RentalTransaction
     ///   <c>true</c> if [has needed inventory to satisfy quantity requested] [the specified furniture identifier]; otherwise, <c>false</c>.
     /// </returns>
     /// <exception cref="System.ArgumentNullException"></exception>
-    public Boolean HasNeededInventoryToSatisfyQuantityRequested(int furnitureID, int quantity)
+    public Boolean HasNeededInventoryToSatisfyQuantityRequested(Furniture furniture, int quantity)
     {
-        Furniture furniture = this._furnitureDAL.GetFurnitureByID(furnitureID);
-
         ArgumentNullException.ThrowIfNull(furniture);
 
         if (quantity > furniture.QuantityOwned - furniture.QuantityRented)
