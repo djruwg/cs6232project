@@ -25,11 +25,11 @@ namespace RentMe.View
         {
             ReturnItemsDataGridView.AutoGenerateColumns = false;
 
-            DataGridViewCheckBoxColumn column = new DataGridViewCheckBoxColumn(false);
-            column.Name = "CheckBoxColumn";
-            column.HeaderText = "Selected";
-            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            ReturnItemsDataGridView.Columns.Add(column);
+            //DataGridViewCheckBoxColumn column = new DataGridViewCheckBoxColumn(false);
+            //column.Name = "CheckBoxColumn";
+            //column.HeaderText = "Selected";
+            //column.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            //ReturnItemsDataGridView.Columns.Add(column);
 
             this.AddColumn("Rental ID", "RentalID", true);
             this.AddColumn("Furniture ID", "FurnitureID", true);

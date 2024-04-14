@@ -1,6 +1,7 @@
 ﻿using RentMe.DAL;
 using RentMe.Model;
 using System.ComponentModel;
+using System.Diagnostics;
 
 namespace RentMe.Controller
 {
@@ -43,5 +44,11 @@ namespace RentMe.Controller
                 lineItems.Where(lineItem => lineItem.QuantityReturnedByMember < lineItem.QuantityRentedByMember)
                 .ToList());
         }
+
+        public RentalTransaction GetRentalTransactionByRentalID(int rentalID)
+        {
+            return _rentalsDAL.GetRentalTransactionByRentalID(rentalID);
+        }
+
     }
 }

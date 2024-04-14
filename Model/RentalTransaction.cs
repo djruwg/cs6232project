@@ -59,7 +59,8 @@ public class RentalTransaction
     /// <param name="value">The value.</param>
     private void SetRentalLineItemDaysRented(DateTime value)
     {
-        int RentalDuration = (value.Date - DateTime.Today.Date).Days;
+        //int RentalDuration = (value.Date - DateTime.Today.Date).Days;
+        int RentalDuration = (value.Date - this.DateRented.Date).Days;
         foreach (RentalLineItem lineItem in this._rentalLineItems)
         {
             lineItem.DaysRented = RentalDuration;
