@@ -1,4 +1,6 @@
-﻿namespace RentMe.Model;
+﻿using System.Diagnostics;
+
+namespace RentMe.Model;
 
 /// <summary>
 ///  RentalLineItem model class
@@ -135,7 +137,10 @@ public class RentalLineItem
     {
         get
         {
-            return 0.0;
+            
+            int ActualRentalDuration = (DateTime.Now.Date - this.DateRented.Date).Days;
+            int PlanedRentalDuration = (this.DateDue.Date - this.DateRented.Date).Days;
+            return (ActualRentalDuration - PlanedRentalDuration) * QuantityRentedByMember * DailyRentalRate; 
         }
 
     }
