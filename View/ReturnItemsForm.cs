@@ -1,4 +1,5 @@
-﻿using RentMe.Controller;
+﻿using System.Diagnostics;
+using RentMe.Controller;
 
 namespace RentMe.View
 {
@@ -35,11 +36,14 @@ namespace RentMe.View
             this.AddColumn("Furniture ID", "FurnitureID", true);
             this.AddColumn("Name", "Name", true);
             this.AddColumn("Description", "Description", true);
-            this.AddColumn("DailyRentalRate", "DailyRentalRate", true);
-            this.AddColumn("QuantityRentedByMember", "QuantityRentedByMember", true);
-            this.AddColumn("QuantityReturnedByMember", "QuantityReturnedByMember", false);
+            this.AddColumn("Daily Rate", "DailyRentalRate", true);
+            this.AddColumn("Qty Rented", "QuantityRentedByMember", true);
+            this.AddColumn("Qty Returned", "QuantityReturnedByMember", false);
+            this.AddColumn("Net Cost", "NetCost", true);
 
             ReturnItemsDataGridView.Columns["DailyRentalRate"].DefaultCellStyle.Format = "c";
+            ReturnItemsDataGridView.Columns["NetCost"].DefaultCellStyle.Format = "c";
+
         }
 
         private void AddColumn(string headerText, string properyName, bool readOnly)
@@ -51,6 +55,48 @@ namespace RentMe.View
             column.ReadOnly = readOnly;
             column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ReturnItemsDataGridView.Columns.Add(column);
+        }
+
+        private void ReturnItemsDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ReturnItemsDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex != 6) return;
+
+            if (ReturnItemsDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                int quantity = (int)ReturnItemsDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                Debug.WriteLine($"make sure you update the proper item");
+                //_cartController.LineItems().ElementAt(e.RowIndex).QuantityRentedByMember = quantity;
+            }
+        }
+
+        private void ReturnItemsDataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex != 6) return;
+
+            //CartMessageLabel.Text = string.Empty;
+
+            //if (!int.TryParse(e.FormattedValue?.ToString(), out int newInteger) || newInteger < 0)
+            //{
+            //CartMessageLabel.Text = "Cell must be a positive integer";
+
+            //e.Cancel = true;
+            //}
+
+            int rentalID = (int)ReturnItemsDataGridView.Rows[e.RowIndex].Cells[0].Value;
+            int furnitureID = (int)ReturnItemsDataGridView.Rows[e.RowIndex].Cells[1].Value;
+
+
+            //if (_cartController.HasNeededInventoryToSatisfyQuantityRequested(furnitureID, newInteger) == false)
+            //{
+            //CartMessageLabel.Text = "Insufficient inventory";
+
+            //e.Cancel = true;
+            //}
         }
     }
 }

@@ -109,4 +109,35 @@ public class RentalLineItem
     /// </value>
     public double RentalCost { get => DaysRented * QuantityRentedByMember * DailyRentalRate;}
 
+    /// <summary>
+    /// Gets or sets the date rented.
+    /// </summary>
+    /// <value>
+    /// The date rented.
+    /// </value>
+    public DateTime DateRented { get; set; }
+
+    /// <summary>
+    /// Gets or sets the date due.
+    /// </summary>
+    /// <value>
+    /// The date due.
+    /// </value>
+    public DateTime DateDue { get; set; }
+
+    /// <summary>
+    /// Gets the net cost.
+    /// </summary>
+    /// <value>
+    /// The net cost.
+    /// </value>
+    public double NetCost
+    {
+        get
+        {
+            return 0.0;
+        }
+
+    }
+
 }

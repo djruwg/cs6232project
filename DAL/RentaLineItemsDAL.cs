@@ -52,6 +52,8 @@ namespace RentMe.DAL
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
                         int rentalIdOrdinal = reader.GetOrdinal("RentalID");
+                        int dateRentedOrdinal = reader.GetOrdinal("DateRented");
+                        int dateDueOrdinal = reader.GetOrdinal("DateDue");
                         int furnitureIdOrdinal = reader.GetOrdinal("FurnitureID");
                         int nameOrdinal = reader.GetOrdinal("Name");
                         int descriptionOrdinal = reader.GetOrdinal("Description");
@@ -77,7 +79,9 @@ namespace RentMe.DAL
                                 Category = reader.GetString(categoryOrdinal),
                                 Style = reader.GetString(styleOrdinal),
                                 QuantityRentedByMember = reader.GetInt32(quantityRentedByMemberOrdinal),
-                                QuantityReturnedByMember = reader.GetInt32(quantityReturnedByMemberOrdinal)
+                                QuantityReturnedByMember = reader.GetInt32(quantityReturnedByMemberOrdinal),
+                                DateRented = reader.GetDateTime(dateRentedOrdinal),
+                                DateDue = reader.GetDateTime(dateDueOrdinal)
                             };
 
                             lineItems.Add(lineItem);
