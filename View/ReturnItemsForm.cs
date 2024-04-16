@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics;
+using System.Numerics;
 using RentMe.Controller;
+using RentMe.Model;
 
 namespace RentMe.View
 {
@@ -9,6 +11,8 @@ namespace RentMe.View
     /// <seealso cref="System.Windows.Forms.Form" />
     public partial class ReturnItemsForm : Form
     {
+        private ReturnTransaction returnTransaction;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ReturnItemsForm"/> class.
         /// </summary>
@@ -19,7 +23,10 @@ namespace RentMe.View
 
             this.ConfigureDataGridView();
 
-            ReturnItemsDataGridView.DataSource = new RentalsController().GetOutstandingRentalLineItemsByMemberID(memberID);
+            returnTransaction = new ReturnsController().GetReturnableForMember(memberID);
+
+            ReturnItemsDataGridView.DataSource = returnTransaction.LineItems;
+            //ReturnItemsDataGridView.DataSource = new RentalsController().GetOutstandingRentalLineItemsByMemberID(memberID);
         }
 
         private void ConfigureDataGridView()
@@ -37,12 +44,12 @@ namespace RentMe.View
             this.AddColumn("Name", "Name", true);
             this.AddColumn("Description", "Description", true);
             this.AddColumn("Daily Rate", "DailyRentalRate", true);
-            this.AddColumn("Qty Rented", "QuantityRentedByMember", true);
-            this.AddColumn("Qty Returned", "QuantityReturnedByMember", false);
-            this.AddColumn("Net Cost", "NetCost", true);
+            this.AddColumn("Qty Rented", "QuantityOutStanding", true);
+            this.AddColumn("Qty Returned", "Quantity", false);
+            this.AddColumn("Net Cost", "AmountOwed", true);
 
             ReturnItemsDataGridView.Columns["DailyRentalRate"].DefaultCellStyle.Format = "c";
-            ReturnItemsDataGridView.Columns["NetCost"].DefaultCellStyle.Format = "c";
+            ReturnItemsDataGridView.Columns["AmountOwed"].DefaultCellStyle.Format = "c";
 
         }
 
@@ -55,6 +62,12 @@ namespace RentMe.View
             column.ReadOnly = readOnly;
             column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ReturnItemsDataGridView.Columns.Add(column);
+        }
+
+        private void RefreshDataGridView()
+        {
+            ReturnItemsDataGridView.DataSource = null;
+            ReturnItemsDataGridView.DataSource = returnTransaction.LineItems;
         }
 
         private void ReturnItemsDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -70,7 +83,7 @@ namespace RentMe.View
             {
                 int quantity = (int)ReturnItemsDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
                 Debug.WriteLine($"make sure you update the proper item");
-                //_cartController.LineItems().ElementAt(e.RowIndex).QuantityRentedByMember = quantity;
+                Debug.WriteLine($"testing: {returnTransaction.LineItems[e.RowIndex].Quantity}");
             }
         }
 
@@ -78,25 +91,26 @@ namespace RentMe.View
         {
             if (e.RowIndex < 0 || e.ColumnIndex != 6) return;
 
-            //CartMessageLabel.Text = string.Empty;
+            ReturnItemsFormLabel.Visible = false;
 
-            //if (!int.TryParse(e.FormattedValue?.ToString(), out int newInteger) || newInteger < 0)
-            //{
-            //CartMessageLabel.Text = "Cell must be a positive integer";
+            int.TryParse(e.FormattedValue?.ToString(), out int newValue);
+            int.TryParse(ReturnItemsDataGridView.Rows[e.RowIndex].Cells[5].Value.ToString(), out int maxValue);
 
-            //e.Cancel = true;
-            //}
+            if (newValue > maxValue)
+            {
+                ReturnItemsFormLabel.Text = "Can't return more than is outstanding";
+                ReturnItemsFormLabel.Visible = true;
+                e.Cancel = true;
 
-            int rentalID = (int)ReturnItemsDataGridView.Rows[e.RowIndex].Cells[0].Value;
-            int furnitureID = (int)ReturnItemsDataGridView.Rows[e.RowIndex].Cells[1].Value;
+            }
 
-
-            //if (_cartController.HasNeededInventoryToSatisfyQuantityRequested(furnitureID, newInteger) == false)
-            //{
-            //CartMessageLabel.Text = "Insufficient inventory";
-
-            //e.Cancel = true;
-            //}
+            if (!int.TryParse(e.FormattedValue?.ToString(), out int newInteger) || newInteger < 0)
+            {
+                ReturnItemsFormLabel.Text = "Cell must be a positive integer";
+                ReturnItemsFormLabel.Visible = true;
+                e.Cancel = true;
+            }
+            
         }
     }
 }

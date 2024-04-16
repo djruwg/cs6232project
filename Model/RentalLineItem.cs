@@ -127,22 +127,4 @@ public class RentalLineItem
     /// </value>
     public DateTime DateDue { get; set; }
 
-    /// <summary>
-    /// Gets the net cost.
-    /// </summary>
-    /// <value>
-    /// The net cost.
-    /// </value>
-    public double NetCost
-    {
-        get
-        {
-            
-            int ActualRentalDuration = (DateTime.Now.Date - this.DateRented.Date).Days;
-            int PlanedRentalDuration = (this.DateDue.Date - this.DateRented.Date).Days;
-            return (ActualRentalDuration - PlanedRentalDuration) * QuantityRentedByMember * DailyRentalRate; 
-        }
-
-    }
-
 }

@@ -31,10 +31,10 @@
             ReturnItemsDataGridView = new DataGridView();
             ReturnItemsTableLayoutPanel = new TableLayoutPanel();
             button1 = new Button();
-            label1 = new Label();
+            ReturnItemsFormLabel = new Label();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            label2 = new Label();
             textBox1 = new TextBox();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)ReturnItemsDataGridView).BeginInit();
             ReturnItemsTableLayoutPanel.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
@@ -65,7 +65,7 @@
             ReturnItemsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             ReturnItemsTableLayoutPanel.Controls.Add(ReturnItemsDataGridView, 0, 1);
             ReturnItemsTableLayoutPanel.Controls.Add(button1, 0, 3);
-            ReturnItemsTableLayoutPanel.Controls.Add(label1, 0, 2);
+            ReturnItemsTableLayoutPanel.Controls.Add(ReturnItemsFormLabel, 0, 2);
             ReturnItemsTableLayoutPanel.Controls.Add(flowLayoutPanel1, 1, 2);
             ReturnItemsTableLayoutPanel.Dock = DockStyle.Fill;
             ReturnItemsTableLayoutPanel.Location = new Point(0, 0);
@@ -88,17 +88,17 @@
             button1.Text = "Return Items";
             button1.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // ReturnItemsFormLabel
             // 
-            label1.Anchor = AnchorStyles.Left;
-            label1.AutoSize = true;
-            label1.ForeColor = Color.Red;
-            label1.Location = new Point(3, 388);
-            label1.Name = "label1";
-            label1.Size = new Size(76, 15);
-            label1.TabIndex = 2;
-            label1.Text = "message text";
-            label1.Visible = false;
+            ReturnItemsFormLabel.Anchor = AnchorStyles.Left;
+            ReturnItemsFormLabel.AutoSize = true;
+            ReturnItemsFormLabel.ForeColor = Color.Red;
+            ReturnItemsFormLabel.Location = new Point(3, 388);
+            ReturnItemsFormLabel.Name = "ReturnItemsFormLabel";
+            ReturnItemsFormLabel.Size = new Size(76, 15);
+            ReturnItemsFormLabel.TabIndex = 2;
+            ReturnItemsFormLabel.Text = "message text";
+            ReturnItemsFormLabel.Visible = false;
             // 
             // flowLayoutPanel1
             // 
@@ -111,6 +111,14 @@
             flowLayoutPanel1.Size = new Size(394, 30);
             flowLayoutPanel1.TabIndex = 3;
             // 
+            // textBox1
+            // 
+            textBox1.Anchor = AnchorStyles.Right;
+            textBox1.Location = new Point(222, 3);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(169, 23);
+            textBox1.TabIndex = 1;
+            // 
             // label2
             // 
             label2.Anchor = AnchorStyles.Right;
@@ -120,14 +128,6 @@
             label2.Size = new Size(53, 15);
             label2.TabIndex = 0;
             label2.Text = "Net Cost";
-            // 
-            // textBox1
-            // 
-            textBox1.Anchor = AnchorStyles.Right;
-            textBox1.Location = new Point(222, 3);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(169, 23);
-            textBox1.TabIndex = 1;
             // 
             // ReturnItemsForm
             // 
@@ -152,7 +152,7 @@
         private DataGridView ReturnItemsDataGridView;
         private TableLayoutPanel ReturnItemsTableLayoutPanel;
         private Button button1;
-        private Label label1;
+        private Label ReturnItemsFormLabel;
         private FlowLayoutPanel flowLayoutPanel1;
         private TextBox textBox1;
         private Label label2;
