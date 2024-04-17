@@ -22,16 +22,16 @@ namespace RentMe.View
             InitializeComponent();
 
             this.ConfigureDataGridView();
-
             returnTransaction = new ReturnsController().GetReturnableForMember(memberID);
+            ReturnItemsFormDataGridView.DataSource = returnTransaction.LineItems;
+            RefreshDataGridView();
 
-            ReturnItemsDataGridView.DataSource = returnTransaction.LineItems;
             //ReturnItemsDataGridView.DataSource = new RentalsController().GetOutstandingRentalLineItemsByMemberID(memberID);
         }
 
         private void ConfigureDataGridView()
         {
-            ReturnItemsDataGridView.AutoGenerateColumns = false;
+            ReturnItemsFormDataGridView.AutoGenerateColumns = false;
 
             //DataGridViewCheckBoxColumn column = new DataGridViewCheckBoxColumn(false);
             //column.Name = "CheckBoxColumn";
@@ -48,8 +48,8 @@ namespace RentMe.View
             this.AddColumn("Qty Returned", "Quantity", false);
             this.AddColumn("Net Cost", "AmountOwed", true);
 
-            ReturnItemsDataGridView.Columns["DailyRentalRate"].DefaultCellStyle.Format = "c";
-            ReturnItemsDataGridView.Columns["AmountOwed"].DefaultCellStyle.Format = "c";
+            ReturnItemsFormDataGridView.Columns["DailyRentalRate"].DefaultCellStyle.Format = "c";
+            ReturnItemsFormDataGridView.Columns["AmountOwed"].DefaultCellStyle.Format = "c";
 
         }
 
@@ -61,13 +61,20 @@ namespace RentMe.View
             column.HeaderText = headerText;
             column.ReadOnly = readOnly;
             column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            ReturnItemsDataGridView.Columns.Add(column);
+            ReturnItemsFormDataGridView.Columns.Add(column);
         }
 
         private void RefreshDataGridView()
         {
-            ReturnItemsDataGridView.DataSource = null;
-            ReturnItemsDataGridView.DataSource = returnTransaction.LineItems;
+            ReturnItemsFormDataGridView.DataSource = null;
+            ReturnItemsFormDataGridView.DataSource = returnTransaction.LineItems;
+            double sum = 0;
+            foreach (ReturnLineItem lineItem in returnTransaction.LineItems)
+            {
+                sum += lineItem.AmountOwed;
+            }
+
+            ReturnItemsFormNetCostTextBox.Text = sum.ToString("C");
         }
 
         private void ReturnItemsDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -79,11 +86,12 @@ namespace RentMe.View
         {
             if (e.RowIndex < 0 || e.ColumnIndex != 6) return;
 
-            if (ReturnItemsDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            if (ReturnItemsFormDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
-                int quantity = (int)ReturnItemsDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                int quantity = (int)ReturnItemsFormDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
                 Debug.WriteLine($"make sure you update the proper item");
                 Debug.WriteLine($"testing: {returnTransaction.LineItems[e.RowIndex].Quantity}");
+                RefreshDataGridView();
             }
         }
 
@@ -91,26 +99,52 @@ namespace RentMe.View
         {
             if (e.RowIndex < 0 || e.ColumnIndex != 6) return;
 
-            ReturnItemsFormLabel.Visible = false;
+            ReturnItemsFormMessageLabel.Visible = false;
 
             int.TryParse(e.FormattedValue?.ToString(), out int newValue);
-            int.TryParse(ReturnItemsDataGridView.Rows[e.RowIndex].Cells[5].Value.ToString(), out int maxValue);
+            int.TryParse(ReturnItemsFormDataGridView.Rows[e.RowIndex].Cells[5].Value.ToString(), out int maxValue);
 
             if (newValue > maxValue)
             {
-                ReturnItemsFormLabel.Text = "Can't return more than is outstanding";
-                ReturnItemsFormLabel.Visible = true;
+                ReturnItemsFormMessageLabel.Text = "Can't return more than is outstanding";
+                ReturnItemsFormMessageLabel.Visible = true;
                 e.Cancel = true;
 
             }
 
             if (!int.TryParse(e.FormattedValue?.ToString(), out int newInteger) || newInteger < 0)
             {
-                ReturnItemsFormLabel.Text = "Cell must be a positive integer";
-                ReturnItemsFormLabel.Visible = true;
+                ReturnItemsFormMessageLabel.Text = "Cell must be a positive integer";
+                ReturnItemsFormMessageLabel.Visible = true;
                 e.Cancel = true;
             }
-            
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            double sum = 0;
+            foreach (ReturnLineItem lineitem in returnTransaction.LineItems)
+            {
+                sum += lineitem.AmountOwed;
+
+                Debug.WriteLine(
+                    $"{lineitem.RentalID} | {lineitem.FurnitureID} | {lineitem.Name} | {lineitem.Description} | {lineitem.DailyRentalRate} | {lineitem.QuantityOutStanding} | {lineitem.Quantity} | {lineitem.AmountOwed} | {sum}");
+            }
+        }
+
+        private void ReturnItemsFormButton_Click(object sender, EventArgs e)
+        {
+            ExampleSaveRentalForm exampleSaveRentalForm = new ExampleSaveRentalForm(returnTransaction);
+            this.ReturnItemsFormReturnItemsButton.Enabled = false;
+            exampleSaveRentalForm.ShowDialog();
+
+
+        }
+
+        private void ReturnItemsFormCloseButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

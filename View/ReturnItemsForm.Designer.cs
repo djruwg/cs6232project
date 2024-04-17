@@ -28,34 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ReturnItemsDataGridView = new DataGridView();
+            ReturnItemsFormDataGridView = new DataGridView();
             ReturnItemsTableLayoutPanel = new TableLayoutPanel();
-            button1 = new Button();
-            ReturnItemsFormLabel = new Label();
+            ReturnItemsFormReturnItemsButton = new Button();
+            ReturnItemsFormMessageLabel = new Label();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            textBox1 = new TextBox();
+            ReturnItemsFormNetCostTextBox = new TextBox();
             label2 = new Label();
-            ((System.ComponentModel.ISupportInitialize)ReturnItemsDataGridView).BeginInit();
+            button2 = new Button();
+            ReturnItemsFormCloseButton = new Button();
+            ((System.ComponentModel.ISupportInitialize)ReturnItemsFormDataGridView).BeginInit();
             ReturnItemsTableLayoutPanel.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
-            // ReturnItemsDataGridView
+            // ReturnItemsFormDataGridView
             // 
-            ReturnItemsDataGridView.AllowUserToAddRows = false;
-            ReturnItemsDataGridView.AllowUserToDeleteRows = false;
-            ReturnItemsDataGridView.BackgroundColor = SystemColors.ControlLightLight;
-            ReturnItemsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            ReturnItemsTableLayoutPanel.SetColumnSpan(ReturnItemsDataGridView, 2);
-            ReturnItemsDataGridView.Dock = DockStyle.Fill;
-            ReturnItemsDataGridView.Location = new Point(3, 39);
-            ReturnItemsDataGridView.Name = "ReturnItemsDataGridView";
-            ReturnItemsDataGridView.RowHeadersVisible = false;
-            ReturnItemsDataGridView.Size = new Size(794, 336);
-            ReturnItemsDataGridView.TabIndex = 0;
-            ReturnItemsDataGridView.CellDoubleClick += ReturnItemsDataGridView_CellDoubleClick;
-            ReturnItemsDataGridView.CellValidating += ReturnItemsDataGridView_CellValidating;
-            ReturnItemsDataGridView.CellValueChanged += ReturnItemsDataGridView_CellValueChanged;
+            ReturnItemsFormDataGridView.AllowUserToAddRows = false;
+            ReturnItemsFormDataGridView.AllowUserToDeleteRows = false;
+            ReturnItemsFormDataGridView.BackgroundColor = SystemColors.ControlLightLight;
+            ReturnItemsFormDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            ReturnItemsTableLayoutPanel.SetColumnSpan(ReturnItemsFormDataGridView, 2);
+            ReturnItemsFormDataGridView.Dock = DockStyle.Fill;
+            ReturnItemsFormDataGridView.Location = new Point(3, 39);
+            ReturnItemsFormDataGridView.Name = "ReturnItemsFormDataGridView";
+            ReturnItemsFormDataGridView.RowHeadersVisible = false;
+            ReturnItemsFormDataGridView.Size = new Size(794, 336);
+            ReturnItemsFormDataGridView.TabIndex = 0;
+            ReturnItemsFormDataGridView.CellDoubleClick += ReturnItemsDataGridView_CellDoubleClick;
+            ReturnItemsFormDataGridView.CellValidating += ReturnItemsDataGridView_CellValidating;
+            ReturnItemsFormDataGridView.CellValueChanged += ReturnItemsDataGridView_CellValueChanged;
             // 
             // ReturnItemsTableLayoutPanel
             // 
@@ -63,10 +65,12 @@
             ReturnItemsTableLayoutPanel.ColumnCount = 2;
             ReturnItemsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             ReturnItemsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            ReturnItemsTableLayoutPanel.Controls.Add(ReturnItemsDataGridView, 0, 1);
-            ReturnItemsTableLayoutPanel.Controls.Add(button1, 0, 3);
-            ReturnItemsTableLayoutPanel.Controls.Add(ReturnItemsFormLabel, 0, 2);
+            ReturnItemsTableLayoutPanel.Controls.Add(ReturnItemsFormDataGridView, 0, 1);
+            ReturnItemsTableLayoutPanel.Controls.Add(ReturnItemsFormReturnItemsButton, 0, 3);
+            ReturnItemsTableLayoutPanel.Controls.Add(ReturnItemsFormMessageLabel, 0, 2);
             ReturnItemsTableLayoutPanel.Controls.Add(flowLayoutPanel1, 1, 2);
+            ReturnItemsTableLayoutPanel.Controls.Add(button2, 1, 0);
+            ReturnItemsTableLayoutPanel.Controls.Add(ReturnItemsFormCloseButton, 1, 3);
             ReturnItemsTableLayoutPanel.Dock = DockStyle.Fill;
             ReturnItemsTableLayoutPanel.Location = new Point(0, 0);
             ReturnItemsTableLayoutPanel.Name = "ReturnItemsTableLayoutPanel";
@@ -78,31 +82,32 @@
             ReturnItemsTableLayoutPanel.Size = new Size(800, 450);
             ReturnItemsTableLayoutPanel.TabIndex = 1;
             // 
-            // button1
+            // ReturnItemsFormReturnItemsButton
             // 
-            button1.Anchor = AnchorStyles.Left;
-            button1.Location = new Point(3, 420);
-            button1.Name = "button1";
-            button1.Size = new Size(121, 23);
-            button1.TabIndex = 1;
-            button1.Text = "Return Items";
-            button1.UseVisualStyleBackColor = true;
+            ReturnItemsFormReturnItemsButton.Anchor = AnchorStyles.Left;
+            ReturnItemsFormReturnItemsButton.Location = new Point(3, 420);
+            ReturnItemsFormReturnItemsButton.Name = "ReturnItemsFormReturnItemsButton";
+            ReturnItemsFormReturnItemsButton.Size = new Size(121, 23);
+            ReturnItemsFormReturnItemsButton.TabIndex = 1;
+            ReturnItemsFormReturnItemsButton.Text = "Return Items";
+            ReturnItemsFormReturnItemsButton.UseVisualStyleBackColor = true;
+            ReturnItemsFormReturnItemsButton.Click += ReturnItemsFormButton_Click;
             // 
-            // ReturnItemsFormLabel
+            // ReturnItemsFormMessageLabel
             // 
-            ReturnItemsFormLabel.Anchor = AnchorStyles.Left;
-            ReturnItemsFormLabel.AutoSize = true;
-            ReturnItemsFormLabel.ForeColor = Color.Red;
-            ReturnItemsFormLabel.Location = new Point(3, 388);
-            ReturnItemsFormLabel.Name = "ReturnItemsFormLabel";
-            ReturnItemsFormLabel.Size = new Size(76, 15);
-            ReturnItemsFormLabel.TabIndex = 2;
-            ReturnItemsFormLabel.Text = "message text";
-            ReturnItemsFormLabel.Visible = false;
+            ReturnItemsFormMessageLabel.Anchor = AnchorStyles.Left;
+            ReturnItemsFormMessageLabel.AutoSize = true;
+            ReturnItemsFormMessageLabel.ForeColor = Color.Red;
+            ReturnItemsFormMessageLabel.Location = new Point(3, 388);
+            ReturnItemsFormMessageLabel.Name = "ReturnItemsFormMessageLabel";
+            ReturnItemsFormMessageLabel.Size = new Size(76, 15);
+            ReturnItemsFormMessageLabel.TabIndex = 2;
+            ReturnItemsFormMessageLabel.Text = "message text";
+            ReturnItemsFormMessageLabel.Visible = false;
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.Controls.Add(textBox1);
+            flowLayoutPanel1.Controls.Add(ReturnItemsFormNetCostTextBox);
             flowLayoutPanel1.Controls.Add(label2);
             flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft;
@@ -111,13 +116,14 @@
             flowLayoutPanel1.Size = new Size(394, 30);
             flowLayoutPanel1.TabIndex = 3;
             // 
-            // textBox1
+            // ReturnItemsFormNetCostTextBox
             // 
-            textBox1.Anchor = AnchorStyles.Right;
-            textBox1.Location = new Point(222, 3);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(169, 23);
-            textBox1.TabIndex = 1;
+            ReturnItemsFormNetCostTextBox.Anchor = AnchorStyles.Right;
+            ReturnItemsFormNetCostTextBox.Location = new Point(222, 3);
+            ReturnItemsFormNetCostTextBox.Name = "ReturnItemsFormNetCostTextBox";
+            ReturnItemsFormNetCostTextBox.Size = new Size(169, 23);
+            ReturnItemsFormNetCostTextBox.TabIndex = 1;
+            ReturnItemsFormNetCostTextBox.TextAlign = HorizontalAlignment.Right;
             // 
             // label2
             // 
@@ -129,6 +135,28 @@
             label2.TabIndex = 0;
             label2.Text = "Net Cost";
             // 
+            // button2
+            // 
+            button2.Anchor = AnchorStyles.None;
+            button2.Location = new Point(562, 6);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 4;
+            button2.Text = "testing";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // ReturnItemsFormCloseButton
+            // 
+            ReturnItemsFormCloseButton.Anchor = AnchorStyles.Right;
+            ReturnItemsFormCloseButton.Location = new Point(676, 420);
+            ReturnItemsFormCloseButton.Name = "ReturnItemsFormCloseButton";
+            ReturnItemsFormCloseButton.Size = new Size(121, 23);
+            ReturnItemsFormCloseButton.TabIndex = 5;
+            ReturnItemsFormCloseButton.Text = "Close";
+            ReturnItemsFormCloseButton.UseVisualStyleBackColor = true;
+            ReturnItemsFormCloseButton.Click += ReturnItemsFormCloseButton_Click;
+            // 
             // ReturnItemsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -138,7 +166,7 @@
             Name = "ReturnItemsForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Return Items";
-            ((System.ComponentModel.ISupportInitialize)ReturnItemsDataGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ReturnItemsFormDataGridView).EndInit();
             ReturnItemsTableLayoutPanel.ResumeLayout(false);
             ReturnItemsTableLayoutPanel.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
@@ -149,12 +177,14 @@
 
         #endregion
 
-        private DataGridView ReturnItemsDataGridView;
+        private DataGridView ReturnItemsFormDataGridView;
         private TableLayoutPanel ReturnItemsTableLayoutPanel;
-        private Button button1;
-        private Label ReturnItemsFormLabel;
+        private Button ReturnItemsFormReturnItemsButton;
+        private Label ReturnItemsFormMessageLabel;
         private FlowLayoutPanel flowLayoutPanel1;
-        private TextBox textBox1;
+        private TextBox ReturnItemsFormNetCostTextBox;
         private Label label2;
+        private Button button2;
+        private Button ReturnItemsFormCloseButton;
     }
 }
