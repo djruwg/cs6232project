@@ -14,10 +14,10 @@ namespace RentMe.View
     public partial class ExampleSaveRentalForm : Form
     {
         private ReturnTransaction returnTransaction;
-        public ExampleSaveRentalForm(ReturnTransaction stuffToReturn)
+        public ExampleSaveRentalForm(ReturnTransaction returnCart)
         {
             InitializeComponent();
-            returnTransaction = stuffToReturn;
+            returnTransaction = returnCart;
             double sum = 0;
             foreach (ReturnLineItem lineItem in returnTransaction.LineItems)
             {
@@ -25,6 +25,7 @@ namespace RentMe.View
             }
             TheSum.Text = sum.ToString();
             TheReturnID.Text = returnTransaction.ReturnID.ToString();
+            TheCount.Text = returnTransaction.LineItems.Count().ToString();
         }
 
         private void save_Click(object sender, EventArgs e)

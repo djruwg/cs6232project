@@ -45,9 +45,9 @@ namespace RentMe.UserControls
                 throw new InvalidOperationException("No member was found with the given member ID.");
             }
 
-            this._rentals = this._rentalsController.GetRentalsByMember(this._member.MemberID);
+            //this._rentals = this._rentalsController.GetRentalsByMember(this._member.MemberID);
             PopulateRentalsListView();
-            this._returns = this._returnsController.GetReturnsByMember(this._member.MemberID);
+            //this._returns = this._returnsController.GetReturnsByMember(this._member.MemberID);
             PopulateReturnsListView();
 
             MemberShowIDTextBox.Text = this._member.MemberID.ToString();
@@ -64,6 +64,7 @@ namespace RentMe.UserControls
 
         private void PopulateRentalsListView()
         {
+            this._rentals = this._rentalsController.GetRentalsByMember(this._member.MemberID);
 
             this.MemberShowRentalsListView.Items.Clear();
 
@@ -86,6 +87,8 @@ namespace RentMe.UserControls
 
         private void PopulateReturnsListView()
         {
+            this._returns = this._returnsController.GetReturnsByMember(this._member.MemberID);
+
             this.MemberShowReturnsListView.Items.Clear();
 
             int width = MemberShowReturnsListView.Width;
@@ -110,6 +113,7 @@ namespace RentMe.UserControls
         {
             ReturnItemsForm returnItems = new ReturnItemsForm(this._member.MemberID);
             returnItems.ShowDialog();
+            PopulateReturnsListView();
         }
 
         private void MemberShowAttachCartButton_Click(object sender, EventArgs e)

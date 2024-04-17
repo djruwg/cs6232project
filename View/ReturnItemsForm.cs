@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.ComponentModel;
+using System.Diagnostics;
 using System.Numerics;
 using RentMe.Controller;
 using RentMe.Model;
@@ -135,11 +136,25 @@ namespace RentMe.View
 
         private void ReturnItemsFormButton_Click(object sender, EventArgs e)
         {
-            ExampleSaveRentalForm exampleSaveRentalForm = new ExampleSaveRentalForm(returnTransaction);
+            ReturnTransaction returnCart = new ReturnTransaction();
+
+            returnCart.ReturnID = returnTransaction.ReturnID;
+            returnCart.MemberID = returnTransaction.MemberID;
+            returnCart.EmployeeID = returnTransaction.EmployeeID;
+            returnCart.DateReturned = returnTransaction.DateReturned;
+            returnCart.LineItems = new BindingList<ReturnLineItem>();
+            
+            foreach (ReturnLineItem lineItem in returnTransaction.LineItems)
+            {
+                if (lineItem.AmountOwed != 0)
+                {
+                    returnCart.LineItems.Add(lineItem);
+                }
+            }
+            ExampleSaveRentalForm exampleSaveRentalForm = new ExampleSaveRentalForm(returnCart);
             this.ReturnItemsFormReturnItemsButton.Enabled = false;
             exampleSaveRentalForm.ShowDialog();
-
-
+            Close();
         }
 
         private void ReturnItemsFormCloseButton_Click(object sender, EventArgs e)
