@@ -61,5 +61,10 @@ namespace RentMe.Controller
             
             return returnTransaction;
         }
+
+        public int SaveReturnTransaction(ReturnTransaction stuffToReturn)
+        {
+            return _returnsDAL.SaveReturnTransaction(stuffToReturn);
+        }
     }
 }

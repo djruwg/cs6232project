@@ -78,11 +78,6 @@ namespace RentMe.View
             ReturnItemsFormNetCostTextBox.Text = sum.ToString("C");
         }
 
-        private void ReturnItemsDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void ReturnItemsDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || e.ColumnIndex != 6) return;
@@ -122,18 +117,6 @@ namespace RentMe.View
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            double sum = 0;
-            foreach (ReturnLineItem lineitem in returnTransaction.LineItems)
-            {
-                sum += lineitem.AmountOwed;
-
-                Debug.WriteLine(
-                    $"{lineitem.RentalID} | {lineitem.FurnitureID} | {lineitem.Name} | {lineitem.Description} | {lineitem.DailyRentalRate} | {lineitem.QuantityOutStanding} | {lineitem.Quantity} | {lineitem.AmountOwed} | {sum}");
-            }
-        }
-
         private void ReturnItemsFormButton_Click(object sender, EventArgs e)
         {
             ReturnTransaction returnCart = new ReturnTransaction();
@@ -143,7 +126,7 @@ namespace RentMe.View
             returnCart.EmployeeID = returnTransaction.EmployeeID;
             returnCart.DateReturned = returnTransaction.DateReturned;
             returnCart.LineItems = new BindingList<ReturnLineItem>();
-            
+
             foreach (ReturnLineItem lineItem in returnTransaction.LineItems)
             {
                 if (lineItem.AmountOwed != 0)
@@ -151,15 +134,36 @@ namespace RentMe.View
                     returnCart.LineItems.Add(lineItem);
                 }
             }
-            ExampleSaveRentalForm exampleSaveRentalForm = new ExampleSaveRentalForm(returnCart);
-            this.ReturnItemsFormReturnItemsButton.Enabled = false;
-            exampleSaveRentalForm.ShowDialog();
-            Close();
+
+            if (returnCart.LineItems.Count > 0)
+            {
+                ExampleSaveRentalForm exampleSaveRentalForm = new ExampleSaveRentalForm(returnCart);
+                this.ReturnItemsFormReturnItemsButton.Enabled = false;
+                exampleSaveRentalForm.ShowDialog();
+                Close();
+            }
+            else
+            {
+                ReturnItemsFormMessageLabel.Text = "Must be returning at least on item";
+                ReturnItemsFormMessageLabel.Visible = true;
+            }
+
         }
 
         private void ReturnItemsFormCloseButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void testingButton_Click(object sender, EventArgs e)
+        {
+            double sum = 0;
+            foreach (ReturnLineItem lineitem in returnTransaction.LineItems)
+            {
+                sum += lineitem.AmountOwed; 
+                Debug.WriteLine($"{lineitem.RentalID} | {lineitem.FurnitureID} | {lineitem.Name} | {lineitem.Description} | {lineitem.DailyRentalRate} | {lineitem.QuantityOutStanding} | {lineitem.Quantity} | {lineitem.AmountOwed} | {sum}");
+
+            }
         }
     }
 }

@@ -235,7 +235,7 @@ namespace RentMe.DAL
             object result = command.ExecuteScalar();
             if (result == null)
             {
-                return -1;
+                return -2;
             }
             else
             {

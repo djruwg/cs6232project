@@ -129,12 +129,6 @@ namespace RentMe.UserControls
             this.RefeshCartListView();
         }
 
-        private void CartDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridViewSelectedRowCollection rows = CartDataGridView.SelectedRows;
-            Debug.WriteLine("Call Furniture Details Form: " + e.RowIndex);
-        }
-
         /// <summary>
         /// Updates our data source when the data grid view cell is updated.
         /// </summary>
