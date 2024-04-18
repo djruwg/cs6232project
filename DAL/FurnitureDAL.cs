@@ -203,7 +203,7 @@ namespace RentMe.DAL
             
             newQuantity = furniture.QuantityRented + quantity;
 
-            if (newQuantity > furniture.QuantityOwned)
+            if (newQuantity > furniture.QuantityOwned || newQuantity < 0)
             {
                 return false;
             }

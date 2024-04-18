@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System.Data;
 using System.ComponentModel;
+using System.Diagnostics;
 
 namespace RentMe.DAL
 {
@@ -57,10 +58,8 @@ namespace RentMe.DAL
             return returnsList;
         }
 
-        public int SaveReturnTransaction(ReturnTransaction stuffToReturn)
+        public int SaveReturnTransaction(ReturnTransaction returnTransaction)
         {
-
-            return -2;
 
             int TransactionID = -1;
             RentaLineItemsDAL rentalLineItemsDAL = new RentaLineItemsDAL();
@@ -79,23 +78,85 @@ namespace RentMe.DAL
                         command.Connection = connection;
                         command.Transaction = transaction;
 
-                        // Save return transaction
+                        try
+                        {
 
-                        //loop
-                        // save return line item
-                        // update rental line item
-                        // update furnature
-                        // end loop
+                            TransactionID = SaveReturnTransactionRecord(command, returnTransaction);
+                            if (TransactionID == -1)
+                            {
+                                success = false;
+                            }
+                            else
+                            {
+                                success = true;
+                                foreach (ReturnLineItem lineItem in returnTransaction.LineItems)
+                                {
+                                    //SaveReturnLineItem();
+                                    //UpdateRentalLineItem();
+                                    success = furnitureDAL.UpdateFurnitureQuantityRented(command, lineItem.FurnitureID, (-1 * lineItem.Quantity));
+                                    if (!success)
+                                    {
+                                        break;
+                                    }
+                                }
+                                Debug.WriteLine("keep saving stuff");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            return -1;
+                        }
 
-                        // return validation
-
-
-
-                    }
+                        if (success)
+                        {
+                            transaction.Commit();
+                            return TransactionID;
+                        }
+                        else
+                        {
+                            transaction.Rollback();
+                            return -1;
+                        }
+                        }
                 }
             }
 
             return -2;
+        }
+
+        public int SaveReturnTransactionRecord(SqlCommand command, ReturnTransaction returnTransaction)
+        {
+            ArgumentNullException.ThrowIfNull(returnTransaction);
+
+            string statement = @"
+                insert into ReturnTransactions (
+                    DateReturned,
+                    EmployeeID,
+                    MemberID )
+                values (
+                    GETDATE(),
+                    @EmployeeID,
+                    @MemberID );
+                    SELECT SCOPE_IDENTITY();";
+
+            command.CommandText = statement;
+
+            command.Parameters.Add("@EmployeeID", SqlDbType.Int);
+            command.Parameters["@EmployeeID"].Value = returnTransaction.EmployeeID;
+            command.Parameters.Add("@MemberID", SqlDbType.Int);
+            command.Parameters["@MemberID"].Value = returnTransaction.MemberID;
+
+            object result = command.ExecuteScalar();
+            if (result == null)
+            {
+                return -2;
+            }
+            else
+            {
+                returnTransaction.ReturnID = Convert.ToInt32(result);
+                return returnTransaction.ReturnID;
+            } ;
         }
         
     }
