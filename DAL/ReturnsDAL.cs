@@ -56,5 +56,47 @@ namespace RentMe.DAL
 
             return returnsList;
         }
+
+        public int SaveReturnTransaction(ReturnTransaction stuffToReturn)
+        {
+
+            return -2;
+
+            int TransactionID = -1;
+            RentaLineItemsDAL rentalLineItemsDAL = new RentaLineItemsDAL();
+            FurnitureDAL furnitureDAL = new FurnitureDAL();
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    using (SqlTransaction transaction = connection.BeginTransaction("SampleTransaction"))
+                    {
+                        Boolean success = false;
+
+                        command.Connection = connection;
+                        command.Transaction = transaction;
+
+                        // Save return transaction
+
+                        //loop
+                        // save return line item
+                        // update rental line item
+                        // update furnature
+                        // end loop
+
+                        // return validation
+
+
+
+                    }
+                }
+            }
+
+            return -2;
+        }
+        
     }
 }

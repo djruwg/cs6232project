@@ -1,4 +1,6 @@
-﻿namespace RentMe.Model;
+﻿using System.Diagnostics;
+
+namespace RentMe.Model;
 
 /// <summary>
 ///  RentalLineItem model class
@@ -108,5 +110,21 @@ public class RentalLineItem
     /// The rental cost.
     /// </value>
     public double RentalCost { get => DaysRented * QuantityRentedByMember * DailyRentalRate;}
+
+    /// <summary>
+    /// Gets or sets the date rented.
+    /// </summary>
+    /// <value>
+    /// The date rented.
+    /// </value>
+    public DateTime DateRented { get; set; }
+
+    /// <summary>
+    /// Gets or sets the date due.
+    /// </summary>
+    /// <value>
+    /// The date due.
+    /// </value>
+    public DateTime DateDue { get; set; }
 
 }

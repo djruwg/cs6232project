@@ -1,4 +1,5 @@
-﻿using RentMe.DAL;
+﻿using RentMe.Controller;
+using RentMe.DAL;
 using RentMe.Model;
 
 namespace RentMe.View
@@ -17,10 +18,14 @@ namespace RentMe.View
         {
             InitializeComponent();
 
-            RentalTransaction displayRentalTransaction;
-            RentalsDAL rentalDal = new RentalsDAL();
 
-            displayRentalTransaction = rentalDal.GetRentalTransactionByRentalID(rentalID);
+            // Fix going through a controler
+
+
+            RentalTransaction displayRentalTransaction;
+            RentalsController rentalsController = new RentalsController();
+
+            displayRentalTransaction = rentalsController.GetRentalTransactionByRentalID(rentalID);
 
             ShowRentalReceiptRentalIDTextBox.Text = displayRentalTransaction.RentalID.ToString();
             ShowRentalReceiptDateDueDatePicker.Value = displayRentalTransaction.DateDue;    

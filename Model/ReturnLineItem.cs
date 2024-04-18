@@ -1,4 +1,6 @@
-﻿namespace RentMe.Model;
+﻿using System.Diagnostics;
+
+namespace RentMe.Model;
 
 /// <summary>
 ///  ReturnLineItem model class
@@ -37,4 +39,69 @@ public class ReturnLineItem
     /// The quantity.
     /// </value>
     public int Quantity { get; set; }
+
+    /// <summary>
+    /// Gets or sets the name.
+    /// </summary>
+    /// <value>
+    /// The name.
+    /// </value>
+    public string Name { get; set; }
+
+    /// <summary>
+    /// Gets or sets the description.
+    /// </summary>
+    /// <value>
+    /// The description.
+    /// </value>
+    public string Description { get; set; }
+
+    /// <summary>
+    /// Gets or sets the daily rate.
+    /// </summary>
+    /// <value>
+    /// The daily rate.
+    /// </value>
+    public double DailyRentalRate { get; set; }
+
+    /// <summary>
+    /// Gets or sets the quantity out standing.
+    /// </summary>
+    /// <value>
+    /// The quantity out standing.
+    /// </value>
+    public int QuantityOutStanding { get; set; }
+   
+    /// <summary>
+    /// Gets or sets the date rented.
+    /// </summary>
+    /// <value>
+    /// The date rented.
+    /// </value>
+    public DateTime DateRented { get; set; }
+
+    /// <summary>
+    /// Gets or sets the date due.
+    /// </summary>
+    /// <value>
+    /// The date due.
+    /// </value>
+    public DateTime DateDue { get; set; }
+
+    /// <summary>
+    /// Gets or sets the net cost.
+    /// </summary>
+    /// <value>
+    /// The net cost.
+    /// </value>
+    public double AmountOwed
+    {
+        get
+        {
+            int deltaDays = (DateTime.Now.Date - DateDue.Date).Days;
+            return deltaDays * Quantity * DailyRentalRate;
+        }
+
+    }
+
 }

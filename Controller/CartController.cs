@@ -21,6 +21,7 @@ namespace RentMe.Controller
         public CartController()
         {
             _rentalTransaction ??= new RentalTransaction();
+            _rentalTransaction.DateRented = DateTime.Today.Date;
             _attachedMember ??= new Member();
             this._rentalsDAL = new RentalsDAL();
             this._furnitureDAL = new FurnitureDAL();
