@@ -212,9 +212,8 @@
             CartDataGridView.Name = "CartDataGridView";
             CartDataGridView.RowHeadersVisible = false;
             CartDataGridView.RowHeadersWidth = 82;
-            CartDataGridView.Size = new Size(1444, 710);
-            CartDataGridView.TabIndex = 4;
-            CartDataGridView.CellDoubleClick += CartDataGridView_CellDoubleClick;
+            CartDataGridView.Size = new Size(778, 322);
+            CartDataGridView.TabIndex = 11;
             CartDataGridView.CellValidating += CartDataGridView_CellValidating;
             CartDataGridView.CellValueChanged += CartDataGridView_CellValueChanged;
             // 
