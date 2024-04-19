@@ -1,6 +1,7 @@
 ﻿using RentMe.DAL;
 using RentMe.Model;
 using System.ComponentModel;
+using System.Data.SqlClient;
 using System.Diagnostics;
 
 namespace RentMe.Controller
@@ -12,6 +13,7 @@ namespace RentMe.Controller
     internal class ReturnsController
     {
         private ReturnsDAL _returnsDAL;
+        private ReturnLineItemsDAL _ReturnLineItemDAL;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ReturnsController"/> class.
@@ -19,6 +21,7 @@ namespace RentMe.Controller
         public ReturnsController()
         {
             this._returnsDAL = new ReturnsDAL();
+            this._ReturnLineItemDAL = new ReturnLineItemsDAL();
         }
 
         /// <summary>
@@ -66,5 +69,11 @@ namespace RentMe.Controller
         {
             return _returnsDAL.SaveReturnTransaction(stuffToReturn);
         }
+
+        public Boolean SaveReturnlLineItem(SqlCommand command, ReturnLineItem returnLineItem)
+        {
+            return _ReturnLineItemDAL.SaveReturnlLineItem(command, returnLineItem);
+        }
+
     }
 }

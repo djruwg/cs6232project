@@ -218,13 +218,13 @@ namespace RentMe.DAL
 
             command.CommandText = statement;
 
-            if (!command.Parameters.Contains("@RentalID"))
+            if (!command.Parameters.Contains("@QuantityRented"))
             {
                 command.Parameters.Add("@QuantityRented", SqlDbType.Int);
             }
             command.Parameters["@QuantityRented"].Value = newQuantity;
 
-            if (!command.Parameters.Contains("@RentalID"))
+            if (!command.Parameters.Contains("@FurnitureID"))
             {
                 command.Parameters.Add("@FurnitureID", SqlDbType.Int);
             }

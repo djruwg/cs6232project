@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.ComponentModel;
 using System.Diagnostics;
+using RentMe.Controller;
 
 namespace RentMe.DAL
 {
@@ -60,6 +61,7 @@ namespace RentMe.DAL
 
         public int SaveReturnTransaction(ReturnTransaction returnTransaction)
         {
+            ReturnsController returnsController = new ReturnsController();
 
             int TransactionID = -1;
             RentaLineItemsDAL rentalLineItemsDAL = new RentaLineItemsDAL();
@@ -92,8 +94,24 @@ namespace RentMe.DAL
                                 foreach (ReturnLineItem lineItem in returnTransaction.LineItems)
                                 {
                                     //SaveReturnLineItem();
+                                    lineItem.ReturnID = TransactionID;
+
+                                    lineItem.Fine = 0;
+                                    lineItem.Refund = 0;
+                                    if (lineItem.AmountOwed > 0)
+                                    {
+                                        lineItem.Fine = lineItem.AmountOwed;
+                                    }
+
+                                    if (lineItem.AmountOwed < 0)
+                                    {
+                                        lineItem.Refund = -1 * lineItem.AmountOwed;
+                                    }
+
+                                    returnsController.SaveReturnlLineItem(command, lineItem);
                                     //UpdateRentalLineItem();
-                                    success = furnitureDAL.UpdateFurnitureQuantityRented(command, lineItem.FurnitureID, (-1 * lineItem.Quantity));
+                                    success = furnitureDAL.UpdateFurnitureQuantityRented(command, lineItem.FurnitureID,
+                                        (-1 * lineItem.Quantity));
                                     if (!success)
                                     {
                                         break;
@@ -118,7 +136,7 @@ namespace RentMe.DAL
                             transaction.Rollback();
                             return -1;
                         }
-                        }
+                    } 
                 }
             }
 

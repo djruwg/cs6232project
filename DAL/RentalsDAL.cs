@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace RentMe.DAL
 {
@@ -154,7 +155,6 @@ namespace RentMe.DAL
                             }
                             else
                             {
-
                                 // Update furniture quantities and save rental line items.
                                 foreach (RentalLineItem rentalLineItem in rentalTransaction.RentalLineItems)
                                 {
@@ -190,7 +190,7 @@ namespace RentMe.DAL
                         {
                             transaction.Rollback();
                             return -1;
-                        }
+                        } 
                     }
                 }
             }
