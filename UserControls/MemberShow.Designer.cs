@@ -250,6 +250,7 @@
             // 
             MemberShowReturnsListView.Columns.AddRange(new ColumnHeader[] { ReturnID, ReturnDate });
             MemberShowReturnsListView.Dock = DockStyle.Fill;
+            MemberShowReturnsListView.FullRowSelect = true;
             MemberShowReturnsListView.Location = new Point(412, 139);
             MemberShowReturnsListView.Name = "MemberShowReturnsListView";
             MemberShowReturnsListView.Size = new Size(404, 313);
