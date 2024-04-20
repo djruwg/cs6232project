@@ -187,7 +187,7 @@ namespace RentMe.DAL
         /// </summary>
         /// <param name="command">The command.</param>
         /// <param name="furnitureID">The furniture identifier.</param>
-        /// <param name="quantity">The quantity.</param>
+        /// <param name="quantity">The quantity. Note: May be negative to initiate return</param>
         /// <returns>Boolean success</returns>
         public Boolean UpdateFurnitureQuantityRented(SqlCommand command, int furnitureID, int quantity)
         {
@@ -203,7 +203,7 @@ namespace RentMe.DAL
             
             newQuantity = furniture.QuantityRented + quantity;
 
-            if (newQuantity > furniture.QuantityOwned)
+            if (newQuantity > furniture.QuantityOwned || newQuantity < 0)
             {
                 return false;
             }
@@ -218,13 +218,13 @@ namespace RentMe.DAL
 
             command.CommandText = statement;
 
-            if (!command.Parameters.Contains("@RentalID"))
+            if (!command.Parameters.Contains("@QuantityRented"))
             {
                 command.Parameters.Add("@QuantityRented", SqlDbType.Int);
             }
             command.Parameters["@QuantityRented"].Value = newQuantity;
 
-            if (!command.Parameters.Contains("@RentalID"))
+            if (!command.Parameters.Contains("@FurnitureID"))
             {
                 command.Parameters.Add("@FurnitureID", SqlDbType.Int);
             }

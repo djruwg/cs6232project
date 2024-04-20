@@ -41,6 +41,22 @@ public class ReturnLineItem
     public int Quantity { get; set; }
 
     /// <summary>
+    /// Gets or sets the fine.
+    /// </summary>
+    /// <value>
+    /// The fine.
+    /// </value>
+    public double Fine { get; set; }
+
+    /// <summary>
+    /// Gets or sets the refund.
+    /// </summary>
+    /// <value>
+    /// The refund.
+    /// </value>
+    public double Refund { get; set; }
+
+    /// <summary>
     /// Gets or sets the name.
     /// </summary>
     /// <value>

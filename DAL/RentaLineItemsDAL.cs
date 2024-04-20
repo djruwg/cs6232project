@@ -239,5 +239,47 @@ namespace RentMe.DAL
                 return false; // The operation failed
             }
         }
+
+        public Boolean updateRentalLineItem(SqlCommand command, int rentalID, int furnitureID, int quantity)
+        {
+            string statement = @"
+                update
+                    RentalLineItems
+                set
+                    QuantityReturned = QuantityReturned + @Quantity
+                where
+                    RentalID = @RentalID AND FurnitureID = @FurnitureID";
+
+            command.CommandText = statement;
+
+            if (!command.Parameters.Contains("@Quantity"))
+            {
+                command.Parameters.Add("@Quantity", SqlDbType.Int);
+            }
+            command.Parameters["@Quantity"].Value = quantity;
+
+            if (!command.Parameters.Contains("@RentalID"))
+            {
+                command.Parameters.Add("@RentalID", SqlDbType.Int);
+            }
+            command.Parameters["@RentalID"].Value = rentalID;
+
+            if (!command.Parameters.Contains("@FurnitureID"))
+            {
+                command.Parameters.Add("@FurnitureID", SqlDbType.Int);
+            }
+            command.Parameters["@FurnitureID"].Value = furnitureID;
+            
+            int rowsAffected = command.ExecuteNonQuery();
+            
+            if (rowsAffected == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
