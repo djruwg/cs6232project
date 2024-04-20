@@ -55,7 +55,7 @@ namespace RentMe.UserControls
 
         private void ResizeFurnitureSearchListViewColumns()
         {
-            float[] columnWidthPercentages = { 0.05f, 0.15f, 0.2f, 0.15f, 0.15f, 0.15f, 0.15f };
+            float[] columnWidthPercentages = { 0.10f, 0.10f, 0.15f, 0.20f, 0.15f, 0.15f, 0.15f };
 
             if (this.FurnitureSearchListView.Columns.Count != columnWidthPercentages.Length)
             {

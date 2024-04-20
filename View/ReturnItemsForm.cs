@@ -137,9 +137,9 @@ namespace RentMe.View
 
             if (returnCart.LineItems.Count > 0)
             {
-                ExampleSaveRentalForm exampleSaveRentalForm = new ExampleSaveRentalForm(returnCart);
+                SaveReturnForm saveReturnForm = new SaveReturnForm(returnCart);
                 this.ReturnItemsFormReturnItemsButton.Enabled = false;
-                exampleSaveRentalForm.ShowDialog();
+                saveReturnForm.ShowDialog();
                 Close();
             }
             else
