@@ -42,7 +42,7 @@ namespace RentMe.UserControls
 
             if (startDate > endDate)
             {
-                ReportUserControlMessageLabel.Text = "Start date must be earlier than end date.";
+                ReportUserControlMessageLabel.Text = "Start date cannot be after end date.";
                 return;
             }
 
