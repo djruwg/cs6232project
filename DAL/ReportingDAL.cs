@@ -24,9 +24,9 @@ namespace RentMe.DAL
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
-                    command.Parameters.Add("@startDate", SqlDbType.Date);
+                    command.Parameters.Add("@startDate", SqlDbType.DateTime);
                     command.Parameters["@startDate"].Value = startDate;
-                    command.Parameters.Add("@endDate", SqlDbType.Date);
+                    command.Parameters.Add("@endDate", SqlDbType.DateTime);
                     command.Parameters["@endDate"].Value = endDate.AddDays(1).AddSeconds(-1);
 
                     DataTable dataTable = new DataTable();
