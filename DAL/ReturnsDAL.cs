@@ -62,6 +62,8 @@ namespace RentMe.DAL
         public int SaveReturnTransaction(ReturnTransaction returnTransaction)
         {
             ReturnsController returnsController = new ReturnsController();
+            RentalsController rentalsController = new RentalsController();
+
 
             int TransactionID = -1;
             RentaLineItemsDAL rentalLineItemsDAL = new RentaLineItemsDAL();
@@ -93,7 +95,7 @@ namespace RentMe.DAL
                                 success = true;
                                 foreach (ReturnLineItem lineItem in returnTransaction.LineItems)
                                 {
-                                    //SaveReturnLineItem();
+                                    Debug.WriteLine("loop 1");
                                     lineItem.ReturnID = TransactionID;
 
                                     lineItem.Fine = 0;
@@ -107,24 +109,34 @@ namespace RentMe.DAL
                                     {
                                         lineItem.Refund = -1 * lineItem.AmountOwed;
                                     }
+                                    success = returnsController.SaveReturnlLineItem(command, lineItem);
+                                    if (!success)
+                                    {
+                                        break;
+                                    }
 
-                                    returnsController.SaveReturnlLineItem(command, lineItem);
-                                    //UpdateRentalLineItem();
+                                    success = rentalsController.updateRentalLineItem(command, lineItem.RentalID,
+                                        lineItem.FurnitureID, lineItem.Quantity);
+                                    if (!success)
+                                    {
+                                        break;
+                                    }
+
                                     success = furnitureDAL.UpdateFurnitureQuantityRented(command, lineItem.FurnitureID,
                                         (-1 * lineItem.Quantity));
                                     if (!success)
                                     {
                                         break;
                                     }
+
                                 }
-                                Debug.WriteLine("keep saving stuff");
-                            }
-                        }
+                            } 
+                        } 
                         catch (Exception ex)
                         {
                             transaction.Rollback();
                             return -1;
-                        }
+                        } 
 
                         if (success)
                         {
@@ -135,11 +147,10 @@ namespace RentMe.DAL
                         {
                             transaction.Rollback();
                             return -1;
-                        }
+                        } 
                     } 
                 }
             }
-
             return -2;
         }
 

@@ -187,7 +187,7 @@ namespace RentMe.DAL
         /// </summary>
         /// <param name="command">The command.</param>
         /// <param name="furnitureID">The furniture identifier.</param>
-        /// <param name="quantity">The quantity.</param>
+        /// <param name="quantity">The quantity. Note: May be negative to initiate return</param>
         /// <returns>Boolean success</returns>
         public Boolean UpdateFurnitureQuantityRented(SqlCommand command, int furnitureID, int quantity)
         {

@@ -1,6 +1,7 @@
 ﻿using RentMe.DAL;
 using RentMe.Model;
 using System.ComponentModel;
+using System.Data.SqlClient;
 using System.Diagnostics;
 
 namespace RentMe.Controller
@@ -48,6 +49,11 @@ namespace RentMe.Controller
         public RentalTransaction GetRentalTransactionByRentalID(int rentalID)
         {
             return _rentalsDAL.GetRentalTransactionByRentalID(rentalID);
+        }
+
+        public Boolean updateRentalLineItem(SqlCommand command, int rentalID, int furnitureID, int quantity)
+        {
+            return _rentalLineItemsDAL.updateRentalLineItem(command, rentalID, furnitureID, quantity);
         }
 
     }

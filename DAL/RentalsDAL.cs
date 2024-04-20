@@ -242,8 +242,6 @@ namespace RentMe.DAL
                 rentalTransaction.RentalID = Convert.ToInt32(result);
                 return rentalTransaction.RentalID;
             }
-            
         }
-
     }
 }
