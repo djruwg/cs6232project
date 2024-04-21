@@ -87,10 +87,7 @@ namespace RentMe.DAL
             string selectStatement = @"
                 SELECT 
                     t.ReturnID,
-                    t.DateRented,
-                    t.DateDue,
-                    t.EmployeeID,
-                    t.MemberID,
+                    r.DateDue,
                     f.FurnitureID,
                     f.Name,
                     f.Style,
@@ -101,8 +98,8 @@ namespace RentMe.DAL
                     l.Quantity,
                     l.Fine,
                     l.Refund
-                FROM ReturnTransactions t, ReturnLineItems l, Furniture f
-                WHERE t.ReturnID = @ReturnID and t.ReturnID = l.ReturnID and f.FurnitureID = l.FurnitureID";
+                FROM ReturnTransactions t, ReturnLineItems l, Furniture f, RentalTransactions r
+                WHERE t.ReturnID = @ReturnID and t.ReturnID = l.ReturnID and r.RentalID = l.RentalID and f.FurnitureID = l.FurnitureID";
 
             using (SqlConnection connection = DBConnection.GetConnection())
             {
@@ -116,6 +113,7 @@ namespace RentMe.DAL
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
                         int returnIdOrdinal = reader.GetOrdinal("ReturnID");
+                        int dueDateOrdinal = reader.GetOrdinal("DateDue");
                         int furnitureIdOrdinal = reader.GetOrdinal("FurnitureID");
                         int nameOrdinal = reader.GetOrdinal("Name");
                         int descriptionOrdinal = reader.GetOrdinal("Description");
@@ -135,11 +133,12 @@ namespace RentMe.DAL
                                 RentalID = reader.GetInt32(rentalIdOrdinal),
                                 FurnitureID = reader.GetInt32(furnitureIdOrdinal),
                                 Quantity = reader.GetInt32(quantityOrdinal),
-                                Fine = reader.GetFloat(fineOrdinal),
-                                Refund = reader.GetFloat(refundOrdinal),
+                                Fine = Convert.ToDouble(reader.GetDecimal(fineOrdinal)),
+                                Refund = Convert.ToDouble(reader.GetDecimal(refundOrdinal)),
                                 Name = reader.GetString(nameOrdinal),
                                 Description = reader.GetString(descriptionOrdinal),
-                                DailyRentalRate = Convert.ToDouble(reader.GetDecimal(dailyRentalRateOrdinal))
+                                DailyRentalRate = Convert.ToDouble(reader.GetDecimal(dailyRentalRateOrdinal)),
+                                DateDue = reader.GetDateTime(dueDateOrdinal)
                             };
 
                             lineItems.Add(lineItem);

@@ -74,5 +74,15 @@ namespace RentMe.Controller
         {
             return _ReturnLineItemDAL.SaveReturnlLineItem(command, returnLineItem);
         }
+
+        /// <summary>
+        /// Gets the return transaction by return identifier.
+        /// </summary>
+        /// <param name="returnID">The return identifier.</param>
+        /// <returns></returns>
+        public ReturnTransaction GetReturnTransactionByReturnID(int returnID)
+        {
+            return _returnsDAL.GetReturnTransactionByReturnID(returnID);
+        }
     }
 }
