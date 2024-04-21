@@ -145,5 +145,21 @@ namespace RentMe.UserControls
                 MemberShowMessageLabel.Text = "Failed to open rental history details.";
             }
         }
+
+        private void MemberShowReturnsListView_ItemActivate(object sender, EventArgs e)
+        {
+            MemberShowMessageLabel.Text = string.Empty;
+
+            try
+            {
+                Int32 returnID = Int32.Parse(MemberShowReturnsListView.SelectedItems[0].Text);
+                ShowReturnReceiptForm showReturnReceiptForm = new ShowReturnReceiptForm(returnID);
+                showReturnReceiptForm.ShowDialog();
+            }
+            catch
+            {
+                MemberShowMessageLabel.Text = "Failed to open return history details.";
+            }
+        }
     }
 }

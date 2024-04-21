@@ -257,6 +257,7 @@
             MemberShowReturnsListView.TabIndex = 7;
             MemberShowReturnsListView.UseCompatibleStateImageBehavior = false;
             MemberShowReturnsListView.View = System.Windows.Forms.View.Details;
+            MemberShowReturnsListView.ItemActivate += MemberShowReturnsListView_ItemActivate;
             // 
             // ReturnID
             // 

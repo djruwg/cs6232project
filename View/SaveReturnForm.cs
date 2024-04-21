@@ -7,6 +7,11 @@ namespace RentMe.View
     {
         private ReturnsController returnsController;
         private ReturnTransaction returnTransaction;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SaveReturnForm"/> class.
+        /// </summary>
+        /// <param name="returnCart">The return cart.</param>
         public SaveReturnForm(ReturnTransaction returnCart)
         {
             InitializeComponent();
