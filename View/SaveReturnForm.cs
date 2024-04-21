@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using RentMe.Controller;
+﻿using RentMe.Controller;
 using RentMe.Model;
 
 namespace RentMe.View
@@ -29,7 +20,9 @@ namespace RentMe.View
                 count += lineItem.Quantity;
             }
 
-            this.SaveReturnRentalIDTextBox.Text = returnTransaction.ReturnID.ToString();
+            this.PopulateLineItemListView();
+            this.ResizeSaveRentalListViewColumns();
+            this.SaveReturnRentalIDTextBox.Text = "Set on Save";
             this.SaveReturnMemberIDTextBox.Text = returnTransaction.MemberID.ToString();
             this.SaveReturnEmployeeIDTextBox.Text = returnTransaction.EmployeeID.ToString();
             this.SaveReturnReturnDateDateTimePicker.Value = returnTransaction.DateReturned;
@@ -44,7 +37,7 @@ namespace RentMe.View
 
         private void ResizeSaveRentalListViewColumns()
         {
-            float[] columnWidthPercentages = { 0.05f, 0.15f, 0.2f, 0.15f, 0.15f, 0.15f, 0.15f };
+            float[] columnWidthPercentages = { 0.15f, 0.15f, 0.2f, 0.15f, 0.15f, 0.15f, 0.15f };
 
             if (this.SaveReturnListView.Columns.Count != columnWidthPercentages.Length)
             {
@@ -60,11 +53,33 @@ namespace RentMe.View
             }
         }
 
-        private void save_Click(object sender, EventArgs e)
+        private void PopulateLineItemListView()
         {
-            int rentalID;
-            rentalID = returnsController.SaveReturnTransaction(returnTransaction);
-            //TheReturnID.Text = rentalID.ToString();
+            this.SaveReturnListView.Items.Clear();
+            int rowNumber = 0;
+            foreach (ReturnLineItem lineItem in this.returnTransaction.LineItems)
+            {
+                this.SaveReturnListView.Items.Add(lineItem.RentalID.ToString());
+                this.SaveReturnListView.Items[rowNumber].SubItems.Add(lineItem.FurnitureID.ToString());
+                this.SaveReturnListView.Items[rowNumber].SubItems.Add(lineItem.Name.ToString());
+                this.SaveReturnListView.Items[rowNumber].SubItems.Add(lineItem.Description.ToString());
+                this.SaveReturnListView.Items[rowNumber].SubItems.Add(lineItem.DailyRentalRate.ToString("c"));
+                this.SaveReturnListView.Items[rowNumber].SubItems.Add(lineItem.Quantity.ToString());
+                this.SaveReturnListView.Items[rowNumber].SubItems.Add(lineItem.AmountOwed.ToString("c"));
+                rowNumber++;
+            }
+        }
+
+        private void SaveReturnCancelButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void SaveReturnSaveButton_Click(object sender, EventArgs e)
+        {
+            returnsController.SaveReturnTransaction(returnTransaction);
+            DialogResult = DialogResult.OK; 
+            Close();
         }
     }
 }

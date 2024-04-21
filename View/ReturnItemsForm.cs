@@ -139,8 +139,11 @@ namespace RentMe.View
             {
                 SaveReturnForm saveReturnForm = new SaveReturnForm(returnCart);
                 this.ReturnItemsFormReturnItemsButton.Enabled = false;
-                saveReturnForm.ShowDialog();
-                Close();
+                if (DialogResult.OK == saveReturnForm.ShowDialog())
+                {
+                    Close();
+                }
+                this.ReturnItemsFormReturnItemsButton.Enabled = true;
             }
             else
             {

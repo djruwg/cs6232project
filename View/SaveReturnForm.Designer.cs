@@ -219,6 +219,7 @@
             SaveReturnSaveButton.TabIndex = 14;
             SaveReturnSaveButton.Text = "Save";
             SaveReturnSaveButton.UseVisualStyleBackColor = true;
+            SaveReturnSaveButton.Click += SaveReturnSaveButton_Click;
             // 
             // SaveReturnCancelButton
             // 
@@ -229,6 +230,7 @@
             SaveReturnCancelButton.TabIndex = 15;
             SaveReturnCancelButton.Text = "Cancel";
             SaveReturnCancelButton.UseVisualStyleBackColor = true;
+            SaveReturnCancelButton.Click += SaveReturnCancelButton_Click;
             // 
             // SaveReturnQuantityLabel
             // 
