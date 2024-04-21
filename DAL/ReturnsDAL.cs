@@ -130,13 +130,13 @@ namespace RentMe.DAL
                                     }
 
                                 }
-                            } 
-                        } 
+                            }
+                        }
                         catch (Exception ex)
                         {
                             transaction.Rollback();
                             return -1;
-                        } 
+                        }
 
                         if (success)
                         {
@@ -147,8 +147,8 @@ namespace RentMe.DAL
                         {
                             transaction.Rollback();
                             return -1;
-                        } 
-                    } 
+                        }
+                    }
                 }
             }
             return -2;
@@ -185,8 +185,66 @@ namespace RentMe.DAL
             {
                 returnTransaction.ReturnID = Convert.ToInt32(result);
                 return returnTransaction.ReturnID;
-            } ;
+            };
         }
-        
+
+        /// <summary>
+        /// Gets the return transaction by return identifier.
+        /// </summary>
+        /// <param name="returnID">The return identifier.</param>
+        /// <returns></returns>
+        public ReturnTransaction GetReturnTransactionByReturnID(int returnID)
+        {
+            ReturnLineItemsDAL returnLineItemsDAL = new ReturnLineItemsDAL();
+            ReturnTransaction returnTransaction;
+            returnTransaction = this.GetReturnTransactionRowByReturnID(returnID);
+            returnTransaction.LineItems = returnLineItemsDAL.GetReturnLineItemsByReturnID(returnID);
+            return returnTransaction;
+        }
+
+        /// <summary>
+        /// Gets the return transaction row by return identifier.
+        /// </summary>
+        /// <param name="returnID">The return identifier.</param>
+        /// <returns>ReturnTransaction represented by the returnID</returns>
+        public ReturnTransaction GetReturnTransactionRowByReturnID(int returnID)
+        {
+            ReturnTransaction returnTransaction = new ReturnTransaction();
+
+            string selectStatement = @"
+                SELECT ReturnID, DateReturned, EmployeeID, MemberID
+                FROM ReturnTransactions
+                WHERE ReturnID = @ReturnID";
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+
+                    selectCommand.Parameters.Add("@ReturnID", SqlDbType.Int);
+                    selectCommand.Parameters["@ReturnID"].Value = returnID;
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        reader.Read();
+
+                        int returnIdOrdinal = reader.GetOrdinal("ReturnID");
+                        int dateReturnedOrdinal = reader.GetOrdinal("DateReturned");
+                        int employeeIdOrdinal = reader.GetOrdinal("EmployeeID");
+                        int memberIdOrdinal = reader.GetOrdinal("MemberID");
+
+                        returnTransaction.ReturnID = reader.GetInt32(returnIdOrdinal);
+                        returnTransaction.DateReturned = reader.GetDateTime(dateReturnedOrdinal);
+                        returnTransaction.EmployeeID = reader.GetInt32(employeeIdOrdinal);
+                        returnTransaction.MemberID = reader.GetInt32(memberIdOrdinal);
+                    }
+                }
+            }
+
+            return returnTransaction;
+        }
+
     }
 }

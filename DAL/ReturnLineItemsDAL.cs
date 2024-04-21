@@ -1,11 +1,7 @@
 ﻿using RentMe.Model;
-using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace RentMe.DAL
 {
@@ -79,5 +75,82 @@ namespace RentMe.DAL
             }
         }
 
+        /// <summary>
+        /// Gets the return line items by return identifier.
+        /// </summary>
+        /// <param name="returnID">The return identifier.</param>
+        /// <returns>BindingList<ReturnLineItem> based on matching returnIDs</returns>
+        public BindingList<ReturnLineItem> GetReturnLineItemsByReturnID(int returnID)
+        {
+            BindingList<ReturnLineItem> lineItems = new BindingList<ReturnLineItem>();
+
+            string selectStatement = @"
+                SELECT 
+                    t.ReturnID,
+                    t.DateRented,
+                    t.DateDue,
+                    t.EmployeeID,
+                    t.MemberID,
+                    f.FurnitureID,
+                    f.Name,
+                    f.Style,
+                    f.Category,
+                    f.Description,
+                    f.DailyRentalRate,
+                    l.RentalID,
+                    l.Quantity,
+                    l.Fine,
+                    l.Refund
+                FROM ReturnTransactions t, ReturnLineItems l, Furniture f
+                WHERE t.ReturnID = @ReturnID and t.ReturnID = l.ReturnID and f.FurnitureID = l.FurnitureID";
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add("@ReturnID", SqlDbType.Int);
+                    selectCommand.Parameters["@ReturnID"].Value = returnID;
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        int returnIdOrdinal = reader.GetOrdinal("ReturnID");
+                        int furnitureIdOrdinal = reader.GetOrdinal("FurnitureID");
+                        int nameOrdinal = reader.GetOrdinal("Name");
+                        int descriptionOrdinal = reader.GetOrdinal("Description");
+                        int dailyRentalRateOrdinal = reader.GetOrdinal("DailyRentalRate");
+                        int categoryOrdinal = reader.GetOrdinal("Category");
+                        int styleOrdinal = reader.GetOrdinal("Style");
+                        int rentalIdOrdinal = reader.GetOrdinal("RentalID");
+                        int quantityOrdinal = reader.GetOrdinal("Quantity");
+                        int fineOrdinal = reader.GetOrdinal("Fine");
+                        int refundOrdinal = reader.GetOrdinal("Refund");
+
+                        while (reader.Read())
+                        {
+                            ReturnLineItem lineItem = new ReturnLineItem
+                            {
+                                ReturnID = reader.GetInt32(rentalIdOrdinal),
+                                RentalID = reader.GetInt32(rentalIdOrdinal),
+                                FurnitureID = reader.GetInt32(furnitureIdOrdinal),
+                                Quantity = reader.GetInt32(quantityOrdinal),
+                                Fine = reader.GetFloat(fineOrdinal),
+                                Refund = reader.GetFloat(refundOrdinal),
+                                Name = reader.GetString(nameOrdinal),
+                                Description = reader.GetString(descriptionOrdinal),
+                                DailyRentalRate = Convert.ToDouble(reader.GetDecimal(dailyRentalRateOrdinal))
+                            };
+
+                            lineItems.Add(lineItem);
+                        }
+                    }
+                }
+            }
+
+            return lineItems;
+        }
+
     }
+
 }
