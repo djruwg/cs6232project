@@ -1,7 +1,6 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
 using RentMe.View;
-using System.Diagnostics;
 
 namespace RentMe.UserControls
 {

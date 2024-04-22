@@ -1,5 +1,4 @@
 ﻿using RentMe.Controller;
-using RentMe.DAL;
 using RentMe.Model;
 
 namespace RentMe.View

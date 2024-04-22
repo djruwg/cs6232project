@@ -2,7 +2,6 @@
 using RentMe.Model;
 using System.ComponentModel;
 using System.Data.SqlClient;
-using System.Diagnostics;
 
 namespace RentMe.Controller
 {
