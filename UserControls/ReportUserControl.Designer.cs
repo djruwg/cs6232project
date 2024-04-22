@@ -37,6 +37,7 @@
             ReportUserControlEndDatePicker = new DateTimePicker();
             ReportUserControlRunReportButton = new Button();
             ReportUserControlMessageLabel = new Label();
+            ReportUserControlDescriptionLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)ReportUserControlDataGridView).BeginInit();
             ReportUserControlLayoutPanel.SuspendLayout();
             ReportUserControlFlowLayoutPane.SuspendLayout();
@@ -55,7 +56,7 @@
             ReportUserControlDataGridView.Name = "ReportUserControlDataGridView";
             ReportUserControlDataGridView.ReadOnly = true;
             ReportUserControlDataGridView.RowHeadersVisible = false;
-            ReportUserControlDataGridView.Size = new Size(795, 428);
+            ReportUserControlDataGridView.Size = new Size(795, 453);
             ReportUserControlDataGridView.TabIndex = 0;
             // 
             // ReportUserControlLayoutPanel
@@ -64,14 +65,15 @@
             ReportUserControlLayoutPanel.ColumnStyles.Add(new ColumnStyle());
             ReportUserControlLayoutPanel.Controls.Add(ReportUserControlDataGridView, 0, 1);
             ReportUserControlLayoutPanel.Controls.Add(ReportUserControlFlowLayoutPane, 0, 0);
+            ReportUserControlLayoutPanel.Controls.Add(ReportUserControlDescriptionLabel, 0, 2);
             ReportUserControlLayoutPanel.Dock = DockStyle.Fill;
             ReportUserControlLayoutPanel.Location = new Point(0, 0);
             ReportUserControlLayoutPanel.Name = "ReportUserControlLayoutPanel";
-            ReportUserControlLayoutPanel.RowCount = 2;
-            ReportUserControlLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
-            ReportUserControlLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100.000008F));
-            ReportUserControlLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            ReportUserControlLayoutPanel.Size = new Size(801, 478);
+            ReportUserControlLayoutPanel.RowCount = 3;
+            ReportUserControlLayoutPanel.RowStyles.Add(new RowStyle());
+            ReportUserControlLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            ReportUserControlLayoutPanel.RowStyles.Add(new RowStyle());
+            ReportUserControlLayoutPanel.Size = new Size(801, 547);
             ReportUserControlLayoutPanel.TabIndex = 1;
             // 
             // ReportUserControlFlowLayoutPane
@@ -149,13 +151,23 @@
             ReportUserControlMessageLabel.TabIndex = 6;
             ReportUserControlMessageLabel.Text = "Message Label";
             // 
+            // ReportUserControlDescriptionLabel
+            // 
+            ReportUserControlDescriptionLabel.Dock = DockStyle.Fill;
+            ReportUserControlDescriptionLabel.Location = new Point(3, 503);
+            ReportUserControlDescriptionLabel.Name = "ReportUserControlDescriptionLabel";
+            ReportUserControlDescriptionLabel.Size = new Size(795, 44);
+            ReportUserControlDescriptionLabel.TabIndex = 7;
+            ReportUserControlDescriptionLabel.Text = "Gets the statistics that show the most popular furniture during the specified period for furniture with the same furninture ID that was rented out in at least two transactions.";
+            // 
             // ReportUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             Controls.Add(ReportUserControlLayoutPanel);
             Name = "ReportUserControl";
-            Size = new Size(801, 478);
+            Size = new Size(801, 547);
             ((System.ComponentModel.ISupportInitialize)ReportUserControlDataGridView).EndInit();
             ReportUserControlLayoutPanel.ResumeLayout(false);
             ReportUserControlFlowLayoutPane.ResumeLayout(false);
@@ -174,5 +186,6 @@
         private DateTimePicker ReportUserControlEndDatePicker;
         private Button ReportUserControlRunReportButton;
         private Label ReportUserControlMessageLabel;
+        private Label ReportUserControlDescriptionLabel;
     }
 }
