@@ -24,19 +24,11 @@ namespace RentMe.View
             returnTransaction = new ReturnsController().GetReturnableForMember(memberID);
             ReturnItemsFormDataGridView.DataSource = returnTransaction.LineItems;
             RefreshDataGridView();
-
-            //ReturnItemsDataGridView.DataSource = new RentalsController().GetOutstandingRentalLineItemsByMemberID(memberID);
         }
 
         private void ConfigureDataGridView()
         {
             ReturnItemsFormDataGridView.AutoGenerateColumns = false;
-
-            //DataGridViewCheckBoxColumn column = new DataGridViewCheckBoxColumn(false);
-            //column.Name = "CheckBoxColumn";
-            //column.HeaderText = "Selected";
-            //column.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            //ReturnItemsDataGridView.Columns.Add(column);
 
             this.AddColumn("Rental ID", "RentalID", true);
             this.AddColumn("Furniture ID", "FurnitureID", true);
