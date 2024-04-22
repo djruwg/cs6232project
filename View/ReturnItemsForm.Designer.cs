@@ -35,7 +35,6 @@
             flowLayoutPanel1 = new FlowLayoutPanel();
             ReturnItemsFormNetCostTextBox = new TextBox();
             label2 = new Label();
-            testingButton = new Button();
             ReturnItemsFormCloseButton = new Button();
             ((System.ComponentModel.ISupportInitialize)ReturnItemsFormDataGridView).BeginInit();
             ReturnItemsTableLayoutPanel.SuspendLayout();
@@ -68,7 +67,6 @@
             ReturnItemsTableLayoutPanel.Controls.Add(ReturnItemsFormReturnItemsButton, 0, 3);
             ReturnItemsTableLayoutPanel.Controls.Add(ReturnItemsFormMessageLabel, 0, 2);
             ReturnItemsTableLayoutPanel.Controls.Add(flowLayoutPanel1, 1, 2);
-            ReturnItemsTableLayoutPanel.Controls.Add(testingButton, 1, 0);
             ReturnItemsTableLayoutPanel.Controls.Add(ReturnItemsFormCloseButton, 1, 3);
             ReturnItemsTableLayoutPanel.Dock = DockStyle.Fill;
             ReturnItemsTableLayoutPanel.Location = new Point(0, 0);
@@ -134,17 +132,6 @@
             label2.TabIndex = 0;
             label2.Text = "Net Cost";
             // 
-            // testingButton
-            // 
-            testingButton.Anchor = AnchorStyles.None;
-            testingButton.Location = new Point(562, 6);
-            testingButton.Name = "testingButton";
-            testingButton.Size = new Size(75, 23);
-            testingButton.TabIndex = 4;
-            testingButton.Text = "testing";
-            testingButton.UseVisualStyleBackColor = true;
-            testingButton.Click += testingButton_Click;
-            // 
             // ReturnItemsFormCloseButton
             // 
             ReturnItemsFormCloseButton.Anchor = AnchorStyles.Right;
@@ -183,7 +170,6 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private TextBox ReturnItemsFormNetCostTextBox;
         private Label label2;
-        private Button testingButton;
         private Button ReturnItemsFormCloseButton;
     }
 }
