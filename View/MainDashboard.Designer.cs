@@ -182,7 +182,7 @@
             SearchFurnitureTabPage.Location = new Point(4, 24);
             SearchFurnitureTabPage.Name = "SearchFurnitureTabPage";
             SearchFurnitureTabPage.Padding = new Padding(3);
-            SearchFurnitureTabPage.Size = new Size(786, 415);
+            SearchFurnitureTabPage.Size = new Size(192, 72);
             SearchFurnitureTabPage.TabIndex = 3;
             SearchFurnitureTabPage.Text = "Search Furniture";
             SearchFurnitureTabPage.UseVisualStyleBackColor = true;
@@ -192,7 +192,7 @@
             FurnitureSearchUserControl.Dock = DockStyle.Fill;
             FurnitureSearchUserControl.Location = new Point(3, 3);
             FurnitureSearchUserControl.Name = "FurnitureSearchUserControl";
-            FurnitureSearchUserControl.Size = new Size(780, 409);
+            FurnitureSearchUserControl.Size = new Size(186, 66);
             FurnitureSearchUserControl.TabIndex = 0;
             // 
             // CartTabPage
@@ -228,19 +228,19 @@
             // MainDashboardAdminLinkLabel
             // 
             MainDashboardAdminLinkLabel.AutoSize = true;
-            MainDashboardAdminLinkLabel.Location = new Point(740, 0);
+            MainDashboardAdminLinkLabel.Location = new Point(697, 0);
             MainDashboardAdminLinkLabel.Name = "MainDashboardAdminLinkLabel";
-            MainDashboardAdminLinkLabel.Size = new Size(51, 15);
+            MainDashboardAdminLinkLabel.Size = new Size(94, 15);
             MainDashboardAdminLinkLabel.TabIndex = 2;
             MainDashboardAdminLinkLabel.TabStop = true;
-            MainDashboardAdminLinkLabel.Text = "(Admin)";
+            MainDashboardAdminLinkLabel.Text = "(Admin Reports)";
             MainDashboardAdminLinkLabel.LinkClicked += MainDashboardAdminLinkLabel_LinkClicked;
             // 
             // MainDashboardLogoutLinkLabel
             // 
             MainDashboardLogoutLinkLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             MainDashboardLogoutLinkLabel.AutoSize = true;
-            MainDashboardLogoutLinkLabel.Location = new Point(689, 0);
+            MainDashboardLogoutLinkLabel.Location = new Point(646, 0);
             MainDashboardLogoutLinkLabel.Name = "MainDashboardLogoutLinkLabel";
             MainDashboardLogoutLinkLabel.Size = new Size(45, 15);
             MainDashboardLogoutLinkLabel.TabIndex = 1;
