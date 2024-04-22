@@ -587,7 +587,6 @@
         private TextBox FurnitureShowDailyRateTextBox;
         private TableLayoutPanel FurnitureShowQuantityTableLayoutPanel;
         private Label FurnitureShowQuantityLabel;
-        private TextBox FurnitureShowQuantityTextBox;
         private NumericUpDown FurnitureShowQuantityNumericUpDown;
         private Label FurnitureShowErrorMessageLabel;
     }

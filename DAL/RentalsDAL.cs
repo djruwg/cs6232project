@@ -174,7 +174,7 @@ namespace RentMe.DAL
                                 }
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             transaction.Rollback();
                             return -1;
@@ -193,8 +193,6 @@ namespace RentMe.DAL
                     }
                 }
             }
-
-            return -1;
         }
 
 

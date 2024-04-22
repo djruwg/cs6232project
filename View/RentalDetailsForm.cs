@@ -10,7 +10,6 @@ namespace RentMe.View
     public partial class RentalDetailsForm : Form
     {
         private CartController _cartController;
-        private RentalTransaction rentalTransaction;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RentalDetailsForm"/> class.
@@ -59,8 +58,6 @@ namespace RentMe.View
             RentalDetailsTotalTextBox.Text = this._cartController.TotalRentalCost().ToString("C");
         }
 
-
-
         private void RentalDetailsCloseBotton_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
@@ -78,6 +75,7 @@ namespace RentMe.View
             int rentalTransactionID;
 
             rentalTransactionID = this._cartController.SaveCartAsRentalTransaction();
+
             if (rentalTransactionID == -1)
             {
                 RentalDetailsMessageLabel.Text = "Transaction failed, please try again or cancel";

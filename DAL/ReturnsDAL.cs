@@ -132,7 +132,7 @@ namespace RentMe.DAL
                                 }
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             transaction.Rollback();
                             return -1;
@@ -151,7 +151,6 @@ namespace RentMe.DAL
                     }
                 }
             }
-            return -2;
         }
 
         public int SaveReturnTransactionRecord(SqlCommand command, ReturnTransaction returnTransaction)
