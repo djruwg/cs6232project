@@ -1,7 +1,6 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
 using System.ComponentModel;
-using System.Diagnostics;
 
 namespace RentMe.View
 {
@@ -84,8 +83,6 @@ namespace RentMe.View
             if (ReturnItemsFormDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 int quantity = (int)ReturnItemsFormDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-                Debug.WriteLine($"make sure you update the proper item");
-                Debug.WriteLine($"testing: {returnTransaction.LineItems[e.RowIndex].Quantity}");
                 RefreshDataGridView();
             }
         }
@@ -128,7 +125,7 @@ namespace RentMe.View
 
             foreach (ReturnLineItem lineItem in returnTransaction.LineItems)
             {
-                if (lineItem.AmountOwed != 0)
+                if (lineItem.Quantity != 0)
                 {
                     returnCart.LineItems.Add(lineItem);
                 }
@@ -163,8 +160,6 @@ namespace RentMe.View
             foreach (ReturnLineItem lineitem in returnTransaction.LineItems)
             {
                 sum += lineitem.AmountOwed;
-                Debug.WriteLine($"{lineitem.RentalID} | {lineitem.FurnitureID} | {lineitem.Name} | {lineitem.Description} | {lineitem.DailyRentalRate} | {lineitem.QuantityOutStanding} | {lineitem.Quantity} | {lineitem.AmountOwed} | {sum}");
-
             }
         }
     }

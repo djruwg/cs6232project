@@ -3,7 +3,6 @@ using RentMe.Model;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics;
 
 namespace RentMe.DAL
 {
@@ -95,7 +94,6 @@ namespace RentMe.DAL
                                 success = true;
                                 foreach (ReturnLineItem lineItem in returnTransaction.LineItems)
                                 {
-                                    Debug.WriteLine("loop 1");
                                     lineItem.ReturnID = TransactionID;
 
                                     lineItem.Fine = 0;
