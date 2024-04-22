@@ -1,7 +1,7 @@
 ﻿using RentMe.Model;
-using System.Data.SqlClient;
-using System.Data;
 using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace RentMe.DAL
 {
@@ -204,25 +204,25 @@ namespace RentMe.DAL
                 command.Parameters.Add("@RentalID", SqlDbType.Int);
             }
             command.Parameters["@RentalID"].Value = rentalLineItem.RentalID;
-            
+
             if (!command.Parameters.Contains("@FurnitureID"))
             {
                 command.Parameters.Add("@FurnitureID", SqlDbType.Int);
             }
             command.Parameters["@FurnitureID"].Value = rentalLineItem.FurnitureID;
-            
+
             if (!command.Parameters.Contains("@QuantityRented"))
             {
                 command.Parameters.Add("@QuantityRented", SqlDbType.Int);
             }
             command.Parameters["@QuantityRented"].Value = rentalLineItem.QuantityRentedByMember;
-            
+
             if (!command.Parameters.Contains("@QuantityReturned"))
             {
                 command.Parameters.Add("@QuantityReturned", SqlDbType.Int);
             }
             command.Parameters["@QuantityReturned"].Value = rentalLineItem.QuantityReturnedByMember;
-            
+
             if (!command.Parameters.Contains("@Cost"))
             {
                 command.Parameters.Add("@Cost", SqlDbType.Money);
@@ -269,9 +269,9 @@ namespace RentMe.DAL
                 command.Parameters.Add("@FurnitureID", SqlDbType.Int);
             }
             command.Parameters["@FurnitureID"].Value = furnitureID;
-            
+
             int rowsAffected = command.ExecuteNonQuery();
-            
+
             if (rowsAffected == 1)
             {
                 return true;

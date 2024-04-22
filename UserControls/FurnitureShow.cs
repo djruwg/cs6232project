@@ -69,8 +69,8 @@ namespace RentMe.UserControls
         {
             try
             {
-                int quantity = (int) this.FurnitureShowQuantityNumericUpDown.Value;
-                
+                int quantity = (int)this.FurnitureShowQuantityNumericUpDown.Value;
+
                 // Should no longer need this since AddToCart returns true if sufficient inventory
                 // int inStock = this._furniture.CalculateQuantityInStock();
 

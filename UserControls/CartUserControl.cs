@@ -95,7 +95,7 @@ namespace RentMe.UserControls
                 CartMessageLabel.Text = "You must attach a member to the transaction.";
                 return;
             }
-            
+
             RentalDetailsForm rentalDetails = new RentalDetailsForm();
             DialogResult result = rentalDetails.ShowDialog();
 
@@ -167,7 +167,7 @@ namespace RentMe.UserControls
             if (_cartController.HasNeededInventoryToSatisfyQuantityRequested(furnitureID, newInteger) == false)
             {
                 CartMessageLabel.Text = "Insufficient inventory";
-                
+
                 e.Cancel = true;
             }
         }

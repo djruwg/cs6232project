@@ -51,7 +51,7 @@ public class RentalLineItem
     /// <value>
     /// The quantity rented by store.
     /// </value>
-    public int QuantityRentedByStore {  get; set; }
+    public int QuantityRentedByStore { get; set; }
 
     /// <summary>
     /// Gets or sets the daily rental rate.
@@ -67,7 +67,7 @@ public class RentalLineItem
     /// <value>
     /// The category.
     /// </value>
-    public string? Category {  get; set; }
+    public string? Category { get; set; }
 
     /// <summary>
     /// Gets or sets the style.
@@ -75,7 +75,7 @@ public class RentalLineItem
     /// <value>
     /// The style.
     /// </value>
-    public string? Style {  get; set; }
+    public string? Style { get; set; }
 
     /// <summary>
     /// Gets or sets the quantity rented by member.
@@ -83,7 +83,7 @@ public class RentalLineItem
     /// <value>
     /// The quantity rented by member.
     /// </value>
-    public int QuantityRentedByMember {  get; set; }
+    public int QuantityRentedByMember { get; set; }
 
     /// <summary>
     /// Gets or sets the quantity returned by member.
@@ -91,7 +91,7 @@ public class RentalLineItem
     /// <value>
     /// The quantity returned by member.
     /// </value>
-    public int QuantityReturnedByMember {  get; set; }
+    public int QuantityReturnedByMember { get; set; }
 
     /// <summary>
     /// Gets or sets the days rented.
@@ -107,7 +107,7 @@ public class RentalLineItem
     /// <value>
     /// The rental cost.
     /// </value>
-    public double RentalCost { get => DaysRented * QuantityRentedByMember * DailyRentalRate;}
+    public double RentalCost { get => DaysRented * QuantityRentedByMember * DailyRentalRate; }
 
     /// <summary>
     /// Gets or sets the date rented.

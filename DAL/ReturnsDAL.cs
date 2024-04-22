@@ -1,9 +1,9 @@
-﻿using RentMe.Model;
-using System.Data.SqlClient;
-using System.Data;
+﻿using RentMe.Controller;
+using RentMe.Model;
 using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
-using RentMe.Controller;
 
 namespace RentMe.DAL
 {

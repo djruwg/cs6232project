@@ -27,7 +27,7 @@ namespace RentMe.View
             displayRentalTransaction = rentalsController.GetRentalTransactionByRentalID(rentalID);
 
             ShowRentalReceiptRentalIDTextBox.Text = displayRentalTransaction.RentalID.ToString();
-            ShowRentalReceiptDateDueDatePicker.Value = displayRentalTransaction.DateDue;    
+            ShowRentalReceiptDateDueDatePicker.Value = displayRentalTransaction.DateDue;
             ShowRentalReceiptDateRentedDatePicker.Value = displayRentalTransaction.DateRented;
 
             ConfigureDataGridView();

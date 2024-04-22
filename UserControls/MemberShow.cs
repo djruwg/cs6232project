@@ -1,7 +1,7 @@
-﻿using System.ComponentModel;
-using RentMe.Controller;
+﻿using RentMe.Controller;
 using RentMe.Model;
 using RentMe.View;
+using System.ComponentModel;
 
 namespace RentMe.UserControls
 {

@@ -85,7 +85,7 @@ public class ReturnLineItem
     /// The quantity out standing.
     /// </value>
     public int QuantityOutStanding { get; set; }
-   
+
     /// <summary>
     /// Gets or sets the date rented.
     /// </summary>

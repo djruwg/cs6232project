@@ -83,7 +83,7 @@ namespace RentMe.View
         private void SaveReturnSaveButton_Click(object sender, EventArgs e)
         {
             returnsController.SaveReturnTransaction(returnTransaction);
-            DialogResult = DialogResult.OK; 
+            DialogResult = DialogResult.OK;
             Close();
         }
     }

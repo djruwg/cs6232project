@@ -1,7 +1,7 @@
-﻿using System.ComponentModel;
-using System.Diagnostics;
-using RentMe.Controller;
+﻿using RentMe.Controller;
 using RentMe.Model;
+using System.ComponentModel;
+using System.Diagnostics;
 
 namespace RentMe.View
 {
@@ -162,7 +162,7 @@ namespace RentMe.View
             double sum = 0;
             foreach (ReturnLineItem lineitem in returnTransaction.LineItems)
             {
-                sum += lineitem.AmountOwed; 
+                sum += lineitem.AmountOwed;
                 Debug.WriteLine($"{lineitem.RentalID} | {lineitem.FurnitureID} | {lineitem.Name} | {lineitem.Description} | {lineitem.DailyRentalRate} | {lineitem.QuantityOutStanding} | {lineitem.Quantity} | {lineitem.AmountOwed} | {sum}");
 
             }

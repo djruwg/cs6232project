@@ -1,5 +1,4 @@
 ﻿using RentMe.Controller;
-using RentMe.Model;
 
 namespace RentMe.View
 {
@@ -24,7 +23,7 @@ namespace RentMe.View
             RentalDetailsDueDateTimePicker.MinDate = pickerDate;
             DateTime dueDate = new DateTime(pickerDate.Year, pickerDate.Month, pickerDate.Day, 23, 59, 59);
             this._cartController.SetDueDate(dueDate);
-            
+
             RentalDetailsConfirmButton.Enabled = true;
             RentalDetailsCloseBotton.Enabled = false;
             RentalDetailsCancelButton.Enabled = true;
@@ -38,7 +37,7 @@ namespace RentMe.View
         private void ConfigureDataGridView()
         {
             RentalDetailsDataGridView.AutoGenerateColumns = false;
-            
+
             this.AddColumn("Furniture ID", "FurnitureID", true);
             this.AddColumn("Name", "Name", true);
             this.AddColumn("Description", "Description", true);
@@ -53,7 +52,7 @@ namespace RentMe.View
 
         private void RefeshDataGrid()
         {
-            RentalDetailsDataGridView.DataSource = null; 
+            RentalDetailsDataGridView.DataSource = null;
             RentalDetailsDataGridView.DataSource = this._cartController.LineItems();
             RentalDetailsTotalTextBox.Text = this._cartController.TotalRentalCost().ToString("C");
         }
@@ -86,7 +85,7 @@ namespace RentMe.View
                 RentalDetailsCloseBotton.Enabled = true;
                 RentalDetailsConfirmButton.Enabled = false;
                 RentalDetailsCancelButton.Enabled = false;
-                RentalDetailsDueDateTimePicker.Enabled = false; 
+                RentalDetailsDueDateTimePicker.Enabled = false;
                 RentalDetailsMessageLabel.Text = $"Rental Transaction Successfully Saved ({rentalTransactionID})";
                 RentalDetailsMessageLabel.Visible = true;
                 RentalDetailsRentalIDTextBox.Text = rentalTransactionID.ToString();

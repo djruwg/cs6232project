@@ -1,6 +1,6 @@
 ﻿using RentMe.Model;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace RentMe.DAL
 {
@@ -200,14 +200,14 @@ namespace RentMe.DAL
             {
                 return false;
             }
-            
+
             newQuantity = furniture.QuantityRented + quantity;
 
             if (newQuantity > furniture.QuantityOwned || newQuantity < 0)
             {
                 return false;
             }
-            
+
             string statement = @"
                 update
                     Furniture
@@ -233,11 +233,11 @@ namespace RentMe.DAL
             int rowsAffected = command.ExecuteNonQuery();
             if (rowsAffected == 1)
             {
-                return true; 
+                return true;
             }
             else
             {
-                return false; 
+                return false;
             }
         }
 

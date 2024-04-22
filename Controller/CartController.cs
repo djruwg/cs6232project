@@ -113,7 +113,7 @@ namespace RentMe.Controller
         {
             _rentalTransaction!.DateDue = dateDue;
         }
-        
+
         /// <summary>
         /// Saves the cart as rental transaction.
         /// </summary>

@@ -189,7 +189,7 @@ namespace RentMe.DAL
                         {
                             transaction.Rollback();
                             return -1;
-                        } 
+                        }
                     }
                 }
             }

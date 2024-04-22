@@ -60,7 +60,7 @@ namespace RentMe.Controller
                 returnLineItem.Quantity = 0;
                 returnTransaction.LineItems.Add(returnLineItem);
             }
-            
+
             return returnTransaction;
         }
 
