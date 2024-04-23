@@ -1,6 +1,8 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
 
 namespace RentMe.View
 {
@@ -105,7 +107,7 @@ namespace RentMe.View
 
         }
 
-        private void ReturnItemsFormButton_Click(object sender, EventArgs e)
+        private void PerformReturn()
         {
             ReturnTransaction returnCart = new ReturnTransaction();
 
@@ -127,18 +129,19 @@ namespace RentMe.View
             {
                 SaveReturnForm saveReturnForm = new SaveReturnForm(returnCart);
                 this.ReturnItemsFormReturnItemsButton.Enabled = false;
+                this.ReturnItemsFormReturnEverythingButton.Enabled = false;
                 if (DialogResult.OK == saveReturnForm.ShowDialog())
                 {
                     Close();
                 }
                 this.ReturnItemsFormReturnItemsButton.Enabled = true;
+                this.ReturnItemsFormReturnEverythingButton.Enabled = true;
             }
             else
             {
                 ReturnItemsFormMessageLabel.Text = "Must be returning at least one item";
                 ReturnItemsFormMessageLabel.Visible = true;
             }
-
         }
 
         private void ReturnItemsFormCloseButton_Click(object sender, EventArgs e)
@@ -146,13 +149,19 @@ namespace RentMe.View
             Close();
         }
 
-        private void testingButton_Click(object sender, EventArgs e)
+        private void ReturnItemsFormReturnItemsButton_Click(object sender, EventArgs e)
         {
-            double sum = 0;
-            foreach (ReturnLineItem lineitem in returnTransaction.LineItems)
+            this.PerformReturn();
+        }
+
+        private void ReturnItemsFormReturnEverythingButton_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in ReturnItemsFormDataGridView.Rows)
             {
-                sum += lineitem.AmountOwed;
+                row.Cells[6].Value = row.Cells[5].Value;
             }
+
+            this.PerformReturn();
         }
     }
 }

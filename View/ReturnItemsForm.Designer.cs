@@ -30,15 +30,18 @@
         {
             ReturnItemsFormDataGridView = new DataGridView();
             ReturnItemsTableLayoutPanel = new TableLayoutPanel();
-            ReturnItemsFormReturnItemsButton = new Button();
             ReturnItemsFormMessageLabel = new Label();
             flowLayoutPanel1 = new FlowLayoutPanel();
             ReturnItemsFormNetCostTextBox = new TextBox();
             label2 = new Label();
             ReturnItemsFormCloseButton = new Button();
+            flowLayoutPanel2 = new FlowLayoutPanel();
+            ReturnItemsFormReturnItemsButton = new Button();
+            ReturnItemsFormReturnEverythingButton = new Button();
             ((System.ComponentModel.ISupportInitialize)ReturnItemsFormDataGridView).BeginInit();
             ReturnItemsTableLayoutPanel.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
             // ReturnItemsFormDataGridView
@@ -64,10 +67,10 @@
             ReturnItemsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             ReturnItemsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             ReturnItemsTableLayoutPanel.Controls.Add(ReturnItemsFormDataGridView, 0, 1);
-            ReturnItemsTableLayoutPanel.Controls.Add(ReturnItemsFormReturnItemsButton, 0, 3);
             ReturnItemsTableLayoutPanel.Controls.Add(ReturnItemsFormMessageLabel, 0, 2);
             ReturnItemsTableLayoutPanel.Controls.Add(flowLayoutPanel1, 1, 2);
             ReturnItemsTableLayoutPanel.Controls.Add(ReturnItemsFormCloseButton, 1, 3);
+            ReturnItemsTableLayoutPanel.Controls.Add(flowLayoutPanel2, 0, 3);
             ReturnItemsTableLayoutPanel.Dock = DockStyle.Fill;
             ReturnItemsTableLayoutPanel.Location = new Point(0, 0);
             ReturnItemsTableLayoutPanel.Name = "ReturnItemsTableLayoutPanel";
@@ -78,17 +81,6 @@
             ReturnItemsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
             ReturnItemsTableLayoutPanel.Size = new Size(800, 450);
             ReturnItemsTableLayoutPanel.TabIndex = 1;
-            // 
-            // ReturnItemsFormReturnItemsButton
-            // 
-            ReturnItemsFormReturnItemsButton.Anchor = AnchorStyles.Left;
-            ReturnItemsFormReturnItemsButton.Location = new Point(3, 420);
-            ReturnItemsFormReturnItemsButton.Name = "ReturnItemsFormReturnItemsButton";
-            ReturnItemsFormReturnItemsButton.Size = new Size(121, 23);
-            ReturnItemsFormReturnItemsButton.TabIndex = 1;
-            ReturnItemsFormReturnItemsButton.Text = "Return Items";
-            ReturnItemsFormReturnItemsButton.UseVisualStyleBackColor = true;
-            ReturnItemsFormReturnItemsButton.Click += ReturnItemsFormButton_Click;
             // 
             // ReturnItemsFormMessageLabel
             // 
@@ -143,6 +135,38 @@
             ReturnItemsFormCloseButton.UseVisualStyleBackColor = true;
             ReturnItemsFormCloseButton.Click += ReturnItemsFormCloseButton_Click;
             // 
+            // flowLayoutPanel2
+            // 
+            flowLayoutPanel2.Controls.Add(ReturnItemsFormReturnItemsButton);
+            flowLayoutPanel2.Controls.Add(ReturnItemsFormReturnEverythingButton);
+            flowLayoutPanel2.Dock = DockStyle.Fill;
+            flowLayoutPanel2.Location = new Point(3, 417);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new Size(394, 30);
+            flowLayoutPanel2.TabIndex = 7;
+            // 
+            // ReturnItemsFormReturnItemsButton
+            // 
+            ReturnItemsFormReturnItemsButton.Anchor = AnchorStyles.Left;
+            ReturnItemsFormReturnItemsButton.Location = new Point(3, 4);
+            ReturnItemsFormReturnItemsButton.Name = "ReturnItemsFormReturnItemsButton";
+            ReturnItemsFormReturnItemsButton.Size = new Size(121, 23);
+            ReturnItemsFormReturnItemsButton.TabIndex = 1;
+            ReturnItemsFormReturnItemsButton.Text = "Return Quantities";
+            ReturnItemsFormReturnItemsButton.UseVisualStyleBackColor = true;
+            ReturnItemsFormReturnItemsButton.Click += ReturnItemsFormReturnItemsButton_Click;
+            // 
+            // ReturnItemsFormReturnEverythingButton
+            // 
+            ReturnItemsFormReturnEverythingButton.AutoSize = true;
+            ReturnItemsFormReturnEverythingButton.Location = new Point(130, 3);
+            ReturnItemsFormReturnEverythingButton.Name = "ReturnItemsFormReturnEverythingButton";
+            ReturnItemsFormReturnEverythingButton.Size = new Size(111, 25);
+            ReturnItemsFormReturnEverythingButton.TabIndex = 2;
+            ReturnItemsFormReturnEverythingButton.Text = "Return Everything";
+            ReturnItemsFormReturnEverythingButton.UseVisualStyleBackColor = true;
+            ReturnItemsFormReturnEverythingButton.Click += ReturnItemsFormReturnEverythingButton_Click;
+            // 
             // ReturnItemsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -157,6 +181,8 @@
             ReturnItemsTableLayoutPanel.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -165,11 +191,13 @@
 
         private DataGridView ReturnItemsFormDataGridView;
         private TableLayoutPanel ReturnItemsTableLayoutPanel;
-        private Button ReturnItemsFormReturnItemsButton;
         private Label ReturnItemsFormMessageLabel;
         private FlowLayoutPanel flowLayoutPanel1;
         private TextBox ReturnItemsFormNetCostTextBox;
         private Label label2;
         private Button ReturnItemsFormCloseButton;
+        private FlowLayoutPanel flowLayoutPanel2;
+        private Button ReturnItemsFormReturnItemsButton;
+        private Button ReturnItemsFormReturnEverythingButton;
     }
 }
