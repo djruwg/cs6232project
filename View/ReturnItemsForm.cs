@@ -1,8 +1,6 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Security.Cryptography.X509Certificates;
 
 namespace RentMe.View
 {
