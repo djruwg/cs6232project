@@ -217,7 +217,7 @@
             SaveReturnSaveButton.Name = "SaveReturnSaveButton";
             SaveReturnSaveButton.Size = new Size(75, 23);
             SaveReturnSaveButton.TabIndex = 14;
-            SaveReturnSaveButton.Text = "Save";
+            SaveReturnSaveButton.Text = "Confirm";
             SaveReturnSaveButton.UseVisualStyleBackColor = true;
             SaveReturnSaveButton.Click += SaveReturnSaveButton_Click;
             // 
@@ -278,7 +278,7 @@
             Controls.Add(SaveReturnTableLayoutPanel);
             Name = "SaveReturnForm";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "ExampleSaveRentalForm";
+            Text = "Confirm Return";
             SaveReturnTableLayoutPanel.ResumeLayout(false);
             SaveReturnTableLayoutPanel.PerformLayout();
             ResumeLayout(false);
