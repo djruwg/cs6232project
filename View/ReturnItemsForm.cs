@@ -146,7 +146,7 @@ namespace RentMe.View
             }
             else
             {
-                ReturnItemsFormMessageLabel.Text = "Must be returning at least on item";
+                ReturnItemsFormMessageLabel.Text = "Must be returning at least one item";
                 ReturnItemsFormMessageLabel.Visible = true;
             }
 
