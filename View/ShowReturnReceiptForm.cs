@@ -3,11 +3,19 @@ using RentMe.Model;
 
 namespace RentMe.View
 {
+    /// <summary>
+    /// Form for displaying the return transaction receipt.
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class ShowReturnReceiptForm : Form
     {
         private ReturnsController returnsController;
         private ReturnTransaction returnTransaction;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ShowReturnReceiptForm"/> class.
+        /// </summary>
+        /// <param name="returnID">The return identifier.</param>
         public ShowReturnReceiptForm(int returnID)
         {
             InitializeComponent();

@@ -5,8 +5,18 @@ using System.Data.SqlClient;
 
 namespace RentMe.DAL
 {
+    /// <summary>
+    /// Data access layer for return line items
+    /// </summary>
     internal class ReturnLineItemsDAL
     {
+        /// <summary>
+        /// Saves the returnl line item.
+        /// </summary>
+        /// <param name="command">The command.</param>
+        /// <param name="returnLineItem">The return line item.</param>
+        /// <returns></returns>
+        /// <exception cref="System.ArgumentNullException"></exception>
         public Boolean SaveReturnlLineItem(SqlCommand command, ReturnLineItem returnLineItem)
         {
             ArgumentNullException.ThrowIfNull(returnLineItem);

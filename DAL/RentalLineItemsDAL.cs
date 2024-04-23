@@ -8,7 +8,7 @@ namespace RentMe.DAL
     /// <summary>
     /// RentalLineItems data access layer.
     /// </summary>
-    internal class RentaLineItemsDAL
+    internal class RentalLineItemsDAL
     {
 
         /// <summary>
@@ -240,6 +240,14 @@ namespace RentMe.DAL
             }
         }
 
+        /// <summary>
+        /// Updates the rental line item.
+        /// </summary>
+        /// <param name="command">The command.</param>
+        /// <param name="rentalID">The rental identifier.</param>
+        /// <param name="furnitureID">The furniture identifier.</param>
+        /// <param name="quantity">The quantity.</param>
+        /// <returns></returns>
         public Boolean updateRentalLineItem(SqlCommand command, int rentalID, int furnitureID, int quantity)
         {
             string statement = @"

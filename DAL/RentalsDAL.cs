@@ -68,7 +68,7 @@ namespace RentMe.DAL
         /// <returns>A fully populated rentals line Item</returns>
         public RentalTransaction GetRentalTransactionByRentalID(int rentalID)
         {
-            RentaLineItemsDAL rentaLineItemsDAL = new RentaLineItemsDAL();
+            RentalLineItemsDAL rentaLineItemsDAL = new RentalLineItemsDAL();
             RentalTransaction rentalTransaction;
             rentalTransaction = GetRentalTransactionRowByRentalID(rentalID);
             rentalTransaction.RentalLineItems = rentaLineItemsDAL.GetRentalLineItemsByRentalID(rentalID);
@@ -129,7 +129,7 @@ namespace RentMe.DAL
         public int TransactionSaveOfRentalCart(RentalTransaction rentalTransaction)
         {
             int TransactionID = -1;
-            RentaLineItemsDAL rentalLineItemsDAL = new RentaLineItemsDAL();
+            RentalLineItemsDAL rentalLineItemsDAL = new RentalLineItemsDAL();
             FurnitureDAL furnitureDAL = new FurnitureDAL();
 
             using (SqlConnection connection = DBConnection.GetConnection())

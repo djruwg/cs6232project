@@ -58,6 +58,11 @@ namespace RentMe.DAL
             return returnsList;
         }
 
+        /// <summary>
+        /// Saves the return transaction.
+        /// </summary>
+        /// <param name="returnTransaction">The return transaction.</param>
+        /// <returns></returns>
         public int SaveReturnTransaction(ReturnTransaction returnTransaction)
         {
             ReturnsController returnsController = new ReturnsController();
@@ -65,7 +70,7 @@ namespace RentMe.DAL
 
 
             int TransactionID = -1;
-            RentaLineItemsDAL rentalLineItemsDAL = new RentaLineItemsDAL();
+            RentalLineItemsDAL rentalLineItemsDAL = new RentalLineItemsDAL();
             FurnitureDAL furnitureDAL = new FurnitureDAL();
 
             using (SqlConnection connection = DBConnection.GetConnection())
@@ -166,6 +171,13 @@ namespace RentMe.DAL
             }
         }
 
+        /// <summary>
+        /// Saves the return transaction record.
+        /// </summary>
+        /// <param name="command">The command.</param>
+        /// <param name="returnTransaction">The return transaction.</param>
+        /// <returns></returns>
+        /// <exception cref="System.ArgumentNullException"></exception>
         public int SaveReturnTransactionRecord(SqlCommand command, ReturnTransaction returnTransaction)
         {
             ArgumentNullException.ThrowIfNull(returnTransaction);

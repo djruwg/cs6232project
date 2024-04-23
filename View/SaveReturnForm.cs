@@ -3,6 +3,10 @@ using RentMe.Model;
 
 namespace RentMe.View
 {
+    /// <summary>
+    /// Form for saving return transactions.
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class SaveReturnForm : Form
     {
         private ReturnsController returnsController;

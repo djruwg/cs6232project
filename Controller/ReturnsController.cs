@@ -33,6 +33,11 @@ namespace RentMe.Controller
             return this._returnsDAL.GetReturnsByMember(memberID);
         }
 
+        /// <summary>
+        /// Gets the returnable for member.
+        /// </summary>
+        /// <param name="memberID">The member identifier.</param>
+        /// <returns></returns>
         public ReturnTransaction GetReturnableForMember(int memberID)
         {
             ReturnTransaction returnTransaction = new ReturnTransaction();
@@ -64,11 +69,22 @@ namespace RentMe.Controller
             return returnTransaction;
         }
 
+        /// <summary>
+        /// Saves the return transaction.
+        /// </summary>
+        /// <param name="stuffToReturn">The stuff to return.</param>
+        /// <returns></returns>
         public int SaveReturnTransaction(ReturnTransaction stuffToReturn)
         {
             return _returnsDAL.SaveReturnTransaction(stuffToReturn);
         }
 
+        /// <summary>
+        /// Saves the returnl line item.
+        /// </summary>
+        /// <param name="command">The command.</param>
+        /// <param name="returnLineItem">The return line item.</param>
+        /// <returns></returns>
         public Boolean SaveReturnlLineItem(SqlCommand command, ReturnLineItem returnLineItem)
         {
             return _ReturnLineItemDAL.SaveReturnlLineItem(command, returnLineItem);

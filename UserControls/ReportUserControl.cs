@@ -2,10 +2,17 @@
 
 namespace RentMe.UserControls
 {
+    /// <summary>
+    /// User Control for reporting view
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class ReportUserControl : UserControl
     {
         private ReportingController _reportingController;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ReportUserControl"/> class.
+        /// </summary>
         public ReportUserControl()
         {
             InitializeComponent();

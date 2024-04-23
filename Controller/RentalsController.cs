@@ -11,7 +11,7 @@ namespace RentMe.Controller
     internal class RentalsController
     {
         private RentalsDAL _rentalsDAL;
-        private RentaLineItemsDAL _rentalLineItemsDAL;
+        private RentalLineItemsDAL _rentalLineItemsDAL;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RentalsController"/> class.
@@ -19,7 +19,7 @@ namespace RentMe.Controller
         public RentalsController()
         {
             this._rentalsDAL = new RentalsDAL();
-            this._rentalLineItemsDAL = new RentaLineItemsDAL();
+            this._rentalLineItemsDAL = new RentalLineItemsDAL();
         }
 
         /// <summary>
@@ -45,11 +45,24 @@ namespace RentMe.Controller
                 .ToList());
         }
 
+        /// <summary>
+        /// Gets the rental transaction by rental identifier.
+        /// </summary>
+        /// <param name="rentalID">The rental identifier.</param>
+        /// <returns></returns>
         public RentalTransaction GetRentalTransactionByRentalID(int rentalID)
         {
             return _rentalsDAL.GetRentalTransactionByRentalID(rentalID);
         }
 
+        /// <summary>
+        /// Updates the rental line item.
+        /// </summary>
+        /// <param name="command">The command.</param>
+        /// <param name="rentalID">The rental identifier.</param>
+        /// <param name="furnitureID">The furniture identifier.</param>
+        /// <param name="quantity">The quantity.</param>
+        /// <returns></returns>
         public Boolean updateRentalLineItem(SqlCommand command, int rentalID, int furnitureID, int quantity)
         {
             return _rentalLineItemsDAL.updateRentalLineItem(command, rentalID, furnitureID, quantity);
