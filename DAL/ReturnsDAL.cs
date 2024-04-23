@@ -131,7 +131,7 @@ namespace RentMe.DAL
                                     }
                                     else
                                     {
-                                        furnitureHashMap.Add(lineItem.FurnitureID,lineItem.Quantity);
+                                        furnitureHashMap.Add(lineItem.FurnitureID, lineItem.Quantity);
                                     }
                                 }
 
@@ -144,7 +144,7 @@ namespace RentMe.DAL
                                     }
                                 }
                             }
-                        } 
+                        }
                         catch (Exception)
                         {
                             transaction.Rollback();
@@ -160,7 +160,7 @@ namespace RentMe.DAL
                         {
                             transaction.Rollback();
                             return -1;
-                        } 
+                        }
                     }
                 }
             }
