@@ -3,7 +3,6 @@ using RentMe.Model;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics;
 
 namespace RentMe.DAL
 {
@@ -93,9 +92,10 @@ namespace RentMe.DAL
                             else
                             {
                                 success = true;
+                                Dictionary<int, int> furnitureHashMap = new Dictionary<int, int>();
+
                                 foreach (ReturnLineItem lineItem in returnTransaction.LineItems)
                                 {
-                                    Debug.WriteLine("loop 1");
                                     lineItem.ReturnID = TransactionID;
 
                                     lineItem.Fine = 0;
@@ -109,6 +109,7 @@ namespace RentMe.DAL
                                     {
                                         lineItem.Refund = -1 * lineItem.AmountOwed;
                                     }
+
                                     success = returnsController.SaveReturnlLineItem(command, lineItem);
                                     if (!success)
                                     {
@@ -122,16 +123,28 @@ namespace RentMe.DAL
                                         break;
                                     }
 
-                                    success = furnitureDAL.UpdateFurnitureQuantityRented(command, lineItem.FurnitureID,
-                                        (-1 * lineItem.Quantity));
+                                    if (furnitureHashMap.ContainsKey(lineItem.FurnitureID))
+                                    {
+                                        int current = furnitureHashMap[lineItem.FurnitureID];
+                                        furnitureHashMap.Remove(lineItem.FurnitureID);
+                                        furnitureHashMap.Add(lineItem.FurnitureID, (lineItem.Quantity + current));
+                                    }
+                                    else
+                                    {
+                                        furnitureHashMap.Add(lineItem.FurnitureID,lineItem.Quantity);
+                                    }
+                                }
+
+                                foreach (KeyValuePair<int, int> keyValuePair in furnitureHashMap)
+                                {
+                                    success = furnitureDAL.UpdateFurnitureQuantityRented(command, keyValuePair.Key, (-1 * keyValuePair.Value));
                                     if (!success)
                                     {
                                         break;
                                     }
-
                                 }
                             }
-                        }
+                        } 
                         catch (Exception)
                         {
                             transaction.Rollback();
@@ -147,7 +160,7 @@ namespace RentMe.DAL
                         {
                             transaction.Rollback();
                             return -1;
-                        }
+                        } 
                     }
                 }
             }

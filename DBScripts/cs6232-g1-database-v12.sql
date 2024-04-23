@@ -1,70 +1,6 @@
-USE [cs6232-g1]
-GO
-/****** Object:  StoredProcedure [dbo].[getMostPopularFurnitureDuringDates]    Script Date: 4/21/2024 9:33:00 PM ******/
-DROP PROCEDURE [dbo].[getMostPopularFurnitureDuringDates]
-GO
-ALTER TABLE [dbo].[ReturnTransactions] DROP CONSTRAINT [FK_ReturnTransactions_Members]
-GO
-ALTER TABLE [dbo].[ReturnTransactions] DROP CONSTRAINT [FK_ReturnTransactions_Employees]
-GO
-ALTER TABLE [dbo].[ReturnLineItems] DROP CONSTRAINT [FK_ReturnLineItems_ReturnTransactions]
-GO
-ALTER TABLE [dbo].[ReturnLineItems] DROP CONSTRAINT [FK_ReturnLineItems_RentalLineItems]
-GO
-ALTER TABLE [dbo].[RentalTransactions] DROP CONSTRAINT [FK_RentalTransactions_Members]
-GO
-ALTER TABLE [dbo].[RentalTransactions] DROP CONSTRAINT [FK_RentalTransactions_Employees]
-GO
-ALTER TABLE [dbo].[RentalLineItems] DROP CONSTRAINT [FK_RentalLineItems_RentalTransactions]
-GO
-ALTER TABLE [dbo].[RentalLineItems] DROP CONSTRAINT [FK_RentalLineItems_Furnature]
-GO
-ALTER TABLE [dbo].[Furniture] DROP CONSTRAINT [FK_Furniture_Styles]
-GO
-ALTER TABLE [dbo].[Furniture] DROP CONSTRAINT [FK_Furniture_Categories]
-GO
-/****** Object:  Table [dbo].[Styles]    Script Date: 4/21/2024 9:33:00 PM ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Styles]') AND type in (N'U'))
-DROP TABLE [dbo].[Styles]
-GO
-/****** Object:  Table [dbo].[ReturnTransactions]    Script Date: 4/21/2024 9:33:00 PM ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ReturnTransactions]') AND type in (N'U'))
-DROP TABLE [dbo].[ReturnTransactions]
-GO
-/****** Object:  Table [dbo].[ReturnLineItems]    Script Date: 4/21/2024 9:33:00 PM ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ReturnLineItems]') AND type in (N'U'))
-DROP TABLE [dbo].[ReturnLineItems]
-GO
-/****** Object:  Table [dbo].[RentalTransactions]    Script Date: 4/21/2024 9:33:00 PM ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RentalTransactions]') AND type in (N'U'))
-DROP TABLE [dbo].[RentalTransactions]
-GO
-/****** Object:  Table [dbo].[RentalLineItems]    Script Date: 4/21/2024 9:33:00 PM ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RentalLineItems]') AND type in (N'U'))
-DROP TABLE [dbo].[RentalLineItems]
-GO
-/****** Object:  Table [dbo].[Members]    Script Date: 4/21/2024 9:33:00 PM ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Members]') AND type in (N'U'))
-DROP TABLE [dbo].[Members]
-GO
-/****** Object:  Table [dbo].[Furniture]    Script Date: 4/21/2024 9:33:00 PM ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Furniture]') AND type in (N'U'))
-DROP TABLE [dbo].[Furniture]
-GO
-/****** Object:  Table [dbo].[Employees]    Script Date: 4/21/2024 9:33:00 PM ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Employees]') AND type in (N'U'))
-DROP TABLE [dbo].[Employees]
-GO
-/****** Object:  Table [dbo].[Categories]    Script Date: 4/21/2024 9:33:00 PM ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Categories]') AND type in (N'U'))
-DROP TABLE [dbo].[Categories]
-GO
 USE [master]
 GO
-/****** Object:  Database [cs6232-g1]    Script Date: 4/21/2024 9:33:00 PM ******/
-DROP DATABASE [cs6232-g1]
-GO
-/****** Object:  Database [cs6232-g1]    Script Date: 4/21/2024 9:33:00 PM ******/
+/****** Object:  Database [cs6232-g1]    Script Date: 4/22/2024 7:01:14 PM ******/
 CREATE DATABASE [cs6232-g1]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -146,7 +82,7 @@ ALTER DATABASE [cs6232-g1] SET QUERY_STORE = OFF
 GO
 USE [cs6232-g1]
 GO
-/****** Object:  Table [dbo].[Categories]    Script Date: 4/21/2024 9:33:00 PM ******/
+/****** Object:  Table [dbo].[Categories]    Script Date: 4/22/2024 7:01:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -159,7 +95,7 @@ CREATE TABLE [dbo].[Categories](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Employees]    Script Date: 4/21/2024 9:33:00 PM ******/
+/****** Object:  Table [dbo].[Employees]    Script Date: 4/22/2024 7:01:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -184,7 +120,7 @@ CREATE TABLE [dbo].[Employees](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Furniture]    Script Date: 4/21/2024 9:33:00 PM ******/
+/****** Object:  Table [dbo].[Furniture]    Script Date: 4/22/2024 7:01:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -204,7 +140,7 @@ CREATE TABLE [dbo].[Furniture](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Members]    Script Date: 4/21/2024 9:33:00 PM ******/
+/****** Object:  Table [dbo].[Members]    Script Date: 4/22/2024 7:01:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -226,7 +162,7 @@ CREATE TABLE [dbo].[Members](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[RentalLineItems]    Script Date: 4/21/2024 9:33:00 PM ******/
+/****** Object:  Table [dbo].[RentalLineItems]    Script Date: 4/22/2024 7:01:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -244,7 +180,7 @@ CREATE TABLE [dbo].[RentalLineItems](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[RentalTransactions]    Script Date: 4/21/2024 9:33:00 PM ******/
+/****** Object:  Table [dbo].[RentalTransactions]    Script Date: 4/22/2024 7:01:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -261,7 +197,7 @@ CREATE TABLE [dbo].[RentalTransactions](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ReturnLineItems]    Script Date: 4/21/2024 9:33:00 PM ******/
+/****** Object:  Table [dbo].[ReturnLineItems]    Script Date: 4/22/2024 7:01:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -281,7 +217,7 @@ CREATE TABLE [dbo].[ReturnLineItems](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ReturnTransactions]    Script Date: 4/21/2024 9:33:00 PM ******/
+/****** Object:  Table [dbo].[ReturnTransactions]    Script Date: 4/22/2024 7:01:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -297,7 +233,7 @@ CREATE TABLE [dbo].[ReturnTransactions](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Styles]    Script Date: 4/21/2024 9:33:00 PM ******/
+/****** Object:  Table [dbo].[Styles]    Script Date: 4/22/2024 7:01:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -488,7 +424,7 @@ REFERENCES [dbo].[Members] ([MemberID])
 GO
 ALTER TABLE [dbo].[ReturnTransactions] CHECK CONSTRAINT [FK_ReturnTransactions_Members]
 GO
-/****** Object:  StoredProcedure [dbo].[getMostPopularFurnitureDuringDates]    Script Date: 4/21/2024 9:33:00 PM ******/
+/****** Object:  StoredProcedure [dbo].[getMostPopularFurnitureDuringDates]    Script Date: 4/22/2024 7:01:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
