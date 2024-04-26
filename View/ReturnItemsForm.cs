@@ -34,14 +34,13 @@ namespace RentMe.View
             this.AddColumn("Furniture ID", "FurnitureID", true);
             this.AddColumn("Name", "Name", true);
             this.AddColumn("Description", "Description", true);
-            this.AddColumn("Date Due", "DateDue", true);
+            this.AddColumn("Days Overdue", "DueDelta", true);
             this.AddColumn("Daily Rate", "DailyRentalRate", true);
             this.AddColumn("Qty Rented", "QuantityOutStanding", true);
             this.AddColumn("Qty Returned", "Quantity", false);
             this.AddColumn("Net Cost", "AmountOwed", true);
 
             ReturnItemsFormDataGridView.Columns["DailyRentalRate"].DefaultCellStyle.Format = "c";
-            ReturnItemsFormDataGridView.Columns["DateDue"].DefaultCellStyle.Format = "d";
             ReturnItemsFormDataGridView.Columns["AmountOwed"].DefaultCellStyle.Format = "c";
 
         }

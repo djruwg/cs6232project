@@ -103,6 +103,20 @@ public class ReturnLineItem
     public DateTime DateDue { get; set; }
 
     /// <summary>
+    /// Gets or sets the due delta.
+    /// </summary>
+    /// <value>
+    /// The due delta.
+    /// </value>
+    public int DueDelta {
+        get
+        {
+            return (DateTime.Now.Date - DateDue.Date).Days;
+        }
+
+    }
+
+    /// <summary>
     /// Gets or sets the net cost.
     /// </summary>
     /// <value>
