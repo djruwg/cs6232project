@@ -148,18 +148,19 @@
             // ReturnItemsFormReturnItemsButton
             // 
             ReturnItemsFormReturnItemsButton.Anchor = AnchorStyles.Left;
-            ReturnItemsFormReturnItemsButton.Location = new Point(3, 4);
+            ReturnItemsFormReturnItemsButton.AutoSize = true;
+            ReturnItemsFormReturnItemsButton.Location = new Point(3, 3);
             ReturnItemsFormReturnItemsButton.Name = "ReturnItemsFormReturnItemsButton";
-            ReturnItemsFormReturnItemsButton.Size = new Size(121, 23);
+            ReturnItemsFormReturnItemsButton.Size = new Size(191, 25);
             ReturnItemsFormReturnItemsButton.TabIndex = 1;
-            ReturnItemsFormReturnItemsButton.Text = "Return Quantities";
+            ReturnItemsFormReturnItemsButton.Text = "Return Only Specified Quantities";
             ReturnItemsFormReturnItemsButton.UseVisualStyleBackColor = true;
             ReturnItemsFormReturnItemsButton.Click += ReturnItemsFormReturnItemsButton_Click;
             // 
             // ReturnItemsFormReturnEverythingButton
             // 
             ReturnItemsFormReturnEverythingButton.AutoSize = true;
-            ReturnItemsFormReturnEverythingButton.Location = new Point(130, 3);
+            ReturnItemsFormReturnEverythingButton.Location = new Point(200, 3);
             ReturnItemsFormReturnEverythingButton.Name = "ReturnItemsFormReturnEverythingButton";
             ReturnItemsFormReturnEverythingButton.Size = new Size(111, 25);
             ReturnItemsFormReturnEverythingButton.TabIndex = 2;
