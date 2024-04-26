@@ -64,6 +64,7 @@ namespace RentMe.UserControls
             this.AddColumn("Name", "Name", true);
             this.AddColumn("Description", "Description", true);
             this.AddColumn("Daily Rental Rate", "DailyRentalRate", true);
+            this.AddColumn("Quantity In Stock", "QuantityAvailable", true);
             this.AddColumn("Quantity", "QuantityRentedByMember", false);
 
             CartDataGridView.Columns["DailyRentalRate"].DefaultCellStyle.Format = "c";
@@ -135,7 +136,7 @@ namespace RentMe.UserControls
         /// <param name="e"></param>
         private void CartDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0 || e.ColumnIndex != 5) return;
+            if (e.RowIndex < 0 || e.ColumnIndex != 6) return;
 
             if (CartDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
@@ -151,11 +152,11 @@ namespace RentMe.UserControls
         /// <param name="e"></param>
         private void CartDataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (e.RowIndex < 0 || e.ColumnIndex != 5) return;
+            if (e.RowIndex < 0 || e.ColumnIndex != 6) return;
 
             CartMessageLabel.Text = string.Empty;
 
-            if (!int.TryParse(e.FormattedValue?.ToString(), out int newInteger) || newInteger < 0)
+            if (!int.TryParse(e.FormattedValue?.ToString(), out int newInteger) || newInteger <= 0)
             {
                 CartMessageLabel.Text = "Cell must be a positive integer";
 

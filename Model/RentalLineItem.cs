@@ -54,6 +54,14 @@ public class RentalLineItem
     public int QuantityRentedByStore { get; set; }
 
     /// <summary>
+    /// Gets the quantity available.
+    /// </summary>
+    /// <value>
+    /// The quantity available.
+    /// </value>
+    public int QuantityAvailable { get => QuantityOwnedByStore - QuantityRentedByStore; }
+
+    /// <summary>
     /// Gets or sets the daily rental rate.
     /// </summary>
     /// <value>
