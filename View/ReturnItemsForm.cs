@@ -157,7 +157,7 @@ namespace RentMe.View
         {
             foreach (DataGridViewRow row in ReturnItemsFormDataGridView.Rows)
             {
-                row.Cells[6].Value = row.Cells[5].Value;
+                row.Cells[7].Value = row.Cells[6].Value;
             }
 
             this.PerformReturn();
