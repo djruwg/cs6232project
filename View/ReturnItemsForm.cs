@@ -34,12 +34,14 @@ namespace RentMe.View
             this.AddColumn("Furniture ID", "FurnitureID", true);
             this.AddColumn("Name", "Name", true);
             this.AddColumn("Description", "Description", true);
+            this.AddColumn("Date Due", "DateDue", true);
             this.AddColumn("Daily Rate", "DailyRentalRate", true);
             this.AddColumn("Qty Rented", "QuantityOutStanding", true);
             this.AddColumn("Qty Returned", "Quantity", false);
             this.AddColumn("Net Cost", "AmountOwed", true);
 
             ReturnItemsFormDataGridView.Columns["DailyRentalRate"].DefaultCellStyle.Format = "c";
+            ReturnItemsFormDataGridView.Columns["DateDue"].DefaultCellStyle.Format = "d";
             ReturnItemsFormDataGridView.Columns["AmountOwed"].DefaultCellStyle.Format = "c";
 
         }
@@ -70,7 +72,7 @@ namespace RentMe.View
 
         private void ReturnItemsDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0 || e.ColumnIndex != 6) return;
+            if (e.RowIndex < 0 || e.ColumnIndex != 7) return;
 
             if (ReturnItemsFormDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
@@ -81,12 +83,12 @@ namespace RentMe.View
 
         private void ReturnItemsDataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (e.RowIndex < 0 || e.ColumnIndex != 6) return;
+            if (e.RowIndex < 0 || e.ColumnIndex != 7) return;
 
             ReturnItemsFormMessageLabel.Visible = false;
 
             int.TryParse(e.FormattedValue?.ToString(), out int newValue);
-            int.TryParse(ReturnItemsFormDataGridView.Rows[e.RowIndex].Cells[5].Value.ToString(), out int maxValue);
+            int.TryParse(ReturnItemsFormDataGridView.Rows[e.RowIndex].Cells[6].Value.ToString(), out int maxValue);
 
             if (newValue > maxValue)
             {
