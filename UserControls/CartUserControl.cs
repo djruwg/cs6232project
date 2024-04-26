@@ -63,7 +63,7 @@ namespace RentMe.UserControls
             this.AddColumn("Furniture ID", "FurnitureID", true);
             this.AddColumn("Name", "Name", true);
             this.AddColumn("Description", "Description", true);
-            this.AddColumn("DailyRentalRate", "DailyRentalRate", true);
+            this.AddColumn("Daily Rental Rate", "DailyRentalRate", true);
             this.AddColumn("Quantity", "QuantityRentedByMember", false);
 
             CartDataGridView.Columns["DailyRentalRate"].DefaultCellStyle.Format = "c";
