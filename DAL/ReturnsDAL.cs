@@ -223,6 +223,10 @@ namespace RentMe.DAL
             ReturnTransaction returnTransaction;
             returnTransaction = this.GetReturnTransactionRowByReturnID(returnID);
             returnTransaction.LineItems = returnLineItemsDAL.GetReturnLineItemsByReturnID(returnID);
+            foreach (ReturnLineItem lineItem in returnTransaction.LineItems)
+            {
+                lineItem.DateReturned = returnTransaction.DateReturned;
+            }
             return returnTransaction;
         }
 

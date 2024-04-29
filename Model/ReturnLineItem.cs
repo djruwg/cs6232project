@@ -103,6 +103,14 @@ public class ReturnLineItem
     public DateTime DateDue { get; set; }
 
     /// <summary>
+    /// Gets or sets the date returned.
+    /// </summary>
+    /// <value>
+    /// The date returned.
+    /// </value>
+    public DateTime DateReturned { get; set; }
+
+    /// <summary>
     /// Gets or sets the due delta.
     /// </summary>
     /// <value>
@@ -126,7 +134,7 @@ public class ReturnLineItem
     {
         get
         {
-            int deltaDays = (DateTime.Now.Date - DateDue.Date).Days;
+            int deltaDays = (this.DateReturned.Date - DateDue.Date).Days;
             return deltaDays * Quantity * DailyRentalRate;
         }
 

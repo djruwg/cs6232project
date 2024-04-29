@@ -60,6 +60,7 @@ namespace RentMe.Controller
                 returnLineItem.DailyRentalRate = lineItem.DailyRentalRate;
                 returnLineItem.DateRented = lineItem.DateRented;
                 returnLineItem.DateDue = lineItem.DateDue;
+                returnLineItem.DateReturned = returnTransaction.DateReturned;
                 returnLineItem.QuantityOutStanding =
                     lineItem.QuantityRentedByMember - lineItem.QuantityReturnedByMember;
                 returnLineItem.Quantity = 0;
