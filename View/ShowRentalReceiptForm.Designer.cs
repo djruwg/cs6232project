@@ -63,7 +63,7 @@
             ShowRentalReceiptTableLayoutPanel.Controls.Add(ShowRentalReceiptTotalCostTextBox, 4, 3);
             ShowRentalReceiptTableLayoutPanel.Dock = DockStyle.Fill;
             ShowRentalReceiptTableLayoutPanel.Location = new Point(0, 0);
-            ShowRentalReceiptTableLayoutPanel.Margin = new Padding(6, 6, 6, 6);
+            ShowRentalReceiptTableLayoutPanel.Margin = new Padding(6);
             ShowRentalReceiptTableLayoutPanel.Name = "ShowRentalReceiptTableLayoutPanel";
             ShowRentalReceiptTableLayoutPanel.RowCount = 5;
             ShowRentalReceiptTableLayoutPanel.RowStyles.Add(new RowStyle());
@@ -113,7 +113,7 @@
             ShowRentalReceiptTableLayoutPanel.SetColumnSpan(ShowRentalReceiptDateRentedDatePicker, 2);
             ShowRentalReceiptDateRentedDatePicker.Enabled = false;
             ShowRentalReceiptDateRentedDatePicker.Location = new Point(897, 6);
-            ShowRentalReceiptDateRentedDatePicker.Margin = new Padding(6, 6, 6, 6);
+            ShowRentalReceiptDateRentedDatePicker.Margin = new Padding(6);
             ShowRentalReceiptDateRentedDatePicker.Name = "ShowRentalReceiptDateRentedDatePicker";
             ShowRentalReceiptDateRentedDatePicker.Size = new Size(583, 39);
             ShowRentalReceiptDateRentedDatePicker.TabIndex = 4;
@@ -124,7 +124,7 @@
             ShowRentalReceiptTableLayoutPanel.SetColumnSpan(ShowRentalReceiptDateDueDatePicker, 2);
             ShowRentalReceiptDateDueDatePicker.Enabled = false;
             ShowRentalReceiptDateDueDatePicker.Location = new Point(897, 57);
-            ShowRentalReceiptDateDueDatePicker.Margin = new Padding(6, 6, 6, 6);
+            ShowRentalReceiptDateDueDatePicker.Margin = new Padding(6);
             ShowRentalReceiptDateDueDatePicker.Name = "ShowRentalReceiptDateDueDatePicker";
             ShowRentalReceiptDateDueDatePicker.Size = new Size(583, 39);
             ShowRentalReceiptDateDueDatePicker.TabIndex = 5;
@@ -134,7 +134,7 @@
             ShowRentalReceiptRentalIDTextBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             ShowRentalReceiptRentalIDTextBox.Enabled = false;
             ShowRentalReceiptRentalIDTextBox.Location = new Point(303, 6);
-            ShowRentalReceiptRentalIDTextBox.Margin = new Padding(6, 6, 6, 6);
+            ShowRentalReceiptRentalIDTextBox.Margin = new Padding(6);
             ShowRentalReceiptRentalIDTextBox.Name = "ShowRentalReceiptRentalIDTextBox";
             ShowRentalReceiptRentalIDTextBox.Size = new Size(285, 39);
             ShowRentalReceiptRentalIDTextBox.TabIndex = 6;
@@ -149,7 +149,7 @@
             ShowRentalReceiptTableLayoutPanel.SetColumnSpan(ShowRentalReceiptDataGridView, 5);
             ShowRentalReceiptDataGridView.Dock = DockStyle.Fill;
             ShowRentalReceiptDataGridView.Location = new Point(6, 108);
-            ShowRentalReceiptDataGridView.Margin = new Padding(6, 6, 6, 6);
+            ShowRentalReceiptDataGridView.Margin = new Padding(6);
             ShowRentalReceiptDataGridView.Name = "ShowRentalReceiptDataGridView";
             ShowRentalReceiptDataGridView.ReadOnly = true;
             ShowRentalReceiptDataGridView.RowHeadersVisible = false;
@@ -172,7 +172,7 @@
             // 
             ShowRentalReceiptCloseButton.Anchor = AnchorStyles.None;
             ShowRentalReceiptCloseButton.Location = new Point(79, 905);
-            ShowRentalReceiptCloseButton.Margin = new Padding(6, 6, 6, 6);
+            ShowRentalReceiptCloseButton.Margin = new Padding(6);
             ShowRentalReceiptCloseButton.Name = "ShowRentalReceiptCloseButton";
             ShowRentalReceiptCloseButton.Size = new Size(139, 49);
             ShowRentalReceiptCloseButton.TabIndex = 0;
@@ -185,7 +185,7 @@
             ShowRentalReceiptTotalCostTextBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             ShowRentalReceiptTotalCostTextBox.Enabled = false;
             ShowRentalReceiptTotalCostTextBox.Location = new Point(1194, 854);
-            ShowRentalReceiptTotalCostTextBox.Margin = new Padding(6, 6, 6, 6);
+            ShowRentalReceiptTotalCostTextBox.Margin = new Padding(6);
             ShowRentalReceiptTotalCostTextBox.Name = "ShowRentalReceiptTotalCostTextBox";
             ShowRentalReceiptTotalCostTextBox.Size = new Size(286, 39);
             ShowRentalReceiptTotalCostTextBox.TabIndex = 9;
@@ -196,10 +196,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1486, 960);
             Controls.Add(ShowRentalReceiptTableLayoutPanel);
-            Margin = new Padding(6, 6, 6, 6);
+            Margin = new Padding(6);
             Name = "ShowRentalReceiptForm";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "ShowRentalReceiptForm";
+            Text = "Rental Receipt";
             ShowRentalReceiptTableLayoutPanel.ResumeLayout(false);
             ShowRentalReceiptTableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)ShowRentalReceiptDataGridView).EndInit();
