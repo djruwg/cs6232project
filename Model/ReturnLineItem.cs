@@ -108,7 +108,8 @@ public class ReturnLineItem
     /// <value>
     /// The due delta.
     /// </value>
-    public int DueDelta {
+    public int DueDelta
+    {
         get
         {
             return (DateTime.Now.Date - DateDue.Date).Days;
