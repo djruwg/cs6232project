@@ -79,7 +79,15 @@ namespace RentMe.UserControls
         private void SearchFurniture()
         {
             string searchString = this.FurnitureSearchSearchTextBox.Text;
-            this.PopulateSearchListView(this._furnitureController.GetSearchedFurniture(searchString));
+
+            try
+            {
+                this.PopulateSearchListView(this._furnitureController.GetSearchedFurniture(searchString));
+            }
+            catch (Exception ex)
+            {
+                FurnitureSearchSearchMessageLabel.Text = ex.Message;
+            }
         }
 
         private void PopulateSearchListView(List<Furniture> furnitureList)

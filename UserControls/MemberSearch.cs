@@ -58,7 +58,15 @@ namespace RentMe.UserControls
         private void SearchMembers()
         {
             string searchString = Regex.Replace(this.MemberSearchSearchTextBox.Text, @"\s+", " ");
-            this.PopulateSearchListView(this._memberController.GetSearchedMembers(searchString));
+
+            try
+            {
+                this.PopulateSearchListView(this._memberController.GetSearchedMembers(searchString));
+            }
+            catch (Exception ex)
+            {
+                this.MemberSearchSearchMessageLabel.Text = ex.Message;
+            }
         }
 
         private void ResizeMemberSearchListViewColumns()
