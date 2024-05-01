@@ -46,7 +46,7 @@ namespace RentMe.View
 
         private void ResizeSaveRentalListViewColumns()
         {
-            float[] columnWidthPercentages = { 0.15f, 0.15f, 0.2f, 0.15f, 0.15f, 0.15f, 0.15f };
+            float[] columnWidthPercentages = { 0.10f, 0.12f, 0.16f, 0.12f, 0.12f, 0.12f, 0.16f, 0.10f };
 
             if (this.SaveReturnListView.Columns.Count != columnWidthPercentages.Length)
             {
@@ -72,6 +72,7 @@ namespace RentMe.View
                 this.SaveReturnListView.Items[rowNumber].SubItems.Add(lineItem.FurnitureID.ToString());
                 this.SaveReturnListView.Items[rowNumber].SubItems.Add(lineItem.Name.ToString());
                 this.SaveReturnListView.Items[rowNumber].SubItems.Add(lineItem.Description.ToString());
+                this.SaveReturnListView.Items[rowNumber].SubItems.Add(lineItem.DueDelta.ToString());
                 this.SaveReturnListView.Items[rowNumber].SubItems.Add(lineItem.DailyRentalRate.ToString("c"));
                 this.SaveReturnListView.Items[rowNumber].SubItems.Add(lineItem.Quantity.ToString());
                 this.SaveReturnListView.Items[rowNumber].SubItems.Add(lineItem.AmountOwed.ToString("c"));
