@@ -51,6 +51,7 @@
             SaveReturnTotalCostLabel = new Label();
             SaveReturnQuantityTextBox = new TextBox();
             SaveReturnTotalCostTextBox = new TextBox();
+            SaveReturnDaysOverdueColumnHeader = new ColumnHeader();
             SaveReturnTableLayoutPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -110,7 +111,7 @@
             // 
             // SaveReturnListView
             // 
-            SaveReturnListView.Columns.AddRange(new ColumnHeader[] { SaveReturnRentalIDColumnHeader, SaveReturnFurnitureIDColumnHeader, SaveReturnNameColumnHeader, SaveReturnDescriptionColumnHeader, SaveReturnDailyRateColumnHeader, SaveReturnQuantityReturnedColumnHeader, SaveReturnCostColumnHeader });
+            SaveReturnListView.Columns.AddRange(new ColumnHeader[] { SaveReturnRentalIDColumnHeader, SaveReturnFurnitureIDColumnHeader, SaveReturnNameColumnHeader, SaveReturnDescriptionColumnHeader, SaveReturnDaysOverdueColumnHeader, SaveReturnDailyRateColumnHeader, SaveReturnQuantityReturnedColumnHeader, SaveReturnCostColumnHeader });
             SaveReturnTableLayoutPanel.SetColumnSpan(SaveReturnListView, 8);
             SaveReturnListView.Dock = DockStyle.Fill;
             SaveReturnListView.FullRowSelect = true;
@@ -270,6 +271,10 @@
             SaveReturnTotalCostTextBox.Size = new Size(94, 23);
             SaveReturnTotalCostTextBox.TabIndex = 19;
             // 
+            // SaveReturnDaysOverdueColumnHeader
+            // 
+            SaveReturnDaysOverdueColumnHeader.Text = "Days Overdue";
+            // 
             // SaveReturnForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -309,5 +314,6 @@
         private TextBox SaveReturnQuantityTextBox;
         private TextBox SaveReturnTotalCostTextBox;
         private ColumnHeader SaveReturnFurnitureIDColumnHeader;
+        private ColumnHeader SaveReturnDaysOverdueColumnHeader;
     }
 }
